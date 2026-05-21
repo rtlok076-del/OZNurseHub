@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="90" fill="#1a2332"/>
+  <rect x="18" y="18" width="476" height="476" rx="72" fill="#0a7c6e"/>
+  <text x="256" y="210" text-anchor="middle" font-family="Georgia,serif" font-size="170" font-weight="700" fill="white">Oz</text>
+  <text x="256" y="370" text-anchor="middle" font-family="Georgia,serif" font-size="100" font-weight="400" fill="rgba(255,255,255,0.75)">Nurse</text>
+</svg>

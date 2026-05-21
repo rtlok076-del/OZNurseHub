@@ -1,0 +1,18 @@
+{
+  "name": "OzNurse Hub",
+  "short_name": "OzNurse",
+  "description": "Free resource hub for Australian nursing students",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a2332",
+  "theme_color": "#0a7c6e",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
