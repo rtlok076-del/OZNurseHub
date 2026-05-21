@@ -1053,6 +1053,69 @@
     transition: background 0.2s;
   }
   .back-btn:hover { background: #2d3748; }
+
+  /* -- HOME PAGE COMPRESSION -- */
+  .hero-banner img { max-height: 220px; object-fit: cover; object-position: center 20%; }
+  .hero { padding: 1.5rem 2rem 1.5rem; }
+  .hero-badge { margin-bottom: 0.6rem; font-size: 0.68rem; padding: 0.25rem 0.8rem; }
+  .hero h1 { font-size: clamp(1.4rem, 2.5vw, 2rem) !important; margin-bottom: 0.4rem; }
+  .hero p { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.75rem; }
+  .search-wrap { max-width: 480px; }
+  .search-wrap input { padding: 0.65rem 1rem 0.65rem 2.8rem; font-size: 0.875rem; }
+  .stats { margin-top: 0.75rem; gap: 1.5rem; }
+  .stat-num { font-size: 1.35rem; }
+  .stat-label { font-size: 0.65rem; }
+  .section-index { margin-top: 0.75rem; }
+  .section-index-label { margin-bottom: 0.4rem; font-size: 0.65rem; }
+  .si-card { padding: 0.5rem 0.4rem; gap: 2px; }
+  .si-icon { font-size: 1.05rem; }
+  .si-title { font-size: 0.72rem; }
+  .si-sub { font-size: 0.6rem; }
+
+  /* -- SIDEBAR -- */
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; bottom: 0;
+    width: 200px;
+    background: #0e1929;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto;
+    z-index: 50;
+    flex-direction: column;
+    padding: 0.5rem 0 1rem;
+  }
+  .sidebar.sb-visible { display: flex; }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.22);
+    padding: 0.5rem 1rem 0.25rem;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s;
+    border: none; background: none;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1;
+  }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.sidebar-active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #mainContent.with-sidebar { margin-left: 200px !important; max-width: calc(100% - 200px) !important; }
+  .back-nav { display: none; }
+  @media (max-width: 768px) {
+    .sidebar.sb-visible { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+    #mainContent.with-sidebar { margin-left: 54px !important; max-width: calc(100% - 54px) !important; }
+  }
 </style>
 </head>
 <body>
@@ -1156,6 +1219,20 @@
 </section>
 
 <!-- MAIN -->
+<nav class="sidebar" id="sidebar">
+  <button class="sidebar-item" onclick="showHome()"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></button>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <button class="sidebar-item" data-section="study" onclick="showSection('study')"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></button>
+  <button class="sidebar-item" data-section="clinical" onclick="showSection('clinical')"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></button>
+  <button class="sidebar-item" data-section="tips" onclick="showSection('tips')"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></button>
+  <button class="sidebar-item" data-section="wellbeing" onclick="showSection('wellbeing')"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></button>
+  <button class="sidebar-item" data-section="quickref" onclick="showSection('quickref')"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></button>
+  <button class="sidebar-item" data-section="progressnote" onclick="showSection('progressnote')"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></button>
+  <button class="sidebar-item" data-section="apa" onclick="showSection('apa')"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></button>
+  <button class="sidebar-item" data-section="quizzes" onclick="showSection('quizzes')"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></button>
+  <button class="sidebar-item" data-section="links" onclick="showSection('links')"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></button>
+</nav>
 <main class="main" id="mainContent" style="display:none">
 
   <div class="back-nav"><button class="back-btn" id="backBtn" onclick="showHome()">&#8592; Back to Home</button></div>
@@ -2326,5 +2403,35 @@
     if (hash && valid.indexOf(hash) !== -1) { showSection(hash); }
   })();
 </script>
-</body>
+<script>
+function showSection(id) {
+  document.querySelector('.hero-banner').style.display = 'none';
+  document.querySelector('.hero').style.display = 'none';
+  var main = document.getElementById('mainContent');
+  main.style.display = 'block';
+  main.classList.add('with-sidebar');
+  document.querySelectorAll('.section').forEach(function(s) {
+    s.style.display = s.id === id ? '' : 'none';
+  });
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.add('sb-visible');
+  document.querySelectorAll('.sidebar-item[data-section]').forEach(function(el) {
+    el.classList.toggle('sidebar-active', el.dataset.section === id);
+  });
+  window.scrollTo(0, 0);
+  if (history.pushState) history.pushState(null, '', '#' + id);
+}
+
+function showHome() {
+  document.querySelector('.hero-banner').style.display = '';
+  document.querySelector('.hero').style.display = '';
+  var main = document.getElementById('mainContent');
+  main.style.display = 'none';
+  main.classList.remove('with-sidebar');
+  document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
+  document.getElementById('sidebar').classList.remove('sb-visible');
+  window.scrollTo(0, 0);
+  if (history.pushState) history.pushState(null, '', window.location.pathname);
+}
+</script></body>
 </html>
