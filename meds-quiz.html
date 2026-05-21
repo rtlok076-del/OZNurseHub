@@ -1,0 +1,799 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ward Medications Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #0D2B1F;
+    --forest-mid: #163825;
+    --forest-light: #1F4D34;
+    --green-accent: #52B788;
+    --green-pale: rgba(82,183,136,0.12);
+    --green-bright: #6FCF97;
+    --cream: #F2EDE4;
+    --cream-soft: rgba(242,237,228,0.7);
+    --cream-muted: rgba(242,237,228,0.4);
+    --cream-faint: rgba(242,237,228,0.08);
+    --gold: #D4A843;
+    --correct: #1D6A4A;
+    --correct-bg: rgba(29,106,74,0.2);
+    --correct-border: rgba(82,183,136,0.5);
+    --incorrect: #8B2020;
+    --incorrect-bg: rgba(139,32,32,0.15);
+    --incorrect-border: rgba(200,70,70,0.5);
+    --border: rgba(242,237,228,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%; width: 100%;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  .screen {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow-y: auto;
+    visibility: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .screen.active {
+    visibility: visible;
+    z-index: 1;
+    pointer-events: auto;
+  }
+
+  /* Subtle botanical pattern */
+  .screen::after {
+    content: '';
+    position: fixed;
+    bottom: -20px; right: -20px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(82,183,136,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .inner {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LANDING */
+  .landing-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 60px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .back-link {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--cream); }
+  .dot-sep { color: var(--cream-faint); }
+
+  .landing-hero {
+    margin-bottom: 48px;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .quiz-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 16px;
+  }
+  .landing-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .landing-hero h1 em { font-style: italic; color: var(--green-accent); font-weight: 400; }
+  .landing-hero p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--cream-soft);
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  /* Section chips */
+  .section-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .section-chip {
+    background: var(--cream-faint);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cream-muted);
+    letter-spacing: 0.5px;
+  }
+  .section-chip.active {
+    background: var(--green-pale);
+    border-color: rgba(82,183,136,0.4);
+    color: var(--green-accent);
+  }
+
+  .name-section {
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s 0.25s ease both;
+  }
+  .name-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .name-input {
+    width: 100%;
+    background: var(--cream-faint);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .name-input::placeholder { color: var(--cream-muted); }
+  .name-input:focus { border-color: rgba(82,183,136,0.6); background: rgba(82,183,136,0.05); }
+
+  .start-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--green-accent);
+    color: var(--forest);
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 32px rgba(82,183,136,0.25);
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+  .start-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(82,183,136,0.35); }
+
+  /* QUIZ */
+  .quiz-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+  .q-counter {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    white-space: nowrap;
+  }
+  .prog-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: var(--cream-faint);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    background: var(--green-accent);
+    border-radius: 100px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .score-pill {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-accent);
+    white-space: nowrap;
+    background: var(--green-pale);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  /* Section badge */
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    background: var(--green-pale);
+    color: var(--green-accent);
+  }
+
+  .q-card {
+    background: var(--forest-mid);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .q-type-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 18px;
+  }
+
+  .q-text {
+    font-family: 'Lora', serif;
+    font-size: clamp(16px, 2.4vw, 20px);
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  /* TF */
+  .tf-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tf-btn {
+    padding: 20px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--cream-faint);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--cream-soft);
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .tf-btn:hover:not(:disabled) {
+    background: var(--green-pale);
+    border-color: rgba(82,183,136,0.4);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+  .tf-btn.correct { background: var(--correct-bg); border-color: var(--correct-border); color: var(--green-bright); }
+  .tf-btn.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-border); color: #E87A7A; }
+  .tf-btn:disabled { cursor: default; }
+
+  /* Fill in blank */
+  .fill-wrap { position: relative; }
+  .fill-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cream);
+    background: var(--cream-faint);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fill-input::placeholder { color: var(--cream-muted); }
+  .fill-input:focus { border-color: rgba(82,183,136,0.6); }
+  .fill-input.correct { border-color: var(--correct-border); background: var(--correct-bg); color: var(--green-bright); }
+  .fill-input.incorrect { border-color: var(--incorrect-border); background: var(--incorrect-bg); color: #E87A7A; }
+  .hint-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 10px; flex-wrap: wrap;
+  }
+  .hint-tag {
+    font-size: 11px; font-weight: 700;
+    color: var(--gold);
+    background: rgba(212,168,67,0.12);
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .hint-letters {
+    font-size: 12px;
+    color: var(--cream-muted);
+    font-family: 'DM Sans', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* Match */
+  .match-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 520px) { .match-layout { grid-template-columns: 1fr; } }
+  .match-col-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--cream-muted);
+    margin-bottom: 10px;
+  }
+  .match-help { font-size: 12px; color: var(--cream-muted); margin-bottom: 10px; }
+  .drag-item {
+    background: var(--green-pale);
+    color: var(--green-accent);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 13px; font-weight: 700;
+    cursor: grab;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+    border: 1.5px solid transparent;
+    user-select: none;
+  }
+  .drag-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(82,183,136,0.2); }
+  .drag-item.dragging { opacity: 0.4; cursor: grabbing; }
+  .drag-item.matched { background: var(--correct-bg); color: var(--green-bright); border-color: var(--correct-border); cursor: default; }
+  .drag-item.selected { border-color: var(--green-accent); box-shadow: 0 0 0 2px rgba(82,183,136,0.3); }
+  .drop-zone {
+    min-height: 52px;
+    border: 1.5px dashed rgba(242,237,228,0.15);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: var(--cream-muted);
+    background: var(--cream-faint);
+    transition: all 0.2s;
+  }
+  .drop-zone.over { border-color: var(--green-accent); background: var(--green-pale); }
+  .drop-zone.correct { border-color: var(--correct-border); border-style: solid; background: var(--correct-bg); color: var(--green-bright); }
+  .drop-zone.incorrect { border-color: var(--incorrect-border); border-style: solid; background: var(--incorrect-bg); color: #E87A7A; }
+  .drop-zone-label { flex: 1; }
+  .dropped-tag {
+    background: var(--green-accent);
+    color: var(--forest);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px; font-weight: 700;
+  }
+
+  /* Buttons */
+  .check-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--green-accent);
+    color: var(--forest);
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(82,183,136,0.2);
+  }
+  .check-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(82,183,136,0.3); }
+  .check-btn:disabled { opacity: 0.4; cursor: default; }
+
+  .feedback {
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    display: none;
+    animation: fadeUp 0.3s ease;
+    border: 1px solid;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct { background: var(--correct-bg); border-color: var(--correct-border); color: var(--green-bright); }
+  .feedback.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-border); color: #E87A7A; }
+
+  .next-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--forest-light);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    display: none;
+    transition: all 0.2s;
+  }
+  .next-btn.show { display: block; animation: fadeUp 0.3s ease; }
+  .next-btn:hover { background: var(--green-accent); color: var(--forest); border-color: var(--green-accent); }
+
+  /* RESULTS */
+  .results-inner { text-align: center; padding-top: 40px; }
+  .result-ring {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--green-accent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 32px;
+    box-shadow: 0 0 60px rgba(82,183,136,0.15);
+  }
+  .result-num {
+    font-family: 'Lora', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .result-denom { font-size: 14px; color: var(--cream-muted); font-weight: 500; }
+  .results-emoji { font-size: 48px; margin-bottom: 16px; }
+  .results-title {
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .results-msg {
+    font-size: 15px; font-weight: 300;
+    color: var(--cream-soft);
+    margin-bottom: 40px; line-height: 1.6;
+  }
+  .results-btns { display: flex; flex-direction: column; gap: 12px; max-width: 380px; margin: 0 auto; }
+  .btn-primary {
+    padding: 16px 32px;
+    background: var(--green-accent);
+    color: var(--forest);
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(82,183,136,0.2);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(82,183,136,0.3); }
+  .btn-secondary {
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--cream-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block; text-align: center;
+  }
+  .btn-secondary:hover { border-color: rgba(242,237,228,0.3); color: var(--cream); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="landing" class="screen active">
+  <div class="inner">
+    <div class="landing-top">
+      <a class="back-link" href="index.html">← Hub</a>
+      <span class="dot-sep">·</span>
+      <span class="back-link" style="cursor:default;">Medications Quiz</span>
+    </div>
+    <div class="landing-hero">
+      <div class="quiz-tag">💊 Quiz 02 · Ward Pharmacology</div>
+      <h1>Ward<br><em>Medications</em></h1>
+      <p>Common ward pharmacology covering analgesics, anticoagulants, cardiac medications, and antibiotics for general medicine placement.</p>
+    </div>
+
+    <div class="section-grid">
+      <span class="section-chip active">💊 Analgesics</span>
+      <span class="section-chip active">🩸 Anticoagulants</span>
+      <span class="section-chip active">❤️ Cardiac</span>
+      <span class="section-chip active">🦠 Antibiotics</span>
+    </div>
+
+    <div class="name-section">
+      <label class="name-label" for="nameInput">Your name</label>
+      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" onkeydown="if(event.key==='Enter') beginQuiz()">
+      <div id="nameErr" style="color:#E87A7A;font-size:13px;font-weight:600;margin-top:8px;display:none;">⚠️ Please enter your name to continue.</div>
+    </div>
+
+    <button class="start-btn" onclick="beginQuiz()">Start Quiz →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+  <div class="inner">
+    <div class="quiz-topbar">
+      <span class="q-counter" id="qCounter">Q1 / 10</span>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
+      <span class="score-pill" id="scorePill">0 pts</span>
+    </div>
+    <div id="quizArea"></div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="results" class="screen">
+  <div class="inner">
+    <div class="results-inner">
+      <div id="resultsEmoji" class="results-emoji">🎉</div>
+      <div class="result-ring">
+        <div class="result-num" id="scoreNum">0</div>
+        <div class="result-denom" id="scoreDenom">/ 10</div>
+      </div>
+      <div class="results-title" id="resultsTitle">Quiz Complete!</div>
+      <div class="results-msg" id="resultsMsg">Here's how you went.</div>
+      <div class="results-btns">
+        <button class="btn-primary" onclick="restartQuiz()">Try Again 🔄</button>
+        <a class="btn-secondary" href="index.html">← Back to Hub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxTermBzZSMjtUjZRDlWJpTpuj34_zcD6aJMLlw_OzLbOULzBZV8V-17EmAa7bNCMQK/exec';
+let studentName = '', current = 0, score = 0, answered = [];
+let dragSrc = null, selectedDrug = null;
+
+const questions = [
+  { type:'tf', section:'💊 Analgesics', text:'The maximum recommended daily dose of paracetamol for a healthy adult in Australia is 4 g (8 × 500 mg tablets).', answer:true, explanation:'The standard maximum is 4 g/day for adults. Dose reduction is required in liver impairment, low body weight (<50 kg), and chronic alcohol use (AMH 2024).' },
+  { type:'tf', section:'💊 Analgesics', text:'NSAIDs such as ibuprofen are generally safe to administer to patients with known kidney disease.', answer:false, explanation:'NSAIDs reduce blood flow to the kidneys and can worsen kidney disease. Always check with the medical or pharmacy team before giving NSAIDs to patients with kidney problems, heart failure, or dehydration.' },
+  { type:'tf', section:'🩸 Anticoagulants', text:'Patients taking warfarin require regular blood tests to monitor their INR (International Normalised Ratio).', answer:true, explanation:'Warfarin is a high-risk medication with a narrow therapeutic range. Regular INR monitoring is essential. Always check that INR results are reviewed before administering warfarin.' },
+  { type:'tf', section:'❤️ Cardiac', text:"Before administering a beta-blocker such as metoprolol, a nurse should always check the patient's heart rate.", answer:true, explanation:"Beta-blockers slow the heart rate. Always check the patient's heart rate and blood pressure before giving them. If the heart rate is lower than the set parameter, hold the dose and notify the treating team." },
+  { type:'fill', section:'💊 Analgesics', text:'When using opioids for acute pain, the opioid reversal agent administered IV in an emergency is ________. (Hint: starts with N, 9 letters)', answer:'naloxone', altAnswer:null, explanation:'Naloxone (Narcan) is a competitive opioid antagonist. Standard adult dose is 200–400 mcg IV/IM, repeated every 2–3 min as needed. Duration is shorter than most opioids — monitor closely for re-narcotisation.' },
+  { type:'fill', section:'🩸 Anticoagulants', text:'The low-molecular-weight heparin most commonly used for VTE treatment in Australian hospitals is ________ (Clexane). (Hint: starts with E)', answer:'enoxaparin', altAnswer:null, explanation:'Enoxaparin (Clexane) is the standard LMWH in Australia. Treatment dose for VTE is 1.5 mg/kg SC daily (or 1 mg/kg BD). Dose adjust for renal impairment (eGFR < 30).' },
+  { type:'fill', section:'🦠 Antibiotics', text:'Before administering any antibiotic, a nurse must always check for patient ________. (Hint: starts with A)', answer:'allergies', altAnswer:'allergy', explanation:"Checking for allergies before giving any antibiotic is a critical patient safety step. Always verify in the patient's chart and ask the patient directly. Document and escalate any known allergies immediately." },
+  { type:'fill', section:'❤️ Cardiac', text:'The key difference between spironolactone and furosemide is that spironolactone retains ________, while furosemide causes its loss. (Hint: starts with P)', answer:'potassium', altAnswer:null, explanation:'Spironolactone is a potassium-sparing diuretic. Furosemide is a loop diuretic that flushes out potassium along with excess fluid. Patients on furosemide often need potassium monitoring or supplements.' },
+  { type:'match', section:'🩸 Anticoagulants & 💊 Analgesics', text:'Match each drug to its primary ward indication:', pairs:[{drug:'Enoxaparin',indication:'DVT/PE treatment'},{drug:'Warfarin',indication:'Atrial fibrillation anticoagulation'},{drug:'Celecoxib',indication:'Inflammatory pain (COX-2 selective)'},{drug:'Tramadol',indication:'Moderate pain (opioid + SNRI)'}] },
+  { type:'match', section:'🦠 Antibiotics & ❤️ Cardiac', text:'Match each drug to its primary ward indication:', pairs:[{drug:'Piperacillin-tazobactam',indication:'Empirical Gram-neg. sepsis'},{drug:'Vancomycin',indication:'MRSA / severe Gram-pos. infection'},{drug:'Metoprolol',indication:'Rate control in AF'},{drug:'Furosemide',indication:'Acute pulmonary oedema / fluid overload'}] },
+];
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById(id).scrollTop = 0;
+}
+
+function beginQuiz() {
+  const n = document.getElementById('nameInput').value.trim();
+  if (!n) { document.getElementById('nameErr').style.display='block'; return; }
+  studentName = n;
+  document.getElementById('nameErr').style.display = 'none';
+  current = 0; score = 0; answered = new Array(questions.length).fill(null);
+  showScreen('quiz');
+  renderQ();
+}
+
+function updateTopbar() {
+  document.getElementById('qCounter').textContent = `Q${current+1} / ${questions.length}`;
+  document.getElementById('progFill').style.width = `${((current+1)/questions.length)*100}%`;
+  document.getElementById('scorePill').textContent = `${score} pts`;
+}
+
+function renderQ() {
+  updateTopbar();
+  const q = questions[current];
+  const area = document.getElementById('quizArea');
+  let body = '';
+
+  if (q.type === 'tf') {
+    body = `<div class="tf-btns">
+      <button class="tf-btn" id="tf_true" onclick="checkTF(true)">✓ True</button>
+      <button class="tf-btn" id="tf_false" onclick="checkTF(false)">✗ False</button>
+    </div>`;
+  } else if (q.type === 'fill') {
+    body = `<div class="fill-wrap">
+      <input class="fill-input" id="fillInput" type="text" placeholder="Type your answer…" onkeydown="if(event.key==='Enter') checkFill()">
+    </div>
+    <button class="check-btn" id="checkBtn" onclick="checkFill()">Check Answer</button>`;
+  } else if (q.type === 'match') {
+    body = buildMatchHTML(q);
+  }
+
+  area.innerHTML = `
+    <div class="q-card">
+      <div class="section-badge">${q.section}</div>
+      <div class="q-type-tag">Q${current+1} of ${questions.length} · ${q.type==='tf'?'True / False':q.type==='fill'?'Fill in the Blank':'Drag & Match'}</div>
+      <div class="q-text">${q.text}</div>
+      ${body}
+      <div class="feedback" id="feedback"></div>
+    </div>
+    <button class="next-btn" id="nextBtn" onclick="nextQ()">
+      ${current < questions.length-1 ? 'Next Question →' : 'See Results 🎉'}
+    </button>`;
+
+  if (q.type === 'match') setupDrag();
+}
+
+function checkTF(chosen) {
+  const q = questions[current];
+  const ok = chosen === q.answer;
+  if (ok) score++;
+  answered[current] = ok;
+  document.getElementById('tf_true').disabled = document.getElementById('tf_false').disabled = true;
+  document.getElementById(q.answer ? 'tf_true' : 'tf_false').classList.add('correct');
+  if (!ok) document.getElementById(chosen ? 'tf_true' : 'tf_false').classList.add('incorrect');
+  showFeedback(ok, q.explanation);
+  updateTopbar();
+}
+
+function checkFill() {
+  const q = questions[current];
+  const input = document.getElementById('fillInput');
+  const val = input.value.trim().toLowerCase();
+  const ok = val === q.answer.toLowerCase() || (q.altAnswer && val === q.altAnswer.toLowerCase());
+  if (ok) score++;
+  answered[current] = ok;
+  input.classList.add(ok ? 'correct' : 'incorrect');
+  input.disabled = true;
+  document.getElementById('checkBtn').disabled = true;
+  const msg = ok ? q.explanation : `The answer is: ${q.answer}. ${q.explanation}`;
+  showFeedback(ok, msg);
+  updateTopbar();
+}
+
+function buildMatchHTML(q) {
+  const shuffled = [...q.pairs].sort(() => Math.random()-0.5);
+  const drugs = shuffled.map(p =>
+    `<div class="drag-item" draggable="true" data-drug="${p.drug}" id="drag-${p.drug.replace(/[^a-z]/gi,'')}">${p.drug}</div>`
+  ).join('');
+  const drops = q.pairs.map(p =>
+    `<div class="drop-zone" data-indication="${p.indication}" id="drop-${p.indication.replace(/[^a-z]/gi,'')}">
+      <span class="drop-zone-label">${p.indication}</span>
+    </div>`
+  ).join('');
+  return `<div class="match-layout">
+    <div>
+      <div class="match-col-label">💊 Medications</div>
+      <div class="match-help">Click a medication, then click an indication to match. Or drag & drop.</div>
+      <div id="drugPool">${drugs}</div>
+    </div>
+    <div>
+      <div class="match-col-label">📋 Indications</div>
+      <div id="dropPool">${drops}</div>
+    </div>
+  </div>
+  <button class="check-btn" id="checkBtn" onclick="checkMatch()">Check Matches</button>`;
+}
+
+function setupDrag() {
+  const clearSelected = () => {
+    document.querySelectorAll('.drag-item.selected').forEach(x => x.classList.remove('selected'));
+    selectedDrug = null;
+  };
+  const placeDrug = (zone, drugEl) => {
+    if (!zone || !drugEl) return;
+    const existing = zone.querySelector('.dropped-tag');
+    if (existing) {
+      const old = existing.dataset.drug;
+      const oldEl = document.getElementById('drag-'+old.replace(/[^a-z]/gi,''));
+      if (oldEl) oldEl.style.display = '';
+      existing.remove();
+      zone.querySelector('.drop-zone-label').style.display = '';
+    }
+    const tag = document.createElement('span');
+    tag.className = 'dropped-tag';
+    tag.textContent = drugEl.dataset.drug;
+    tag.dataset.drug = drugEl.dataset.drug;
+    zone.appendChild(tag);
+    drugEl.style.display = 'none';
+    zone.querySelector('.drop-zone-label').style.display = 'none';
+  };
+
+  document.querySelectorAll('.drag-item').forEach(el => {
+    el.addEventListener('dragstart', e => { dragSrc = el; el.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+    el.addEventListener('dragend', () => el.classList.remove('dragging'));
+    el.addEventListener('click', () => {
+      clearSelected(); selectedDrug = el; el.classList.add('selected');
+    });
+  });
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault(); zone.classList.remove('over');
+      if (!dragSrc) return;
+      placeDrug(zone, dragSrc); dragSrc = null; clearSelected();
+    });
+    zone.addEventListener('click', () => {
+      if (!selectedDrug) return;
+      placeDrug(zone, selectedDrug); clearSelected();
+    });
+  });
+}
+
+function checkMatch() {
+  const q = questions[current];
+  let allCorrect = true, allFilled = true;
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    const tag = zone.querySelector('.dropped-tag');
+    if (!tag) { allFilled = false; return; }
+    const pair = q.pairs.find(p => p.indication === zone.dataset.indication);
+    const ok = pair && pair.drug === tag.textContent;
+    zone.classList.add(ok ? 'correct' : 'incorrect');
+    if (!ok) allCorrect = false;
+  });
+  if (!allFilled) { showFeedback(false, '⚠️ Please match all medications before checking.'); return; }
+  if (allCorrect) score++;
+  answered[current] = allCorrect;
+  document.getElementById('checkBtn').disabled = true;
+  const correctList = q.pairs.map(p => `${p.drug} → ${p.indication}`).join(' · ');
+  showFeedback(allCorrect, allCorrect ? 'Perfect match! All correct.' : `Correct answers: ${correctList}`);
+  updateTopbar();
+}
+
+function showFeedback(ok, msg) {
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback show ' + (ok ? 'correct' : 'incorrect');
+  fb.innerHTML = (ok ? '✅ ' : '❌ ') + msg;
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQ() {
+  current++;
+  if (current >= questions.length) return showResultsScreen();
+  renderQ();
+}
+
+function showResultsScreen() {
+  const pct = Math.round((score/questions.length)*100);
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('scoreDenom').textContent = `/ ${questions.length}`;
+  let emoji, title, msg;
+  if (pct>=90){emoji='🏆';title='Outstanding!';msg='Excellent pharmacology knowledge for the ward.';}
+  else if(pct>=70){emoji='🌟';title='Well done!';msg='Solid understanding — keep reviewing the AMH and eTG.';}
+  else if(pct>=50){emoji='💪';title='Good effort!';msg='Review the AMH, eTG, and your hospital formulary.';}
+  else{emoji='📚';title='Keep learning!';msg='Check the AMH and eTG for a refresher on common ward medications.';}
+  document.getElementById('resultsEmoji').textContent = emoji;
+  document.getElementById('resultsTitle').textContent = title;
+  document.getElementById('resultsMsg').textContent = msg;
+  showScreen('results');
+  submitToSheets(score, questions.length);
+}
+
+function submitToSheets(score, total) {
+  if (!SHEETS_URL) return;
+  fetch(SHEETS_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ name:studentName||'Anonymous', score, total, quiz:'medications', timestamp: new Date().toLocaleString('en-AU',{timeZone:'Australia/Adelaide'}) })
+  }).catch(()=>{});
+}
+
+function restartQuiz() {
+  showScreen('landing');
+  document.getElementById('nameInput').value = '';
+}
+</script>
+</body>
+</html>

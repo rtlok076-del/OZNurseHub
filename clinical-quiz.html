@@ -1,0 +1,750 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clinical Scenarios Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B35;
+    --navy-mid: #1B2F57;
+    --navy-light: #243D6E;
+    --blue-accent: #4A90D9;
+    --blue-pale: rgba(74,144,217,0.12);
+    --cream: #F0EDE8;
+    --cream-soft: rgba(240,237,232,0.7);
+    --cream-muted: rgba(240,237,232,0.4);
+    --cream-faint: rgba(240,237,232,0.12);
+    --correct: #1D6A4A;
+    --correct-bg: rgba(29,106,74,0.15);
+    --correct-border: rgba(29,106,74,0.5);
+    --incorrect: #8B2020;
+    --incorrect-bg: rgba(139,32,32,0.15);
+    --incorrect-border: rgba(139,32,32,0.5);
+    --border: rgba(240,237,232,0.1);
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%; width: 100%;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  /* SCREENS */
+  .screen {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow-y: auto;
+    visibility: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .screen.active {
+    visibility: visible;
+    z-index: 1;
+    pointer-events: auto;
+  }
+
+  /* Subtle grid texture */
+  .screen::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(240,237,232,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,237,232,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .inner {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LANDING */
+  .landing-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 60px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .back-link {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--cream); }
+  .dot-sep { color: var(--cream-faint); }
+
+  .landing-hero {
+    margin-bottom: 52px;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .quiz-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-accent);
+    margin-bottom: 16px;
+  }
+  .landing-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 18px;
+  }
+  .landing-hero h1 em { font-style: italic; color: var(--blue-accent); }
+  .landing-hero p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--cream-soft);
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  /* Topic chips */
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  @media (max-width: 520px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
+
+  .topic-chip {
+    background: var(--cream-faint);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream-soft);
+  }
+  .topic-chip:hover { background: rgba(74,144,217,0.1); border-color: rgba(74,144,217,0.3); color: var(--cream); }
+  .topic-chip.active {
+    background: rgba(74,144,217,0.2);
+    border-color: rgba(74,144,217,0.6);
+    color: var(--cream);
+  }
+  .topic-chip .chip-icon { font-size: 18px; }
+
+  /* Name input */
+  .name-section {
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+  .name-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .name-input {
+    width: 100%;
+    background: var(--cream-faint);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .name-input::placeholder { color: var(--cream-muted); }
+  .name-input:focus { border-color: rgba(74,144,217,0.6); background: rgba(74,144,217,0.05); }
+
+  /* Start button */
+  .start-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--blue-accent);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 32px rgba(74,144,217,0.3);
+    animation: fadeUp 0.5s 0.35s ease both;
+  }
+  .start-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(74,144,217,0.4); }
+
+  /* QUIZ SCREEN */
+  .quiz-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+  .q-counter {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    white-space: nowrap;
+  }
+  .prog-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: var(--cream-faint);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    background: var(--blue-accent);
+    border-radius: 100px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .score-pill {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue-accent);
+    white-space: nowrap;
+    background: var(--blue-pale);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  /* Question card */
+  .q-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .q-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .type-scenario { background: var(--blue-pale); color: var(--blue-accent); }
+  .type-tf { background: rgba(201,168,76,0.12); color: #C9A84C; }
+  .type-acronym { background: rgba(130,100,210,0.12); color: #8264D2; }
+
+  .q-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(17px, 2.5vw, 22px);
+    line-height: 1.45;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  /* Vitals box */
+  .vitals-box {
+    background: rgba(74,144,217,0.08);
+    border: 1px solid rgba(74,144,217,0.2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(74,144,217,0.9);
+    font-family: 'DM Sans', monospace;
+    letter-spacing: 0.3px;
+    line-height: 1.8;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    background: var(--cream-faint);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream-soft);
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .option:hover:not(:disabled) {
+    background: rgba(74,144,217,0.1);
+    border-color: rgba(74,144,217,0.4);
+    color: var(--cream);
+    transform: translateX(4px);
+  }
+  .option.correct { background: var(--correct-bg); border-color: var(--correct-border); color: #5DD49A; }
+  .option.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-border); color: #E87A7A; }
+  .option-dot {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 8px;
+    background: rgba(240,237,232,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    color: var(--cream-muted);
+  }
+  .option.correct .option-dot { background: rgba(93,212,154,0.2); color: #5DD49A; }
+  .option.incorrect .option-dot { background: rgba(232,122,122,0.2); color: #E87A7A; }
+
+  /* T/F buttons */
+  .tf-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tf-btn {
+    padding: 20px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--cream-faint);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--cream-soft);
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .tf-btn:hover:not(:disabled) {
+    background: rgba(74,144,217,0.1);
+    border-color: rgba(74,144,217,0.4);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+  .tf-btn.correct { background: var(--correct-bg); border-color: var(--correct-border); color: #5DD49A; }
+  .tf-btn.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-border); color: #E87A7A; }
+  .tf-btn:disabled { cursor: default; }
+
+  /* Acronym inputs */
+  .acronym-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .acronym-row { display: flex; align-items: center; gap: 14px; }
+  .acronym-label {
+    background: var(--blue-pale);
+    color: var(--blue-accent);
+    font-weight: 800;
+    font-size: 14px;
+    font-family: 'DM Sans', monospace;
+    padding: 10px 16px;
+    border-radius: 10px;
+    min-width: 80px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .acronym-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+    background: var(--cream-faint);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .acronym-input::placeholder { color: var(--cream-muted); }
+  .acronym-input:focus { border-color: rgba(74,144,217,0.6); }
+  .acronym-input.correct { border-color: var(--correct-border); background: var(--correct-bg); color: #5DD49A; }
+  .acronym-input.incorrect { border-color: var(--incorrect-border); background: var(--incorrect-bg); color: #E87A7A; }
+
+  /* Submit / Next buttons */
+  .submit-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--blue-accent);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(74,144,217,0.25);
+  }
+  .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(74,144,217,0.35); }
+
+  /* Feedback */
+  .feedback {
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    display: none;
+    animation: fadeUp 0.3s ease;
+    border: 1px solid;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct { background: var(--correct-bg); border-color: var(--correct-border); color: #5DD49A; }
+  .feedback.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-border); color: #E87A7A; }
+
+  .next-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: none;
+    transition: all 0.2s;
+    animation: fadeUp 0.3s ease;
+  }
+  .next-btn.show { display: block; }
+  .next-btn:hover { background: var(--blue-accent); border-color: var(--blue-accent); }
+
+  /* RESULTS */
+  .results-inner {
+    text-align: center;
+    padding-top: 40px;
+  }
+  .result-score-ring {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--blue-accent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 32px;
+    position: relative;
+    box-shadow: 0 0 60px rgba(74,144,217,0.2);
+  }
+  .result-score-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .result-score-denom {
+    font-size: 14px;
+    color: var(--cream-muted);
+    font-weight: 500;
+  }
+  .results-emoji { font-size: 48px; margin-bottom: 16px; }
+  .results-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .results-msg {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--cream-soft);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .results-btns { display: flex; flex-direction: column; gap: 12px; max-width: 380px; margin: 0 auto; }
+  .btn-primary {
+    padding: 16px 32px;
+    background: var(--blue-accent);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(74,144,217,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,144,217,0.35); }
+  .btn-secondary {
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--cream-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .btn-secondary:hover { border-color: rgba(240,237,232,0.3); color: var(--cream); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="landing" class="screen active">
+  <div class="inner">
+    <div class="landing-top">
+      <a class="back-link" href="index.html">← Hub</a>
+      <span class="dot-sep">·</span>
+      <span class="back-link" style="cursor:default;">Clinical Quiz</span>
+    </div>
+    <div class="landing-hero">
+      <div class="quiz-tag">🩺 Quiz 01 · Clinical Scenarios</div>
+      <h1>Clinical<br><em>Scenarios</em></h1>
+      <p>Ward-based scenarios covering patient deterioration, escalation, ISBAR, DKA management, blood transfusion safety, and PICC line care.</p>
+    </div>
+
+    <div class="topic-grid">
+      <div class="topic-chip active" data-topic="deterioration" onclick="toggleTopic(this)">
+        <span class="chip-icon">🚨</span> Deterioration
+      </div>
+      <div class="topic-chip active" data-topic="dka" onclick="toggleTopic(this)">
+        <span class="chip-icon">🧪</span> DKA
+      </div>
+      <div class="topic-chip active" data-topic="blood" onclick="toggleTopic(this)">
+        <span class="chip-icon">🩸</span> Blood
+      </div>
+      <div class="topic-chip active" data-topic="picc" onclick="toggleTopic(this)">
+        <span class="chip-icon">🩹</span> PICC
+      </div>
+    </div>
+
+    <div class="name-section">
+      <label class="name-label" for="nameInput">Your name (optional)</label>
+      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" onkeydown="if(event.key==='Enter') beginQuiz()">
+    </div>
+
+    <button class="start-btn" onclick="beginQuiz()">Start Quiz →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+  <div class="inner">
+    <div class="quiz-topbar">
+      <span class="q-counter" id="qCounter">Q1 / 10</span>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
+      <span class="score-pill" id="scorePill">0 pts</span>
+    </div>
+    <div id="quizArea"></div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="results" class="screen">
+  <div class="inner">
+    <div class="results-inner">
+      <div id="resultsEmoji" class="results-emoji">🎉</div>
+      <div class="result-score-ring">
+        <div class="result-score-num" id="scoreNum">0</div>
+        <div class="result-score-denom" id="scoreDenom">/ 10</div>
+      </div>
+      <div class="results-title" id="resultsTitle">Quiz Complete!</div>
+      <div class="results-msg" id="resultsMsg">Here's how you went.</div>
+      <div class="results-btns">
+        <button class="btn-primary" onclick="restartQuiz()">Try Again 🔄</button>
+        <a class="btn-secondary" href="index.html">← Back to Hub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbz4ljVJqHGegMq-ig5VdZS527RHvh9kLtp8ZiLRZ8ONoXf1UGCdgwSqB2oJGS7w8wQpJw/exec';
+
+const BANK = [
+  {tag:'deterioration', q:`Which set of results best fits DKA (CALHN)?`,o:[`pH 7.35, HCO3 18, ketones 0.2`,`pH 7.25, HCO3 12, ketones 0.8`,`pH 7.32, HCO3 16, ketones 0.4`,`pH 7.40, HCO3 22, ketones 0.6`],c:1,e:`DKA typically presents with metabolic acidosis (low pH, low bicarbonate) and elevated ketones.`},
+  {tag:'dka', q:`How often should BGL be checked while on insulin infusion?`,o:[`Every 2 hours`,`Every 4 hours`,`Hourly`,`Only if symptomatic`],c:2,e:`Frequent monitoring is needed to safely titrate insulin and prevent hypoglycaemia. Hourly checks keep patients safe during IV insulin.`},
+  {tag:'dka', q:`How often should capillary blood ketones be checked while on infusion?`,o:[`Hourly`,`Twice daily`,`4 times per day`,`Only at start and end`],c:2,e:`Ketones are monitored regularly to ensure resolution of ketoacidosis. Trend ketones — falling levels show treatment working.`},
+  {tag:'dka', q:`Initial IV fluid in DKA is usually:`,o:[`Hartmann's`,`0.9% Sodium Chloride`,`5% Dextrose`,`0.45% Sodium Chloride`],c:1,e:`Isotonic saline restores intravascular volume and improves perfusion. Fluid resuscitation comes before insulin effects.`},
+  {tag:'dka', q:`When should you switch to 4% glucose + 0.18% sodium chloride?`,o:[`When BGL < 20 mmol/L`,`When BGL < 15 mmol/L`,`When ketones < 0.6`,`When pH normal`],c:1,e:`Glucose is added once BGL falls to avoid hypoglycaemia while continuing insulin to clear ketones.`},
+  {tag:'dka', q:`What insulin mix is used for Actrapid infusion?`,o:[`100 units in 100 mL NaCl`,`50 units Actrapid + 49.5 mL NaCl`,`10 units Actrapid + 90 mL glucose`,`Any concentration`],c:1,e:`Standardised concentration ensures safe titration and reduces medication error risk. Know your local protocol concentrations.`},
+  {tag:'dka', q:`Who must double‑check infusion changes?`,o:[`One nurse`,`Two staff, one RN`,`Any students`,`RN only`],c:1,e:`Independent double checks reduce high‑risk medication errors. High‑risk meds = double check culture.`},
+  {tag:'dka', q:`When can insulin infusion be ceased?`,o:[`When BGL < 10`,`After meal + ketones <0.3 + pH >7.3`,`Ketones <0.6 only`,`Immediately`],c:1,e:`Resolution criteria ensure DKA has cleared before stopping infusion. Look at the whole picture, not just glucose.`},
+  {tag:'blood', q:`Baseline observations before transfusion should be within:`,o:[`15 minutes`,`30 minutes`,`60 minutes`,`2 hours`],c:2,e:`Recent baseline observations help detect transfusion reactions early. Good baseline = early detection.`},
+  {tag:'blood', q:`How many staff must perform final bedside check?`,o:[`One`,`Two staff`,`Three`,`Doctor only`],c:1,e:`A double independent check reduces risk of wrong blood administration. Never skip the bedside check.`},
+  {tag:'blood', q:`Minimum vital sign monitoring includes:`,o:[`Start only`,`Start, 15 min, hourly, completion`,`4 hourly`,`Only if reaction`],c:1,e:`Regular observations detect early transfusion reactions. The 15‑minute check is critical.`},
+  {tag:'blood', q:`Universally compatible IV fluid with blood:`,o:[`Hartmann's`,`0.9% Sodium Chloride`,`5% Dextrose`,`Any`],c:1,e:`Normal saline does not cause haemolysis or clotting. Use saline with blood products.`},
+  {tag:'blood', q:`Which fluid is incompatible (contains calcium)?`,o:[`0.9% Sodium Chloride`,`Hartmann's`,`Albumin`,`None`],c:1,e:`Calcium can promote clotting within the line. Know your incompatible fluids.`},
+  {tag:'blood', q:`Red cells out of storage >30 min must be:`,o:[`Left`,`Completed within 4 hours or returned`,`Ward fridge`,`24 hrs`],c:1,e:`Temperature control prevents bacterial growth and maintains safety. Follow storage rules strictly.`},
+  {tag:'deterioration', q:`Pneumonia patient is more breathless — what's your FIRST action?`,o:[`Wait and recheck in 30 minutes`,`Sit upright, increase oxygen if appropriate, reassess, and escalate for urgent review`,`Document and continue routine care`,`Encourage oral fluids first`],c:1,e:`This is acute respiratory deterioration. Priorities are airway/breathing: sit them upright, improve oxygenation, reassess vital signs, and escalate early. Don't 'wait and see' when work of breathing or SpO₂ is worsening.`},
+  {tag:'deterioration', q:`Sudden confusion + low SpO₂ — priority?`,o:[`Reorient the patient and continue routine observations`,`Give a sedative so they settle`,`Treat hypoxia (oxygen/positioning), reassess, and escalate for review`,`Ignore — delirium is common`],c:2,e:`New confusion with hypoxia can signal deterioration. Treat ABCs first: position, oxygen, reassess and escalate. Sedation can worsen respiratory failure and mask deterioration.`},
+  {tag:'deterioration', q:`Chest pain + diaphoresis radiating to arm — FIRST step?`,o:[`Give antacid and reassure`,`Stop activity, get an urgent ECG, and escalate using your chest-pain pathway`,`Wait for ward round`,`Ask them to walk to see if it settles`],c:1,e:`This is high-risk for acute coronary syndrome. Stop activity, obtain an ECG urgently, and escalate immediately per local chest pain pathway. Time is myocardium.`},
+  {tag:'deterioration', q:`Post-opioid: patient hard to rouse, RR low — FIRST priority?`,o:[`Let them sleep`,`Assess airway/breathing, apply oxygen, call urgent review, and prepare for reversal per protocol`,`Give more opioid because pain may return`,`Offer oral fluids`],c:1,e:`Likely opioid-induced respiratory depression. ABC first: stimulate, assess breathing, support oxygenation, escalate urgently and prepare naloxone per local protocol.`},
+  {tag:'deterioration', q:`RR rising rapidly (e.g., 18 → 28) — what does this suggest?`,o:[`Normal variation`,`Early deterioration`,`They're just anxious — ignore`,`They're tired — let them sleep`],c:1,e:`A rising respiratory rate is one of the most sensitive early markers of deterioration. Reassess, look for cause, and escalate if triggers met. RR is the 'forgotten vital sign'.`},
+  {tag:'deterioration', q:`Stroke red flags (FAST positive) — first step?`,o:[`Wait to see if symptoms resolve`,`Activate stroke pathway urgently and escalate immediately`,`Observe for an hour`,`Let them rest`],c:1,e:`Stroke is time-critical. Activate stroke pathway and escalate immediately. Document onset time/last known well, check BGL, and prepare for urgent imaging. Time is brain.`},
+
+  // ── PICC ──────────────────────────────────────────────────────────────────
+  {tag:'picc', q:`What is the minimum syringe size that must be used to access or flush a PICC line, as per CALHN policy?`,o:[`2 mL`,`5 mL`,`10 mL`,`20 mL`],c:2,e:`Per CALHN policy, only a 10 mL syringe or larger must be used to access a PICC. Smaller syringes generate higher pressure and can rupture the catheter.`},
+  {tag:'picc', q:`Using the S.A.N.D. acronym for PICC assessment, what does the 'N' stand for?`,o:[`Needle gauge and insertion depth`,`Needleless connector status`,`Need — is the device still required?`,`Nurse-led review completed`],c:2,e:`S.A.N.D. = Site assessment, Age/Dwell time, Need (is the device still required?), Dressing status. Checking need every shift prevents unnecessary line days and reduces infection risk.`},
+  {tag:'picc', q:`During PICC removal, if the patient cannot tolerate supine position, what is the most important instruction to give them as you remove the catheter?`,o:[`Hold their breath and bear down (Valsalva)`,`Take a deep breath in and hold until the catheter is fully removed`,`Breathe normally throughout`,`Cough three times to clear the vein`],c:1,e:`Instructing the patient to take a deep breath and hold until the catheter is fully removed reduces the risk of air embolism. Normal breathing creates negative intrathoracic pressure that can draw air into the vessel.`},
+  {tag:'picc', q:`A PICC catheter snaps at the insertion site during removal. What is your immediate priority action?`,o:[`Apply firm pressure and document the incident`,`Call for a dressing trolley and cover the site`,`Notify the doctor immediately, clamp the catheter, and apply a tourniquet above the insertion site`,`Attempt to retrieve the fragment with forceps`],c:2,e:`Catheter fracture at the skin entry point is a medical emergency. Clamp the catheter to prevent migration, apply a tourniquet above the insertion to stop the fragment moving centrally, and notify the doctor immediately. Check the radial pulse to ensure the tourniquet has not blocked arterial flow.`},
+  {tag:'picc', q:`How often must PICC dressings be changed under routine CALHN guidelines?`,o:[`Every 3 days`,`Every 5 days`,`Every 7 days`,`Every 14 days`],c:2,e:`PICC dressings must be replaced every 7 days, and sooner if the dressing becomes damp, loose, non-occlusive, soiled, or there is evidence of inflammation or fluid accumulation under the dressing.`},
+  {tag:'picc', q:`Which of the following is explicitly prohibited when caring for a PICC line, per CALHN policy?`,o:[`Flushing with pulsatile technique`,`Using heparin or heparinised saline to lock or flush the PICC`,`Measuring external catheter length daily`,`Applying an alcohol disinfection cap when not in use`],c:1,e:`CALHN policy explicitly states that heparin or heparinised saline must NOT be used to lock or flush PICCs. Standard PICCs are flushed with 0.9% sodium chloride using pulsatile positive-pressure technique.`},
+  {tag:'picc', q:`You notice the external catheter measurement has increased by 3 cm since yesterday. What should you do?`,o:[`Continue using the PICC and re-measure tomorrow`,`Note it in the documentation and inform the oncoming nurse`,`Cease PICC use immediately, report to senior nurse and/or doctor, and arrange radiology review`,`Flush the PICC with 20 mL saline and reassess`],c:2,e:`Any change in external catheter length of ±2 cm must be reported immediately and PICC use must cease until the tip position is verified by chest X-ray. A change in length may indicate tip migration, which poses serious risks including cardiac arrhythmia and vessel perforation.`},
+  {tag:'picc', q:`You encounter resistance while attempting to remove a PICC line. What is the correct first response?`,o:[`Apply steady increasing force — the vein will relax`,`Stop, reposition the arm and apply warmth for 10–15 minutes, then attempt again`,`Cut the catheter close to the skin and leave the remainder in situ`,`Proceed quickly to avoid venous spasm worsening`],c:1,e:`Never force a resistant PICC — catheter fracture is a serious complication. Reposition the patient's arm (sometimes extending or rotating helps), apply warmth to relax venous spasm, and retry gently. If resistance persists, cover the site with an occlusive dressing and escalate to the doctor and senior nurse.`},
+  {tag:'picc', q:`The arm with a PICC line should NOT be used for which of the following?`,o:[`Medication administration via the PICC lumen`,`Non-invasive blood pressure monitoring`,`External catheter length measurement`,`Application of a protective PICC sleeve`],c:1,e:`The arm containing a PICC must not be used for non-invasive blood pressure monitoring or venepuncture. The cuff pressure can disrupt flow, increase risk of thrombosis, and potentially dislodge the catheter.`},
+];
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+let studentName = '', activeTopics = ['deterioration','dka','blood','picc'], ACTIVE = [], qi = 0, answers = [], score = 0;
+
+function toggleTopic(el) {
+  const t = el.dataset.topic;
+  el.classList.toggle('active');
+  if (el.classList.contains('active')) {
+    if (!activeTopics.includes(t)) activeTopics.push(t);
+  } else {
+    activeTopics = activeTopics.filter(x => x !== t);
+  }
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById(id).scrollTop = 0;
+}
+
+function beginQuiz() {
+  studentName = document.getElementById('nameInput').value.trim();
+  const topics = activeTopics.length ? activeTopics : ['deterioration','dka','blood','picc'];
+  const filtered = BANK.filter(q => topics.includes(q.tag));
+  ACTIVE = shuffle(filtered).slice(0, Math.min(10, filtered.length));
+  qi = 0; answers = []; score = 0;
+  showScreen('quiz');
+  renderQ();
+}
+
+function updateTopbar() {
+  document.getElementById('qCounter').textContent = `Q${qi+1} / ${ACTIVE.length}`;
+  document.getElementById('progFill').style.width = `${((qi+1)/ACTIVE.length)*100}%`;
+  document.getElementById('scorePill').textContent = `${score} pts`;
+}
+
+function renderQ() {
+  updateTopbar();
+  const q = ACTIVE[qi];
+  const area = document.getElementById('quizArea');
+  const badgeClass = q.type === 'tf' ? 'type-tf' : 'type-scenario';
+  const badgeLabel = q.type === 'tf' ? '✅ True / False' : '🏥 Clinical Scenario';
+
+  let body = '';
+  // All questions in BANK are MCQ style
+  body = `<div class="options">${q.o.map((o,i) =>
+    `<button class="option" id="opt_${i}" onclick="answerMCQ(${i})">
+      <div class="option-dot">${String.fromCharCode(65+i)}</div>
+      <span>${o}</span>
+    </button>`
+  ).join('')}</div>`;
+
+  area.innerHTML = `
+    <div class="q-card">
+      <div class="q-type-badge type-scenario">🏥 Clinical Scenario</div>
+      <div class="q-text">${q.q}</div>
+      ${body}
+      <div class="feedback" id="feedback"></div>
+    </div>
+    <button class="next-btn" id="nextBtn" onclick="nextQ()">
+      ${qi < ACTIVE.length-1 ? 'Next Question →' : 'See Results 🎉'}
+    </button>`;
+}
+
+function answerMCQ(chosen) {
+  const q = ACTIVE[qi];
+  const ok = chosen === q.c;
+  if (ok) score++;
+  answers.push(ok);
+  document.querySelectorAll('.option').forEach((b,i) => {
+    b.disabled = true;
+    if (i === q.c) b.classList.add('correct');
+    else if (i === chosen && !ok) b.classList.add('incorrect');
+  });
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback show ' + (ok ? 'correct' : 'incorrect');
+  fb.textContent = (ok ? '✅ ' : '❌ ') + q.e;
+  document.getElementById('nextBtn').classList.add('show');
+  updateTopbar();
+}
+
+function nextQ() {
+  qi++;
+  if (qi >= ACTIVE.length) return showResultsScreen();
+  renderQ();
+}
+
+function showResultsScreen() {
+  const pct = Math.round((score/ACTIVE.length)*100);
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('scoreDenom').textContent = `/ ${ACTIVE.length}`;
+  let emoji, title, msg;
+  if (pct >= 90) { emoji='🏆'; title='Outstanding!'; msg='Excellent clinical knowledge for the ward.'; }
+  else if (pct >= 70) { emoji='🌟'; title='Well done!'; msg='Solid understanding — keep reviewing the guidelines.'; }
+  else if (pct >= 50) { emoji='💪'; title='Good effort!'; msg='Review SA Health policies and escalation protocols.'; }
+  else { emoji='📚'; title='Keep learning!'; msg='Revisit your ISBAR, NEWS2, and clinical deterioration resources.'; }
+  document.getElementById('resultsEmoji').textContent = emoji;
+  document.getElementById('resultsTitle').textContent = title;
+  document.getElementById('resultsMsg').textContent = msg;
+  showScreen('results');
+  submitToSheets(score, ACTIVE.length);
+}
+
+function submitToSheets(score, total) {
+  if (!SHEETS_URL) return;
+  fetch(SHEETS_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ name: studentName||'Anonymous', score, total, quiz:'clinical' })
+  }).catch(()=>{});
+}
+
+function restartQuiz() {
+  showScreen('landing');
+  document.getElementById('nameInput').value = '';
+}
+</script>
+</body>
+</html>
