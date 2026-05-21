@@ -522,6 +522,99 @@
     color: #5d4037;
   }
 
+  /* ── QUIZ CARDS ── */
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .quiz-launch-card {
+    border-radius: 18px;
+    padding: 2rem 1.75rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+  }
+  .quiz-launch-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .quiz-launch-card:hover { transform: translateY(-5px); }
+  .quiz-launch-card:hover::after { opacity: 1; }
+  .quiz-clinical {
+    background: #1B3B6F;
+    box-shadow: 0 6px 32px rgba(27,59,111,0.35);
+  }
+  .quiz-clinical::after {
+    background: radial-gradient(ellipse at 80% 10%, rgba(74,144,217,0.18) 0%, transparent 65%);
+  }
+  .quiz-clinical:hover { box-shadow: 0 16px 48px rgba(27,59,111,0.55); }
+  .quiz-meds {
+    background: #1A4A3A;
+    box-shadow: 0 6px 32px rgba(26,74,58,0.35);
+  }
+  .quiz-meds::after {
+    background: radial-gradient(ellipse at 80% 10%, rgba(82,183,136,0.18) 0%, transparent 65%);
+  }
+  .quiz-meds:hover { box-shadow: 0 16px 48px rgba(26,74,58,0.55); }
+  .quiz-card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+  .quiz-card-num {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(245,240,232,0.55);
+    margin-bottom: 0.35rem; position: relative; z-index: 1;
+  }
+  .quiz-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.45rem; font-weight: 700;
+    color: #F5F0E8; line-height: 1.2;
+    margin-bottom: 0.6rem; position: relative; z-index: 1;
+  }
+  .quiz-card-desc {
+    font-size: 0.83rem; font-weight: 300;
+    color: rgba(245,240,232,0.65); line-height: 1.6;
+    margin-bottom: 1.25rem; flex: 1; position: relative; z-index: 1;
+  }
+  .quiz-card-pills {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-bottom: 1.4rem; position: relative; z-index: 1;
+  }
+  .quiz-card-pill {
+    font-size: 0.68rem; font-weight: 600;
+    padding: 3px 9px; border-radius: 100px;
+    background: rgba(245,240,232,0.13);
+    color: rgba(245,240,232,0.8);
+  }
+  .quiz-card-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; font-weight: 700;
+    color: #F5F0E8;
+    background: rgba(245,240,232,0.14);
+    border: 1px solid rgba(245,240,232,0.22);
+    padding: 0.55rem 1rem; border-radius: 100px;
+    align-self: flex-start; transition: background 0.2s, border-color 0.2s;
+    position: relative; z-index: 1;
+  }
+  .quiz-launch-card:hover .quiz-card-cta {
+    background: rgba(245,240,232,0.24);
+    border-color: rgba(245,240,232,0.4);
+  }
+  .quiz-note {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: #fff8e1;
+    border-left: 3px solid #ffc107;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    color: #5d4037;
+    line-height: 1.6;
+  }
+
   /* ── QUICK REF TABLE ── */
   .qref-table {
     width: 100%;
@@ -941,6 +1034,25 @@
 
   .hidden { display: none !important; }
   .section.empty { display: none; }
+
+  /* -- PAGE NAVIGATION -- */
+  .back-nav { margin-bottom: 1.5rem; }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.55rem 1.25rem;
+    background: var(--dark);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .back-btn:hover { background: #2d3748; }
 </style>
 </head>
 <body>
@@ -948,18 +1060,18 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a href="#" class="logo">
+    <a href="javascript:void(0)" onclick="showHome()" class="logo">
       <div class="logo-icon">🩺</div>
       <div class="logo-text">Oz<span>Nurse</span> Hub</div>
     </a>
     <nav>
-      <a href="#study">Study</a>
-      <a href="#clinical">Clinical</a>
-      <a href="#wellbeing">Wellbeing</a>
-      <a href="#quickref">Quick Ref</a>
-      <a href="#progressnote">Progress Note</a>
-      <a href="#apa">APA 7th</a>
-      <a href="#links">Links</a>
+      <a href="javascript:void(0)" onclick="showSection('study')">Study</a>
+      <a href="javascript:void(0)" onclick="showSection('clinical')">Clinical</a>
+      <a href="javascript:void(0)" onclick="showSection('wellbeing')">Wellbeing</a>
+      <a href="javascript:void(0)" onclick="showSection('quickref')">Quick Ref</a>
+      <a href="javascript:void(0)" onclick="showSection('progressnote')">Progress Note</a>
+      <a href="javascript:void(0)" onclick="showSection('apa')">APA 7th</a>
+      <a href="javascript:void(0)" onclick="showSection('links')">Links</a>
     </nav>
   </div>
 </header>
@@ -990,47 +1102,52 @@
 
     <!-- SECTION INDEX -->
     <div class="section-index">
-      <div class="section-index-label">↓ Jump to a section</div>
+      <div class="section-index-label">Choose a section</div>
       <div class="section-index-grid">
-        <a href="#study" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('study')">
           <span class="si-icon">📚</span>
           <span class="si-title">Study Skills</span>
           <span class="si-sub">Referencing, EBP, exam tips</span>
         </a>
-        <a href="#clinical" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('clinical')">
           <span class="si-icon">🏥</span>
           <span class="si-title">Clinical Placement</span>
           <span class="si-sub">ISBAR, meds, documentation</span>
         </a>
-        <a href="#tips" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('tips')">
           <span class="si-icon">💡</span>
           <span class="si-title">Year-by-Year Tips</span>
           <span class="si-sub">Y1, Y2, Y3 survival guides</span>
         </a>
-        <a href="#wellbeing" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('wellbeing')">
           <span class="si-icon">🧠</span>
           <span class="si-title">Wellbeing</span>
           <span class="si-sub">Burnout, mental health, self-care</span>
         </a>
-        <a href="#quickref" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('quickref')">
           <span class="si-icon">📋</span>
           <span class="si-title">Quick Reference</span>
           <span class="si-sub">Vital signs, GCS, abbreviations</span>
         </a>
-        <a href="#progressnote" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('progressnote')">
           <span class="si-icon">📝</span>
           <span class="si-title">Progress Note</span>
           <span class="si-sub">Build &amp; copy nursing notes</span>
         </a>
-        <a href="#apa" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('apa')">
           <span class="si-icon">📖</span>
           <span class="si-title">APA 7th Generator</span>
           <span class="si-sub">Journal, book, website &amp; more</span>
         </a>
-        <a href="#links" class="si-card">
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('links')">
           <span class="si-icon">🔗</span>
           <span class="si-title">AU Resources</span>
           <span class="si-sub">AHPRA, NMBA, ANMF &amp; more</span>
+        </a>
+        <a href="javascript:void(0)" class="si-card" onclick="showSection('quizzes')">
+          <span class="si-icon">🧩</span>
+          <span class="si-title">Practice Quizzes</span>
+          <span class="si-sub">Clinical scenarios &amp; ward meds</span>
         </a>
       </div>
     </div>
@@ -1039,7 +1156,9 @@
 </section>
 
 <!-- MAIN -->
-<main class="main">
+<main class="main" id="mainContent" style="display:none">
+
+  <div class="back-nav"><button class="back-btn" id="backBtn" onclick="showHome()">&#8592; Back to Home</button></div>
 
   <!-- DISCLAIMER -->
   <div class="disclaimer">
@@ -1789,6 +1908,56 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       SECTION 9 — PRACTICE QUIZZES
+  ═══════════════════════════════════════ -->
+  <section class="section" id="quizzes" data-section="quizzes">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f0fb;">🧩</div>
+      <h2 class="section-title">Practice Quizzes</h2>
+      <span class="section-count" id="count-quizzes"></span>
+    </div>
+
+    <div class="quiz-grid" id="grid-quizzes">
+
+      <a class="quiz-launch-card quiz-clinical" href="clinical-quiz.html"
+         data-year="y2" data-keywords="clinical scenarios quiz isbar deterioration dka blood transfusion picc ward escalation scope of practice">
+        <span class="quiz-card-icon">🩺</span>
+        <div class="quiz-card-num">Quiz 01 · Year 2</div>
+        <div class="quiz-card-title">Clinical Scenarios</div>
+        <div class="quiz-card-desc">Real ward scenarios covering patient deterioration, ISBAR communication, escalation pathways, and scope of practice — aligned to SA Health placement expectations.</div>
+        <div class="quiz-card-pills">
+          <span class="quiz-card-pill">Deterioration</span>
+          <span class="quiz-card-pill">ISBAR</span>
+          <span class="quiz-card-pill">DKA</span>
+          <span class="quiz-card-pill">Blood Transfusion</span>
+          <span class="quiz-card-pill">PICC</span>
+        </div>
+        <span class="quiz-card-cta">Start Quiz →</span>
+      </a>
+
+      <a class="quiz-launch-card quiz-meds" href="meds-quiz.html"
+         data-year="y2" data-keywords="medications pharmacology analgesics anticoagulants cardiac antibiotics ward meds quiz year 2">
+        <span class="quiz-card-icon">💊</span>
+        <div class="quiz-card-num">Quiz 02 · Year 2</div>
+        <div class="quiz-card-title">Ward Medications</div>
+        <div class="quiz-card-desc">Common ward pharmacology questions covering analgesics, anticoagulants, cardiac medications, and antibiotics — using Australian drug names (AMH / MIMS AU).</div>
+        <div class="quiz-card-pills">
+          <span class="quiz-card-pill">Analgesics</span>
+          <span class="quiz-card-pill">Anticoagulants</span>
+          <span class="quiz-card-pill">Cardiac</span>
+          <span class="quiz-card-pill">Antibiotics</span>
+        </div>
+        <span class="quiz-card-cta">Start Quiz →</span>
+      </a>
+
+    </div>
+
+    <div class="quiz-note">
+      ⚠️ <strong>Reminder:</strong> Quiz content is for self-directed revision only and does not replace clinical supervision, your university curriculum, or AHPRA/NMBA professional standards. Always confirm medication information against the <a href="https://www.mims.com.au" target="_blank" style="color:var(--teal);">AMH / MIMS Australia</a>.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        SECTION 8 — AUSTRALIAN LINKS
   ═══════════════════════════════════════ -->
   <section class="section" id="links" data-section="links">
@@ -2123,6 +2292,39 @@
     document.querySelectorAll('.apa-form input').forEach(i => i.value = '');
     generateApa();
   }
+
+  // -- PAGE NAVIGATION --
+  function showSection(id) {
+    document.querySelector('.hero-banner').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    var main = document.getElementById('mainContent');
+    main.style.display = 'block';
+    document.querySelectorAll('.section').forEach(function(s) {
+      s.style.display = s.id === id ? '' : 'none';
+    });
+    document.getElementById('backBtn').style.display = 'inline-flex';
+    window.scrollTo(0, 0);
+    if (history.pushState) history.pushState(null, '', '#' + id);
+  }
+
+  function showHome() {
+    document.querySelector('.hero-banner').style.display = '';
+    document.querySelector('.hero').style.display = '';
+    document.getElementById('mainContent').style.display = 'none';
+    document.querySelectorAll('.section').forEach(function(s) {
+      s.style.display = '';
+    });
+    document.getElementById('backBtn').style.display = 'none';
+    window.scrollTo(0, 0);
+    if (history.pushState) history.pushState(null, '', window.location.pathname);
+  }
+
+  // Handle direct URL hash on load
+  (function() {
+    var hash = window.location.hash.slice(1);
+    var valid = ['study','clinical','tips','wellbeing','quickref','progressnote','apa','quizzes','links'];
+    if (hash && valid.indexOf(hash) !== -1) { showSection(hash); }
+  })();
 </script>
 </body>
 </html>
