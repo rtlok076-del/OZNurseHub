@@ -1055,7 +1055,7 @@
   .back-btn:hover { background: #2d3748; }
 
   /* -- HOME PAGE COMPRESSION -- */
-  .hero-banner img { max-height: 290px; object-fit: cover; object-position: center 20%; }
+  .hero-banner img { max-height: 320px; object-fit: cover; object-position: center 20%; }
   .hero { padding: 1.25rem 2rem 1.5rem; }
   .hero-badge { margin-bottom: 0.6rem; font-size: 0.7rem; padding: 0.25rem 0.85rem; }
   .hero h1 { font-size: clamp(1.6rem, 2.8vw, 2.2rem) !important; margin-bottom: 0.3rem; }
@@ -1115,9 +1115,21 @@
     #mainContent.with-sidebar { margin-left: 54px !important; max-width: calc(100% - 54px) !important; }
   }
 
-  /* -- 3-COLUMN TILE GRID -- */
-  .section-index-grid { grid-template-columns: repeat(3, 1fr) !important; max-width: 640px !important; }
-  @media (max-width: 640px) { .section-index-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+  /* -- 5+4 CENTRED TILE LAYOUT -- */
+  .section-index-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    max-width: 1000px !important;
+    gap: 0.5rem !important;
+  }
+  .section-index-grid .si-card {
+    flex: 0 0 188px !important;
+    min-width: unset !important;
+  }
+  @media (max-width: 640px) {
+    .section-index-grid .si-card { flex: 0 0 calc(50% - 0.25rem) !important; }
+  }
 </style>
 </head>
 <body>
