@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OzNurse Hub — Your Australian Nursing Student Resource</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --coral: #e85d3a;
+    --coral-light: #fdf0ed;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --y1: #2d7dd2;
+    --y1-light: #eaf3fd;
+    --y2: #0a7c6e;
+    --y2-light: #e6f5f3;
+    --y3: #9b4dca;
+    --y3-light: #f5eeff;
+    --all: #e85d3a;
+    --all-light: #fdf0ed;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    font-weight: 700;
+  }
+  .logo-text span { color: var(--teal-light); }
+  nav { display: flex; gap: 0.25rem; }
+  nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 50%, #0a4a3e 100%);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(18,160,144,0.2);
+    border: 1px solid rgba(18,160,144,0.4);
+    color: #7de8de;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #7de8de;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3.2rem;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
+  .search-wrap input:focus {
+    border-color: var(--teal-light);
+    background: rgba(255,255,255,0.12);
+  }
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 1.1rem;
+  }
+  .search-clear {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.75rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-clear.visible { display: flex; }
+
+  /* ── SECTION INDEX ── */
+  .section-index {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+  .section-index-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+  .section-index-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .si-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .si-card:hover {
+    background: rgba(18,160,144,0.2);
+    border-color: rgba(18,160,144,0.5);
+    transform: translateY(-2px);
+  }
+  .si-icon { font-size: 1.3rem; line-height: 1; }
+  .si-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.2;
+    text-align: center;
+  }
+  .si-sub {
+    font-size: 0.67rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.3;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .section-index-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── STATS ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    margin-right: 0.25rem;
+  }
+  .filter-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    border: 2px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--mid);
+  }
+  .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .filter-btn.active-all { border-color: var(--all); background: var(--all-light); color: var(--all); }
+  .filter-btn.active-y1 { border-color: var(--y1); background: var(--y1-light); color: var(--y1); }
+  .filter-btn.active-y2 { border-color: var(--y2); background: var(--y2-light); color: var(--y2); }
+  .filter-btn.active-y3 { border-color: var(--y3); background: var(--y3-light); color: var(--y3); }
+
+  /* ── NO RESULTS ── */
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .no-results h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.5rem; }
+  .no-results p { color: var(--mid); }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 3rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .section-count {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--mid);
+    background: var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    padding: 1.25rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 20px rgba(10,124,110,0.12);
+    transform: translateY(-2px);
+  }
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    gap: 0.5rem;
+  }
+  .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+  }
+  .tag-y1 { background: var(--y1-light); color: var(--y1); }
+  .tag-y2 { background: var(--y2-light); color: var(--y2); }
+  .tag-y3 { background: var(--y3-light); color: var(--y3); }
+  .tag-all { background: var(--all-light); color: var(--all); }
+  .tag-au { background: #fff3e0; color: #e65100; }
+  .tag-intl { background: #f3e5f5; color: #7b1fa2; }
+
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .card p {
+    font-size: 0.84rem;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    border: 1.5px solid var(--teal);
+    transition: all 0.2s;
+  }
+  .card-link:hover { background: var(--teal); color: white; }
+  .card-link-plain {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .card-link-plain:hover { text-decoration: underline; }
+  .source-badge {
+    font-size: 0.72rem;
+    color: var(--mid);
+    background: var(--sand);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+  }
+
+  /* ── ACCORDION (Tips) ── */
+  .accordion { border-radius: 12px; border: 1.5px solid var(--border); background: white; overflow: hidden; }
+  .accordion-item { border-bottom: 1px solid var(--border); }
+  .accordion-item:last-child { border-bottom: none; }
+  .accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.15s;
+  }
+  .accordion-btn:hover { background: var(--teal-pale); }
+  .accordion-btn.open { background: var(--teal-pale); }
+  .accordion-chevron {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--mid);
+    transition: transform 0.2s;
+  }
+  .accordion-btn.open .accordion-chevron { transform: rotate(180deg); }
+  .accordion-title { font-weight: 600; font-size: 0.95rem; color: var(--dark); }
+  .accordion-tags-inline { display: flex; gap: 4px; }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .accordion-body.open { max-height: 600px; }
+  .accordion-content {
+    padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+  .accordion-content ul { padding-left: 1.25rem; }
+  .accordion-content li { margin-bottom: 0.4rem; }
+  .accordion-content strong { color: var(--dark); }
+  .accordion-content a { color: var(--teal); text-decoration: none; }
+  .accordion-content a:hover { text-decoration: underline; }
+  .accordion-content .note {
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    background: #fff8e1;
+    border-left: 3px solid #ffc107;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.82rem;
+    color: #5d4037;
+  }
+
+  /* ── QUICK REF TABLE ── */
+  .qref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .qref-table th {
+    background: var(--dark);
+    color: white;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+  .qref-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+  }
+  .qref-table tr:last-child td { border-bottom: none; }
+  .qref-table tr:nth-child(even) td { background: var(--light); }
+  .qref-table .normal { color: var(--teal); font-weight: 600; }
+
+  /* ── LINK LIST ── */
+  .link-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .link-list li {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .link-list li:hover { border-color: var(--teal); transform: translateX(4px); }
+  .link-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  .link-list .link-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--teal-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .link-list .link-desc {
+    font-size: 0.78rem;
+    color: var(--mid);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+  .link-list .link-text { display: flex; flex-direction: column; }
+  .link-list .ext-icon { margin-left: auto; color: var(--mid); font-size: 0.8rem; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-size: 0.82rem;
+    color: #92400e;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .disclaimer-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+  footer a { color: var(--teal-light); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── LEGAL BANNER ── */
+  .legal-banner {
+    background: linear-gradient(135deg, #1a2332 0%, #1e3a5f 100%);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .legal-banner-inner { display: flex; gap: 1.25rem; }
+  .legal-banner-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+  .legal-banner-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+  .legal-banner-body p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .legal-points { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
+  .legal-point {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+  .lp-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .legal-rule {
+    background: rgba(18,160,144,0.2);
+    border-left: 3px solid var(--teal-light);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  /* ── NOTE BUILDER ── */
+  .note-builder {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .note-builder-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    background: var(--sand);
+    border-bottom: 1.5px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .note-builder-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--dark); }
+  .note-builder-sub { font-size: 0.8rem; color: var(--mid); margin-top: 2px; }
+  .note-builder-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .nb-btn {
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nb-btn-primary { background: var(--teal); color: white; }
+  .nb-btn-primary:hover { background: var(--teal-light); }
+  .nb-btn-secondary { background: var(--border); color: var(--dark); }
+  .nb-btn-secondary:hover { background: #cdd5df; }
+
+  .note-meta-row {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .note-meta-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 120px; }
+  .note-meta-field label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mid); }
+  .note-meta-field input {
+    padding: 0.45rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .note-meta-field input:focus { border-color: var(--teal); }
+
+  .note-heading-label {
+    padding: 0.75rem 1.5rem 0.5rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .note-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0;
+  }
+  .note-field {
+    padding: 0.85rem 1.25rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .note-field:nth-child(even) { border-right: none; }
+  .note-field-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+  }
+  .nf-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .nf-hint {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--mid);
+    text-transform: none;
+    letter-spacing: 0;
+    width: 100%;
+    margin-left: 14px;
+  }
+  .note-field textarea, .note-plan-section textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.55rem 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--dark);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .note-field textarea:focus, .note-plan-section textarea:focus { border-color: var(--teal); }
+  .note-plan-section {
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--dark);
+  }
+  .note-preview-wrap {
+    padding: 1rem 1.5rem;
+    border-top: 1.5px solid var(--border);
+    background: var(--light);
+  }
+  .note-preview-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--mid);
+    margin-bottom: 0.75rem;
+  }
+  .note-preview {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: var(--dark);
+    white-space: pre-wrap;
+    font-family: 'DM Sans', monospace;
+    min-height: 80px;
+  }
+
+  /* ── APA GENERATOR ── */
+  .apa-tool {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .apa-note {
+    background: var(--y1-light);
+    border-left: 3px solid var(--y1);
+    border-radius: 0 8px 8px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .apa-note a { color: var(--y1); }
+  .apa-type-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  .apa-type-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    border: 2px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--mid);
+    transition: all 0.2s;
+  }
+  .apa-type-btn:hover { border-color: var(--y1); color: var(--y1); }
+  .apa-type-btn.active { border-color: var(--y1); background: var(--y1-light); color: var(--y1); }
+  .apa-form { margin-bottom: 1.25rem; }
+  .apa-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .apa-field { display: flex; flex-direction: column; gap: 4px; }
+  .apa-field-wide { grid-column: span 2; }
+  .apa-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--mid);
+  }
+  .apa-req { color: var(--coral); }
+  .apa-hint {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--mid);
+    text-transform: none;
+    letter-spacing: 0;
+    display: block;
+    margin-top: 1px;
+  }
+  .apa-field input {
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+    color: var(--dark);
+  }
+  .apa-field input:focus { border-color: var(--y1); }
+  .apa-output-wrap {
+    background: var(--light);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .apa-output-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--mid);
+    margin-bottom: 0.6rem;
+  }
+  .apa-output {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--dark);
+    min-height: 56px;
+    margin-bottom: 0.75rem;
+    word-break: break-word;
+  }
+  .apa-output-actions { display: flex; gap: 0.5rem; }
+  .apa-intext-tip {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    color: var(--dark);
+    line-height: 1.8;
+  }
+  .apa-intext-tip code {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--teal);
+  }
+
+  @media (max-width: 640px) {
+    .apa-field-wide { grid-column: span 1; }
+    .note-fields-grid { grid-template-columns: 1fr; }
+    .note-field { border-right: none; }
+    .legal-banner-inner { flex-direction: column; }
+  }
+    nav { display: none; }
+    .stats { gap: 1.5rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .card, .accordion, .link-list li {
+    animation: fadeUp 0.3s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hidden { display: none !important; }
+  .section.empty { display: none; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🩺</div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <nav>
+      <a href="#study">Study</a>
+      <a href="#clinical">Clinical</a>
+      <a href="#wellbeing">Wellbeing</a>
+      <a href="#quickref">Quick Ref</a>
+      <a href="#progressnote">Progress Note</a>
+      <a href="#apa">APA 7th</a>
+      <a href="#links">Links</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🇦🇺 Made for Australian Nursing Students</div>
+    <h1>Your one-stop hub for<br><em>nursing success</em></h1>
+    <p>Everything you need — from first-year foundations to third-year clinical confidence. Evidence-based, Australia-focused, and built for you.</p>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search tips, resources, clinical tools…" autocomplete="off">
+      <button class="search-clear" id="searchClear">✕</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Resources</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Year Levels</div></div>
+      <div class="stat"><div class="stat-num">AU</div><div class="stat-label">Evidence Based</div></div>
+      <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Always</div></div>
+    </div>
+
+    <!-- SECTION INDEX -->
+    <div class="section-index">
+      <div class="section-index-label">↓ Jump to a section</div>
+      <div class="section-index-grid">
+        <a href="#study" class="si-card">
+          <span class="si-icon">📚</span>
+          <span class="si-title">Study Skills</span>
+          <span class="si-sub">Referencing, EBP, exam tips</span>
+        </a>
+        <a href="#clinical" class="si-card">
+          <span class="si-icon">🏥</span>
+          <span class="si-title">Clinical Placement</span>
+          <span class="si-sub">ISBAR, meds, documentation</span>
+        </a>
+        <a href="#tips" class="si-card">
+          <span class="si-icon">💡</span>
+          <span class="si-title">Year-by-Year Tips</span>
+          <span class="si-sub">Y1, Y2, Y3 survival guides</span>
+        </a>
+        <a href="#wellbeing" class="si-card">
+          <span class="si-icon">🧠</span>
+          <span class="si-title">Wellbeing</span>
+          <span class="si-sub">Burnout, mental health, self-care</span>
+        </a>
+        <a href="#quickref" class="si-card">
+          <span class="si-icon">📋</span>
+          <span class="si-title">Quick Reference</span>
+          <span class="si-sub">Vital signs, GCS, abbreviations</span>
+        </a>
+        <a href="#progressnote" class="si-card">
+          <span class="si-icon">📝</span>
+          <span class="si-title">Progress Note</span>
+          <span class="si-sub">Build &amp; copy nursing notes</span>
+        </a>
+        <a href="#apa" class="si-card">
+          <span class="si-icon">📖</span>
+          <span class="si-title">APA 7th Generator</span>
+          <span class="si-sub">Journal, book, website &amp; more</span>
+        </a>
+        <a href="#links" class="si-card">
+          <span class="si-icon">🔗</span>
+          <span class="si-title">AU Resources</span>
+          <span class="si-sub">AHPRA, NMBA, ANMF &amp; more</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <span class="disclaimer-icon">⚠️</span>
+    <span><strong>Disclaimer:</strong> This hub provides general educational resources for nursing students in Australia. It does not replace clinical supervision, university curriculum, or professional medical advice. Always consult your clinical educator, university policies, and the <a href="https://www.ahpra.gov.au" target="_blank">AHPRA</a> / <a href="https://www.nursingmidwiferyboard.gov.au" target="_blank">NMBA</a> standards. Resources marked <em>🌐 International</em> are not Australia-specific.</span>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active-all" data-filter="all" onclick="setFilter('all', this)">🌟 All Years</button>
+    <button class="filter-btn" data-filter="y1" onclick="setFilter('y1', this)">Year 1</button>
+    <button class="filter-btn" data-filter="y2" onclick="setFilter('y2', this)">Year 2</button>
+    <button class="filter-btn" data-filter="y3" onclick="setFilter('y3', this)">Year 3</button>
+  </div>
+
+  <!-- NO RESULTS -->
+  <div class="no-results" id="noResults">
+    <div class="no-results-icon">🔍</div>
+    <h3>No results found</h3>
+    <p>Try a different search term or clear your filters.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — STUDY SKILLS
+  ═══════════════════════════════════════ -->
+  <section class="section" id="study" data-section="study">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e6f5f3;">📚</div>
+      <h2 class="section-title">Study Skills & Academic Success</h2>
+      <span class="section-count" id="count-study"></span>
+    </div>
+    <div class="card-grid" id="grid-study">
+
+      <div class="card" data-year="y1" data-keywords="referencing apa citations academic writing endnote year 1">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y1">Year 1</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Academic Referencing & APA 7th Edition</h3>
+        <p>Most Australian nursing programs use APA 7th edition. Learn in-text citations, reference lists, and how to avoid plagiarism. Use tools like Endnote or Zotero to manage references efficiently.</p>
+        <div class="card-footer">
+          <a href="https://apastyle.apa.org/style-grammar-guidelines" target="_blank" class="card-link">Open Resource ↗</a>
+          <span class="source-badge">APA Official</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1" data-keywords="time management study schedule nursing tips year 1 organisation">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y1">Year 1</span></div>
+        </div>
+        <h3>Time Management for Nursing Students</h3>
+        <p>Balancing theory, clinical placements, and personal life is one of the hardest parts of nursing school. Use a weekly planner, prioritise assessments by due date, and schedule study blocks in your calendar. The Pomodoro technique (25-min focused study + 5-min break) is highly effective.</p>
+        <div class="card-footer">
+          <span class="source-badge">General Study Tip</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2" data-keywords="critical thinking nursing essay clinical reasoning">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y1">Year 1</span><span class="tag tag-y2">Year 2</span></div>
+        </div>
+        <h3>Critical Thinking & Clinical Reasoning</h3>
+        <p>Nursing requires moving beyond memorisation to analysing patient data and making clinical decisions. Practise by using clinical reasoning frameworks like the Clinical Reasoning Cycle (Levett-Jones) — widely used in Australian nursing education.</p>
+        <div class="card-footer">
+          <span class="source-badge">🇦🇺 Levett-Jones Framework</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y2 y3" data-keywords="evidence based practice EBP research nursing australia year 2 3">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y2">Year 2</span><span class="tag tag-y3">Year 3</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Evidence-Based Practice (EBP)</h3>
+        <p>EBP is foundational to Australian nursing. Use databases like CINAHL, PubMed, and the Cochrane Library. Evaluate evidence using the NHMRC (National Health and Medical Research Council) levels of evidence hierarchy for Australian-relevant research.</p>
+        <div class="card-footer">
+          <a href="https://www.nhmrc.gov.au/about-us/resources/evidence-hierarchy" target="_blank" class="card-link">NHMRC Evidence ↗</a>
+          <span class="source-badge">NHMRC AU</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="exam tips OSCE nursing assessments study revision all years">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span></div>
+        </div>
+        <h3>OSCE & Exam Preparation Tips</h3>
+        <p>Objective Structured Clinical Examinations (OSCEs) test practical skills under observation. Practice on mannequins/peers, verbalise your thinking aloud, review marking rubrics, and arrive early. For written exams, practise with past papers and use active recall techniques.</p>
+        <div class="card-footer">
+          <span class="source-badge">General Nursing Education</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1" data-keywords="library database PubMed CINAHL database research skill">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y1">Year 1</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Using Library Databases for Nursing</h3>
+        <p>Access CINAHL (nursing-specific), PubMed, Medline, and the Cochrane Library through your university library. Combine MeSH terms for better results. Your university library likely offers free tutorials — use them.</p>
+        <div class="card-footer">
+          <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" class="card-link">PubMed ↗</a>
+          <span class="source-badge">Free AU University Access</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — CLINICAL PLACEMENT
+  ═══════════════════════════════════════ -->
+  <section class="section" id="clinical" data-section="clinical">
+    <div class="section-header">
+      <div class="section-icon" style="background:#eaf3fd;">🏥</div>
+      <h2 class="section-title">Clinical Placement & Real-World Nursing</h2>
+      <span class="section-count" id="count-clinical"></span>
+    </div>
+    <div class="card-grid" id="grid-clinical">
+
+      <div class="card" data-year="y1 y2" data-keywords="first placement clinical tips what to expect ward hospital year 1 2">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y1">Year 1</span><span class="tag tag-y2">Year 2</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Preparing for Your First Clinical Placement</h3>
+        <p>In Australia, placements are coordinated through your university and follow ANMAC standards. Bring your AHPRA student registration confirmation, PPE, a notepad, and a watch with a second hand for pulse checks. Introduce yourself as a student nurse to every patient.</p>
+        <div class="card-footer">
+          <a href="https://www.anmac.org.au" target="_blank" class="card-link">ANMAC ↗</a>
+          <span class="source-badge">🇦🇺 ANMAC</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="ISBAR handover communication clinical tool all years">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>ISBAR Clinical Handover Tool</h3>
+        <p><strong>I</strong>dentify — <strong>S</strong>ituation — <strong>B</strong>ackground — <strong>A</strong>ssessment — <strong>R</strong>ecommendation. ISBAR is the standard clinical handover communication tool used across Australian healthcare settings. Practise it on every handover, even in simulation.</p>
+        <div class="card-footer">
+          <a href="https://www.safetyandquality.gov.au/our-work/communicating-safety/isbar" target="_blank" class="card-link">ACSQHC ISBAR ↗</a>
+          <span class="source-badge">🇦🇺 ACSQHC</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y2 y3" data-keywords="medication safety rights 8 rights medication administration nursing year 2 3">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y2">Year 2</span><span class="tag tag-y3">Year 3</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>The 8 Rights of Medication Administration</h3>
+        <p>Right patient, right drug, right dose, right time, right route, right documentation, right reason, right response. Always check against the medication chart (MR). In Australia, two-nurse checking is mandatory for high-risk medications like opioids and insulin.</p>
+        <div class="card-footer">
+          <span class="source-badge">🇦🇺 AU Clinical Standard</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="infection control hand hygiene PPE standard precautions all years australia">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Infection Prevention & Standard Precautions</h3>
+        <p>Follow the Australian Guidelines for the Prevention and Control of Infection in Healthcare (NHMRC 2019). The WHO 5 Moments for Hand Hygiene are used in all Australian hospitals. Use PPE appropriately for transmission-based precautions (contact, droplet, airborne).</p>
+        <div class="card-footer">
+          <a href="https://www.nhmrc.gov.au/about-us/publications/australian-guidelines-prevention-and-control-infection-healthcare-2019" target="_blank" class="card-link">NHMRC Guidelines ↗</a>
+          <span class="source-badge">🇦🇺 NHMRC 2019</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y2 y3" data-keywords="documentation charting nursing notes legal requirement year 2 3">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y2">Year 2</span><span class="tag tag-y3">Year 3</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Clinical Documentation & Legal Requirements</h3>
+        <p>In Australia, nursing documentation is a legal record. Write in black pen, use correct date/time, sign every entry, never use correction fluid. Electronic records (EMR/EPR) are standard in most hospitals. Follow your facility's documentation policy and the NMBA standards.</p>
+        <div class="card-footer">
+          <a href="https://www.nursingmidwiferyboard.gov.au/Codes-Guidelines-Statements/Professional-standards.aspx" target="_blank" class="card-link">NMBA Standards ↗</a>
+          <span class="source-badge">🇦🇺 NMBA</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y3" data-keywords="leadership delegation delegation nursing team year 3 senior">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y3">Year 3</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Delegation & Leadership in Nursing</h3>
+        <p>As a Year 3 student, you will be expected to delegate to ENs and AINs under RN supervision. You can only delegate tasks within another person's scope of practice. The NMBA decision-making framework guides delegation in Australian practice.</p>
+        <div class="card-footer">
+          <a href="https://www.nursingmidwiferyboard.gov.au/Codes-Guidelines-Statements/Frameworks.aspx" target="_blank" class="card-link">NMBA Framework ↗</a>
+          <span class="source-badge">🇦🇺 NMBA</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y2 y3" data-keywords="patient assessment head to toe vital signs nursing assessment year 2 3">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y2">Year 2</span><span class="tag tag-y3">Year 3</span></div>
+        </div>
+        <h3>Systematic Patient Assessment</h3>
+        <p>Use a head-to-toe or systems-based approach consistently. Assess: neurological (GCS), respiratory, cardiovascular, abdominal, musculoskeletal, integumentary, and psychosocial status. Document all findings and escalate abnormal findings using the ISBAR tool.</p>
+        <div class="card-footer">
+          <span class="source-badge">General Clinical Nursing</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="AHPRA registration student nurse obligations professional conduct all years">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>AHPRA & Professional Obligations as a Student</h3>
+        <p>All nursing students in Australia must be registered with AHPRA (Australian Health Practitioner Regulation Agency). You must disclose criminal history, maintain professional behaviour online (social media policy), and uphold the NMBA Code of Conduct at all times — including on placement.</p>
+        <div class="card-footer">
+          <a href="https://www.ahpra.gov.au/Registration/Student-Registrations.aspx" target="_blank" class="card-link">AHPRA Students ↗</a>
+          <span class="source-badge">🇦🇺 AHPRA</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — TIPS (ACCORDION)
+  ═══════════════════════════════════════ -->
+  <section class="section" id="tips" data-section="tips">
+    <div class="section-header">
+      <div class="section-icon" style="background:#f5eeff;">💡</div>
+      <h2 class="section-title">Year-by-Year Survival Tips</h2>
+      <span class="section-count" id="count-tips"></span>
+    </div>
+    <div class="accordion" id="grid-tips">
+
+      <div class="accordion-item" data-year="y1" data-keywords="year 1 first year tips survival foundations anatomy">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span style="font-size:1.1rem">🟦</span>
+          <span class="accordion-title">Year 1 — Building Your Foundations</span>
+          <div class="accordion-tags-inline"><span class="tag tag-y1">Year 1</span></div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Master anatomy & physiology early</strong> — it underpins every clinical decision you'll make. Don't just memorise; understand the why.</li>
+              <li><strong>Get comfortable with discomfort</strong> — clinical placements will feel overwhelming at first. This is normal. Every nurse has been there.</li>
+              <li><strong>Build a support network</strong> — connect with classmates, form study groups, and find a mentor (many Australian nursing schools offer peer mentoring).</li>
+              <li><strong>Understand the NMBA Registered Nurse Standards</strong> — you are training to meet these from day one.</li>
+              <li><strong>Start learning APA 7th referencing now</strong> — it will be used throughout your entire degree.</li>
+              <li><strong>Ask questions on placement</strong> — clinical facilitators expect students to ask. Silence when you're unsure is dangerous.</li>
+            </ul>
+            <div class="note">🇦🇺 <strong>Australian Tip:</strong> Before your first clinical placement, ensure you have completed all required vaccinations as per your state health department policy, and that your university has confirmed your placement eligibility. Check with your clinical placement coordinator for specific requirements.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-year="y2" data-keywords="year 2 second year tips pharmacology pathophysiology clinical skills">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span style="font-size:1.1rem">🟩</span>
+          <span class="accordion-title">Year 2 — Developing Clinical Confidence</span>
+          <div class="accordion-tags-inline"><span class="tag tag-y2">Year 2</span></div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Pharmacology is non-negotiable</strong> — learn drug classes, not just individual drugs. Understand mechanism of action, common side effects, and contraindications.</li>
+              <li><strong>Practise clinical skills until they're automatic</strong> — IV insertion, wound care, catheterisation, and BGL monitoring should become second nature.</li>
+              <li><strong>Use the Clinical Reasoning Cycle</strong> — Professor Tracy Levett-Jones' cycle is widely used in Australian nursing education and will guide your clinical thinking.</li>
+              <li><strong>Learn to escalate early</strong> — use the <a href="https://www.safetyandquality.gov.au/our-work/communicating-safety/between-clinicians/isbar" target="_blank">ISBAR tool</a> when escalating concerns to a senior nurse or doctor.</li>
+              <li><strong>Start thinking about specialties</strong> — Year 2 placements in different areas help you discover where your passion lies.</li>
+            </ul>
+            <div class="note">🇦🇺 <strong>Australian Tip:</strong> The Australian Commission on Safety and Quality in Health Care (ACSQHC) National Safety and Quality Health Service (NSQHS) Standards apply to all Australian health services. Understanding these will make you a safer nurse.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-year="y3" data-keywords="year 3 third year tips grad program transition graduate AHPRA registration">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span style="font-size:1.1rem">🟪</span>
+          <span class="accordion-title">Year 3 — Transitioning to Graduate Practice</span>
+          <div class="accordion-tags-inline"><span class="tag tag-y3">Year 3</span></div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Apply for graduate programs early</strong> — many Australian Health Networks open grad applications in mid-year of your final year. Research programs in your state (e.g. NSW Health, Queensland Health, Alfred Health). In <strong>South Australia</strong>, the <strong>Transition to Professional Practice Program (TPPP)</strong> is the key graduate nursing program, coordinated through SA Health.</li>
+              <li><strong>Prepare your CV and cover letter</strong> — highlight placement experience, any volunteer work, and clinical skills. The Australian College of Nursing offers career resources.</li>
+              <li><strong>Understand transition to practice</strong> — the first year as an RN is challenging. Look for graduate programs with structured support and rotation opportunities.</li>
+              <li><strong>Apply for AHPRA RN registration</strong> — you can apply for graduate registration before you finish your degree. Ensure you meet all standards.</li>
+              <li><strong>Reflect on your practice regularly</strong> — use reflective models (e.g. Gibbs' Reflective Cycle) to develop professionally.</li>
+              <li><strong>Start thinking about CPD</strong> — Continuing Professional Development is mandatory for AHPRA renewal (20 hours/year minimum for nurses).</li>
+            </ul>
+            <div class="note">🇦🇺 <strong>Australian Tip:</strong> Grad program application portals differ by state. Check <a href="https://www.health.nsw.gov.au/nursing/employment/Pages/grad-program.aspx" target="_blank">NSW Health</a>, <a href="https://www.health.qld.gov.au/employment/work-for-us/nursing-and-midwifery/graduate-program" target="_blank">Queensland Health</a>, and equivalent state health websites in mid-year. <strong>South Australian students:</strong> Apply for the <a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/careers/nursing+and+midwifery+careers/graduate+nurse+and+midwife+programs/transition+to+professional+practice+program" target="_blank">SA Health TPPP (Transition to Professional Practice Program)</a> — applications typically open around March–April of your final year.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-year="y1 y2 y3" data-keywords="cultural safety indigenous aboriginal nursing all years australia">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span style="font-size:1.1rem">🤝</span>
+          <span class="accordion-title">Cultural Safety & Working with Aboriginal & Torres Strait Islander Peoples</span>
+          <div class="accordion-tags-inline"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Cultural safety is a professional and ethical obligation</strong> in Australian nursing — it goes beyond cultural awareness to examining how power, privilege, and bias affect care.</li>
+              <li><strong>Understand the social determinants of health</strong> for Aboriginal and Torres Strait Islander peoples, including the ongoing effects of colonisation, Stolen Generations, and systemic disadvantage.</li>
+              <li><strong>Use trauma-informed care approaches</strong> — many patients have experienced historical and intergenerational trauma.</li>
+              <li><strong>Acknowledge Country</strong> — many Australian health services begin meetings with an Acknowledgement of Country. Learn and respect this practice.</li>
+              <li><strong>Seek out local Aboriginal Health Workers (AHW) and Liaison Officers</strong> — they are invaluable partners in providing culturally safe care.</li>
+            </ul>
+            <div class="note">🇦🇺 <strong>Resource:</strong> The <a href="https://www.safetyandquality.gov.au/our-work/aboriginal-and-torres-strait-islander-health" target="_blank">ACSQHC</a> and <a href="https://www.naccho.org.au" target="_blank">NACCHO</a> provide excellent guidance on culturally safe practice in Australia.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — WELLBEING
+  ═══════════════════════════════════════ -->
+  <section class="section" id="wellbeing" data-section="wellbeing">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fdf0ed;">🧠</div>
+      <h2 class="section-title">Wellbeing & Self-Care</h2>
+      <span class="section-count" id="count-wellbeing"></span>
+    </div>
+    <div class="card-grid" id="grid-wellbeing">
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="burnout stress mental health nursing student wellbeing all years">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Recognising & Preventing Burnout</h3>
+        <p>Nursing students are at high risk of burnout due to academic demands, shift work, and emotional labour. Signs include chronic fatigue, cynicism, and detachment. Speak to your university's student support services, GP, or contact <strong>Beyond Blue</strong> (1300 22 4636) for support.</p>
+        <div class="card-footer">
+          <a href="https://www.beyondblue.org.au" target="_blank" class="card-link">Beyond Blue ↗</a>
+          <span class="source-badge">🇦🇺 Beyond Blue</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="self care sleep exercise nursing student health all years">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span></div>
+        </div>
+        <h3>Sleep, Nutrition & Physical Health</h3>
+        <p>Shift work disrupts circadian rhythms. Prioritise 7–9 hours of sleep, prepare healthy meals in advance for placement days, and maintain regular exercise. Physical health directly impacts your academic performance and patient care quality.</p>
+        <div class="card-footer">
+          <span class="source-badge">General Wellbeing</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y1 y2 y3" data-keywords="mental health nurse support lifeline headspace all years australia">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-all">All Years</span><span class="tag tag-au">🇦🇺 AU</span></div>
+        </div>
+        <h3>Mental Health Support for Nursing Students</h3>
+        <p>It's okay to not be okay. Australian resources include <strong>Headspace</strong> (for those under 25), <strong>Lifeline</strong> (13 11 14), and your university's Student Counselling Service. Many hospitals also have Employee Assistance Programs (EAP) during grad years.</p>
+        <div class="card-footer">
+          <a href="https://headspace.org.au" target="_blank" class="card-link">Headspace ↗</a>
+          <span class="source-badge">🇦🇺 Lifeline: 13 11 14</span>
+        </div>
+      </div>
+
+      <div class="card" data-year="y2 y3" data-keywords="moral distress ethical dilemmas nursing compassion fatigue year 2 3">
+        <div class="card-top">
+          <div class="card-tags"><span class="tag tag-y2">Year 2</span><span class="tag tag-y3">Year 3</span></div>
+        </div>
+        <h3>Compassion Fatigue & Moral Distress</h3>
+        <p>Exposure to patient suffering can lead to compassion fatigue. Moral distress occurs when you know the right thing to do but face barriers. Use clinical supervision, debrief after difficult shifts, and seek peer support. These are normal responses, not weaknesses.</p>
+        <div class="card-footer">
+          <span class="source-badge">🌐 International Evidence</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — QUICK REFERENCE
+  ═══════════════════════════════════════ -->
+  <section class="section" id="quickref" data-section="quickref">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fff3e0;">📋</div>
+      <h2 class="section-title">Quick Reference Tables</h2>
+      <span class="section-count" id="count-quickref"></span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;" id="grid-quickref">
+
+      <div data-year="y1 y2 y3" data-keywords="vital signs normal values adults blood pressure heart rate temperature respiration">
+        <h3 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:0.75rem;color:var(--dark);">🩺 Normal Adult Vital Signs</h3>
+        <table class="qref-table">
+          <thead><tr><th>Parameter</th><th>Normal Range</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Temperature</td><td class="normal">35.5 – 37.5°C</td><td>Oral; varies by site</td></tr>
+            <tr><td>Heart Rate</td><td class="normal">60 – 100 bpm</td><td>Radial or apical</td></tr>
+            <tr><td>Blood Pressure</td><td class="normal">100–160 / 60–90 mmHg</td><td>Systolic/Diastolic</td></tr>
+            <tr><td>Respiratory Rate</td><td class="normal">12 – 20 breaths/min</td><td>Count for full 60 sec</td></tr>
+            <tr><td>SpO₂</td><td class="normal">95 – 100%</td><td>≥88% for COPD pts</td></tr>
+            <tr><td>BGL (fasting)</td><td class="normal">4.0 – 6.0 mmol/L</td><td>🇦🇺 AU units</td></tr>
+            <tr><td>GCS</td><td class="normal">15/15</td><td>Eyes/Verbal/Motor</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem;color:var(--mid);margin-top:0.5rem;">🌐 Values based on international consensus; confirm with your facility's policy.</p>
+      </div>
+
+      <div data-year="y2 y3" data-keywords="common abbreviations nursing medical acronyms charting documentation">
+        <h3 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:0.75rem;color:var(--dark);">📝 Common Nursing Abbreviations</h3>
+        <table class="qref-table">
+          <thead><tr><th>Abbreviation</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>PRN</td><td>As required (pro re nata)</td></tr>
+            <tr><td>QID</td><td>Four times daily</td></tr>
+            <tr><td>TDS</td><td>Three times daily</td></tr>
+            <tr><td>BD</td><td>Twice daily</td></tr>
+            <tr><td>IDC</td><td>Indwelling catheter</td></tr>
+            <tr><td>NGT</td><td>Nasogastric tube</td></tr>
+            <tr><td>NBM</td><td>Nil by mouth</td></tr>
+            <tr><td>PCA</td><td>Patient-controlled analgesia</td></tr>
+            <tr><td>ECG</td><td>Electrocardiogram</td></tr>
+            <tr><td>BSL/BGL</td><td>Blood sugar/glucose level</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem;color:var(--mid);margin-top:0.5rem;">🇦🇺 Verify abbreviations with your specific health facility's approved list.</p>
+      </div>
+
+      <div data-year="y1 y2 y3" data-keywords="GCS glasgow coma scale scoring neurological assessment">
+        <h3 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:0.75rem;color:var(--dark);">🧠 Glasgow Coma Scale (GCS)</h3>
+        <table class="qref-table">
+          <thead><tr><th>Domain</th><th>Response</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4">Eyes</td><td>Spontaneous</td><td class="normal">4</td></tr>
+            <tr><td>To voice</td><td class="normal">3</td></tr>
+            <tr><td>To pain</td><td class="normal">2</td></tr>
+            <tr><td>None</td><td>1</td></tr>
+            <tr><td rowspan="5">Verbal</td><td>Oriented</td><td class="normal">5</td></tr>
+            <tr><td>Confused</td><td class="normal">4</td></tr>
+            <tr><td>Words only</td><td class="normal">3</td></tr>
+            <tr><td>Sounds only</td><td class="normal">2</td></tr>
+            <tr><td>None</td><td>1</td></tr>
+            <tr><td rowspan="6">Motor</td><td>Obeys commands</td><td class="normal">6</td></tr>
+            <tr><td>Localises pain</td><td class="normal">5</td></tr>
+            <tr><td>Withdraws</td><td class="normal">4</td></tr>
+            <tr><td>Flexion</td><td class="normal">3</td></tr>
+            <tr><td>Extension</td><td class="normal">2</td></tr>
+            <tr><td>None</td><td>1</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem;color:var(--mid);margin-top:0.5rem;">🌐 Teasdale & Jennett, 1974. Full score = 15. Escalate ≤13.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — NURSING PROGRESS NOTE
+  ═══════════════════════════════════════ -->
+  <section class="section" id="progressnote" data-section="progressnote">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fff3e0;">📝</div>
+      <h2 class="section-title">Nursing Progress Note Builder</h2>
+      <span class="section-count" id="count-progressnote"></span>
+    </div>
+
+    <!-- WHY ACCURATE NOTES MATTER -->
+    <div class="legal-banner" data-year="y1 y2 y3" data-keywords="nursing progress note legal documentation charting why important">
+      <div class="legal-banner-inner">
+        <div class="legal-banner-icon">⚖️</div>
+        <div>
+          <div class="legal-banner-title">Why Accurate Nursing Documentation is a Legal & Professional Requirement</div>
+          <div class="legal-banner-body">
+            <p>In Australia, nursing documentation is a <strong>legal document</strong>. It can be subpoenaed in court, reviewed by the Coroner, or used in AHPRA investigations. Under the <strong>NMBA Code of Conduct</strong> and <strong>Registered Nurse Standards for Practice</strong>, you are professionally obligated to document accurately, contemporaneously, and without falsification.</p>
+            <div class="legal-points">
+              <div class="legal-point"><span class="lp-icon">🏛️</span><div><strong>Medico-legal record</strong> — The patient's chart is a legal document. If it isn't documented, legally it didn't happen.</div></div>
+              <div class="legal-point"><span class="lp-icon">🔍</span><div><strong>AHPRA investigations</strong> — Poor or falsified documentation can lead to AHPRA notifications, conditions on registration, or cancellation.</div></div>
+              <div class="legal-point"><span class="lp-icon">🔄</span><div><strong>Continuity of care</strong> — Accurate notes ensure the next nurse, doctor, or allied health professional has the information they need to provide safe care.</div></div>
+              <div class="legal-point"><span class="lp-icon">📋</span><div><strong>NSQHS Standard 6</strong> — The ACSQHC National Safety and Quality Health Service Standards require that clinical records are accurate, timely, and accessible. (🇦🇺 AU)</div></div>
+              <div class="legal-point"><span class="lp-icon">🩺</span><div><strong>Clinical safety</strong> — Omissions or errors in documentation are a leading contributor to adverse events and near-misses in Australian hospitals.</div></div>
+            </div>
+            <div class="legal-rule">🇦🇺 <strong>Golden rules for Australian nursing documentation:</strong> Black pen only · Date and time every entry · Sign with full name and designation · Never erase — draw a single line through errors and initial · Never document in advance · Avoid vague language like "patient seems comfortable" — be specific and objective.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESS NOTE BUILDER -->
+    <div class="note-builder" data-year="y1 y2 y3" data-keywords="nursing progress note builder template evaluation care plan documentation">
+      <div class="note-builder-header">
+        <div>
+          <div class="note-builder-title">📋 Nursing Care Evaluation Note Builder</div>
+          <div class="note-builder-sub">Fill in the fields relevant to your patient, then copy the completed note.</div>
+        </div>
+        <div class="note-builder-actions">
+          <button class="nb-btn nb-btn-secondary" onclick="clearNote()">Clear All</button>
+          <button class="nb-btn nb-btn-primary" onclick="copyNote()">Copy Note 📋</button>
+        </div>
+      </div>
+
+      <!-- Patient Details Row -->
+      <div class="note-meta-row">
+        <div class="note-meta-field">
+          <label>Date</label>
+          <input type="text" id="noteDate" placeholder="DD/MM/YYYY" />
+        </div>
+        <div class="note-meta-field">
+          <label>Time</label>
+          <input type="text" id="noteTime" placeholder="e.g. 1430" />
+        </div>
+        <div class="note-meta-field" style="flex:2">
+          <label>Nurse Name & Designation</label>
+          <input type="text" id="nurseName" placeholder="e.g. J. Smith RN (Student)" />
+        </div>
+      </div>
+
+      <div class="note-heading-label">Nursing Care Evaluation</div>
+
+      <div class="note-fields-grid">
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#6366f1"></span>
+            Cognitive
+            <span class="nf-hint">Orientation, GCS, confusion, anxiety, behaviour</span>
+          </label>
+          <textarea id="nf-cognitive" placeholder="e.g. Patient alert and oriented to time, place, and person. GCS 15/15. No signs of confusion or agitation noted." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#0891b2"></span>
+            Hygiene
+            <span class="nf-hint">Self-care ability, assisted wash, oral care, grooming</span>
+          </label>
+          <textarea id="nf-hygiene" placeholder="e.g. Patient attended to personal hygiene independently. Oral care performed. Skin clean and dry." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#059669"></span>
+            Mobility
+            <span class="nf-hint">Ambulation, falls risk, aids, assistance level</span>
+          </label>
+          <textarea id="nf-mobility" placeholder="e.g. Patient mobilised to bathroom with standby assist x1. Falls risk score 12 (high). Non-slip footwear worn. Bed in lowest position." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#d97706"></span>
+            Nutrition & Hydration
+            <span class="nf-hint">Oral intake, IV fluids, swallowing, diet type, nausea</span>
+          </label>
+          <textarea id="nf-nutrition" placeholder="e.g. Patient tolerated full diet. Ate approximately 75% of lunch. Encouraged oral fluids — intake approx. 600mL this shift. No nausea or vomiting." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#7c3aed"></span>
+            Endocrine
+            <span class="nf-hint">BGL, diabetes management, hormonal concerns</span>
+          </label>
+          <textarea id="nf-endocrine" placeholder="e.g. BGL checked pre-meal: 6.2 mmol/L. Insulin administered as charted. No hypoglycaemic episodes noted." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#be185d"></span>
+            Elimination
+            <span class="nf-hint">Urine output, bowel, catheter, continence</span>
+          </label>
+          <textarea id="nf-elimination" placeholder="e.g. Voided x2 this shift — approximately 350mL, clear yellow urine. Last bowel motion documented yesterday. No IDC in situ." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#0a7c6e"></span>
+            Observation
+            <span class="nf-hint">Vital signs — T, HR, BP, RR, SpO₂, BGL, pain score</span>
+          </label>
+          <textarea id="nf-observation" placeholder="e.g. T 36.8°C, HR 78 bpm (regular), BP 128/76 mmHg, RR 16/min, SpO₂ 98% on RA. Pain score 2/10. Observations within normal limits." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#92400e"></span>
+            Skin Integrity
+            <span class="nf-hint">Wounds, pressure areas, bruising, IV sites, oedema</span>
+          </label>
+          <textarea id="nf-skin" placeholder="e.g. Skin intact. No redness over pressure areas. Surgical wound R) abdomen — dressing dry and intact, no signs of infection. IV cannula R) forearm — site patent, no phlebitis." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#e85d3a"></span>
+            Comfort
+            <span class="nf-hint">Pain management, positioning, rest, sleep</span>
+          </label>
+          <textarea id="nf-comfort" placeholder="e.g. Patient reports pain 3/10 in operative site. Analgesia administered as charted at 1200 — effective, pain reduced to 1/10. Repositioned 2-hourly. Resting comfortably." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#1d4ed8"></span>
+            Psychosocial
+            <span class="nf-hint">Mood, anxiety, family, social supports, consent, capacity</span>
+          </label>
+          <textarea id="nf-psychosocial" placeholder="e.g. Patient appears anxious regarding upcoming procedure. Provided information and reassurance. Family present and supportive. Social work referral discussed with RN in charge." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#0f766e"></span>
+            Medication
+            <span class="nf-hint">Medications given, refused, held, reactions, education</span>
+          </label>
+          <textarea id="nf-medication" placeholder="e.g. All charted medications administered as prescribed. Patient educated regarding new antibiotic — purpose and possible side effects explained. No adverse reactions noted." rows="3"></textarea>
+        </div>
+        <div class="note-field">
+          <label class="note-field-label">
+            <span class="nf-dot" style="background:#4a5568"></span>
+            Environment
+            <span class="nf-hint">Safety, call bell, bed position, equipment, hazards</span>
+          </label>
+          <textarea id="nf-environment" placeholder="e.g. Environment safe and tidy. Call bell within reach. Bed in lowest position, brakes engaged. Non-slip mat in place. No hazards identified." rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="note-plan-section">
+        <label class="note-field-label" style="font-size:0.9rem;margin-bottom:0.5rem;display:block;">
+          <span class="nf-dot" style="background:#1a2332"></span>
+          Plan
+          <span class="nf-hint">Ongoing care, referrals, reviews, goals for next shift</span>
+        </label>
+        <textarea id="nf-plan" placeholder="e.g. Continue current care plan. Monitor vital signs 4-hourly. Physiotherapy review booked for 0900 tomorrow. Wound review by CNS on next shift. Encourage oral fluids. Family meeting arranged for 1600." rows="4"></textarea>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="note-preview-wrap">
+        <div class="note-preview-label">📄 Preview</div>
+        <div class="note-preview" id="notePreview"></div>
+      </div>
+
+      <div id="copySuccess" style="display:none;text-align:center;padding:0.75rem;background:#e6f5f3;border-radius:8px;color:var(--teal);font-weight:600;margin-top:0.75rem;">
+        ✅ Note copied to clipboard!
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — APA 7TH GENERATOR
+  ═══════════════════════════════════════ -->
+  <section class="section" id="apa" data-section="apa">
+    <div class="section-header">
+      <div class="section-icon" style="background:#eaf3fd;">📖</div>
+      <h2 class="section-title">APA 7th Edition Reference Generator</h2>
+      <span class="section-count" id="count-apa"></span>
+    </div>
+
+    <div class="apa-tool" data-year="y1 y2 y3" data-keywords="APA 7th referencing citation generator journal book website nursing academic">
+
+      <div class="apa-note">
+        ℹ️ This tool generates APA 7th edition references for common source types used in Australian nursing assignments. Always verify output against the <a href="https://apastyle.apa.org" target="_blank">APA Style official guide</a> before submitting.
+      </div>
+
+      <!-- Source Type Selector -->
+      <div class="apa-type-row">
+        <span class="filter-label">Source type:</span>
+        <button class="apa-type-btn active" data-type="journal" onclick="setApaType('journal', this)">📄 Journal Article</button>
+        <button class="apa-type-btn" data-type="book" onclick="setApaType('book', this)">📚 Book</button>
+        <button class="apa-type-btn" data-type="chapter" onclick="setApaType('chapter', this)">📑 Book Chapter</button>
+        <button class="apa-type-btn" data-type="website" onclick="setApaType('website', this)">🌐 Website</button>
+        <button class="apa-type-btn" data-type="report" onclick="setApaType('report', this)">📋 Gov / Report</button>
+      </div>
+
+      <!-- JOURNAL -->
+      <div class="apa-form" id="form-journal">
+        <div class="apa-fields">
+          <div class="apa-field"><label>Author(s) <span class="apa-req">*</span><span class="apa-hint">Last, F. M. — add more with semicolons e.g. Smith, J. A.; Jones, B.</span></label><input type="text" id="j-authors" placeholder="e.g. Smith, J. A.; Jones, B. K." oninput="generateApa()"></div>
+          <div class="apa-field"><label>Year <span class="apa-req">*</span></label><input type="text" id="j-year" placeholder="e.g. 2023" maxlength="4" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Article Title <span class="apa-req">*</span><span class="apa-hint">Sentence case — only capitalise first word and proper nouns</span></label><input type="text" id="j-title" placeholder="e.g. Hand hygiene compliance in Australian hospitals" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Journal Name <span class="apa-req">*</span><span class="apa-hint">Title case — capitalise major words. Italicise in final output.</span></label><input type="text" id="j-journal" placeholder="e.g. Australian Journal of Advanced Nursing" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Volume <span class="apa-req">*</span></label><input type="text" id="j-vol" placeholder="e.g. 40" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Issue</label><input type="text" id="j-issue" placeholder="e.g. 2" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Pages</label><input type="text" id="j-pages" placeholder="e.g. 45–58" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>DOI <span class="apa-hint">Preferred over URL. Format: https://doi.org/xxxxx</span></label><input type="text" id="j-doi" placeholder="e.g. https://doi.org/10.1234/ajn.2023.001" oninput="generateApa()"></div>
+        </div>
+      </div>
+
+      <!-- BOOK -->
+      <div class="apa-form hidden" id="form-book">
+        <div class="apa-fields">
+          <div class="apa-field"><label>Author(s) <span class="apa-req">*</span><span class="apa-hint">Last, F. M.; separate multiple authors with semicolons</span></label><input type="text" id="b-authors" placeholder="e.g. Brown, D.; White, S. A." oninput="generateApa()"></div>
+          <div class="apa-field"><label>Year <span class="apa-req">*</span></label><input type="text" id="b-year" placeholder="e.g. 2022" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Book Title <span class="apa-req">*</span><span class="apa-hint">Sentence case, italicised in output</span></label><input type="text" id="b-title" placeholder="e.g. Fundamentals of nursing: Theory and practice" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Edition <span class="apa-hint">Only if not first</span></label><input type="text" id="b-edition" placeholder="e.g. 3rd" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Publisher <span class="apa-req">*</span></label><input type="text" id="b-publisher" placeholder="e.g. Elsevier" oninput="generateApa()"></div>
+          <div class="apa-field"><label>DOI / URL <span class="apa-hint">If ebook</span></label><input type="text" id="b-doi" placeholder="e.g. https://doi.org/10.xxxxx" oninput="generateApa()"></div>
+        </div>
+      </div>
+
+      <!-- CHAPTER -->
+      <div class="apa-form hidden" id="form-chapter">
+        <div class="apa-fields">
+          <div class="apa-field apa-field-wide"><label>Chapter Author(s) <span class="apa-req">*</span></label><input type="text" id="c-authors" placeholder="e.g. Green, T. R." oninput="generateApa()"></div>
+          <div class="apa-field"><label>Year <span class="apa-req">*</span></label><input type="text" id="c-year" placeholder="e.g. 2021" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Chapter Title <span class="apa-req">*</span><span class="apa-hint">Sentence case, no italics</span></label><input type="text" id="c-chapter" placeholder="e.g. Pain assessment in adult patients" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Book Editor(s) <span class="apa-req">*</span><span class="apa-hint">F. M. Last format, e.g. A. B. Smith & C. D. Jones</span></label><input type="text" id="c-editors" placeholder="e.g. A. B. Smith & C. D. Jones" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Book Title <span class="apa-req">*</span><span class="apa-hint">Italicised in output</span></label><input type="text" id="c-book" placeholder="e.g. Clinical nursing: A comprehensive guide" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Pages <span class="apa-req">*</span></label><input type="text" id="c-pages" placeholder="e.g. 112–130" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Publisher <span class="apa-req">*</span></label><input type="text" id="c-publisher" placeholder="e.g. Wiley" oninput="generateApa()"></div>
+          <div class="apa-field"><label>DOI / URL</label><input type="text" id="c-doi" placeholder="e.g. https://doi.org/10.xxxxx" oninput="generateApa()"></div>
+        </div>
+      </div>
+
+      <!-- WEBSITE -->
+      <div class="apa-form hidden" id="form-website">
+        <div class="apa-fields">
+          <div class="apa-field apa-field-wide"><label>Author(s) or Organisation <span class="apa-req">*</span><span class="apa-hint">If organisation, write full name e.g. Australian Commission on Safety and Quality in Health Care</span></label><input type="text" id="w-authors" placeholder="e.g. Australian Commission on Safety and Quality in Health Care" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Year <span class="apa-req">*</span></label><input type="text" id="w-year" placeholder="e.g. 2023" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Page/Article Title <span class="apa-req">*</span><span class="apa-hint">Sentence case, italicised in output</span></label><input type="text" id="w-title" placeholder="e.g. National safety and quality health service standards" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Website Name <span class="apa-hint">If different from author</span></label><input type="text" id="w-site" placeholder="e.g. ACSQHC" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>URL <span class="apa-req">*</span></label><input type="text" id="w-url" placeholder="e.g. https://www.safetyandquality.gov.au/..." oninput="generateApa()"></div>
+        </div>
+      </div>
+
+      <!-- REPORT -->
+      <div class="apa-form hidden" id="form-report">
+        <div class="apa-fields">
+          <div class="apa-field apa-field-wide"><label>Author(s) or Organisation <span class="apa-req">*</span></label><input type="text" id="r-authors" placeholder="e.g. Australian Institute of Health and Welfare" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Year <span class="apa-req">*</span></label><input type="text" id="r-year" placeholder="e.g. 2023" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>Report Title <span class="apa-req">*</span><span class="apa-hint">Sentence case, italicised in output</span></label><input type="text" id="r-title" placeholder="e.g. Australia's health 2022" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Report Number <span class="apa-hint">If applicable</span></label><input type="text" id="r-number" placeholder="e.g. Cat. no. AUS 221" oninput="generateApa()"></div>
+          <div class="apa-field"><label>Publisher <span class="apa-hint">If different from author</span></label><input type="text" id="r-publisher" placeholder="e.g. AIHW" oninput="generateApa()"></div>
+          <div class="apa-field apa-field-wide"><label>DOI / URL</label><input type="text" id="r-doi" placeholder="e.g. https://doi.org/10.xxxxx or https://www.aihw.gov.au/..." oninput="generateApa()"></div>
+        </div>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="apa-output-wrap">
+        <div class="apa-output-label">Generated Reference <span style="font-weight:400;color:var(--mid);font-size:0.78rem;">(ready to paste into your reference list)</span></div>
+        <div class="apa-output" id="apaOutput"><em style="color:var(--mid);font-style:italic;">Fill in the fields above to generate your reference…</em></div>
+        <div class="apa-output-actions">
+          <button class="nb-btn nb-btn-primary" onclick="copyApa()">Copy Reference 📋</button>
+          <button class="nb-btn nb-btn-secondary" onclick="clearApa()">Clear</button>
+        </div>
+        <div id="apaCopySuccess" style="display:none;margin-top:0.5rem;text-align:center;padding:0.6rem;background:#e6f5f3;border-radius:8px;color:var(--teal);font-weight:600;font-size:0.85rem;">
+          ✅ Reference copied to clipboard!
+        </div>
+      </div>
+
+      <!-- IN-TEXT CITATION TIP -->
+      <div class="apa-intext-tip">
+        <strong>💡 In-text citation reminder (APA 7th):</strong> Use (Author, Year) format.<br>
+        One author: <code>(Smith, 2022)</code> &nbsp;|&nbsp;
+        Two authors: <code>(Smith &amp; Jones, 2022)</code> &nbsp;|&nbsp;
+        Three or more: <code>(Smith et al., 2022)</code> &nbsp;|&nbsp;
+        Organisation: <code>(ACSQHC, 2022)</code>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 8 — AUSTRALIAN LINKS
+  ═══════════════════════════════════════ -->
+  <section class="section" id="links" data-section="links">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e6f5f3;">🔗</div>
+      <h2 class="section-title">Essential Australian Resources & Links</h2>
+      <span class="section-count" id="count-links"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;" id="grid-links">
+
+      <div data-year="y1 y2 y3" data-keywords="AHPRA registration nursing midwifery professional body australia">
+        <h4 style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--mid);margin-bottom:0.75rem;">Regulatory & Professional Bodies</h4>
+        <ul class="link-list">
+          <li><a href="https://www.ahpra.gov.au" target="_blank"><div class="link-icon">🏛️</div><div class="link-text"><span>AHPRA</span><span class="link-desc">Australian Health Practitioner Regulation Agency</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.nursingmidwiferyboard.gov.au" target="_blank"><div class="link-icon">📋</div><div class="link-text"><span>NMBA</span><span class="link-desc">Nursing and Midwifery Board of Australia — Standards & Codes</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.anmf.org.au" target="_blank"><div class="link-icon">🤝</div><div class="link-text"><span>ANMF</span><span class="link-desc">Australian Nursing & Midwifery Federation — Union & advocacy</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.acn.edu.au" target="_blank"><div class="link-icon">🎓</div><div class="link-text"><span>Australian College of Nursing (ACN)</span><span class="link-desc">CPD, career resources, and professional development</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.anmac.org.au" target="_blank"><div class="link-icon">✅</div><div class="link-text"><span>ANMAC</span><span class="link-desc">Accreditation standards for nursing education programs</span></div><span class="ext-icon">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div data-year="y1 y2 y3" data-keywords="safety quality health care australia clinical guidelines evidence">
+        <h4 style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--mid);margin-bottom:0.75rem;">Clinical Guidelines & Safety</h4>
+        <ul class="link-list">
+          <li><a href="https://www.safetyandquality.gov.au" target="_blank"><div class="link-icon">🛡️</div><div class="link-text"><span>ACSQHC</span><span class="link-desc">Australian Commission on Safety and Quality in Health Care</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.nhmrc.gov.au" target="_blank"><div class="link-icon">🔬</div><div class="link-text"><span>NHMRC</span><span class="link-desc">National Health and Medical Research Council — AU clinical guidelines</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.health.gov.au" target="_blank"><div class="link-icon">🏥</div><div class="link-text"><span>Australian Government Health</span><span class="link-desc">Department of Health and Aged Care — national policy</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.tga.gov.au" target="_blank"><div class="link-icon">💊</div><div class="link-text"><span>TGA</span><span class="link-desc">Therapeutic Goods Administration — AU drug approvals & alerts</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.mims.com.au" target="_blank"><div class="link-icon">📗</div><div class="link-text"><span>MIMS Australia</span><span class="link-desc">Australian drug reference — medication information</span></div><span class="ext-icon">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div data-year="y1 y2 y3" data-keywords="wellbeing mental health support lifeline beyond blue headspace australia">
+        <h4 style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--mid);margin-bottom:0.75rem;">Student Wellbeing & Support</h4>
+        <ul class="link-list">
+          <li><a href="https://www.beyondblue.org.au" target="_blank"><div class="link-icon">💙</div><div class="link-text"><span>Beyond Blue</span><span class="link-desc">Mental health support — 1300 22 4636</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://headspace.org.au" target="_blank"><div class="link-icon">🌿</div><div class="link-text"><span>Headspace</span><span class="link-desc">Mental health for young people under 25</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.lifeline.org.au" target="_blank"><div class="link-icon">📞</div><div class="link-text"><span>Lifeline Australia</span><span class="link-desc">Crisis support — 13 11 14 (24/7)</span></div><span class="ext-icon">↗</span></a></li>
+          <li><a href="https://www.naccho.org.au" target="_blank"><div class="link-icon">🤝</div><div class="link-text"><span>NACCHO</span><span class="link-desc">National Aboriginal Community Controlled Health Organisation</span></div><span class="ext-icon">↗</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>OzNurse Hub</strong> — A free resource directory for Australian nursing students.</p>
+  <p>Content is for educational purposes only and does not replace clinical supervision, university curriculum, or AHPRA/NMBA professional standards.</p>
+  <p style="margin-top:0.5rem;">
+    Built with 💙 for Australian nursing students &nbsp;|&nbsp;
+    <a href="https://www.ahpra.gov.au" target="_blank">AHPRA</a> &nbsp;·&nbsp;
+    <a href="https://www.nursingmidwiferyboard.gov.au" target="_blank">NMBA</a> &nbsp;·&nbsp;
+    <a href="https://www.anmf.org.au" target="_blank">ANMF</a>
+  </p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5;">🇦🇺 Resources marked AU are Australian-specific. Resources marked 🌐 International are not Australia-specific and should be used with care.</p>
+</footer>
+
+<script>
+  // ── ACCORDION ──
+  function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-btn.open').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  // ── FILTER ──
+  let activeFilter = 'all';
+  let activeSearch = '';
+
+  function setFilter(filter, btn) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.className = 'filter-btn';
+    });
+    btn.classList.add('active-' + filter);
+    applyFilters();
+  }
+
+  // ── SEARCH ──
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+
+  searchInput.addEventListener('input', function() {
+    activeSearch = this.value.trim().toLowerCase();
+    searchClear.classList.toggle('visible', activeSearch.length > 0);
+    applyFilters();
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    activeSearch = '';
+    this.classList.remove('visible');
+    applyFilters();
+  });
+
+  // ── APPLY FILTERS ──
+  function applyFilters() {
+    const sections = document.querySelectorAll('[data-section]');
+    let anyVisible = false;
+
+    sections.forEach(section => {
+      const items = section.querySelectorAll('[data-year]');
+      let sectionVisible = 0;
+
+      items.forEach(item => {
+        const yearAttr = item.getAttribute('data-year') || '';
+        const keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+        const textContent = item.textContent.toLowerCase();
+
+        const yearMatch = activeFilter === 'all' || yearAttr.includes(activeFilter);
+        const searchMatch = activeSearch === '' ||
+          keywords.includes(activeSearch) ||
+          textContent.includes(activeSearch);
+
+        if (yearMatch && searchMatch) {
+          item.classList.remove('hidden');
+          sectionVisible++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      if (sectionVisible === 0) {
+        section.classList.add('empty');
+      } else {
+        section.classList.remove('empty');
+        anyVisible = true;
+      }
+
+      // Update counts
+      const sectionId = section.getAttribute('data-section');
+      const countEl = document.getElementById('count-' + sectionId);
+      if (countEl) countEl.textContent = sectionVisible + ' item' + (sectionVisible !== 1 ? 's' : '');
+    });
+
+    document.getElementById('noResults').classList.toggle('visible', !anyVisible);
+  }
+
+  // ── PROGRESS NOTE BUILDER ──
+  const noteFields = [
+    { id: 'nf-cognitive',    label: 'Cognitive' },
+    { id: 'nf-hygiene',      label: 'Hygiene' },
+    { id: 'nf-mobility',     label: 'Mobility' },
+    { id: 'nf-nutrition',    label: 'Nutrition and hydration' },
+    { id: 'nf-endocrine',    label: 'Endocrine' },
+    { id: 'nf-elimination',  label: 'Elimination' },
+    { id: 'nf-observation',  label: 'Observation' },
+    { id: 'nf-skin',         label: 'Skin integrity' },
+    { id: 'nf-comfort',      label: 'Comfort' },
+    { id: 'nf-psychosocial', label: 'Psychosocial' },
+    { id: 'nf-medication',   label: 'Medication' },
+    { id: 'nf-environment',  label: 'Environment' },
+  ];
+
+  document.querySelectorAll('.note-field textarea, .note-plan-section textarea, .note-meta-field input').forEach(el => {
+    el.addEventListener('input', updateNotePreview);
+  });
+
+  function updateNotePreview() {
+    const date = document.getElementById('noteDate').value;
+    const time = document.getElementById('noteTime').value;
+    const nurse = document.getElementById('nurseName').value;
+    let lines = [];
+    if (date || time || nurse) {
+      lines.push((date ? date : '__/__/____') + '  ' + (time ? time : '____') + '  ' + (nurse ? nurse : ''));
+    }
+    lines.push('');
+    lines.push('Nursing Care Evaluation');
+    noteFields.forEach(f => {
+      const val = document.getElementById(f.id).value.trim();
+      lines.push(f.label + ': ' + (val || ''));
+    });
+    const plan = document.getElementById('nf-plan').value.trim();
+    lines.push('Plan: ' + (plan || ''));
+    document.getElementById('notePreview').textContent = lines.join('\n');
+  }
+
+  function clearNote() {
+    noteFields.forEach(f => { document.getElementById(f.id).value = ''; });
+    document.getElementById('nf-plan').value = '';
+    document.getElementById('noteDate').value = '';
+    document.getElementById('noteTime').value = '';
+    document.getElementById('nurseName').value = '';
+    updateNotePreview();
+  }
+
+  function copyNote() {
+    const text = document.getElementById('notePreview').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const s = document.getElementById('copySuccess');
+      s.style.display = 'block';
+      setTimeout(() => { s.style.display = 'none'; }, 2500);
+    });
+  }
+
+  updateNotePreview();
+
+  // ── APA 7TH GENERATOR ──
+  let apaType = 'journal';
+
+  function setApaType(type, btn) {
+    apaType = type;
+    document.querySelectorAll('.apa-type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.apa-form').forEach(f => f.classList.add('hidden'));
+    document.getElementById('form-' + type).classList.remove('hidden');
+    generateApa();
+  }
+
+  function formatAuthorsApa(raw) {
+    if (!raw.trim()) return '';
+    const authors = raw.split(';').map(a => a.trim()).filter(Boolean);
+    if (authors.length === 0) return '';
+    if (authors.length === 1) return authors[0];
+    if (authors.length === 2) return authors[0] + ', & ' + authors[1];
+    const last = authors[authors.length - 1];
+    return authors.slice(0, -1).join(', ') + ', & ' + last;
+  }
+
+  function generateApa() {
+    const out = document.getElementById('apaOutput');
+    let ref = '';
+
+    if (apaType === 'journal') {
+      const authors = formatAuthorsApa(document.getElementById('j-authors').value);
+      const year    = document.getElementById('j-year').value.trim();
+      const title   = document.getElementById('j-title').value.trim();
+      const journal = document.getElementById('j-journal').value.trim();
+      const vol     = document.getElementById('j-vol').value.trim();
+      const issue   = document.getElementById('j-issue').value.trim();
+      const pages   = document.getElementById('j-pages').value.trim();
+      const doi     = document.getElementById('j-doi').value.trim();
+      if (!authors || !year || !title || !journal || !vol) {
+        out.innerHTML = '<em style="color:var(--mid)">Fill in required fields (marked *) to generate…</em>'; return;
+      }
+      ref = authors + ' (' + year + '). ' + title + '. ';
+      ref += '<em>' + journal + (vol ? ', ' + vol : '') + '</em>';
+      ref += (issue ? '(' + issue + ')' : '');
+      ref += (pages ? ', ' + pages : '');
+      ref += '.';
+      if (doi) ref += ' ' + doi;
+    }
+
+    else if (apaType === 'book') {
+      const authors   = formatAuthorsApa(document.getElementById('b-authors').value);
+      const year      = document.getElementById('b-year').value.trim();
+      const title     = document.getElementById('b-title').value.trim();
+      const edition   = document.getElementById('b-edition').value.trim();
+      const publisher = document.getElementById('b-publisher').value.trim();
+      const doi       = document.getElementById('b-doi').value.trim();
+      if (!authors || !year || !title || !publisher) {
+        out.innerHTML = '<em style="color:var(--mid)">Fill in required fields (marked *) to generate…</em>'; return;
+      }
+      ref = authors + ' (' + year + '). ';
+      ref += '<em>' + title + (edition ? ' (' + edition + ' ed.)' : '') + '</em>. ';
+      ref += publisher + '.';
+      if (doi) ref += ' ' + doi;
+    }
+
+    else if (apaType === 'chapter') {
+      const authors   = formatAuthorsApa(document.getElementById('c-authors').value);
+      const year      = document.getElementById('c-year').value.trim();
+      const chapter   = document.getElementById('c-chapter').value.trim();
+      const editors   = document.getElementById('c-editors').value.trim();
+      const book      = document.getElementById('c-book').value.trim();
+      const pages     = document.getElementById('c-pages').value.trim();
+      const publisher = document.getElementById('c-publisher').value.trim();
+      const doi       = document.getElementById('c-doi').value.trim();
+      if (!authors || !year || !chapter || !editors || !book || !pages || !publisher) {
+        out.innerHTML = '<em style="color:var(--mid)">Fill in required fields (marked *) to generate…</em>'; return;
+      }
+      ref = authors + ' (' + year + '). ' + chapter + '. In ' + editors + ' (Ed' + (editors.includes('&') || editors.includes(';') ? 's' : '') + '.), ';
+      ref += '<em>' + book + '</em> (pp. ' + pages + '). ' + publisher + '.';
+      if (doi) ref += ' ' + doi;
+    }
+
+    else if (apaType === 'website') {
+      const authors = document.getElementById('w-authors').value.trim();
+      const year    = document.getElementById('w-year').value.trim();
+      const title   = document.getElementById('w-title').value.trim();
+      const site    = document.getElementById('w-site').value.trim();
+      const url     = document.getElementById('w-url').value.trim();
+      if (!authors || !year || !title || !url) {
+        out.innerHTML = '<em style="color:var(--mid)">Fill in required fields (marked *) to generate…</em>'; return;
+      }
+      ref = authors + ' (' + year + '). <em>' + title + '</em>.';
+      if (site && site.toLowerCase() !== authors.toLowerCase()) ref += ' ' + site + '.';
+      ref += ' ' + url;
+    }
+
+    else if (apaType === 'report') {
+      const authors   = document.getElementById('r-authors').value.trim();
+      const year      = document.getElementById('r-year').value.trim();
+      const title     = document.getElementById('r-title').value.trim();
+      const number    = document.getElementById('r-number').value.trim();
+      const publisher = document.getElementById('r-publisher').value.trim();
+      const doi       = document.getElementById('r-doi').value.trim();
+      if (!authors || !year || !title) {
+        out.innerHTML = '<em style="color:var(--mid)">Fill in required fields (marked *) to generate…</em>'; return;
+      }
+      ref = authors + ' (' + year + '). <em>' + title + '</em>';
+      if (number) ref += ' (' + number + ')';
+      ref += '.';
+      if (publisher && publisher.toLowerCase() !== authors.toLowerCase()) ref += ' ' + publisher + '.';
+      if (doi) ref += ' ' + doi;
+    }
+
+    out.innerHTML = ref;
+  }
+
+  function copyApa() {
+    const text = document.getElementById('apaOutput').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const s = document.getElementById('apaCopySuccess');
+      s.style.display = 'block';
+      setTimeout(() => { s.style.display = 'none'; }, 2500);
+    });
+  }
+
+  function clearApa() {
+    document.querySelectorAll('.apa-form input').forEach(i => i.value = '');
+    generateApa();
+  }
+</script>
+</body>
+</html>
