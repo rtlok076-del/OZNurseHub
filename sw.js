@@ -1,5 +1,5 @@
 // OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v1';
+const CACHE = 'oznurse-v2';
 
 const CORE_FILES = [
   './',
@@ -7,7 +7,8 @@ const CORE_FILES = [
   './clinical-quiz.html',
   './meds-quiz.html',
   './manifest.json',
-  './icon.svg'
+  './icon.svg',
+  './banner.png'
 ];
 
 // ── Install: cache all core files ──
