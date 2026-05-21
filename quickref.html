@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference — OzNurse Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 100%; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-light); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: var(--teal-light); }
+  .header-breadcrumb {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .header-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .header-breadcrumb a:hover { color: white; }
+  .header-breadcrumb span { color: rgba(255,255,255,0.25); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 64px; left: 0; bottom: 0;
+    width: 200px;
+    background: #0e1929;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto; z-index: 50;
+    display: flex; flex-direction: column;
+    padding: 0.5rem 0 1rem;
+  }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.22);
+    padding: 0.5rem 1rem 0.25rem;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s;
+    border: none; background: none;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1;
+    text-decoration: none;
+  }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: 200px;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  /* ── PAGE HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); }
+
+  /* ── TABLES GRID ── */
+  .tables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .table-block h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem; margin-bottom: 0.75rem; color: var(--dark);
+  }
+  .table-block p {
+    font-size: 0.72rem; color: var(--mid); margin-top: 0.5rem;
+  }
+
+  /* ── QUICK REF TABLE ── */
+  .qref-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.85rem; background: white;
+    border-radius: 12px; overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .qref-table th {
+    background: var(--dark); color: white;
+    padding: 0.7rem 1rem; text-align: left;
+    font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;
+  }
+  .qref-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border); color: var(--dark);
+  }
+  .qref-table tr:last-child td { border-bottom: none; }
+  .qref-table tr:nth-child(even) td { background: var(--light); }
+  .qref-table .normal { color: var(--teal); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.82rem; line-height: 1.8;
+    margin-left: 200px;
+  }
+  footer a { color: var(--teal-light); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+    .main, footer { margin-left: 54px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🩺</div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <div class="header-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7);">Quick Reference</span>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item active" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="index.html#progressnote"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:#fff3e0;">📋</div>
+    <h2 class="section-title">Quick Reference Tables</h2>
+  </div>
+
+  <div class="tables-grid">
+
+    <!-- ── VITAL SIGNS ── -->
+    <div class="table-block">
+      <h3>🩺 Normal Adult Vital Signs</h3>
+      <table class="qref-table">
+        <thead><tr><th>Parameter</th><th>Normal Range</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Temperature</td><td class="normal">35.5 – 37.5°C</td><td>Oral; varies by site</td></tr>
+          <tr><td>Heart Rate</td><td class="normal">60 – 100 bpm</td><td>Radial or apical</td></tr>
+          <tr><td>Blood Pressure</td><td class="normal">100–160 / 60–90 mmHg</td><td>Systolic/Diastolic</td></tr>
+          <tr><td>Respiratory Rate</td><td class="normal">12 – 20 breaths/min</td><td>Count for full 60 sec</td></tr>
+          <tr><td>SpO₂</td><td class="normal">95 – 100%</td><td>≥88% for COPD pts</td></tr>
+          <tr><td>BGL (fasting)</td><td class="normal">4.0 – 6.0 mmol/L</td><td>🇦🇺 AU units</td></tr>
+          <tr><td>GCS</td><td class="normal">15/15</td><td>Eyes/Verbal/Motor</td></tr>
+        </tbody>
+      </table>
+      <p>🌐 Values based on international consensus; confirm with your facility's policy.</p>
+    </div>
+
+    <!-- ── ABBREVIATIONS ── -->
+    <div class="table-block">
+      <h3>📝 Common Nursing Abbreviations</h3>
+      <table class="qref-table">
+        <thead><tr><th>Abbreviation</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>PRN</td><td>As required (pro re nata)</td></tr>
+          <tr><td>QID</td><td>Four times daily</td></tr>
+          <tr><td>TDS</td><td>Three times daily</td></tr>
+          <tr><td>BD</td><td>Twice daily</td></tr>
+          <tr><td>IDC</td><td>Indwelling catheter</td></tr>
+          <tr><td>NGT</td><td>Nasogastric tube</td></tr>
+          <tr><td>NBM</td><td>Nil by mouth</td></tr>
+          <tr><td>PCA</td><td>Patient-controlled analgesia</td></tr>
+          <tr><td>ECG</td><td>Electrocardiogram</td></tr>
+          <tr><td>BSL/BGL</td><td>Blood sugar/glucose level</td></tr>
+        </tbody>
+      </table>
+      <p>🇦🇺 Verify abbreviations with your specific health facility's approved list.</p>
+    </div>
+
+    <!-- ── GCS ── -->
+    <div class="table-block">
+      <h3>🧠 Glasgow Coma Scale (GCS)</h3>
+      <table class="qref-table">
+        <thead><tr><th>Domain</th><th>Response</th><th>Score</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="4">Eyes</td><td>Spontaneous</td><td class="normal">4</td></tr>
+          <tr><td>To voice</td><td class="normal">3</td></tr>
+          <tr><td>To pain</td><td class="normal">2</td></tr>
+          <tr><td>None</td><td>1</td></tr>
+          <tr><td rowspan="5">Verbal</td><td>Oriented</td><td class="normal">5</td></tr>
+          <tr><td>Confused</td><td class="normal">4</td></tr>
+          <tr><td>Words only</td><td class="normal">3</td></tr>
+          <tr><td>Sounds only</td><td class="normal">2</td></tr>
+          <tr><td>None</td><td>1</td></tr>
+          <tr><td rowspan="6">Motor</td><td>Obeys commands</td><td class="normal">6</td></tr>
+          <tr><td>Localises pain</td><td class="normal">5</td></tr>
+          <tr><td>Withdraws</td><td class="normal">4</td></tr>
+          <tr><td>Flexion</td><td class="normal">3</td></tr>
+          <tr><td>Extension</td><td class="normal">2</td></tr>
+          <tr><td>None</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <p>🌐 Teasdale &amp; Jennett, 1974. Full score = 15. Escalate ≤13.</p>
+    </div>
+
+    <!-- ── ADD NEW TABLES BELOW THIS LINE ── -->
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>OzNurse Hub</strong> — A free resource directory for Australian nursing students.</p>
+  <p>Content is for educational purposes only and does not replace clinical supervision, university curriculum, or AHPRA/NMBA professional standards.</p>
+</footer>
+
+</body>
+</html>
