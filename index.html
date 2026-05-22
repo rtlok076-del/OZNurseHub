@@ -3,7 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OzNurse Hub — Your Australian Nursing Student Resource</title>
+<title>OzNurse Hub | Free Tools for Australian Nursing Students & New Grads</title>
+
+<!-- SEO: Primary Meta -->
+<meta name="description" content="Free open-access tools for Australian nursing students & new graduate nurses. Interactive clinical note builder, APA 7th reference generator, ISBAR handover tool, medication math, and clinical placement resources — all ad-free.">
+<meta name="keywords" content="Australian nursing students, new grad nurse Australia, clinical note builder, nursing progress notes template, APA 7th reference generator nursing, medication math nursing, ISBAR handover tool, nursing placement resources Australia, AHPRA nursing student, NMBA standards nursing">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/">
+
+<!-- SEO: Open Graph (Facebook, LinkedIn previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/">
+<meta property="og:title" content="OzNurse Hub — Free Tools for Australian Nursing Students & New Grads">
+<meta property="og:description" content="Ace your placements and essays with free, ad-free tools: interactive clinical note builder, APA 7th reference generator, ISBAR handover tool & more. Built for Australian nursing students.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
+<!-- SEO: Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OzNurse Hub — Free Tools for Australian Nursing Students">
+<meta name="twitter:description" content="Free clinical note builder, APA 7th generator, ISBAR handover tool & nursing placement resources for Australian students & new grads.">
+<meta name="twitter:image" content="https://oznursehub.com/banner.png">
+
+<!-- SEO: Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OzNurse Hub",
+  "url": "https://oznursehub.com/",
+  "description": "Free open-access tools for Australian nursing students and new graduate nurses.",
+  "inLanguage": "en-AU",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Nursing students and new graduate nurses in Australia"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://oznursehub.com/#search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1054,6 +1098,25 @@
   }
   .back-btn:hover { background: #2d3748; }
 
+  /* -- SEO TEXT BLOCKS -- */
+  .seo-text-block {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .seo-text-block h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+  }
+  .seo-text-block a { color: var(--teal); text-decoration: underline; }
+
   /* -- HOME PAGE COMPRESSION -- */
   .hero-banner img { max-height: 320px; object-fit: cover; object-position: top center; }
   .hero { padding: 1.25rem 2rem 1.5rem; }
@@ -1151,7 +1214,7 @@
       <a href="javascript:void(0)" onclick="showSection('clinical')">Clinical</a>
       <a href="javascript:void(0)" onclick="showSection('wellbeing')">Wellbeing</a>
       <a href="quickref.html">Quick Ref</a>
-      <a href="javascript:void(0)" onclick="showSection('progressnote')">Progress Note</a>
+      <a href="progressnote.html">Progress Note</a>
       <a href="javascript:void(0)" onclick="showSection('apa')">APA 7th</a>
       <a href="javascript:void(0)" onclick="showSection('links')">Links</a>
     </nav>
@@ -1161,12 +1224,12 @@
 
 <!-- HERO BANNER -->
 <div class="hero-banner">
-  <img src="banner.png" alt="OzNurse Hub — Student & New Grad Nurse Resources">
+  <img src="banner.png" alt="OzNurse Hub — Free clinical note builder, APA 7th generator and nursing placement resources for Australian nursing students and new graduate nurses">
 </div>
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge">🇦🇺 Made for Australian Nursing Students</div>
-    <h1>Your one-stop hub for<br><em>nursing success</em></h1>
+    <h1>Your one-stop hub for Australian<br><em>nursing success</em></h1>
     <p>Everything you need — from first-year foundations to third-year clinical confidence. Evidence-based, Australia-focused, and built for you.</p>
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
@@ -1209,7 +1272,7 @@
           <span class="si-title">Quick Reference</span>
           <span class="si-sub">Vital signs, GCS, abbreviations</span>
         </a>
-        <a href="javascript:void(0)" class="si-card" onclick="showSection('progressnote')">
+        <a href="progressnote.html" class="si-card">
           <span class="si-icon">📝</span>
           <span class="si-title">Progress Note</span>
           <span class="si-sub">Build &amp; copy nursing notes</span>
@@ -1245,7 +1308,7 @@
   <button class="sidebar-item" data-section="tips" onclick="showSection('tips')"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></button>
   <button class="sidebar-item" data-section="wellbeing" onclick="showSection('wellbeing')"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></button>
   <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
-  <button class="sidebar-item" data-section="progressnote" onclick="showSection('progressnote')"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></button>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
   <button class="sidebar-item" data-section="apa" onclick="showSection('apa')"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></button>
   <button class="sidebar-item" data-section="quizzes" onclick="showSection('quizzes')"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></button>
   <button class="sidebar-item" data-section="links" onclick="showSection('links')"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></button>
@@ -1365,7 +1428,7 @@
   <section class="section" id="clinical" data-section="clinical">
     <div class="section-header">
       <div class="section-icon" style="background:#eaf3fd;">🏥</div>
-      <h2 class="section-title">Clinical Placement & Real-World Nursing</h2>
+      <h2 class="section-title">Clinical Placement Resources for Australian Nursing Students</h2>
       <span class="section-count" id="count-clinical"></span>
     </div>
     <div class="card-grid" id="grid-clinical">
@@ -1465,6 +1528,14 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- SEO text — visible to Google, helpful to users -->
+    <div class="seo-text-block">
+      <h3>Australian Nursing Clinical Placement Tips & ISBAR Handover Guide</h3>
+      <p>
+        Clinical placement is one of the most important — and most stressful — parts of an Australian nursing degree. This section covers everything you need to succeed on placement: how to prepare for your first shift, how to use the ISBAR framework for safe clinical handover, the 13 Rights of medication administration, infection prevention and standard precautions as required by the <a href="https://www.safetyandquality.gov.au" target="_blank" rel="noopener">Australian Commission on Safety and Quality in Health Care</a>, and how to meet your AHPRA professional obligations. These resources are aligned with the NMBA Registered Nurse Standards for Practice and are suitable for first, second, and third year nursing students in Australian universities.
+      </p>
     </div>
   </section>
 
@@ -1638,7 +1709,7 @@
   <section class="section" id="progressnote" data-section="progressnote">
     <div class="section-header">
       <div class="section-icon" style="background:#fff3e0;">📝</div>
-      <h2 class="section-title">Nursing Progress Note Builder</h2>
+      <h2 class="section-title">Nursing Progress Note Builder — Clinical Documentation Tool</h2>
       <span class="section-count" id="count-progressnote"></span>
     </div>
 
@@ -1812,6 +1883,14 @@
         ✅ Note copied to clipboard!
       </div>
     </div>
+
+    <!-- SEO text — visible to Google, helpful to users -->
+    <div class="seo-text-block">
+      <h3>How to Write Nursing Progress Notes Using ISBAR</h3>
+      <p>
+        Writing accurate clinical documentation is a core competency for Australian nursing students on placement and new graduate nurses entering the workforce. This free interactive clinical note builder helps you structure professional nursing progress notes using evidence-based frameworks including ISBAR (Identify, Situation, Background, Assessment, Recommendation). Enter your assessment findings across key domains — cardiovascular, respiratory, neurological, fluid balance, pain, psychosocial — and generate a structured note ready for shift handovers and clinical records. Practising documentation with a template ensures your notes meet the <a href="https://www.nursingmidwiferyboard.gov.au" target="_blank" rel="noopener">NMBA Nursing Standards</a> for professional practice and legal requirements for clinical records in Australian healthcare settings.
+      </p>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════
@@ -1820,7 +1899,7 @@
   <section class="section" id="apa" data-section="apa">
     <div class="section-header">
       <div class="section-icon" style="background:#eaf3fd;">📖</div>
-      <h2 class="section-title">APA 7th Edition Reference Generator</h2>
+      <h2 class="section-title">APA 7th Edition Reference Generator for Nursing Essays</h2>
       <span class="section-count" id="count-apa"></span>
     </div>
 
@@ -1925,6 +2004,14 @@
         Organisation: <code>(ACSQHC, 2022)</code>
       </div>
 
+    </div>
+
+    <!-- SEO text — visible to Google, helpful to users -->
+    <div class="seo-text-block">
+      <h3>How to Use APA 7th Edition Referencing for Nursing Essays in Australia</h3>
+      <p>
+        APA 7th Edition is the standard referencing format used by most Australian nursing and midwifery university programs. This free APA 7th reference generator creates correctly formatted citations for journal articles, textbooks, websites, and government reports — the most common source types in nursing essays. Simply select your source type, fill in the details, and copy a ready-to-use reference list entry. Correct referencing is essential for academic integrity at all Australian universities and is assessed in every nursing essay and clinical reasoning assignment. Use this tool alongside your university's library guide and the <a href="https://apastyle.apa.org" target="_blank" rel="noopener">official APA Style website</a> to ensure your reference list is accurate.
+      </p>
     </div>
   </section>
 
