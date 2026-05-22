@@ -2341,12 +2341,6 @@
     if (history.pushState) history.pushState(null, '', window.location.pathname);
   }
 
-  // Handle direct URL hash on load
-  (function() {
-    var hash = window.location.hash.slice(1);
-    var valid = ['study','clinical','tips','wellbeing','quickref','progressnote','apa','quizzes','links'];
-    if (hash && valid.indexOf(hash) !== -1) { showSection(hash); }
-  })();
 </script>
 <script>
 function showSection(id) {
@@ -2379,6 +2373,13 @@ function showHome() {
   window.scrollTo(0, 0);
   if (history.pushState) history.pushState(null, '', window.location.pathname);
 }
+
+// Handle direct URL hash on load (runs after override showSection is defined)
+(function() {
+  var hash = window.location.hash.slice(1);
+  var valid = ['study','clinical','tips','wellbeing','quickref','progressnote','apa','quizzes','links'];
+  if (hash && valid.indexOf(hash) !== -1) { showSection(hash); }
+})();
 </script><script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
