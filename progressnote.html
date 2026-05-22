@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Nursing Progress Note Builder — Clinical Documentation Tool | OzNurse Hub</title>
+
+<!-- SEO: Primary Meta -->
+<meta name="description" content="Free interactive nursing progress note builder for Australian nursing students and new grad nurses. Structure professional clinical documentation using CHIMNEOPS framework. Covers cognitive, hygiene, mobility, nutrition, endocrine, elimination, observation, skin, comfort, psychosocial, medication and environment.">
+<meta name="keywords" content="nursing progress note builder, clinical note template Australia, nursing documentation tool, CHIMNEOPS nursing, how to write nursing progress notes, nursing charting template, nursing care evaluation note, clinical placement documentation, NMBA nursing documentation standards, Australian nursing student resources">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/progressnote.html">
+
+<!-- SEO: Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/progressnote.html">
+<meta property="og:title" content="Free Nursing Progress Note Builder — Clinical Documentation Tool">
+<meta property="og:description" content="Build professional nursing progress notes instantly. Free interactive tool for Australian nursing students on clinical placement. Covers all CHIMNEOPS domains.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
+<!-- SEO: Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Nursing Progress Note Builder | OzNurse Hub">
+<meta name="twitter:description" content="Structure professional nursing progress notes using CHIMNEOPS. Free tool for Australian nursing students on clinical placement.">
+<meta name="twitter:image" content="https://oznursehub.com/banner.png">
+
+<!-- SEO: Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Nursing Progress Note Builder",
+  "url": "https://oznursehub.com/progressnote.html",
+  "description": "Free interactive nursing progress note builder for Australian nursing students and new graduate nurses using the CHIMNEOPS clinical documentation framework.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "audience": { "@type": "Audience", "audienceType": "Australian nursing students and new graduate nurses" },
+  "isPartOf": { "@type": "WebSite", "name": "OzNurse Hub", "url": "https://oznursehub.com/" }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 100%; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: transparent; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 0;
+  }
+  .logo-icon img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: var(--teal-light); }
+  .header-breadcrumb {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .header-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .header-breadcrumb a:hover { color: white; }
+  .header-breadcrumb span { color: rgba(255,255,255,0.25); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 64px; left: 0; bottom: 0;
+    width: 200px;
+    background: #0e1929;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto; z-index: 50;
+    display: flex; flex-direction: column;
+    padding: 0.5rem 0 1rem;
+  }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.22);
+    padding: 0.5rem 1rem 0.25rem;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s;
+    border: none; background: none;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1;
+    text-decoration: none;
+  }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: 200px;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1100px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); }
+
+  /* ── LEGAL BANNER ── */
+  .legal-banner {
+    background: linear-gradient(135deg, #1a2332 0%, #1e3a5f 100%);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .legal-banner-inner { display: flex; gap: 1.25rem; }
+  .legal-banner-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+  .legal-banner-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: white; margin-bottom: 0.75rem;
+  }
+  .legal-banner-body p {
+    font-size: 0.875rem; color: rgba(255,255,255,0.8);
+    line-height: 1.7; margin-bottom: 1rem;
+  }
+  .legal-points { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
+  .legal-point {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 0.84rem; color: rgba(255,255,255,0.85); line-height: 1.5;
+  }
+  .lp-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .legal-rule {
+    background: rgba(18,160,144,0.2);
+    border-left: 3px solid var(--teal-light);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.82rem; color: rgba(255,255,255,0.85); line-height: 1.7;
+  }
+
+  /* ── NOTE BUILDER ── */
+  .note-builder {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .note-builder-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    background: var(--sand);
+    border-bottom: 1.5px solid var(--border);
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .note-builder-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--dark); }
+  .note-builder-sub { font-size: 0.8rem; color: var(--mid); margin-top: 2px; }
+  .note-builder-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .nb-btn {
+    padding: 0.5rem 1.1rem; border-radius: 8px; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .nb-btn-primary { background: var(--teal); color: white; }
+  .nb-btn-primary:hover { background: var(--teal-light); }
+  .nb-btn-secondary { background: var(--border); color: var(--dark); }
+  .nb-btn-secondary:hover { background: #cdd5df; }
+
+  .note-meta-row {
+    display: flex; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .note-meta-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 120px; }
+  .note-meta-field label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mid); }
+  .note-meta-field input {
+    padding: 0.45rem 0.75rem;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .note-meta-field input:focus { border-color: var(--teal); }
+
+  .note-heading-label {
+    padding: 0.75rem 1.5rem 0.5rem;
+    font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700;
+    color: var(--dark); text-decoration: underline; text-underline-offset: 3px;
+  }
+
+  .note-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0;
+  }
+  .note-field {
+    padding: 0.85rem 1.25rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .note-field:nth-child(even) { border-right: none; }
+  .note-field-label {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.8rem; font-weight: 700; color: var(--dark);
+    margin-bottom: 0.4rem; text-transform: uppercase;
+    letter-spacing: 0.04em; flex-wrap: wrap;
+  }
+  .nf-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .nf-hint {
+    font-size: 0.7rem; font-weight: 400; color: var(--mid);
+    text-transform: none; letter-spacing: 0; width: 100%; margin-left: 14px;
+  }
+  .note-field textarea, .note-plan-section textarea {
+    width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 0.55rem 0.75rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; line-height: 1.6; color: var(--dark);
+    resize: vertical; outline: none; transition: border-color 0.2s;
+  }
+  .note-field textarea:focus, .note-plan-section textarea:focus { border-color: var(--teal); }
+  .note-plan-section { padding: 1rem 1.5rem; border-top: 2px solid var(--dark); }
+  .note-preview-wrap {
+    padding: 1rem 1.5rem;
+    border-top: 1.5px solid var(--border);
+    background: var(--light);
+  }
+  .note-preview-label {
+    font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--mid); margin-bottom: 0.75rem;
+  }
+  .note-preview {
+    background: white; border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 1.25rem; font-size: 0.82rem; line-height: 1.8; color: var(--dark);
+    white-space: pre-wrap; font-family: 'DM Sans', monospace; min-height: 80px;
+  }
+
+  /* ── SEO TEXT BLOCK ── */
+  .seo-text-block {
+    margin-top: 2rem; padding: 1.25rem 1.5rem;
+    background: var(--light); border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0; font-size: 0.82rem; color: var(--mid); line-height: 1.7;
+  }
+  .seo-text-block h3 { font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+  .seo-text-block a { color: var(--teal); text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.82rem; line-height: 1.8;
+    margin-left: 200px;
+  }
+  footer a { color: var(--teal-light); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+    .main, footer { margin-left: 54px; }
+    .main { padding: 1.5rem 1rem 3rem; }
+    .legal-banner-inner { flex-direction: column; }
+    .note-fields-grid { grid-template-columns: 1fr; }
+    .note-field { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <div class="header-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7);">Progress Note Builder</span>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item active" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:#fff3e0;">📝</div>
+    <h1 class="section-title">Nursing Progress Note Builder — Clinical Documentation Tool</h1>
+  </div>
+
+  <!-- WHY ACCURATE NOTES MATTER -->
+  <div class="legal-banner">
+    <div class="legal-banner-inner">
+      <div class="legal-banner-icon">⚖️</div>
+      <div>
+        <div class="legal-banner-title">Why Accurate Nursing Documentation is a Legal & Professional Requirement</div>
+        <div class="legal-banner-body">
+          <p>In Australia, nursing documentation is a <strong>legal document</strong>. It can be subpoenaed in court, reviewed by the Coroner, or used in AHPRA investigations. Under the <strong>NMBA Code of Conduct</strong> and <strong>Registered Nurse Standards for Practice</strong>, you are professionally obligated to document accurately, contemporaneously, and without falsification.</p>
+          <div class="legal-points">
+            <div class="legal-point"><span class="lp-icon">🏛️</span><div><strong>Medico-legal record</strong> — The patient's chart is a legal document. If it isn't documented, legally it didn't happen.</div></div>
+            <div class="legal-point"><span class="lp-icon">🔍</span><div><strong>AHPRA investigations</strong> — Poor or falsified documentation can lead to AHPRA notifications, conditions on registration, or cancellation.</div></div>
+            <div class="legal-point"><span class="lp-icon">🔄</span><div><strong>Continuity of care</strong> — Accurate notes ensure the next nurse, doctor, or allied health professional has the information they need to provide safe care.</div></div>
+            <div class="legal-point"><span class="lp-icon">📋</span><div><strong>NSQHS Standard 6</strong> — The ACSQHC National Safety and Quality Health Service Standards require that clinical records are accurate, timely, and accessible. (🇦🇺 AU)</div></div>
+            <div class="legal-point"><span class="lp-icon">🩺</span><div><strong>Clinical safety</strong> — Omissions or errors in documentation are a leading contributor to adverse events and near-misses in Australian hospitals.</div></div>
+          </div>
+          <div class="legal-rule">🇦🇺 <strong>Golden rules for Australian nursing documentation:</strong> Black pen only · Date and time every entry · Sign with full name and designation · Never erase — draw a single line through errors and initial · Never document in advance · Avoid vague language like "patient seems comfortable" — be specific and objective.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS NOTE BUILDER -->
+  <div class="note-builder">
+    <div class="note-builder-header">
+      <div>
+        <div class="note-builder-title">📋 Nursing Care Evaluation Note Builder</div>
+        <div class="note-builder-sub">Fill in the fields relevant to your patient, then copy the completed note.</div>
+      </div>
+      <div class="note-builder-actions">
+        <button class="nb-btn nb-btn-secondary" onclick="clearNote()">Clear All</button>
+        <button class="nb-btn nb-btn-primary" onclick="copyNote()">Copy Note 📋</button>
+      </div>
+    </div>
+
+    <!-- Patient Details Row -->
+    <div class="note-meta-row">
+      <div class="note-meta-field">
+        <label>Date</label>
+        <input type="text" id="noteDate" placeholder="DD/MM/YYYY" />
+      </div>
+      <div class="note-meta-field">
+        <label>Time</label>
+        <input type="text" id="noteTime" placeholder="e.g. 1430" />
+      </div>
+      <div class="note-meta-field" style="flex:2">
+        <label>Nurse Name & Designation</label>
+        <input type="text" id="nurseName" placeholder="e.g. J. Smith RN (Student)" />
+      </div>
+    </div>
+
+    <div class="note-heading-label">Nursing Care Evaluation</div>
+
+    <div class="note-fields-grid">
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#6366f1"></span>
+          Cognitive
+          <span class="nf-hint">Orientation, GCS, confusion, anxiety, behaviour</span>
+        </label>
+        <textarea id="nf-cognitive" placeholder="e.g. Patient alert and oriented to time, place, and person. GCS 15/15. No signs of confusion or agitation noted." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#0891b2"></span>
+          Hygiene
+          <span class="nf-hint">Self-care ability, assisted wash, oral care, grooming</span>
+        </label>
+        <textarea id="nf-hygiene" placeholder="e.g. Patient attended to personal hygiene independently. Oral care performed. Skin clean and dry." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#059669"></span>
+          Mobility
+          <span class="nf-hint">Ambulation, falls risk, aids, assistance level</span>
+        </label>
+        <textarea id="nf-mobility" placeholder="e.g. Patient mobilised to bathroom with standby assist x1. Falls risk score 12 (high). Non-slip footwear worn. Bed in lowest position." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#d97706"></span>
+          Nutrition & Hydration
+          <span class="nf-hint">Oral intake, IV fluids, swallowing, diet type, nausea</span>
+        </label>
+        <textarea id="nf-nutrition" placeholder="e.g. Patient tolerated full diet. Ate approximately 75% of lunch. Encouraged oral fluids — intake approx. 600mL this shift. No nausea or vomiting." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#7c3aed"></span>
+          Endocrine
+          <span class="nf-hint">BGL, diabetes management, hormonal concerns</span>
+        </label>
+        <textarea id="nf-endocrine" placeholder="e.g. BGL checked pre-meal: 6.2 mmol/L. Insulin administered as charted. No hypoglycaemic episodes noted." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#be185d"></span>
+          Elimination
+          <span class="nf-hint">Urine output, bowel, catheter, continence</span>
+        </label>
+        <textarea id="nf-elimination" placeholder="e.g. Voided x2 this shift — approximately 350mL, clear yellow urine. Last bowel motion documented yesterday. No IDC in situ." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#0a7c6e"></span>
+          Observation
+          <span class="nf-hint">Vital signs — T, HR, BP, RR, SpO₂, BGL, pain score</span>
+        </label>
+        <textarea id="nf-observation" placeholder="e.g. T 36.8°C, HR 78 bpm (regular), BP 128/76 mmHg, RR 16/min, SpO₂ 98% on RA. Pain score 2/10. Observations within normal limits." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#92400e"></span>
+          Skin Integrity
+          <span class="nf-hint">Wounds, pressure areas, bruising, IV sites, oedema</span>
+        </label>
+        <textarea id="nf-skin" placeholder="e.g. Skin intact. No redness over pressure areas. Surgical wound R) abdomen — dressing dry and intact, no signs of infection. IV cannula R) forearm — site patent, no phlebitis." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#e85d3a"></span>
+          Comfort
+          <span class="nf-hint">Pain management, positioning, rest, sleep</span>
+        </label>
+        <textarea id="nf-comfort" placeholder="e.g. Patient reports pain 3/10 in operative site. Analgesia administered as charted at 1200 — effective, pain reduced to 1/10. Repositioned 2-hourly. Resting comfortably." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#1d4ed8"></span>
+          Psychosocial
+          <span class="nf-hint">Mood, anxiety, family, social supports, consent, capacity</span>
+        </label>
+        <textarea id="nf-psychosocial" placeholder="e.g. Patient appears anxious regarding upcoming procedure. Provided information and reassurance. Family present and supportive. Social work referral discussed with RN in charge." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#0f766e"></span>
+          Medication
+          <span class="nf-hint">Medications given, refused, held, reactions, education</span>
+        </label>
+        <textarea id="nf-medication" placeholder="e.g. All charted medications administered as prescribed. Patient educated regarding new antibiotic — purpose and possible side effects explained. No adverse reactions noted." rows="3"></textarea>
+      </div>
+      <div class="note-field">
+        <label class="note-field-label">
+          <span class="nf-dot" style="background:#4a5568"></span>
+          Environment
+          <span class="nf-hint">Safety, call bell, bed position, equipment, hazards</span>
+        </label>
+        <textarea id="nf-environment" placeholder="e.g. Environment safe and tidy. Call bell within reach. Bed in lowest position, brakes engaged. Non-slip mat in place. No hazards identified." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="note-plan-section">
+      <label class="note-field-label" style="font-size:0.9rem;margin-bottom:0.5rem;display:block;">
+        <span class="nf-dot" style="background:#1a2332"></span>
+        Plan
+        <span class="nf-hint">Ongoing care, referrals, reviews, goals for next shift</span>
+      </label>
+      <textarea id="nf-plan" placeholder="e.g. Continue current care plan. Monitor vital signs 4-hourly. Physiotherapy review booked for 0900 tomorrow. Wound review by CNS on next shift. Encourage oral fluids. Family meeting arranged for 1600." rows="4"></textarea>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="note-preview-wrap">
+      <div class="note-preview-label">📄 Preview</div>
+      <div class="note-preview" id="notePreview"></div>
+    </div>
+
+    <div id="copySuccess" style="display:none;text-align:center;padding:0.75rem;background:#e6f5f3;border-radius:8px;color:#0a7c6e;font-weight:600;margin:0.75rem 1.5rem 1rem;">
+      ✅ Note copied to clipboard!
+    </div>
+  </div>
+
+  <!-- SEO TEXT BLOCK -->
+  <div class="seo-text-block">
+    <h2 style="font-size:0.9rem;font-weight:700;color:#1a2332;margin-bottom:0.4rem;">How to Write Nursing Progress Notes Using the CHIMNEOPS Framework</h2>
+    <p>
+      Writing accurate clinical documentation is a core competency for Australian nursing students on placement and new graduate nurses entering the workforce. This free interactive clinical note builder uses the <strong>CHIMNEOPS</strong> framework (Cognitive, Hygiene, Mobility, Nutrition, Endocrine, Observation, Psychosocial, Skin, Comfort, Medication, Environment, and Plan) — a systematic approach that ensures no domain of patient care is missed during shift documentation.
+    </p>
+    <p style="margin-top:0.6rem;">
+      Fill in only the fields relevant to your patient — empty fields are omitted from the final note. Practising with a structured template helps nursing students meet the documentation requirements in the <a href="https://www.nursingmidwiferyboard.gov.au/Codes-Guidelines-Statements/Professional-standards.aspx" target="_blank" rel="noopener">NMBA Registered Nurse Standards for Practice</a> and the <a href="https://www.safetyandquality.gov.au/standards/nsqhs-standards/communicating-safety-standard" target="_blank" rel="noopener">NSQHS Communicating for Safety Standard</a>. Use this tool to build confidence before and during clinical placement, and adapt the output to your specific facility's documentation policies.
+    </p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>OzNurse Hub</strong> — A free resource directory for Australian nursing students.</p>
+  <p>Content is for educational purposes only and does not replace clinical supervision, university curriculum, or AHPRA/NMBA professional standards.</p>
+</footer>
+
+<script>
+  const noteFields = [
+    { id: 'nf-cognitive',    label: 'Cognitive' },
+    { id: 'nf-hygiene',      label: 'Hygiene' },
+    { id: 'nf-mobility',     label: 'Mobility' },
+    { id: 'nf-nutrition',    label: 'Nutrition and hydration' },
+    { id: 'nf-endocrine',    label: 'Endocrine' },
+    { id: 'nf-elimination',  label: 'Elimination' },
+    { id: 'nf-observation',  label: 'Observation' },
+    { id: 'nf-skin',         label: 'Skin integrity' },
+    { id: 'nf-comfort',      label: 'Comfort' },
+    { id: 'nf-psychosocial', label: 'Psychosocial' },
+    { id: 'nf-medication',   label: 'Medication' },
+    { id: 'nf-environment',  label: 'Environment' },
+  ];
+
+  document.querySelectorAll('.note-field textarea, .note-plan-section textarea, .note-meta-field input').forEach(function(el) {
+    el.addEventListener('input', updateNotePreview);
+  });
+
+  function updateNotePreview() {
+    var date  = document.getElementById('noteDate').value;
+    var time  = document.getElementById('noteTime').value;
+    var nurse = document.getElementById('nurseName').value;
+    var lines = [];
+    if (date || time || nurse) {
+      lines.push((date || '__/__/____') + '  ' + (time || '____') + '  ' + (nurse || ''));
+    }
+    lines.push('');
+    lines.push('Nursing Care Evaluation');
+    noteFields.forEach(function(f) {
+      var val = document.getElementById(f.id).value.trim();
+      if (val) lines.push(f.label + ': ' + val);
+    });
+    var plan = document.getElementById('nf-plan').value.trim();
+    if (plan) lines.push('Plan: ' + plan);
+    document.getElementById('notePreview').textContent = lines.join('\n');
+  }
+
+  function clearNote() {
+    noteFields.forEach(function(f) { document.getElementById(f.id).value = ''; });
+    document.getElementById('nf-plan').value = '';
+    document.getElementById('noteDate').value = '';
+    document.getElementById('noteTime').value = '';
+    document.getElementById('nurseName').value = '';
+    updateNotePreview();
+  }
+
+  function copyNote() {
+    var text = document.getElementById('notePreview').textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      var s = document.getElementById('copySuccess');
+      s.style.display = 'block';
+      setTimeout(function() { s.style.display = 'none'; }, 2500);
+    });
+  }
+
+  updateNotePreview();
+
+  // Service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw.js');
+    });
+  }
+</script>
+</body>
+</html>
