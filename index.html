@@ -1195,8 +1195,12 @@
   }
 
   /* -- SEARCH RESULTS MODE -- */
-  /* When search is active, hide individual section headers so it reads as
-     a flat results list — not as "you've navigated to Study Skills" */
+  /* Keep the hero visible so the search bar stays accessible.
+     Collapse the decorative hero elements so it becomes a compact search bar. */
+  body.search-active .section-index { display: none !important; }
+  body.search-active .hero-badge { display: none; }
+  body.search-active .hero h1 { display: none; }
+  /* In the results area, hide section headers (so it's a flat list, not "Study Skills page") */
   #mainContent.search-active .section-header { display: none; }
   #mainContent.search-active .disclaimer { display: none; }
   #mainContent.search-active .section { margin-bottom: 1rem; }
@@ -2188,8 +2192,7 @@
   const searchClear = document.getElementById('searchClear');
 
   function enterSearchMode() {
-    document.querySelector('.hero-banner').style.display = 'none';
-    document.querySelector('.hero').style.display = 'none';
+    document.body.classList.add('search-active');
     var main = document.getElementById('mainContent');
     main.style.display = 'block';
     main.classList.add('with-sidebar');
@@ -2207,8 +2210,7 @@
   }
 
   function exitSearchMode() {
-    document.querySelector('.hero-banner').style.display = '';
-    document.querySelector('.hero').style.display = '';
+    document.body.classList.remove('search-active');
     var main = document.getElementById('mainContent');
     main.style.display = 'none';
     main.classList.remove('with-sidebar');
@@ -2487,8 +2489,7 @@
   }
 
   function showHome() {
-    document.querySelector('.hero-banner').style.display = '';
-    document.querySelector('.hero').style.display = '';
+    document.body.classList.remove('search-active');
     document.getElementById('mainContent').style.display = 'none';
     document.querySelectorAll('.section').forEach(function(s) {
       s.style.display = '';
@@ -2520,8 +2521,7 @@ function showSection(id) {
 }
 
 function showHome() {
-  document.querySelector('.hero-banner').style.display = '';
-  document.querySelector('.hero').style.display = '';
+  document.body.classList.remove('search-active');
   var main = document.getElementById('mainContent');
   main.style.display = 'none';
   main.classList.remove('with-sidebar');
