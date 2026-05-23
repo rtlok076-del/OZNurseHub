@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback & Suggestions | OzNurse Hub</title>
+
+<!-- SEO -->
+<meta name="description" content="Share your feedback, suggestions, or ideas for OzNurse Hub — a free resource site for Australian nursing students and new graduate nurses.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/feedback.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/feedback.html">
+<meta property="og:title" content="Feedback & Suggestions | OzNurse Hub">
+<meta property="og:description" content="Help us improve OzNurse Hub. Share your feedback, report issues, or suggest new content for Australian nursing students.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --coral: #e85d3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark); padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 100%; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; background: transparent;
+    border-radius: 10px; overflow: hidden; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: var(--teal-light); }
+  .header-breadcrumb {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .header-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .header-breadcrumb a:hover { color: white; }
+  .header-breadcrumb span { color: rgba(255,255,255,0.25); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 64px; left: 0; bottom: 0; width: 200px;
+    background: #0e1929;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto; z-index: 50;
+    display: flex; flex-direction: column;
+    padding: 0.5rem 0 1rem;
+  }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.22);
+    padding: 0.5rem 1rem 0.25rem;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s; border: none; background: none;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1;
+    text-decoration: none;
+  }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── MAIN ── */
+  .main { margin-left: 200px; padding: 2.5rem 2rem 4rem; max-width: 860px; }
+
+  /* ── PAGE HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
+    border-radius: 14px; padding: 1.5rem;
+    margin-bottom: 2rem; color: white;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .intro-card-icon { font-size: 2rem; flex-shrink: 0; }
+  .intro-card h2 {
+    font-family: 'Fraunces', serif; font-size: 1.1rem;
+    font-weight: 600; margin-bottom: 0.4rem;
+  }
+  .intro-card p { font-size: 0.875rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+  /* ── FEEDBACK FORM ── */
+  .form-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+  }
+  .form-card-header {
+    background: var(--sand);
+    padding: 1rem 1.5rem;
+    border-bottom: 1.5px solid var(--border);
+    font-family: 'Fraunces', serif;
+    font-size: 1rem; font-weight: 600; color: var(--dark);
+  }
+  .form-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--mid);
+  }
+  .field label .req { color: var(--coral); margin-left: 2px; }
+  .field input, .field select, .field textarea {
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--dark); outline: none;
+    transition: border-color 0.2s; background: white;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--teal); }
+  .field textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+  .field .hint { font-size: 0.75rem; color: var(--mid); }
+
+  /* Category chips */
+  .chip-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    padding: 0.4rem 0.9rem;
+    border: 1.5px solid var(--border);
+    border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+    background: white; color: var(--mid);
+    user-select: none;
+  }
+  .chip:hover { border-color: var(--teal); color: var(--teal); }
+  .chip.selected { background: var(--teal-pale); border-color: var(--teal); color: var(--teal); }
+
+  /* Rating stars */
+  .star-row { display: flex; gap: 0.4rem; }
+  .star {
+    font-size: 1.6rem; cursor: pointer;
+    transition: transform 0.1s; line-height: 1;
+    filter: grayscale(1) opacity(0.3);
+  }
+  .star.lit { filter: none; }
+  .star:hover { transform: scale(1.15); }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%; padding: 0.85rem;
+    background: var(--teal); color: white;
+    border: none; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    cursor: pointer; transition: background 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .submit-btn:hover { background: var(--teal-light); }
+  .submit-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+
+  /* Success state */
+  .success-card {
+    display: none;
+    background: var(--teal-pale);
+    border: 1.5px solid var(--teal);
+    border-radius: 14px; padding: 2.5rem;
+    text-align: center;
+  }
+  .success-card .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .success-card h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--teal); margin-bottom: 0.5rem; }
+  .success-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.82rem; line-height: 1.8;
+    margin-left: 200px;
+  }
+  footer a { color: var(--teal-light); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+    .main, footer { margin-left: 54px; }
+    .main { padding: 1.5rem 1rem 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .intro-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <div class="header-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7);">Feedback</span>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item active" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:#e6f5f3;">💬</div>
+    <h1 class="section-title">Feedback & Suggestions</h1>
+  </div>
+
+  <div class="intro-card">
+    <div class="intro-card-icon">🙏</div>
+    <div>
+      <h2>Help make OzNurse Hub better</h2>
+      <p>This site was built by a nursing student, for nursing students — and it only gets better with your input. Found something wrong? Have an idea for a new tool or resource? Just want to say hi? All feedback is read personally and genuinely appreciated.</p>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="formCard">
+    <div class="form-card-header">✏️ Share your thoughts</div>
+    <form class="form-body" id="feedbackForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST">
+
+      <!-- Name + Email -->
+      <div class="form-row">
+        <div class="field">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="e.g. Sarah">
+        </div>
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <span class="hint">Only used if you'd like a reply — never shared.</span>
+        </div>
+      </div>
+
+      <!-- Year of Study -->
+      <div class="field">
+        <label>Year of Study / Role</label>
+        <select name="year">
+          <option value="" disabled selected>Select your stage…</option>
+          <option value="Year 1">Year 1 Nursing Student</option>
+          <option value="Year 2">Year 2 Nursing Student</option>
+          <option value="Year 3">Year 3 Nursing Student</option>
+          <option value="New Grad">New Graduate Nurse</option>
+          <option value="RN">Registered Nurse</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Category chips -->
+      <div class="field">
+        <label>What's your feedback about?</label>
+        <div class="chip-group" id="chipGroup">
+          <span class="chip" onclick="toggleChip(this)">💡 Feature idea</span>
+          <span class="chip" onclick="toggleChip(this)">🐛 Something's broken</span>
+          <span class="chip" onclick="toggleChip(this)">📚 Content suggestion</span>
+          <span class="chip" onclick="toggleChip(this)">✅ General praise</span>
+          <span class="chip" onclick="toggleChip(this)">📝 Progress Note Builder</span>
+          <span class="chip" onclick="toggleChip(this)">📋 Quick Reference</span>
+          <span class="chip" onclick="toggleChip(this)">🧩 Quizzes</span>
+          <span class="chip" onclick="toggleChip(this)">📖 APA Generator</span>
+        </div>
+        <input type="hidden" name="category" id="categoryInput">
+      </div>
+
+      <!-- Overall rating -->
+      <div class="field">
+        <label>Overall rating</label>
+        <div class="star-row" id="starRow">
+          <span class="star" data-val="1" onclick="setRating(1)">⭐</span>
+          <span class="star" data-val="2" onclick="setRating(2)">⭐</span>
+          <span class="star" data-val="3" onclick="setRating(3)">⭐</span>
+          <span class="star" data-val="4" onclick="setRating(4)">⭐</span>
+          <span class="star" data-val="5" onclick="setRating(5)">⭐</span>
+        </div>
+        <input type="hidden" name="rating" id="ratingInput">
+      </div>
+
+      <!-- Message -->
+      <div class="field">
+        <label>Your Message <span class="req">*</span></label>
+        <textarea name="message" placeholder="Tell us what you think, what's missing, what's confusing, or what you love…" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Send Feedback 💬</button>
+    </form>
+  </div>
+
+  <!-- SUCCESS MESSAGE (shown after submit) -->
+  <div class="success-card" id="successCard">
+    <div class="success-icon">🎉</div>
+    <h3>Thank you so much!</h3>
+    <p>Your feedback has been received and will be read personally.<br>
+    If you left an email and asked a question, we'll get back to you soon.<br><br>
+    <a href="index.html" style="color:var(--teal);font-weight:600;">← Back to OzNurse Hub</a></p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>OzNurse Hub</strong> — A free resource directory for Australian nursing students.</p>
+  <p>Content is for educational purposes only and does not replace clinical supervision, university curriculum, or AHPRA/NMBA professional standards.</p>
+</footer>
+
+<script>
+  // ── Chip toggle ──
+  function toggleChip(el) {
+    el.classList.toggle('selected');
+    var selected = [];
+    document.querySelectorAll('.chip.selected').forEach(function(c) {
+      selected.push(c.textContent.trim());
+    });
+    document.getElementById('categoryInput').value = selected.join(', ');
+  }
+
+  // ── Star rating ──
+  var currentRating = 0;
+  function setRating(val) {
+    currentRating = val;
+    document.getElementById('ratingInput').value = val + '/5';
+    document.querySelectorAll('.star').forEach(function(s) {
+      s.classList.toggle('lit', parseInt(s.dataset.val) <= val);
+    });
+  }
+
+  // ── Form submit ──
+  var form = document.getElementById('feedbackForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successCard').style.display = 'block';
+        window.scrollTo(0, 0);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Feedback 💬';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send Feedback 💬';
+      alert('Network error. Please check your connection and try again.');
+    });
+  });
+
+  // Service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw.js');
+    });
+  }
+</script>
+</body>
+</html>
