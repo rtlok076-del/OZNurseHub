@@ -1193,6 +1193,14 @@
   @media (max-width: 640px) {
     .section-index-grid .si-card { flex: 0 0 calc(50% - 0.25rem) !important; }
   }
+
+  /* -- SEARCH RESULTS MODE -- */
+  /* When search is active, hide individual section headers so it reads as
+     a flat results list — not as "you've navigated to Study Skills" */
+  #mainContent.search-active .section-header { display: none; }
+  #mainContent.search-active .disclaimer { display: none; }
+  #mainContent.search-active .section { margin-bottom: 1rem; }
+  #mainContent.search-active .back-nav { display: none; }
 </style>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a7c6e">
@@ -1328,6 +1336,12 @@
   <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
 </nav>
 <main class="main" id="mainContent" style="display:none">
+
+  <!-- SEARCH RESULTS BANNER — shown only during active search -->
+  <div id="searchBanner" style="display:none; background:var(--teal-pale); border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:0.9rem 1.25rem; margin-bottom:1.5rem;">
+    <div style="font-family:'Fraunces',serif; font-size:1.05rem; font-weight:600; color:var(--dark);">🔍 Showing results for <span id="searchBannerQuery" style="color:var(--teal);"></span></div>
+    <div style="font-size:0.78rem; color:var(--mid); margin-top:3px;">Searching all sections &nbsp;·&nbsp; <button onclick="document.getElementById('searchInput').value=''; document.getElementById('searchInput').dispatchEvent(new Event('input'));" style="color:var(--teal); background:none; border:none; cursor:pointer; font-size:0.78rem; font-weight:600; padding:0; font-family:'DM Sans',sans-serif; text-decoration:underline;">Clear search ×</button></div>
+  </div>
 
   <div class="back-nav"><button class="back-btn" id="backBtn" onclick="showHome()">&#8592; Back to Home</button></div>
 
@@ -2174,37 +2188,44 @@
   const searchClear = document.getElementById('searchClear');
 
   function enterSearchMode() {
-    // Show main content and sidebar
     document.querySelector('.hero-banner').style.display = 'none';
     document.querySelector('.hero').style.display = 'none';
     var main = document.getElementById('mainContent');
     main.style.display = 'block';
     main.classList.add('with-sidebar');
+    main.classList.add('search-active');
     // Show ALL sections so search can find results across the whole site
     document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
     document.getElementById('sidebar').classList.add('sb-visible');
-    // Clear any active sidebar highlight
     document.querySelectorAll('.sidebar-item[data-section]').forEach(function(el) {
       el.classList.remove('sidebar-active');
     });
+    // Show the search results banner
+    var banner = document.getElementById('searchBanner');
+    if (banner) banner.style.display = 'block';
     window.scrollTo(0, 0);
   }
 
   function exitSearchMode() {
-    // Return to home
     document.querySelector('.hero-banner').style.display = '';
     document.querySelector('.hero').style.display = '';
     var main = document.getElementById('mainContent');
     main.style.display = 'none';
     main.classList.remove('with-sidebar');
+    main.classList.remove('search-active');
     document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
     document.getElementById('sidebar').classList.remove('sb-visible');
+    var banner = document.getElementById('searchBanner');
+    if (banner) banner.style.display = 'none';
     window.scrollTo(0, 0);
   }
 
   searchInput.addEventListener('input', function() {
     activeSearch = this.value.trim().toLowerCase();
     searchClear.classList.toggle('visible', activeSearch.length > 0);
+    // Update the banner query text
+    var bq = document.getElementById('searchBannerQuery');
+    if (bq) bq.textContent = '"' + this.value.trim() + '"';
     if (activeSearch.length > 0) {
       enterSearchMode();
     } else {
@@ -2504,9 +2525,13 @@ function showHome() {
   var main = document.getElementById('mainContent');
   main.style.display = 'none';
   main.classList.remove('with-sidebar');
+  main.classList.remove('search-active');
   document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
   document.getElementById('sidebar').classList.remove('sb-visible');
-  // Clear search bar when returning home
+  // Hide search banner
+  var banner = document.getElementById('searchBanner');
+  if (banner) banner.style.display = 'none';
+  // Clear search bar
   var si = document.getElementById('searchInput');
   if (si) { si.value = ''; }
   var sc = document.getElementById('searchClear');
