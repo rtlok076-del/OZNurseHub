@@ -1200,11 +1200,12 @@
   body.search-active .section-index { display: none !important; }
   body.search-active .hero-badge { display: none; }
   body.search-active .hero h1 { display: none; }
-  /* In the results area, hide section headers (so it's a flat list, not "Study Skills page") */
-  #mainContent.search-active .section-header { display: none; }
+  /* Keep section headers visible as result-group labels — just tighten spacing */
+  #mainContent.search-active .section { margin-bottom: 1.5rem; }
+  #mainContent.search-active .section-header { padding-bottom: 0.5rem; margin-bottom: 0.85rem; }
   #mainContent.search-active .disclaimer { display: none; }
-  #mainContent.search-active .section { margin-bottom: 1rem; }
   #mainContent.search-active .back-nav { display: none; }
+  #mainContent.search-active .filter-bar { display: none; }
 </style>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a7c6e">
