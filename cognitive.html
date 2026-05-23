@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognitive Impairment, Legal Orders & Wandering Safety | OzNurse Hub</title>
+
+<meta name="description" content="Australian nursing student guide to cognitive impairment, decision-making capacity, legal documents (ACD, POA, POG), SACAT Section 32 special powers, and the wandering patient alarm checklist.">
+<meta name="keywords" content="cognitive impairment nursing australia, dementia delirium nursing, decision-making capacity, advance care directive ACD, power of attorney guardianship, SACAT section 32 special powers, wandering patient nursing checklist, absconding risk nursing, legal orders nursing SA">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/cognitive.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oznursehub.com/cognitive.html">
+<meta property="og:title" content="Cognitive Impairment, Legal Orders & Wandering Safety | OzNurse Hub">
+<meta property="og:description" content="Nursing guide covering cognitive impairment types, capacity assessment, ACD, SACAT Section 32 legal orders, and interactive wandering alarm checklist for Australian nursing students.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cognitive Impairment, Legal Orders & Wandering Safety — Australian Nursing Reference",
+  "description": "Nursing guide covering cognitive impairment, decision-making capacity, ACD, POA, POG, SACAT Section 32 legal orders, and wandering patient alarm checklist.",
+  "author": { "@type": "Organization", "name": "OzNurse Hub" },
+  "publisher": { "@type": "Organization", "name": "OzNurse Hub", "url": "https://oznursehub.com" },
+  "url": "https://oznursehub.com/cognitive.html",
+  "inLanguage": "en-AU"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --purple: #7b5ea7;
+    --purple-pale: #f0ebf8;
+    --cog: #1d6fa4;
+    --cog-pale: #e8f4fd;
+  }
+
+  [data-theme="dark"] {
+    --light: #111827;
+    --white: #1f2937;
+    --dark: #f1f5f9;
+    --mid: #94a3b8;
+    --border: #374151;
+    --sand: #1e293b;
+    --teal-pale: #0d3330;
+    --purple-pale: #1e1729;
+    --cog-pale: #0c2233;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header { background: #1a2332; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; }
+  .logo-icon img { width: 36px; height: 36px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: #12a090; }
+  nav { display: flex; gap: 0.25rem; }
+  nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: 6px; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: white; background: rgba(255,255,255,0.1); }
+  .dark-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .dark-toggle:hover { background: rgba(255,255,255,0.18); }
+  @media (max-width: 768px) { nav { display: none; } }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: fixed; top: 64px; left: 0; bottom: 0; width: 200px; background: #0e1929; border-right: 1px solid rgba(255,255,255,0.07); overflow-y: auto; z-index: 50; display: flex; flex-direction: column; padding: 0.5rem 0 1rem; }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); padding: 0.5rem 1rem 0.25rem; }
+  .sidebar-item { display: flex; align-items: center; gap: 9px; padding: 0.6rem 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 600; transition: all 0.15s; text-decoration: none; border-left: 3px solid transparent; line-height: 1; }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.sidebar-active { color: #12a090; background: rgba(18,160,144,0.12); border-left-color: #12a090; }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+  }
+
+  /* ── MAIN ── */
+  .page-main { margin-left: 200px; padding: 2rem 2.5rem 4rem; }
+  @media (max-width: 768px) { .page-main { margin-left: 54px; padding: 1.25rem 1rem 3rem; } }
+
+  /* ── PAGE HEADER ── */
+  .page-header { background: linear-gradient(135deg, #0d3d5c 0%, #1a2332 55%, #0a3d35 100%); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.75rem; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: white; margin-bottom: 0.5rem; }
+  .page-header h1 em { font-style: italic; color: #93c5fd; }
+  .page-header p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 700px; }
+  .page-header-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .page-badge { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+
+  /* ── NOTICE BANNERS ── */
+  .edu-notice { background: #f3e8ff; border: 1px solid #c084fc; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.75rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.82rem; color: #581c87; line-height: 1.6; }
+  .edu-notice strong { color: #3b0764; }
+  [data-theme="dark"] .edu-notice { background: #1e1033; border-color: #7c3aed; color: #c4b5fd; }
+  [data-theme="dark"] .edu-notice strong { color: #e9d5ff; }
+  .tip-notice { background: var(--cog-pale); border-left: 4px solid var(--cog); border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: var(--dark); line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .warn-notice { background: #fff8e1; border-left: 4px solid #f6c90a; border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: #5d4037; line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .alert-notice { background: #fff1f2; border: 1.5px solid #fda4af; border-radius: 10px; padding: 0.85rem 1.1rem; font-size: 0.82rem; color: #881337; line-height: 1.7; margin-bottom: 1rem; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .alert-notice strong { color: #7f1d1d; }
+  [data-theme="dark"] .alert-notice { background: #3b0818; border-color: #be123c; color: #fecdd3; }
+  [data-theme="dark"] .alert-notice strong { color: #fecdd3; }
+
+  /* ── SECTION TITLES ── */
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
+  .content-section { margin-bottom: 2.25rem; }
+
+  /* ── GENERAL CARDS ── */
+  .info-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; }
+  .info-card-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .info-card-body { font-size: 0.84rem; color: var(--mid); line-height: 1.7; }
+  .info-card-body ul { padding-left: 1.1rem; }
+  .info-card-body li { margin-bottom: 0.35rem; }
+  .info-card-body strong { color: var(--dark); }
+
+  /* ── LAYOUT GRIDS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  @media (max-width: 900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .three-col { grid-template-columns: 1fr; } }
+
+  /* ── CONDITION CARDS ── */
+  .condition-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .condition-header { padding: 0.75rem 1.1rem; font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 0.5rem; }
+  .condition-header.blue { background: #1d6fa4; }
+  .condition-header.teal { background: var(--teal); }
+  .condition-header.amber { background: #b45309; }
+  .condition-body { padding: 0.9rem 1.1rem; font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+  .condition-body ul { padding-left: 1rem; }
+  .condition-body li { margin-bottom: 0.3rem; }
+  .condition-body strong { color: var(--dark); }
+
+  /* ── CAPACITY STEPS ── */
+  .capacity-steps { display: flex; flex-direction: column; gap: 0.65rem; }
+  .cap-step { display: flex; gap: 0.85rem; align-items: flex-start; background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; }
+  .cap-num { width: 28px; height: 28px; border-radius: 50%; background: var(--cog); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cap-body { flex: 1; font-size: 0.84rem; color: var(--dark); line-height: 1.6; }
+  .cap-body strong { color: var(--cog); }
+  [data-theme="dark"] .cap-body strong { color: #60a5fa; }
+
+  /* ── LEGAL DOCUMENT CARDS ── */
+  .legal-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .legal-header { padding: 0.75rem 1.1rem; font-family: 'Fraunces', serif; font-size: 0.98rem; font-weight: 700; }
+  .legal-header.acd { background: #e0f2fe; color: #0c4a6e; border-bottom: 2px solid #bae6fd; }
+  .legal-header.poa { background: #dcfce7; color: #14532d; border-bottom: 2px solid #bbf7d0; }
+  .legal-header.pog { background: #fef3c7; color: #78350f; border-bottom: 2px solid #fde68a; }
+  .legal-header.sacat { background: #f3e8ff; color: #3b0764; border-bottom: 2px solid #d8b4fe; }
+  .legal-header.detention { background: #fee2e2; color: #7f1d1d; border-bottom: 2px solid #fca5a5; }
+  [data-theme="dark"] .legal-header.acd { background: #0c2d47; color: #7dd3fc; border-color: #1e4d70; }
+  [data-theme="dark"] .legal-header.poa { background: #052e16; color: #86efac; border-color: #16532b; }
+  [data-theme="dark"] .legal-header.pog { background: #451a03; color: #fde68a; border-color: #78350f; }
+  [data-theme="dark"] .legal-header.sacat { background: #1e1033; color: #c4b5fd; border-color: #3b0764; }
+  [data-theme="dark"] .legal-header.detention { background: #3b0818; color: #fecdd3; border-color: #7f1d1d; }
+  .legal-body { padding: 0.9rem 1.1rem; font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+  .legal-body ul { padding-left: 1rem; }
+  .legal-body li { margin-bottom: 0.3rem; }
+  .legal-body strong { color: var(--dark); }
+
+  /* ── S32 SPECIAL POWERS ── */
+  .s32-grid { display: flex; flex-direction: column; gap: 0.85rem; }
+  .s32-card { background: var(--white); border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); }
+  .s32-header { display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1.1rem; }
+  .s32-badge { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; min-width: 80px; }
+  .s32-badge.a { color: #1d6fa4; }
+  .s32-badge.b { color: #059669; }
+  .s32-badge.c { color: #dc2626; }
+  .s32-title { font-weight: 700; font-size: 0.92rem; color: var(--dark); }
+  .s32-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 100px; margin-left: auto; white-space: nowrap; }
+  .s32-tag.blue { background: #e0f2fe; color: #0c4a6e; }
+  .s32-tag.green { background: #dcfce7; color: #14532d; }
+  .s32-tag.red { background: #fee2e2; color: #7f1d1d; }
+  [data-theme="dark"] .s32-tag.blue { background: #0c2d47; color: #7dd3fc; }
+  [data-theme="dark"] .s32-tag.green { background: #052e16; color: #86efac; }
+  [data-theme="dark"] .s32-tag.red { background: #3b0818; color: #fca5a5; }
+  .s32-body { padding: 0 1.1rem 0.9rem; font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+  .s32-body ul { padding-left: 1rem; margin-top: 0.35rem; }
+  .s32-body li { margin-bottom: 0.3rem; }
+  .s32-body strong { color: var(--dark); }
+  .s32-divider { height: 1px; background: var(--border); margin: 0 1.1rem; }
+
+  /* ── CHECKLIST ── */
+  .checklist-wrapper { background: var(--white); border: 2px solid var(--cog); border-radius: 16px; overflow: hidden; }
+  .checklist-head { background: var(--cog); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.65rem; }
+  .checklist-head-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: white; }
+  .checklist-progress { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 600; }
+  .progress-bar-wrap { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; margin: 0 1.25rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: white; border-radius: 3px; transition: width 0.3s ease; width: 0%; }
+  .checklist-body { padding: 0.75rem 0; }
+  .check-item { display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.7rem 1.25rem; border-bottom: 1px solid var(--border); transition: background 0.15s; cursor: pointer; }
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { background: var(--cog-pale); }
+  .check-item.checked { background: #f0fdf4; }
+  [data-theme="dark"] .check-item.checked { background: #052e16; }
+  .check-item.checked .check-text { color: var(--mid); text-decoration: line-through; text-decoration-color: #22c55e; }
+  .check-box { width: 22px; height: 22px; border: 2px solid var(--cog); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.15s; background: var(--white); }
+  .check-item.checked .check-box { background: #22c55e; border-color: #22c55e; }
+  .check-tick { color: white; font-size: 0.75rem; font-weight: 700; opacity: 0; transition: opacity 0.15s; }
+  .check-item.checked .check-tick { opacity: 1; }
+  .check-num { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.25); border-radius: 4px; min-width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .check-text { font-size: 0.87rem; color: var(--dark); line-height: 1.55; flex: 1; }
+  .check-sub { font-size: 0.77rem; color: var(--mid); display: block; margin-top: 0.2rem; line-height: 1.45; }
+  .checklist-foot { padding: 0.9rem 1.25rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.65rem; }
+  .checklist-status { font-size: 0.84rem; color: var(--mid); font-weight: 500; }
+  .checklist-status.all-done { color: #16a34a; font-weight: 700; }
+  .reset-btn { background: none; border: 1.5px solid var(--border); border-radius: 8px; color: var(--mid); font-size: 0.78rem; font-family: 'DM Sans', sans-serif; padding: 0.35rem 0.85rem; cursor: pointer; font-weight: 600; transition: all 0.15s; }
+  .reset-btn:hover { border-color: var(--cog); color: var(--cog); }
+
+  /* ── TAGS ── */
+  .tag-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.18rem 0.55rem; border-radius: 100px; }
+  .tag-sa { background: #e0f2fe; color: #075985; }
+  .tag-au { background: #dcfce7; color: #14532d; }
+  [data-theme="dark"] .tag-sa { background: #0c2d47; color: #7dd3fc; }
+  [data-theme="dark"] .tag-au { background: #052e16; color: #86efac; }
+
+  /* ── RESOURCE LIST ── */
+  .res-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .res-list li { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+  .res-list li:hover { border-color: var(--cog); transform: translateX(3px); }
+  .res-list a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; text-decoration: none; color: var(--dark); font-size: 0.87rem; font-weight: 500; }
+  .res-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--cog-pale); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .res-text { display: flex; flex-direction: column; }
+  .res-desc { font-size: 0.75rem; color: var(--mid); font-weight: 400; margin-top: 1px; }
+  .ext-arrow { margin-left: auto; color: var(--mid); font-size: 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer { background: #1a2332; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; line-height: 1.8; }
+  footer a { color: #12a090; text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 520px) {
+    .page-header { padding: 1.25rem 1.1rem; border-radius: 12px; }
+    .page-header h1 { font-size: 1.35rem; }
+    .page-header p { font-size: 0.82rem; }
+    .page-main { padding: 1rem 0.85rem 3rem; }
+    .section-title { font-size: 1.05rem; }
+    .info-card { padding: 0.9rem 1rem; }
+    .info-card-body { font-size: 0.82rem; }
+    .check-item { padding: 0.65rem 0.9rem; gap: 0.65rem; }
+    .check-text { font-size: 0.82rem; }
+    .check-sub { font-size: 0.72rem; }
+    .checklist-head { padding: 0.85rem 1rem; }
+    .checklist-foot { padding: 0.75rem 1rem; }
+    .s32-badge { min-width: 65px; font-size: 0.95rem; }
+    .legal-body { font-size: 0.8rem; }
+  }
+</style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<link rel="apple-touch-icon" href="icon.svg">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse Hub"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quickref.html">Quick Ref</a>
+      <a href="bloods.html">Bloods</a>
+      <a href="palliative.html">Palliative</a>
+      <a href="cognitive.html" class="active">Cognitive</a>
+      <a href="progressnote.html">Progress Note</a>
+    </nav>
+    <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
+  <a class="sidebar-item sidebar-active" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<!-- MAIN -->
+<main class="page-main">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>&#129504; Cognitive Impairment &amp; <em>Legal Orders</em></h1>
+      <p>A guide for Australian nursing students — understanding cognitive impairment, assessing decision-making capacity, legal documentation, SACAT Section 32 Special Powers, and keeping wandering patients safe.</p>
+      <div class="page-header-badges">
+        <span class="page-badge">&#127462;&#127482; Australia</span>
+        <span class="page-badge">Year 2 &amp; 3</span>
+        <span class="page-badge">SA Focus</span>
+        <span class="page-badge">Clinical Practice</span>
+        <span class="page-badge">Legal Orders</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="edu-notice">
+    <span>&#127891;</span>
+    <span><strong>Educational Resource Only:</strong> This page supports nursing student learning. Legal and clinical processes vary between health services and jurisdictions. Always follow your facility's policies, seek guidance from senior staff, and refer legal questions to social work or your legal/guardianship team.</span>
+  </div>
+
+  <!-- ═══ SECTION 1: WHAT IS COGNITIVE IMPAIRMENT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#129504; What is Cognitive Impairment?</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">Cognitive impairment refers to difficulties with memory, thinking, reasoning, language, or executive function that affect a person's ability to carry out everyday activities or make decisions. In the clinical setting, you will most commonly encounter three main causes:</p>
+    <div class="three-col">
+      <div class="condition-card">
+        <div class="condition-header blue">&#129504; Dementia</div>
+        <div class="condition-body">
+          <ul>
+            <li><strong>Progressive</strong> and usually irreversible</li>
+            <li>Affects memory, language, behaviour, judgment</li>
+            <li>Types: Alzheimer's (most common), Vascular, Lewy body, Frontotemporal</li>
+            <li>Gradual onset over months to years</li>
+            <li>Capacity may fluctuate early; typically declines over time</li>
+            <li>Consider <strong>communication adaptations</strong> — short sentences, visual cues, familiar faces</li>
+          </ul>
+        </div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-header teal">⚡ Delirium</div>
+        <div class="condition-body">
+          <ul>
+            <li><strong>Acute</strong> onset — hours to days</li>
+            <li>Fluctuating consciousness, disorientation, agitation or hypoactivity</li>
+            <li>Usually <strong>reversible</strong> with treatment of the underlying cause</li>
+            <li>Common causes: infection, medications, pain, urinary retention, constipation, dehydration, post-op</li>
+            <li>Use <strong>4AT or CAM</strong> screening tools</li>
+            <li>Non-pharmacological management first: reorient, familiar environment, mobility</li>
+          </ul>
+        </div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-header amber">&#129528; Acquired Brain Injury</div>
+        <div class="condition-body">
+          <ul>
+            <li>Occurs after birth — stroke, TBI, hypoxia, infection</li>
+            <li>Variable deficits depending on injury location and severity</li>
+            <li>May affect memory, attention, impulse control, language</li>
+            <li>Can be <strong>stable or improving</strong> with rehabilitation</li>
+            <li>Capacity assessment is essential — deficits are often domain-specific</li>
+            <li>Collaborate with OT, speech pathology, neuro rehab</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: DECISION-MAKING CAPACITY ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9878;&#65039; Assessing Decision-Making Capacity</h2>
+    <div class="tip-notice">
+      <span>&#128161;</span>
+      <span><strong>Key principle:</strong> Capacity is <strong>decision-specific</strong> and <strong>time-specific</strong>. A person may have capacity to consent to some decisions but not others, and capacity may change throughout the day (especially in delirium). <strong>Always presume capacity unless there is evidence otherwise.</strong></span>
+    </div>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">When assessing whether a person can make a specific decision, four functional abilities must be present:</p>
+    <div class="capacity-steps">
+      <div class="cap-step">
+        <div class="cap-num">1</div>
+        <div class="cap-body"><strong>Understand</strong> the information — Can the person explain the relevant information in their own words? Do they understand what is being proposed?</div>
+      </div>
+      <div class="cap-step">
+        <div class="cap-num">2</div>
+        <div class="cap-body"><strong>Retain</strong> the information — Can they hold the information long enough to make a decision? They do not need to remember it indefinitely.</div>
+      </div>
+      <div class="cap-step">
+        <div class="cap-num">3</div>
+        <div class="cap-body"><strong>Weigh up</strong> the information — Can they consider risks and benefits, and understand the consequences of their choice (including declining)?</div>
+      </div>
+      <div class="cap-step">
+        <div class="cap-num">4</div>
+        <div class="cap-body"><strong>Communicate</strong> their decision — Can they express their choice in any form (verbal, written, gesture, AAC device)?</div>
+      </div>
+    </div>
+    <div class="warn-notice" style="margin-top:1rem;">
+      <span>&#9888;&#65039;</span>
+      <span><strong>Impaired capacity ≠ refusing treatment.</strong> A person without decision-making capacity cannot legally consent — but this does not mean treatment proceeds automatically. A substitute decision-maker (SDM) must be identified in the correct order of priority, and decisions must reflect the person's known wishes, values, and best interests.</span>
+    </div>
+    <div class="info-card" style="margin-top:1rem;">
+      <div class="info-card-title">&#128101; Substitute Decision-Maker (SDM) — SA Priority Order</div>
+      <div class="info-card-body">
+        <p style="margin-bottom:0.5rem;">When a person lacks capacity, the SDM is determined in this order (first available and willing person):</p>
+        <ol style="padding-left:1.2rem;">
+          <li>Person appointed under a valid <strong>Advance Care Directive (ACD)</strong> as substitute decision-maker</li>
+          <li>Person appointed under a valid <strong>Enduring Power of Attorney (EPA)</strong> or <strong>Enduring Power of Guardianship (EPG)</strong> — if the powers apply to healthcare/personal decisions</li>
+          <li><strong>Spouse or domestic partner</strong> (if in close and continuing relationship)</li>
+          <li><strong>Adult carer</strong> (unpaid, caring for the person at the time)</li>
+          <li><strong>Adult relative</strong> — in order of closeness: parent, child, sibling, grandparent, grandchild, aunt/uncle, nephew/niece</li>
+          <li>If no SDM is available or willing → refer to <strong>SACAT / Public Advocate</strong></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: LEGAL DOCUMENTS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128196; Legal Documents — ACD, POA &amp; POG</h2>
+    <div class="two-col">
+      <div class="legal-card">
+        <div class="legal-header acd">&#128196; Advance Care Directive (ACD) <span class="tag-sa" style="font-size:0.65rem;padding:0.15rem 0.45rem;border-radius:100px;font-weight:700;margin-left:0.4rem;">SA</span></div>
+        <div class="legal-body">
+          <ul>
+            <li>A legal document made under the <em>Advance Care Directives Act 2013 (SA)</em></li>
+            <li>Allows a person to <strong>record their wishes, values, and goals</strong> for future healthcare</li>
+            <li>Can appoint a <strong>substitute decision-maker</strong> (SDM)</li>
+            <li>Can include <strong>binding refusals</strong> of treatment (must be followed even if the person would die as a result)</li>
+            <li>Must be made while the person has <strong>decision-making capacity</strong></li>
+            <li>Must be witnessed by an authorised witness (e.g. health practitioner, lawyer)</li>
+            <li>Supersedes family preferences when in conflict — <strong>the ACD takes priority</strong></li>
+            <li>Check My Health Record and hospital documentation for existing ACDs</li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal-card">
+        <div class="legal-header poa">&#128176; Enduring Power of Attorney (EPA)</div>
+        <div class="legal-body">
+          <ul>
+            <li>A legal document appointing a trusted person (the <strong>attorney</strong>) to make <strong>financial and/or property decisions</strong></li>
+            <li>In SA, a financial EPA does <strong>not</strong> extend to personal/healthcare decisions unless specifically drafted to include them</li>
+            <li>Must be registered with the <strong>SA Lands Titles Office</strong> to be used for real estate transactions</li>
+            <li>Ceases on death</li>
+            <li><strong>Nursing note:</strong> A financial EPA does not automatically give authority over medical decisions — check what the document actually authorises</li>
+            <li>The <strong>Advance Care Directive</strong> is the correct document for healthcare SDM authority in SA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal-card">
+        <div class="legal-header pog">&#129332; Enduring Power of Guardianship (EPG)</div>
+        <div class="legal-body">
+          <ul>
+            <li>Appoints a <strong>guardian</strong> to make personal/lifestyle decisions when the person lacks capacity</li>
+            <li>In SA, governed by the <em>Guardianship and Administration Act 1993 (SA)</em></li>
+            <li>Powers include: where the person lives, what health care they receive, who they associate with</li>
+            <li>Must be witnessed and signed while the person has capacity</li>
+            <li>Activated only when the person <strong>lacks decision-making capacity</strong></li>
+            <li>The guardian must act in the person's <strong>best interests</strong> and consistent with their known wishes/values</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card" style="border-color: var(--border);">
+        <div class="info-card-title">&#128269; Checking Documents in Practice</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Check <strong>My Health Record</strong> and the patient's medical record for uploaded ACD/EPA/EPG</li>
+            <li>Ask the patient (while they have capacity) if any documents exist</li>
+            <li>Ask family/next of kin — but note family cannot override a valid ACD</li>
+            <li>Contact the <strong>ACD Registry</strong> (SA Health) if needed</li>
+            <li>If documents cannot be found, document your attempts and escalate</li>
+            <li>Notify the treating team and social worker if there are concerns about decision-making capacity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: SACAT — SECTION 32 SPECIAL POWERS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9878;&#65039; SACAT — Section 32 Special Powers</h2>
+    <div class="tip-notice">
+      <span>&#129524;</span>
+      <span><strong>SACAT</strong> (South Australian Civil and Administrative Tribunal — Guardianship Board) has authority under the <em>Guardianship and Administration Act 1993 (SA)</em> to make legal orders when a person with impaired decision-making capacity needs protection. Section 32 grants <strong>Special Powers</strong> — these are significant legal interventions used when the person refuses or cannot consent.</span>
+    </div>
+    <div class="alert-notice">
+      <span>&#9888;&#65039;</span>
+      <div><strong>Important:</strong> Section 32 orders are legal instruments. As a nursing student or RN, you do not make these applications — that is the responsibility of the treating team, social worker, or hospital legal team. Your role is to understand what these orders mean clinically, document the patient's behaviour accurately, and provide safe care within the order's scope.</div>
+    </div>
+    <div class="s32-grid">
+      <div class="s32-card">
+        <div class="s32-header">
+          <div class="s32-badge a">32(a)</div>
+          <div class="s32-title">Treatment Order — Consent to Medical Treatment</div>
+          <span class="s32-tag blue">Medical Treatment</span>
+        </div>
+        <div class="s32-divider"></div>
+        <div class="s32-body">
+          <p><strong>What it does:</strong> Authorises the use of physical force (or direction) to carry out <strong>medical or dental treatment</strong> for a person who lacks decision-making capacity and is refusing or unable to consent.</p>
+          <ul>
+            <li>Applied when a person refuses necessary treatment and there is no SDM able to consent</li>
+            <li>Examples: wound care, administration of essential medications, IV access, investigations</li>
+            <li>The treatment must be in the person's <strong>best interests</strong></li>
+            <li>SACAT appoints a guardian with authority to consent, or the Tribunal itself authorises the treatment</li>
+            <li><strong>Nursing role:</strong> Document refusal behaviours accurately; provide care compassionately within the authorised scope; use minimum necessary force; prioritise dignity</li>
+          </ul>
+        </div>
+      </div>
+      <div class="s32-card">
+        <div class="s32-header">
+          <div class="s32-badge b">32(b)</div>
+          <div class="s32-title">Accommodation Order — Where the Person Resides</div>
+          <span class="s32-tag green">Accommodation</span>
+        </div>
+        <div class="s32-divider"></div>
+        <div class="s32-body">
+          <p><strong>What it does:</strong> Authorises the use of force or restriction to <strong>place a person in, or prevent them from leaving, a particular place</strong> — such as a residential aged care facility (RACF), hospital ward, or memory support unit.</p>
+          <ul>
+            <li>Used when a person is at risk of harm if they leave their current environment</li>
+            <li>Examples: person with advanced dementia who wanders into danger, refusing hospital discharge to safe place</li>
+            <li>The accommodation must be the least restrictive option appropriate for their needs</li>
+            <li>SACAT appoints a guardian with authority over accommodation decisions</li>
+            <li><strong>Nursing role:</strong> Understand the order's scope — what restrictions are permitted; ensure care environment is as normalised as possible; document incidents of attempted elopement</li>
+          </ul>
+        </div>
+      </div>
+      <div class="s32-card">
+        <div class="s32-header">
+          <div class="s32-badge c">32(c)</div>
+          <div class="s32-title">Restraint Order — Use of Force or Restraint</div>
+          <span class="s32-tag red">Restraint / Force</span>
+        </div>
+        <div class="s32-divider"></div>
+        <div class="s32-body">
+          <p><strong>What it does:</strong> Authorises the use of <strong>physical force or mechanical restraint</strong> when necessary to carry out treatment or maintain the person's safety or the safety of others, in conjunction with a 32(a) or 32(b) order.</p>
+          <ul>
+            <li>This is the most significant intervention — it directly restricises bodily autonomy</li>
+            <li>Restraint must be the <strong>least restrictive</strong> option; all alternatives must have been trialled</li>
+            <li>Examples: soft limb restraints to prevent IV removal, enabler beds, restrictive clothing</li>
+            <li>Must be regularly reviewed and documented — restraint is never indefinite</li>
+            <li>Chemical restraint (sedation) requires medical authorisation and is separate from physical restraint</li>
+            <li><strong>Nursing role:</strong> Check regularly (every 30 min minimum); assess circulation, skin integrity, distress; document rationale and observations; de-escalate and remove restraint as soon as safe to do so; ensure family are informed</li>
+          </ul>
+          <div class="warn-notice" style="margin-top:0.65rem;">
+            <span>&#128680;</span>
+            <span><strong>Restraint is a last resort.</strong> Before any physical restraint: try verbal de-escalation, environmental modification, distraction, comfort measures, and engagement of familiar persons. Document that alternatives were trialled.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: DETENTION ORDERS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128274; Detention Orders</h2>
+    <div class="info-card">
+      <div class="info-card-title">&#9878;&#65039; Mental Health Act 2009 (SA) — Involuntary Detention</div>
+      <div class="info-card-body">
+        <p style="margin-bottom:0.75rem;">Detention orders are distinct from SACAT guardianship orders and arise under <strong>mental health legislation</strong> when a person poses a risk to themselves or others due to a <strong>mental illness</strong>.</p>
+        <div class="two-col" style="margin-top:0.5rem;">
+          <div>
+            <strong>Emergency Examination Order (EEO)</strong>
+            <ul style="margin-top:0.4rem;">
+              <li>Allows police or health practitioners to take a person to an approved hospital for assessment</li>
+              <li>Does not authorise ongoing detention — triggers assessment only</li>
+              <li>Used when person is at immediate risk and unwilling to present voluntarily</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Inpatient Treatment Order (ITO)</strong>
+            <ul style="margin-top:0.4rem;">
+              <li>Authorises involuntary admission and treatment in an approved mental health facility</li>
+              <li>Made by authorised medical practitioners / psychiatrists</li>
+              <li>Reviewed by the <strong>Mental Health Tribunal</strong> within 21 days</li>
+              <li>Patient retains rights — access to advocacy, legal representation, regular review</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip-notice" style="margin-top:0.75rem;">
+          <span>&#128161;</span>
+          <span><strong>Nursing role:</strong> Understand the type of order in place. Document behaviour, mental state, and interventions accurately. Treat the person with dignity — an involuntary order does not reduce their rights to respectful care and communication. Engage the mental health liaison team / consultation liaison psychiatry (CLP) as needed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: WANDERING ALARM CHECKLIST ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128680; Wandering Patient — Alarm &amp; Safety Checklist</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">Patients with cognitive impairment may be at risk of <strong>wandering or absconding</strong> — leaving the ward or facility without the knowledge or consent of staff. When this risk is identified, the following safety checklist must be completed and documented. Work through each step below.</p>
+    <div class="warn-notice">
+      <span>&#9888;&#65039;</span>
+      <span>If a patient is <strong>actively missing</strong>, follow your facility's Missing Patient Protocol immediately. This checklist is for <em>prevention</em> — complete it as soon as wandering risk is identified, before an incident occurs.</span>
+    </div>
+
+    <div class="checklist-wrapper" style="margin-top:1rem;">
+      <div class="checklist-head">
+        <div class="checklist-head-title">&#128680; Wandering / Absconding Risk Checklist</div>
+        <div class="checklist-progress" id="checkProgress">0 of 11 complete</div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="checklist-body" id="checklistBody">
+
+        <div class="check-item" onclick="toggleCheck(this, 1)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">1</div>
+          <div class="check-text">
+            Is the patient at risk of absconding/wandering?
+            <span class="check-sub">Confirm clinical indication — consider history, diagnosis (dementia, delirium, ABI), current behaviour, and any prior absconding incidents.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 2)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">2</div>
+          <div class="check-text">
+            Spoken to family / carer — consent obtained
+            <span class="check-sub">Inform the family or carer of the wandering risk and the safety measures being put in place. Document the conversation and consent in the patient's notes.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 3)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">3</div>
+          <div class="check-text">
+            Patient moved to a room away from exit doors
+            <span class="check-sub">Allocate a bed furthest from main ward exits, stairwells, and lift access. Discuss with the Nurse in Charge / Shift Coordinator to arrange room reallocation if required.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 4)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">4</div>
+          <div class="check-text">
+            Wandering alarm &amp; wristband obtained from Clinical Manager's office
+            <span class="check-sub">Collect the door alarm and patient identification wristband. Apply wristband to patient. Set up alarm on exit door(s). Test the alarm is functioning correctly before relying on it.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 5)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">5</div>
+          <div class="check-text">
+            Alarm explained to patient (as able)
+            <span class="check-sub">Explain the wristband and alarm to the patient in simple, reassuring language — even if comprehension is uncertain. Reassure them it is to keep them safe. Document explanation attempted.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 6)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">6</div>
+          <div class="check-text">
+            All staff aware of what patient looks like
+            <span class="check-sub">Conduct a verbal handover to all ward staff (nursing, AHA, ward clerk, allied health). Ensure night staff are also informed at changeover. Consider showing a photo if available and if family consent is obtained.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 7)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">7</div>
+          <div class="check-text">
+            Patient's clothing documented in nursing notes
+            <span class="check-sub">Document exactly what the patient is wearing — including colour, type of clothing, and footwear. Update this documentation each shift or if clothing changes. This assists in rapid identification if the patient leaves the ward.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 8)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">8</div>
+          <div class="check-text">
+            'Absconder' alert added to iPM (patient management system)
+            <span class="check-sub">Add the relevant alert flag in the patient management system (iPM or equivalent) so that all clinical staff accessing the patient's record are alerted. Ensure the alert is documented with date and your name.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 9)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">9</div>
+          <div class="check-text">
+            'Keep Door Closed' signs on fire doors and main ward doors
+            <span class="check-sub">Place clearly visible signage on fire exit doors and the main ward entrance/exit doors reminding staff and visitors to keep doors closed and secured. Check doors are actually closing properly.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 10)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">10</div>
+          <div class="check-text">
+            Sign placed on patient's room door (with their name)
+            <span class="check-sub">Place a discreet identifier on the patient's room door to help staff quickly locate the patient and remind them of the wandering risk. Follow your facility's policy on confidentiality regarding door signage.</span>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 11)">
+          <div class="check-box"><span class="check-tick">&#10003;</span></div>
+          <div class="check-num" style="background:#1d6fa4;">11</div>
+          <div class="check-text">
+            Sign placed on patient's toilet door
+            <span class="check-sub">Ensure the toilet nearest the patient's room also has signage. Patients may enter the toilet and then attempt to leave via a nearby exit. Escort the patient to the toilet where possible, or ensure supervision.</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="checklist-foot">
+        <div class="checklist-status" id="checkStatus">Complete all 11 steps and document in nursing notes.</div>
+        <button class="reset-btn" onclick="resetChecklist()">&#8635; Reset Checklist</button>
+      </div>
+    </div>
+
+    <div class="tip-notice" style="margin-top:1rem;">
+      <span>&#128221;</span>
+      <span><strong>Document everything.</strong> Each step completed must be documented in the patient's nursing notes with date, time, and your name. Escalate to the Nurse in Charge if the wandering risk is high or immediate. This checklist is a guide — always follow your facility's specific Missing Patient / Wandering Patient protocol.</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7: NURSING CONSIDERATIONS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128116; Nursing Considerations</h2>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">&#128172; Communication</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Use <strong>short, simple sentences</strong> — one idea at a time</li>
+            <li>Allow extra time for processing — do not rush or finish sentences</li>
+            <li>Maintain eye contact; approach calmly from the front</li>
+            <li>Use the person's <strong>preferred name</strong></li>
+            <li>Avoid arguing about orientation — use gentle redirection</li>
+            <li>Non-verbal communication is powerful — tone, touch, posture</li>
+            <li>Consider speech pathology referral if communication is significantly impaired</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#127968; Environmental &amp; Behavioural Strategies</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Minimise environmental noise and stimulation, especially at night</li>
+            <li>Maintain consistent routines and familiar staff where possible</li>
+            <li>Ensure adequate lighting — sundowning is worsened by poor light at dusk</li>
+            <li>Encourage meaningful activity and gentle mobility</li>
+            <li>Address pain, hunger, thirst, and continence needs proactively</li>
+            <li>Involve family in care — familiar faces reduce distress</li>
+            <li>Identify and treat delirium causes early</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128221; Documentation</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Document capacity assessments — when, by whom, the decision, and rationale</li>
+            <li>Note SDM details and their relationship to the patient</li>
+            <li>Record all restraint episodes with start/end time, type, and monitoring</li>
+            <li>Document behaviour objectively — what you saw, heard, and did</li>
+            <li>Record legal orders (SACAT orders, ITO) and their scope in the care plan</li>
+            <li>Always document discussions with the treating team and any escalation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128101; Escalation</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Escalate concerns about capacity to the treating team immediately</li>
+            <li>Involve <strong>Social Work</strong> early — they navigate SACAT and legal document issues</li>
+            <li>Refer to <strong>Aged Care / Geriatric</strong> team for complex dementia presentations</li>
+            <li>Refer to <strong>CLP (Consultation Liaison Psychiatry)</strong> for delirium or mental health concerns</li>
+            <li>Contact the <strong>Nurse in Charge</strong> before applying any form of restraint</li>
+            <li>Use your facility's <strong>Rapid Response / PACE</strong> system if patient deteriorates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 8: RESOURCES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128279; Resources &amp; Further Learning</h2>
+    <ul class="res-list">
+      <li>
+        <a href="https://www.sacat.sa.gov.au" target="_blank" rel="noopener">
+          <div class="res-icon">&#9878;&#65039;</div>
+          <div class="res-text">
+            <span>SACAT — South Australian Civil &amp; Administrative Tribunal</span>
+            <span class="res-desc">Guardianship and administration orders, Section 32 Special Powers information — sacat.sa.gov.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.advancecareplanning.org.au" target="_blank" rel="noopener">
+          <div class="res-icon">&#128196;</div>
+          <div class="res-text">
+            <span>Advance Care Planning Australia</span>
+            <span class="res-desc">Guides, templates, and state-specific ACD information — advancecareplanning.org.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.dementia.org.au" target="_blank" rel="noopener">
+          <div class="res-icon">&#129504;</div>
+          <div class="res-text">
+            <span>Dementia Australia</span>
+            <span class="res-desc">Resources for clinicians, carers, and people living with dementia — dementia.org.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+topics/advance+care+directives" target="_blank" rel="noopener">
+          <div class="res-icon">&#127973;</div>
+          <div class="res-text">
+            <span>SA Health — Advance Care Directives</span>
+            <span class="res-desc">Official SA Health guidance on ACDs, forms, and processes for clinicians</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.health.sa.gov.au/mental-health" target="_blank" rel="noopener">
+          <div class="res-icon">&#129504;</div>
+          <div class="res-text">
+            <span>SA Health — Mental Health</span>
+            <span class="res-desc">Mental Health Act 2009 (SA) information, mental health services, and patient rights</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.4at.co.uk" target="_blank" rel="noopener">
+          <div class="res-icon">&#128196;</div>
+          <div class="res-text">
+            <span>4AT Delirium Assessment Tool</span>
+            <span class="res-desc">Validated rapid delirium screening tool — 4at.co.uk (free download)</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong>OzNurse Hub</strong> — Free study resource for Australian nursing students.<br>
+  Not affiliated with any university, hospital, or health service. For educational use only.<br>
+  <a href="index.html">Home</a> · <a href="feedback.html">Feedback</a> · <a href="https://oznursehub.com/sitemap.xml">Sitemap</a>
+</footer>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('darkToggleBtn');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
+  function toggleDark() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('oznurse_theme', isDark ? 'light' : 'dark');
+    var btn = document.getElementById('darkToggleBtn');
+    if (btn) btn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  }
+
+  var TOTAL = 11;
+  var checked = {};
+
+  function toggleCheck(el, num) {
+    var isChecked = el.classList.toggle('checked');
+    checked[num] = isChecked;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    var count = Object.values(checked).filter(Boolean).length;
+    var pct = Math.round((count / TOTAL) * 100);
+    document.getElementById('checkProgress').textContent = count + ' of ' + TOTAL + ' complete';
+    document.getElementById('progressBar').style.width = pct + '%';
+    var status = document.getElementById('checkStatus');
+    if (count === TOTAL) {
+      status.textContent = '✅ All steps complete — document in nursing notes!';
+      status.className = 'checklist-status all-done';
+    } else {
+      status.textContent = count + ' of ' + TOTAL + ' steps completed. Continue through the checklist.';
+      status.className = 'checklist-status';
+    }
+  }
+
+  function resetChecklist() {
+    checked = {};
+    document.querySelectorAll('.check-item').forEach(function(el) {
+      el.classList.remove('checked');
+    });
+    document.getElementById('progressBar').style.width = '0%';
+    document.getElementById('checkProgress').textContent = '0 of ' + TOTAL + ' complete';
+    var status = document.getElementById('checkStatus');
+    status.textContent = 'Complete all ' + TOTAL + ' steps and document in nursing notes.';
+    status.className = 'checklist-status';
+  }
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js')
+        .then(function (reg) { console.log('OzNurse SW registered', reg.scope); })
+        .catch(function (err) { console.log('SW registration failed:', err); });
+    });
+  }
+</script>
+</body>
+</html>
