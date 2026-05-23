@@ -276,6 +276,16 @@
     white-space: pre-wrap; font-family: 'DM Sans', monospace; min-height: 80px;
   }
 
+  /* ── DRAFT TOAST ── */
+  #draftToast {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--dark); color: white;
+    padding: 0.6rem 1.1rem; border-radius: 100px;
+    font-size: 0.82rem; font-weight: 600;
+    opacity: 0; transition: opacity 0.4s;
+    z-index: 999; pointer-events: none;
+  }
+
   /* ── SEO TEXT BLOCK ── */
   .seo-text-block {
     margin-top: 2rem; padding: 1.25rem 1.5rem;
@@ -342,6 +352,9 @@
   <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
 </nav>
 
+<!-- DRAFT SAVED TOAST -->
+<div id="draftToast"></div>
+
 <!-- MAIN CONTENT -->
 <main class="main">
 
@@ -366,6 +379,9 @@
             <div class="legal-point"><span class="lp-icon">🩺</span><div><strong>Clinical safety</strong> — Omissions or errors in documentation are a leading contributor to adverse events and near-misses in Australian hospitals.</div></div>
           </div>
           <div class="legal-rule">🇦🇺 <strong>Golden rules for Australian nursing documentation:</strong> Black pen only · Date and time every entry · Sign with full name and designation · Never erase — draw a single line through errors and initial · Never document in advance · Avoid vague language like "patient seems comfortable" — be specific and objective.</div>
+          <div class="legal-rule" style="margin-top:0.75rem;background:rgba(232,93,58,0.15);border-left-color:#e85d3a;">
+            🔒 <strong>Privacy & Confidentiality Reminder:</strong> This tool saves your draft <strong>only on your own device</strong> — no information is ever sent to or stored by OzNurse Hub. However, you are responsible for protecting patient privacy at all times. <strong>Never enter real patient names, dates of birth, or any identifying information into this tool.</strong> Use this builder for practice, learning, or as a structural guide only. Sharing real patient information outside of approved clinical systems is a serious breach of the <a href="https://www.legislation.gov.au/Series/C2004A03712" target="_blank" rel="noopener" style="color:#f4a57a;">Privacy Act 1988 (Cth)</a>, your NMBA obligations, and your health service's confidentiality policy — and may result in AHPRA investigation or legal consequences.
+          </div>
         </div>
       </div>
     </div>
@@ -379,6 +395,7 @@
         <div class="note-builder-sub">Fill in the fields relevant to your patient, then copy the completed note.</div>
       </div>
       <div class="note-builder-actions">
+        <span id="draftLabel" style="font-size:0.75rem;color:var(--mid);align-self:center;"></span>
         <button class="nb-btn nb-btn-secondary" onclick="clearNote()">Clear All</button>
         <button class="nb-btn nb-btn-primary" onclick="copyNote()">Copy Note 📋</button>
       </div>
@@ -556,8 +573,15 @@
     { id: 'nf-environment',  label: 'Environment' },
   ];
 
+  var saveTimer = null;
+
   document.querySelectorAll('.note-field textarea, .note-plan-section textarea, .note-meta-field input').forEach(function(el) {
-    el.addEventListener('input', updateNotePreview);
+    el.addEventListener('input', function() {
+      updateNotePreview();
+      // Auto-save after 800ms of no typing
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDraft, 800);
+    });
   });
 
   function updateNotePreview() {
@@ -579,13 +603,65 @@
     document.getElementById('notePreview').textContent = lines.join('\n');
   }
 
+  // ── LOCAL STORAGE DRAFT ──
+  var DRAFT_KEY = 'oznurse_progress_note_draft';
+
+  function saveDraft() {
+    var draft = {
+      date:  document.getElementById('noteDate').value,
+      time:  document.getElementById('noteTime').value,
+      nurse: document.getElementById('nurseName').value,
+      plan:  document.getElementById('nf-plan').value,
+      savedAt: new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })
+    };
+    noteFields.forEach(function(f) {
+      draft[f.id] = document.getElementById(f.id).value;
+    });
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    showDraftToast('Draft auto-saved ✓');
+    updateDraftLabel(draft.savedAt);
+  }
+
+  function loadDraft() {
+    var raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return;
+    try {
+      var draft = JSON.parse(raw);
+      document.getElementById('noteDate').value  = draft.date  || '';
+      document.getElementById('noteTime').value  = draft.time  || '';
+      document.getElementById('nurseName').value = draft.nurse || '';
+      document.getElementById('nf-plan').value   = draft.plan  || '';
+      noteFields.forEach(function(f) {
+        if (draft[f.id] !== undefined) document.getElementById(f.id).value = draft[f.id];
+      });
+      updateNotePreview();
+      if (draft.savedAt) updateDraftLabel(draft.savedAt);
+    } catch(e) {}
+  }
+
   function clearNote() {
+    if (!confirm('Clear all fields and delete your saved draft?')) return;
     noteFields.forEach(function(f) { document.getElementById(f.id).value = ''; });
     document.getElementById('nf-plan').value = '';
     document.getElementById('noteDate').value = '';
     document.getElementById('noteTime').value = '';
     document.getElementById('nurseName').value = '';
+    localStorage.removeItem(DRAFT_KEY);
     updateNotePreview();
+    updateDraftLabel(null);
+    showDraftToast('Draft cleared');
+  }
+
+  function showDraftToast(msg) {
+    var t = document.getElementById('draftToast');
+    t.textContent = msg;
+    t.style.opacity = '1';
+    setTimeout(function() { t.style.opacity = '0'; }, 2000);
+  }
+
+  function updateDraftLabel(time) {
+    var el = document.getElementById('draftLabel');
+    el.textContent = time ? '💾 Last saved ' + time : '';
   }
 
   function copyNote() {
@@ -597,6 +673,8 @@
     });
   }
 
+  // Load draft on page open
+  loadDraft();
   updateNotePreview();
 
   // Service worker
