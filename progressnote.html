@@ -134,7 +134,13 @@
   .main {
     margin-left: 200px;
     padding: 2.5rem 2rem 4rem;
-    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main > * {
+    width: 100%;
+    max-width: 900px;
   }
 
   /* ── SECTION HEADER ── */
@@ -305,6 +311,41 @@
   footer a { color: var(--teal-light); text-decoration: none; }
   footer strong { color: rgba(255,255,255,0.8); }
 
+  /* ── DARK MODE ── */
+  [data-theme="dark"] {
+    --sand: #1e2d3d;
+    --dark: #e2e8f0;
+    --mid: #a0aec0;
+    --light: #111b27;
+    --white: #1a2535;
+    --border: #2d3f52;
+  }
+  [data-theme="dark"] body { background: #111b27; color: #e2e8f0; }
+  [data-theme="dark"] .legal-banner { background: linear-gradient(135deg, #0a1520 0%, #0f2035 100%); }
+  [data-theme="dark"] .note-builder { background: #1a2535; border-color: #2d3f52; }
+  [data-theme="dark"] .note-builder-header { background: #1e2d3d; border-color: #2d3f52; }
+  [data-theme="dark"] .note-field { border-color: #2d3f52; }
+  [data-theme="dark"] .note-field textarea,
+  [data-theme="dark"] .note-meta-field input { background: #111b27; color: #e2e8f0; border-color: #2d3f52; }
+  [data-theme="dark"] .note-plan-section { border-color: #a0aec0; }
+  [data-theme="dark"] .note-preview-wrap { background: #0d1520; }
+  [data-theme="dark"] .note-preview { background: #1a2535; border-color: #2d3f52; color: #e2e8f0; }
+  [data-theme="dark"] .note-heading-label { color: #e2e8f0; }
+  [data-theme="dark"] .note-meta-field label { color: #a0aec0; }
+  [data-theme="dark"] .note-field-label { color: #e2e8f0; }
+  [data-theme="dark"] .section-header { border-color: #2d3f52; }
+  [data-theme="dark"] .section-title { color: #e2e8f0; }
+  [data-theme="dark"] .seo-text-block { background: #1a2535; border-color: var(--teal); color: #a0aec0; }
+  [data-theme="dark"] .seo-text-block h3 { color: #e2e8f0; }
+  [data-theme="dark"] footer { background: #0a1118; }
+  .theme-toggle {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; border-radius: 100px; padding: 0.3rem 0.75rem;
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .sidebar { width: 54px; }
@@ -328,10 +369,13 @@
       <div class="logo-icon"><img src="icon.svg" alt="OzNurse"></div>
       <div class="logo-text">Oz<span>Nurse</span> Hub</div>
     </a>
-    <div class="header-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span style="color:rgba(255,255,255,0.7);">Progress Note Builder</span>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+      <div class="header-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,0.7);">Progress Note Builder</span>
+      </div>
     </div>
   </div>
 </header>
@@ -676,6 +720,24 @@
   // Load draft on page open
   loadDraft();
   updateNotePreview();
+
+  // ── DARK MODE ──
+  function toggleTheme() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('oznurse_theme', newTheme);
+    document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+  // Apply saved theme on load
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
 
   // Service worker
   if ('serviceWorker' in navigator) {
