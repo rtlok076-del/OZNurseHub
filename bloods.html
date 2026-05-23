@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Test Interpretation for Nursing Students | OzNurse Hub</title>
+
+<!-- SEO: Primary Meta -->
+<meta name="description" content="Simple blood test interpretation guide for Australian nursing students. Reference ranges for FBC, electrolytes, renal function, LFT, coagulation (INR, APTT, fibrinogen), cardiac markers (troponin, BNP, D-dimer), and ABG interpretation.">
+<meta name="keywords" content="blood test interpretation nursing students Australia, FBC reference ranges, haemoglobin normal range nursing, potassium nursing, INR normal range warfarin, troponin normal range, ABG interpretation nursing, electrolytes nursing, blood results nursing, eGFR nursing">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/bloods.html">
+
+<!-- SEO: Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/bloods.html">
+<meta property="og:title" content="Blood Test Interpretation for Nursing Students — OzNurse Hub">
+<meta property="og:description" content="Reference ranges and clinical interpretation tips for FBC, biochemistry, coagulation, cardiac markers, and ABG — designed for Australian nursing students.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Blood Test Interpretation for Nursing Students",
+  "description": "Reference ranges and clinical interpretation tips for FBC, biochemistry, coagulation, cardiac markers, and ABG — for Australian nursing students.",
+  "url": "https://oznursehub.com/bloods.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "OzNurse Hub",
+    "url": "https://oznursehub.com"
+  },
+  "inLanguage": "en-AU"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark); padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 100%; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 10px; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: var(--teal-light); }
+  .header-breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 8px; }
+  .header-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .header-breadcrumb a:hover { color: white; }
+  .header-breadcrumb span { color: rgba(255,255,255,0.25); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 64px; left: 0; bottom: 0;
+    width: 200px; background: #0e1929;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto; z-index: 50;
+    display: flex; flex-direction: column;
+    padding: 0.5rem 0 1rem;
+  }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); padding: 0.5rem 1rem 0.25rem; }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; cursor: pointer;
+    color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s; border: none; background: none;
+    font-family: 'DM Sans', sans-serif; width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1; text-decoration: none;
+  }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── MAIN ── */
+  .main { margin-left: 200px; padding: 2.5rem 2rem 4rem; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); }
+
+  /* ── WARNING BANNER ── */
+  .blood-notice {
+    background: #fff8e1; border: 1px solid #f6c90a;
+    border-radius: 10px; padding: 0.85rem 1.1rem;
+    font-size: 0.83rem; color: #5a4000; margin-bottom: 2rem; line-height: 1.6;
+  }
+  .blood-notice strong { color: #3d2b00; }
+
+  /* ── BLOOD PANEL SECTION ── */
+  .blood-section { margin-top: 2.5rem; }
+  .blood-panel-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .blood-panel-header h2 {
+    font-family: 'Fraunces', serif; font-size: 1.1rem;
+    font-weight: 600; color: var(--dark);
+  }
+  .panel-badge {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem;
+    border-radius: 100px; background: var(--teal-pale); color: var(--teal);
+  }
+
+  /* ── QREF TABLE ── */
+  .qref-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.84rem; background: white;
+    border-radius: 12px; overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .qref-table th {
+    background: var(--dark); color: white;
+    padding: 0.7rem 1rem; text-align: left;
+    font-weight: 600; font-size: 0.78rem; letter-spacing: 0.03em;
+  }
+  .qref-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); }
+  .qref-table tr:last-child td { border-bottom: none; }
+  .qref-table tr:nth-child(even) td { background: var(--light); }
+  .qref-table .range { color: var(--teal); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .qref-table td.sub { padding-left: 2rem; color: var(--mid); font-size: 0.8rem; }
+  .qref-table td.sub-range { color: var(--teal); font-weight: 600; font-size: 0.8rem; }
+  .qref-table td.group-label { font-weight: 700; background: var(--teal-pale) !important; color: var(--teal); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.4rem 1rem; }
+
+  /* ── INTERPRETATION CARD ── */
+  .interp-card {
+    background: var(--teal-pale); border-radius: 12px;
+    padding: 1rem 1.25rem; margin-top: 1rem;
+    border: 1px solid rgba(10,124,110,0.15);
+  }
+  .interp-card h3 {
+    font-family: 'Fraunces', serif; font-size: 0.9rem;
+    color: var(--teal); margin-bottom: 0.7rem; font-weight: 700;
+  }
+  .interp-row { margin-bottom: 0.55rem; font-size: 0.82rem; line-height: 1.55; display: flex; gap: 0.6rem; }
+  .interp-row:last-child { margin-bottom: 0; }
+  .interp-key { font-weight: 700; color: var(--teal); min-width: 140px; flex-shrink: 0; }
+
+  /* ── GRID ── */
+  .panels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* ── ABG STEPS ── */
+  .abg-steps { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .abg-step {
+    display: flex; gap: 0.85rem; align-items: flex-start;
+    background: white; border-radius: 10px; padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border); font-size: 0.83rem; line-height: 1.5;
+  }
+  .abg-step-num {
+    background: var(--teal); color: white; font-weight: 700;
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── OVERFLOW ── */
+  .overflow-x { overflow-x: auto; border-radius: 12px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.82rem; line-height: 1.8; margin-left: 200px;
+  }
+  footer a { color: var(--teal-light); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── DARK MODE ── */
+  [data-theme="dark"] { --dark: #e2e8f0; --mid: #a0aec0; --light: #111b27; --white: #1a2535; --border: #2d3f52; }
+  [data-theme="dark"] body { background: #111b27; color: #e2e8f0; }
+  [data-theme="dark"] .qref-table { background: #1a2535; border-color: #2d3f52; }
+  [data-theme="dark"] .qref-table th { background: #0a1118; }
+  [data-theme="dark"] .qref-table td { border-color: #2d3f52; color: #e2e8f0; }
+  [data-theme="dark"] .qref-table td.sub { color: #a0aec0; }
+  [data-theme="dark"] .qref-table tr:nth-child(even) td { background: #111b27; }
+  [data-theme="dark"] .qref-table td.group-label { background: rgba(18,160,144,0.1) !important; }
+  [data-theme="dark"] .interp-card { background: rgba(18,160,144,0.08); border-color: rgba(18,160,144,0.2); }
+  [data-theme="dark"] .blood-notice { background: #2a2000; border-color: #7a5c00; color: #ffd54f; }
+  [data-theme="dark"] .blood-notice strong { color: #ffe082; }
+  [data-theme="dark"] .blood-panel-header h2 { color: #e2e8f0; }
+  [data-theme="dark"] .section-title { color: #e2e8f0; }
+  [data-theme="dark"] .section-header { border-color: #2d3f52; }
+  [data-theme="dark"] .abg-step { background: #1a2535; border-color: #2d3f52; }
+  [data-theme="dark"] footer { background: #0a1118; }
+  .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+    .main, footer { margin-left: 54px; }
+    .interp-key { min-width: 110px; }
+    .panels-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><img src="icon.svg" alt="OzNurse" style="width:36px;height:36px;border-radius:10px;display:block;"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+      <div class="header-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,0.7);">Blood Interpretation</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item active" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:#ffe6e6;">🩸</div>
+    <h1 class="section-title">Blood Test Interpretation</h1>
+  </div>
+
+  <div class="blood-notice">
+    <strong>⚠️ Important:</strong> Reference ranges below are adapted from general clinical education guidelines (Clinpath, SA Pathology).
+    Ranges <strong>vary between pathology labs</strong> and can differ by patient age, sex, and clinical context.
+    Always interpret results alongside your facility's specific reference intervals and in the context of the patient's full clinical picture.
+    When in doubt — escalate to your supervising nurse or team.
+  </div>
+
+  <p style="font-size:0.83rem;color:var(--mid);margin-bottom:0.5rem;font-style:italic;">
+    Tip: When interpreting bloods, always consider the <strong>trend</strong> (is it improving or deteriorating?) alongside the absolute value.
+  </p>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 1 — Full Blood Count (FBC)
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">🧪</span>
+      <h2>Full Blood Count (FBC) — Haematology</h2>
+      <span class="panel-badge">FBC</span>
+    </div>
+    <div class="overflow-x">
+      <table class="qref-table" style="min-width:480px;">
+        <thead><tr><th>Test</th><th>Units</th><th>Reference Range</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Haemoglobin (Hb)</strong></td><td>g/L</td><td class="range">119 – 160</td></tr>
+          <tr><td>Red Cell Count</td><td>×10¹²/L</td><td class="range">3.8 – 5.8</td></tr>
+          <tr><td>Haematocrit (HCT)</td><td>—</td><td class="range">0.35 – 0.48</td></tr>
+          <tr><td>MCV</td><td>fL</td><td class="range">80 – 100</td></tr>
+          <tr><td>MCH</td><td>pg</td><td class="range">27.0 – 32.0</td></tr>
+          <tr><td>MCHC</td><td>g/L</td><td class="range">310 – 360</td></tr>
+          <tr><td>RDW</td><td>—</td><td class="range">10.0 – 15.0</td></tr>
+          <tr><td><strong>White Cell Count (WCC)</strong></td><td>×10⁹/L</td><td class="range">4.0 – 11.0</td></tr>
+          <tr><td class="sub">Neutrophils</td><td>×10⁹/L</td><td class="sub-range range">1.7 – 7.5</td></tr>
+          <tr><td class="sub">Lymphocytes</td><td>×10⁹/L</td><td class="sub-range range">1.0 – 4.0</td></tr>
+          <tr><td class="sub">Monocytes</td><td>×10⁹/L</td><td class="sub-range range">0.0 – 1.0</td></tr>
+          <tr><td class="sub">Eosinophils</td><td>×10⁹/L</td><td class="sub-range range">0.0 – 0.5</td></tr>
+          <tr><td class="sub">Basophils</td><td>×10⁹/L</td><td class="sub-range range">0.0 – 0.3</td></tr>
+          <tr><td><strong>Platelets</strong></td><td>×10⁹/L</td><td class="range">150 – 450</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="interp-card">
+      <h3>🔎 Clinical Interpretation Tips</h3>
+      <div class="interp-row">
+        <span class="interp-key">Haemoglobin</span>
+        <span><strong>&lt;100 g/L is concerning</strong> — consider transfusion if symptomatic. Investigate the cause: GI bleeding (gastric ulcer, large bowel), renal or bone marrow dysfunction. Review anticoagulant orders.</span>
+      </div>
+      <div class="interp-row">
+        <span class="interp-key">White Cell Count</span>
+        <span><strong>↑ High</strong> → infection or inflammatory response (also order CRP). <strong>↓ Low</strong> → immunocompromised (handle with care re: infection risk).</span>
+      </div>
+      <div class="interp-row">
+        <span class="interp-key">Platelets</span>
+        <span><strong>↓ Low (&lt;150)</strong> → ↑ bleeding risk; flag before invasive procedures. <strong>↑ High (&gt;450)</strong> → may indicate clotting risk or inflammatory response.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 2 — Biochemistry
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">⚗️</span>
+      <h2>Biochemistry Panel</h2>
+      <span class="panel-badge">EUC / LFT</span>
+    </div>
+    <div class="panels-grid">
+
+      <!-- Electrolytes -->
+      <div>
+        <div style="font-weight:700;font-size:0.8rem;color:var(--teal);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Electrolytes</div>
+        <table class="qref-table">
+          <thead><tr><th>Test</th><th>Units</th><th>Reference Range</th></tr></thead>
+          <tbody>
+            <tr><td>Sodium (Na⁺)</td><td>mmol/L</td><td class="range">135 – 145</td></tr>
+            <tr><td>Potassium (K⁺)</td><td>mmol/L</td><td class="range">3.5 – 5.5</td></tr>
+            <tr><td>Chloride (Cl⁻)</td><td>mmol/L</td><td class="range">95 – 110</td></tr>
+            <tr><td>Bicarbonate (HCO₃⁻)</td><td>mmol/L</td><td class="range">20 – 32</td></tr>
+          </tbody>
+        </table>
+        <div class="interp-card" style="margin-top:0.75rem;">
+          <h3>🔎 Interpretation</h3>
+          <div class="interp-row">
+            <span class="interp-key">Sodium ↓</span>
+            <span>Hyponatraemia — can cause confusion; may need fluid restriction. Investigate cause (SIADH, diuretics, vomiting).</span>
+          </div>
+          <div class="interp-row">
+            <span class="interp-key">Potassium ↕</span>
+            <span>Out of range = <strong>cardiac arrhythmia risk</strong> — priority correction. <strong>↓ Low:</strong> treat with IV KCl mini-bags, oral Slow-K or Chlorvescent. <strong>↑ High:</strong> insulin/glucose infusion or Resonium. May be altered by refeeding syndrome.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Renal Function -->
+      <div>
+        <div style="font-weight:700;font-size:0.8rem;color:var(--teal);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Renal Function</div>
+        <table class="qref-table">
+          <thead><tr><th>Test</th><th>Units</th><th>Reference Range</th></tr></thead>
+          <tbody>
+            <tr><td>Urea</td><td>mmol/L</td><td class="range">2.5 – 7.0</td></tr>
+            <tr><td>Creatinine</td><td>µmol/L</td><td class="range">45 – 85</td></tr>
+            <tr><td>eGFR</td><td>mL/min</td><td class="range">&gt; 59</td></tr>
+            <tr><td>Uric Acid</td><td>mmol/L</td><td class="range">0.15 – 0.40</td></tr>
+          </tbody>
+        </table>
+        <div class="interp-card" style="margin-top:0.75rem;">
+          <h3>🔎 Interpretation</h3>
+          <div class="interp-row">
+            <span class="interp-key">Elevated Cr / ↓ eGFR</span>
+            <span>Impaired renal function — may be due to dehydration or nephrotoxic medications. Treat with fluids and/or hold/reduce nephrotoxic drugs (e.g. NSAIDs, certain antibiotics).</span>
+          </div>
+          <div class="interp-row">
+            <span class="interp-key">Rhabdomyolysis</span>
+            <span>If CK (creatine kinase) is significantly elevated → risk of acute kidney injury. Monitor closely.</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panels-grid -->
+
+    <!-- Liver Function -->
+    <div style="margin-top:1.5rem;">
+      <div style="font-weight:700;font-size:0.8rem;color:var(--teal);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Liver Function Tests (LFT)</div>
+      <div class="overflow-x">
+        <table class="qref-table" style="min-width:480px;">
+          <thead><tr><th>Test</th><th>Units</th><th>Reference Range</th></tr></thead>
+          <tbody>
+            <tr><td>Total Bilirubin</td><td>µmol/L</td><td class="range">3 – 15</td></tr>
+            <tr><td>Alkaline Phosphatase (ALP)</td><td>U/L</td><td class="range">20 – 105</td></tr>
+            <tr><td>Gamma-GT (GGT)</td><td>U/L</td><td class="range">5 – 35</td></tr>
+            <tr><td>LDH</td><td>U/L</td><td class="range">120 – 250</td></tr>
+            <tr><td>AST</td><td>U/L</td><td class="range">10 – 35</td></tr>
+            <tr><td>ALT</td><td>U/L</td><td class="range">5 – 30</td></tr>
+            <tr><td>Total Protein</td><td>g/L</td><td class="range">68 – 85</td></tr>
+            <tr><td>Albumin</td><td>g/L</td><td class="range">37 – 48</td></tr>
+            <tr><td>Globulin</td><td>g/L</td><td class="range">23 – 39</td></tr>
+            <tr><td>Cholesterol</td><td>mmol/L</td><td class="range">3.5 – 5.5</td></tr>
+            <tr><td>Glucose (random)</td><td>mmol/L</td><td class="range">3.6 – 7.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="interp-card">
+        <h3>🔎 Interpretation</h3>
+        <div class="interp-row">
+          <span class="interp-key">Elevated LFTs</span>
+          <span>May be medication-induced (e.g. paracetamol, statins, certain antibiotics). If LFTs are deranged, review and consider holding hepatotoxic medications. Escalate to medical team.</span>
+        </div>
+        <div class="interp-row">
+          <span class="interp-key">Low Albumin</span>
+          <span>Indicates malnutrition, chronic illness, or liver disease. Affects drug binding — can alter medication levels in the body.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other markers -->
+    <div style="margin-top:1.5rem;">
+      <div style="font-weight:700;font-size:0.8rem;color:var(--teal);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Other Biochemistry Markers</div>
+      <div class="panels-grid">
+        <table class="qref-table">
+          <thead><tr><th>Test</th><th>Units</th><th>Reference Range</th></tr></thead>
+          <tbody>
+            <tr><td>Calcium</td><td>mmol/L</td><td class="range">2.10 – 2.60</td></tr>
+            <tr><td>Corrected Calcium</td><td>mmol/L</td><td class="range">2.10 – 2.60</td></tr>
+            <tr><td>Phosphate</td><td>mmol/L</td><td class="range">0.7 – 1.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:0.5rem;font-size:0.75rem;color:var(--mid);">Calcium and phosphate may be altered in refeeding syndrome, malnutrition, or renal disease.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 3 — Coagulation
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">🩹</span>
+      <h2>Coagulation</h2>
+      <span class="panel-badge">COAGS</span>
+    </div>
+    <div class="overflow-x">
+      <table class="qref-table" style="min-width:520px;">
+        <thead><tr><th>Test</th><th>Full Name</th><th>Reference Range</th><th>Clinical Use</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>APTT</strong></td>
+            <td>Activated Partial Thromboplastin Time</td>
+            <td class="range">25 – 38 sec</td>
+            <td>General test of blood thickness; guides <strong>heparin infusion</strong> dosing</td>
+          </tr>
+          <tr>
+            <td><strong>INR</strong></td>
+            <td>International Normalised Ratio</td>
+            <td class="range">0.8 – 1.2 (therapeutic: 2–3)</td>
+            <td>Used when patient is on <strong>warfarin</strong>. Goal 2–3 depending on indication. If too high → give Vitamin K to reverse.</td>
+          </tr>
+          <tr>
+            <td><strong>Fibrinogen</strong></td>
+            <td>Clotting protein from liver</td>
+            <td class="range">1.5 – 4.0 g/L</td>
+            <td>Low fibrinogen → ↑ bleeding risk (needed to form clots)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="interp-card">
+      <h3>🔎 Key Points</h3>
+      <div class="interp-row">
+        <span class="interp-key">INR on Warfarin</span>
+        <span>Therapeutic goal is usually <strong>2–3</strong> (higher for mechanical heart valves). INR &gt;4 → significant bleeding risk. If supratherapeutic and bleeding: give IV Vitamin K or fresh frozen plasma (FFP) as directed.</span>
+      </div>
+      <div class="interp-row">
+        <span class="interp-key">APTT on Heparin</span>
+        <span>Therapeutic APTT goal is typically <strong>60–100 sec</strong> (1.5–2.5× normal). Check your facility's heparin infusion protocol for target range.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 4 — Cardiac Markers
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">❤️</span>
+      <h2>Cardiac Markers</h2>
+      <span class="panel-badge">CARDIAC</span>
+    </div>
+    <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.75rem;">
+      Bloods are a key indicator of cardiac recovery, deterioration, or diagnosis.
+    </p>
+    <div class="overflow-x">
+      <table class="qref-table" style="min-width:560px;">
+        <thead><tr><th>Test</th><th>Normal / Threshold</th><th>Elevated Indicates</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Troponin</strong></td>
+            <td class="range">&lt; 16 ng/L</td>
+            <td>Cardiac muscle distress (e.g. ischaemia, MI)</td>
+            <td>"Serial trops" preferred: on admission, 6–8 hrs post, ± next day</td>
+          </tr>
+          <tr>
+            <td><strong>Pro-BNP</strong></td>
+            <td class="range">&lt;125 ng/L (&lt;75yo)<br>&lt;450 ng/L (&gt;75yo)</td>
+            <td>Heart failure / fluid overload</td>
+            <td>Useful for diagnosing and monitoring CCF / HFrEF</td>
+          </tr>
+          <tr>
+            <td><strong>D-Dimer</strong></td>
+            <td class="range">&lt; 0.5 mg/L</td>
+            <td>Clot formation (DVT or PE)</td>
+            <td>Sensitive but not specific — elevated in many conditions incl. infection, pregnancy, post-op</td>
+          </tr>
+          <tr>
+            <td><strong>CRP</strong></td>
+            <td class="range">&lt; 5 mg/L</td>
+            <td>Infection or systemic inflammation</td>
+            <td>Used alongside WCC to assess infection response</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="interp-card">
+      <h3>🔎 Clinical Notes</h3>
+      <div class="interp-row">
+        <span class="interp-key">Rising Troponin</span>
+        <span>Suggests ongoing myocardial injury. Always assess in series — a single elevated troponin is less informative than an upward trend. Notify the medical team promptly.</span>
+      </div>
+      <div class="interp-row">
+        <span class="interp-key">D-Dimer Limits</span>
+        <span>A negative D-Dimer helps <em>rule out</em> PE/DVT in low-risk patients. A positive result needs further imaging (CTPA or ultrasound) — it does not confirm a clot on its own.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 5 — Arterial Blood Gas (ABG)
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">💨</span>
+      <h2>Arterial Blood Gas (ABG)</h2>
+      <span class="panel-badge">ABG</span>
+    </div>
+    <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.75rem;">
+      ABG provides an immediate snapshot of respiratory and metabolic status. Used in emergencies (MET calls), respiratory distress, or to assess home oxygen needs.
+    </p>
+    <div class="panels-grid">
+      <div class="overflow-x">
+        <table class="qref-table">
+          <thead><tr><th>Parameter</th><th>Reference Range</th></tr></thead>
+          <tbody>
+            <tr><td><strong>pH</strong></td><td class="range">7.35 – 7.45</td></tr>
+            <tr><td>pCO₂</td><td class="range">35 – 48 mmHg</td></tr>
+            <tr><td>pO₂</td><td class="range">83 – 108 mmHg</td></tr>
+            <tr><td>HCO₃⁻ (calc)</td><td class="range">22 – 28 mmol/L</td></tr>
+            <tr><td>Base Excess</td><td class="range">−3 to +3</td></tr>
+            <tr><td>O₂ Saturation</td><td class="range">95 – 100%</td></tr>
+            <tr><td>Sodium</td><td class="range">135 – 145 mmol/L</td></tr>
+            <tr><td>Potassium</td><td class="range">3.5 – 5.5 mmol/L</td></tr>
+            <tr><td>Chloride</td><td class="range">95 – 110 mmol/L</td></tr>
+            <tr><td>Ionised Calcium</td><td class="range">1.15 – 1.30 mmol/L</td></tr>
+            <tr><td>Creatinine</td><td class="range">60 – 115 µmol/L</td></tr>
+            <tr><td>Glucose (random)</td><td class="range">3.6 – 7.8 mmol/L</td></tr>
+            <tr><td>Lactate</td><td class="range">0.5 – 2.2 mmol/L</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="font-weight:700;font-size:0.88rem;color:var(--dark);margin-bottom:0.75rem;">⚡ Quick ABG Interpretation — 4 Steps</div>
+        <div class="abg-steps">
+          <div class="abg-step">
+            <div class="abg-step-num">1</div>
+            <div>
+              <strong>Check pH</strong><br>
+              &lt;7.35 = <strong>Acidosis</strong> &nbsp;|&nbsp; &gt;7.45 = <strong>Alkalosis</strong>
+            </div>
+          </div>
+          <div class="abg-step">
+            <div class="abg-step-num">2</div>
+            <div>
+              <strong>Check pCO₂</strong> (respiratory driver)<br>
+              ↑ pCO₂ + acidosis = <em>Respiratory Acidosis</em><br>
+              ↓ pCO₂ + alkalosis = <em>Respiratory Alkalosis</em>
+            </div>
+          </div>
+          <div class="abg-step">
+            <div class="abg-step-num">3</div>
+            <div>
+              <strong>Check HCO₃⁻</strong> (metabolic driver)<br>
+              ↓ HCO₃⁻ + acidosis = <em>Metabolic Acidosis</em><br>
+              ↑ HCO₃⁻ + alkalosis = <em>Metabolic Alkalosis</em>
+            </div>
+          </div>
+          <div class="abg-step">
+            <div class="abg-step-num">4</div>
+            <div>
+              <strong>Is it compensated?</strong><br>
+              If both pCO₂ &amp; HCO₃⁻ are abnormal → body is compensating.<br>
+              pH still abnormal = <em>partially compensated</em>.<br>
+              pH normal = <em>fully compensated</em>.
+            </div>
+          </div>
+        </div>
+        <div class="interp-card" style="margin-top:1rem;">
+          <h3>🔎 Key Tips</h3>
+          <div class="interp-row">
+            <span class="interp-key">Lactate ↑</span>
+            <span>Elevated lactate (&gt;2.2 mmol/L) indicates tissue hypoperfusion or hypoxia — a key sepsis marker. &gt;4 = severe; escalate immediately.</span>
+          </div>
+          <div class="interp-row">
+            <span class="interp-key">pO₂ ↓</span>
+            <span>Hypoxaemia — assess SpO₂, work of breathing, and oxygen delivery. Consider increasing O₂ therapy and escalating if persistent.</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panels-grid -->
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       PANEL 6 — Cognitive Impairment Screening
+       ══════════════════════════════════════ -->
+  <div class="blood-section">
+    <div class="blood-panel-header">
+      <span style="font-size:1.3rem;">🧠</span>
+      <h2>Cognitive Impairment Screening — Bloods to Order</h2>
+    </div>
+    <p style="font-size:0.83rem;color:var(--mid);margin-bottom:0.75rem;">
+      When assessing a patient for cognitive impairment (e.g. delirium workup), bloods are used to rule out treatable organic causes.
+    </p>
+    <div style="background:white;border-radius:12px;border:1.5px solid var(--border);padding:1rem 1.25rem;">
+      <div style="font-size:0.83rem;line-height:1.9;color:var(--dark);">
+        <div style="margin-bottom:0.4rem;"><strong style="color:var(--teal);">Standard bloods to request:</strong></div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem 1.5rem;">
+          <span>📌 HbA1c</span>
+          <span>📌 Lipids / Cholesterol</span>
+          <span>📌 Thyroid Function Tests (TFTs)</span>
+          <span>📌 Vitamin B12 &amp; Folate</span>
+          <span>📌 Syphilis serology</span>
+          <span>📌 Iron studies</span>
+          <span>📌 Vitamin D</span>
+          <span>📌 Calcium</span>
+          <span>📌 LFT (Liver Function)</span>
+          <span>📌 EUC (Electrolytes, Urea, Creatinine)</span>
+          <span>📌 FBC (Full Blood Count)</span>
+          <span>📌 Urine MC+S (rule out UTI)</span>
+        </div>
+        <div style="margin-top:0.75rem;font-size:0.79rem;color:var(--mid);">
+          These tests help rule out organic causes of cognitive change. Many older patients have dietary deficiencies
+          that contribute to cognitive impairment — correcting these with supplements may improve function.
+          Always also consider UTI as a common reversible cause of acute confusion in older adults.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SEO text block -->
+  <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:#f8fafb;border-left:3px solid #0a7c6e;border-radius:0 8px 8px 0;font-size:0.82rem;color:#4a5568;line-height:1.7;">
+    <h2 style="font-size:0.9rem;font-weight:700;color:#1a2332;margin-bottom:0.4rem;">Blood Test Interpretation Guide for Australian Nursing Students</h2>
+    <p>
+      This page provides a concise blood test interpretation guide for Australian nursing students and new graduate nurses.
+      It covers Full Blood Count (FBC/haematology) including haemoglobin, white cell count and platelets;
+      biochemistry panels including electrolytes (sodium, potassium), renal function (urea, creatinine, eGFR),
+      and liver function tests (ALP, GGT, AST, ALT, albumin);
+      coagulation (INR for warfarin, APTT for heparin, fibrinogen);
+      cardiac markers (troponin, Pro-BNP, D-dimer, CRP);
+      arterial blood gas (ABG) interpretation with a 4-step guide;
+      and a cognitive impairment screening blood panel.
+      Reference ranges are adapted from Clinpath (SA Pathology) general guidelines — always verify with your facility's lab.
+    </p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>OzNurse Hub</strong> — A free resource directory for Australian nursing students.</p>
+  <p>Content is for educational purposes only. Always interpret results with your clinical team and verify against your facility's reference ranges.</p>
+  <p>Reference ranges adapted from clinical education guidelines (Clinpath SA). Not a substitute for clinical supervision or AHPRA/NMBA standards.</p>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('oznurse_theme', newTheme);
+    document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
+</script>
+</body>
+</html>
