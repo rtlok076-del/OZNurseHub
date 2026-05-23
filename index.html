@@ -2166,9 +2166,43 @@
   const searchInput = document.getElementById('searchInput');
   const searchClear = document.getElementById('searchClear');
 
+  function enterSearchMode() {
+    // Show main content and sidebar
+    document.querySelector('.hero-banner').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    var main = document.getElementById('mainContent');
+    main.style.display = 'block';
+    main.classList.add('with-sidebar');
+    // Show ALL sections so search can find results across the whole site
+    document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
+    document.getElementById('sidebar').classList.add('sb-visible');
+    // Clear any active sidebar highlight
+    document.querySelectorAll('.sidebar-item[data-section]').forEach(function(el) {
+      el.classList.remove('sidebar-active');
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function exitSearchMode() {
+    // Return to home
+    document.querySelector('.hero-banner').style.display = '';
+    document.querySelector('.hero').style.display = '';
+    var main = document.getElementById('mainContent');
+    main.style.display = 'none';
+    main.classList.remove('with-sidebar');
+    document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
+    document.getElementById('sidebar').classList.remove('sb-visible');
+    window.scrollTo(0, 0);
+  }
+
   searchInput.addEventListener('input', function() {
     activeSearch = this.value.trim().toLowerCase();
     searchClear.classList.toggle('visible', activeSearch.length > 0);
+    if (activeSearch.length > 0) {
+      enterSearchMode();
+    } else {
+      exitSearchMode();
+    }
     applyFilters();
   });
 
@@ -2176,6 +2210,7 @@
     searchInput.value = '';
     activeSearch = '';
     this.classList.remove('visible');
+    exitSearchMode();
     applyFilters();
   });
 
@@ -2464,6 +2499,12 @@ function showHome() {
   main.classList.remove('with-sidebar');
   document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
   document.getElementById('sidebar').classList.remove('sb-visible');
+  // Clear search bar when returning home
+  var si = document.getElementById('searchInput');
+  if (si) { si.value = ''; }
+  var sc = document.getElementById('searchClear');
+  if (sc) { sc.classList.remove('visible'); }
+  activeSearch = '';
   window.scrollTo(0, 0);
   if (history.pushState) history.pushState(null, '', window.location.pathname);
 }
