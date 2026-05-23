@@ -226,6 +226,44 @@
   [data-theme="dark"] .tag-au { background: #052e16; color: #86efac; }
   [data-theme="dark"] .tag-critical { background: #450a0a; color: #fca5a5; }
 
+  /* ── CONTENT WARNING BANNER ── */
+  .cw-banner { background: #fff8e6; border: 1.5px solid #f0a830; border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.75rem; }
+  [data-theme="dark"] .cw-banner { background: #2a1e06; border-color: #c07a10; }
+  .cw-header { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem; cursor: pointer; user-select: none; }
+  .cw-header-left { display: flex; align-items: center; gap: 0.65rem; flex: 1; }
+  .cw-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: #7c4a00; }
+  [data-theme="dark"] .cw-title { color: #f0c060; }
+  .cw-toggle-btn { background: none; border: 1.5px solid #f0a830; border-radius: 6px; color: #9a6000; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; flex-shrink: 0; }
+  [data-theme="dark"] .cw-toggle-btn { color: #f0c060; border-color: #c07a10; background: rgba(240,160,48,0.08); }
+  .cw-body { font-size: 0.84rem; color: #5a3a00; line-height: 1.7; }
+  [data-theme="dark"] .cw-body { color: #d4a855; }
+  .cw-body p { margin-bottom: 0.55rem; }
+  .cw-body p:last-child { margin-bottom: 0; }
+  .cw-body strong { color: #7c4a00; }
+  [data-theme="dark"] .cw-body strong { color: #f0c060; }
+  .cw-supports { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .cw-chip { background: #fff3d0; border: 1px solid #f0a830; border-radius: 100px; padding: 0.25rem 0.75rem; font-size: 0.76rem; font-weight: 600; color: #7c4a00; white-space: nowrap; }
+  [data-theme="dark"] .cw-chip { background: #3a2200; border-color: #c07a10; color: #f0c060; }
+  .cw-hidden { display: none; }
+
+  /* ── MOBILE IMPROVEMENTS ── */
+  @media (max-width: 520px) {
+    .page-header { padding: 1.25rem 1.1rem; border-radius: 12px; }
+    .page-header h1 { font-size: 1.35rem; }
+    .page-header p { font-size: 0.82rem; }
+    .page-main { padding: 1rem 0.85rem 3rem; }
+    .section-title { font-size: 1.05rem; }
+    .phase-grid { grid-template-columns: 1fr 1fr !important; }
+    .stat-grid { grid-template-columns: 1fr 1fr !important; }
+    .capcs-box { gap: 0.85rem; padding: 0.9rem 1rem; }
+    .med-table { font-size: 0.78rem; }
+    .med-table td, .med-table th { padding: 0.5rem 0.65rem; }
+    .info-card { padding: 0.9rem 1rem; }
+    .info-card-body { font-size: 0.82rem; }
+    .cw-supports { gap: 0.4rem; }
+    .cw-chip { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
+  }
+
   /* ── FOOTER ── */
   footer { background: #1a2332; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; line-height: 1.8; }
   footer a { color: #12a090; text-decoration: none; }
@@ -270,6 +308,7 @@
   <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
   <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
   <a class="sidebar-item sidebar-active" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
+  <a class="sidebar-item" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
   <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
   <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
   <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
@@ -299,6 +338,29 @@
   <div class="edu-notice">
     <span>&#127891;</span>
     <span><strong>Educational Resource Only:</strong> This page supports nursing student learning and reference. Clinical decisions must always be guided by your institution's policies, clinical supervisors, and the patient's individual goals of care. Processes may vary between health services.</span>
+  </div>
+
+  <!-- CONTENT WARNING BANNER -->
+  <div class="cw-banner" id="cwBanner">
+    <div class="cw-header" onclick="toggleCW()">
+      <div class="cw-header-left">
+        <span style="font-size:1.3rem;">🧡</span>
+        <span class="cw-title">Content Notice — Sensitive Topic</span>
+      </div>
+      <button class="cw-toggle-btn" id="cwToggleBtn" aria-expanded="true">Hide ▲</button>
+    </div>
+    <div class="cw-body" id="cwBody">
+      <p><strong>This page covers death, dying, and end of life care</strong> — topics that can bring up strong emotions, grief, or personal experiences. It is completely normal to feel affected by this content.</p>
+      <p>🌏 <strong>Cultural awareness:</strong> Attitudes to death, dying, and discussing terminal illness vary greatly across cultures and communities. What feels open and informative in one cultural context may feel disrespectful or distressing in another. Approach patients and families with curiosity, humility, and without assumptions.</p>
+      <p>💬 <strong>Please debrief.</strong> After engaging with this content — or after difficult clinical experiences — take time to check in with yourself. Talk to a peer, clinical supervisor, educator, or counsellor. You don't have to process this alone.</p>
+      <div class="cw-supports">
+        <span class="cw-chip">📞 Lifeline — 13 11 14</span>
+        <span class="cw-chip">📞 Beyond Blue — 1300 22 4636</span>
+        <span class="cw-chip">🌐 nmsupport.org.au</span>
+        <span class="cw-chip">🎓 Your university counselling service</span>
+        <span class="cw-chip">🏥 Employee Assistance Program (EAP)</span>
+      </div>
+    </div>
   </div>
 
   <!-- ═══ SECTION 1: WHAT IS PALLIATIVE CARE ═══ -->
@@ -907,7 +969,7 @@
   <div class="content-section">
     <h2 class="section-title">&#128279; Key Resources</h2>
     <ul class="res-list">
-      <li><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/services/community+and+specialised+services/voluntary+assisted+dying/voluntary+assisted+dying+in+south+australia" target="_blank" rel="noopener"><div class="res-icon">&#9878;&#65039;</div><div class="res-text"><span>Voluntary Assisted Dying — SA Health</span><span class="res-desc">Official information on the VAD Act 2021 (SA) — legal from 31 January 2023</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/conditions/end+of+life+care/voluntary+assisted+dying" target="_blank" rel="noopener"><div class="res-icon">&#9878;&#65039;</div><div class="res-text"><span>Voluntary Assisted Dying — SA Health</span><span class="res-desc">Official information on the VAD Act 2021 (SA) — legal from 31 January 2023</span></div><span class="ext-arrow">&#8599;</span></a></li>
       <li><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+topics/palliative+care" target="_blank" rel="noopener"><div class="res-icon">&#127973;</div><div class="res-text"><span>SA Health Palliative Care Resources</span><span class="res-desc">Advance Care Directives, EOL care pathways &amp; clinical guidelines for SA</span></div><span class="ext-arrow">&#8599;</span></a></li>
       <li><a href="https://palliativecaresa.org.au" target="_blank" rel="noopener"><div class="res-icon">&#127807;</div><div class="res-text"><span>Palliative Care SA (PCSA)</span><span class="res-desc">SA peak body — education, advocacy &amp; resources for palliative care in South Australia</span></div><span class="ext-arrow">&#8599;</span></a></li>
       <li><a href="https://palliativecare.org.au" target="_blank" rel="noopener"><div class="res-icon">&#127462;&#127482;</div><div class="res-text"><span>Palliative Care Australia</span><span class="res-desc">National peak body — standards, advocacy &amp; 'What Matters Most' conversation tool</span></div><span class="ext-arrow">&#8599;</span></a></li>
@@ -942,6 +1004,14 @@
     localStorage.setItem('oznurse_theme', isDark ? 'light' : 'dark');
     var btn = document.getElementById('darkToggleBtn');
     if (btn) btn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  }
+  function toggleCW() {
+    var body = document.getElementById('cwBody');
+    var btn = document.getElementById('cwToggleBtn');
+    if (!body || !btn) return;
+    var hidden = body.classList.toggle('cw-hidden');
+    btn.textContent = hidden ? 'Show ▼' : 'Hide ▲';
+    btn.setAttribute('aria-expanded', hidden ? 'false' : 'true');
   }
 </script>
 <script>
