@@ -221,6 +221,22 @@
   footer a { color: var(--teal-light); text-decoration: none; }
   footer strong { color: rgba(255,255,255,0.8); }
 
+  /* ── DARK MODE ── */
+  [data-theme="dark"] { --dark: #e2e8f0; --mid: #a0aec0; --light: #111b27; --white: #1a2535; --border: #2d3f52; }
+  [data-theme="dark"] body { background: #111b27; color: #e2e8f0; }
+  [data-theme="dark"] .form-card { background: #1a2535; border-color: #2d3f52; }
+  [data-theme="dark"] .form-card-header { background: #1e2d3d; border-color: #2d3f52; color: #e2e8f0; }
+  [data-theme="dark"] .field input, [data-theme="dark"] .field select, [data-theme="dark"] .field textarea { background: #111b27; color: #e2e8f0; border-color: #2d3f52; }
+  [data-theme="dark"] .field label { color: #a0aec0; }
+  [data-theme="dark"] .chip { background: #1a2535; border-color: #2d3f52; color: #a0aec0; }
+  [data-theme="dark"] .chip.selected { background: #0a2e2a; border-color: var(--teal); color: var(--teal-light); }
+  [data-theme="dark"] .section-title { color: #e2e8f0; }
+  [data-theme="dark"] .section-header { border-color: #2d3f52; }
+  [data-theme="dark"] .success-card { background: #0a2e2a; border-color: var(--teal); }
+  [data-theme="dark"] footer { background: #0a1118; }
+  .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .sidebar { width: 54px; }
@@ -243,10 +259,13 @@
       <div class="logo-icon"><img src="icon.svg" alt="OzNurse"></div>
       <div class="logo-text">Oz<span>Nurse</span> Hub</div>
     </a>
-    <div class="header-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span style="color:rgba(255,255,255,0.7);">Feedback</span>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+      <div class="header-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,0.7);">Feedback</span>
+      </div>
     </div>
   </div>
 </header>
@@ -281,7 +300,7 @@
     <div class="intro-card-icon">🙏</div>
     <div>
       <h2>Help make OzNurse Hub better</h2>
-      <p>This site was built by a nurse, for nursing students — and it only gets better with your input. Found something wrong? Have an idea for a new tool or resource? Just want to say hi? All feedback is read personally and genuinely appreciated.</p>
+      <p>This site was built by a nursing student, for nursing students — and it only gets better with your input. Found something wrong? Have an idea for a new tool or resource? Just want to say hi? All feedback is read personally and genuinely appreciated.</p>
     </div>
   </div>
 
@@ -425,6 +444,23 @@
       alert('Network error. Please check your connection and try again.');
     });
   });
+
+  // ── DARK MODE ──
+  function toggleTheme() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('oznurse_theme', newTheme);
+    document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
 
   // Service worker
   if ('serviceWorker' in navigator) {
