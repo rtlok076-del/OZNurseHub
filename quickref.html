@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nursing Quick Reference — Vital Signs, GCS, Abbreviations | OzNurse Hub</title>
+<title>Nursing Quick Reference — Vital Signs, Lung Pathologies, Medical Terms & PBS Drugs | OzNurse Hub</title>
 
 <!-- SEO: Primary Meta -->
-<meta name="description" content="Free quick reference tables for Australian nursing students. Normal adult vital signs ranges, Glasgow Coma Scale (GCS) scoring, common nursing abbreviations (PRN, QID, IDC, ISBAR) and more.">
-<meta name="keywords" content="normal adult vital signs Australia, GCS Glasgow Coma Scale nursing, nursing abbreviations list, nursing quick reference card, clinical reference nursing students, blood pressure normal range nursing">
+<meta name="description" content="Free quick reference tables for Australian nursing students: normal adult vital signs, GCS, nursing abbreviations, lung pathologies (PE, pleural effusion, APO), medical terminology prefixes and suffixes, and top PBS drugs 2024–25.">
+<meta name="keywords" content="normal adult vital signs Australia, GCS Glasgow Coma Scale nursing, nursing abbreviations list, lung pathologies nursing PE APO pleural effusion, medical terminology prefixes suffixes nursing, top PBS drugs Australia 2024, nursing quick reference card">
 <meta name="robots" content="index, follow">
 <meta name="author" content="OzNurse Hub">
 <link rel="canonical" href="https://oznursehub.com/quickref.html">
@@ -15,8 +15,8 @@
 <!-- SEO: Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oznursehub.com/quickref.html">
-<meta property="og:title" content="Nursing Quick Reference Tables — Vital Signs, GCS & Abbreviations">
-<meta property="og:description" content="Free quick reference tables for Australian nursing students: normal vital signs ranges, GCS scoring guide, and common nursing abbreviations.">
+<meta property="og:title" content="Nursing Quick Reference — Vital Signs, Lung Pathologies, Medical Terms & PBS Drugs">
+<meta property="og:description" content="Free quick reference tables for Australian nursing students: vital signs, GCS, abbreviations, lung pathologies, medical terminology, and top PBS drugs 2024–25.">
 <meta property="og:image" content="https://oznursehub.com/banner.png">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="OzNurse Hub">
@@ -54,10 +54,7 @@
     display: flex; align-items: center;
     justify-content: space-between; height: 64px;
   }
-  .logo {
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-icon {
     width: 36px; height: 36px;
     background: var(--teal-light); border-radius: 10px;
@@ -77,8 +74,7 @@
   /* ── SIDEBAR ── */
   .sidebar {
     position: fixed; top: 64px; left: 0; bottom: 0;
-    width: 200px;
-    background: #0e1929;
+    width: 200px; background: #0e1929;
     border-right: 1px solid rgba(255,255,255,0.07);
     overflow-y: auto; z-index: 50;
     display: flex; flex-direction: column;
@@ -108,12 +104,9 @@
   .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   /* ── MAIN ── */
-  .main {
-    margin-left: 200px;
-    padding: 2.5rem 2rem 4rem;
-  }
+  .main { margin-left: 200px; padding: 2.5rem 2rem 4rem; }
 
-  /* ── PAGE HEADER ── */
+  /* ── SECTION HEADER ── */
   .section-header {
     display: flex; align-items: center; gap: 12px;
     margin-bottom: 1.5rem; padding-bottom: 0.75rem;
@@ -132,15 +125,10 @@
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.5rem;
   }
-  .table-block h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1rem; margin-bottom: 0.75rem; color: var(--dark);
-  }
-  .table-block p {
-    font-size: 0.72rem; color: var(--mid); margin-top: 0.5rem;
-  }
+  .table-block h3 { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 0.75rem; color: var(--dark); }
+  .table-block p { font-size: 0.72rem; color: var(--mid); margin-top: 0.5rem; }
 
-  /* ── QUICK REF TABLE ── */
+  /* ── QREF TABLE ── */
   .qref-table {
     width: 100%; border-collapse: collapse;
     font-size: 0.85rem; background: white;
@@ -152,13 +140,36 @@
     padding: 0.7rem 1rem; text-align: left;
     font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;
   }
-  .qref-table td {
-    padding: 0.65rem 1rem;
-    border-bottom: 1px solid var(--border); color: var(--dark);
-  }
+  .qref-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); }
   .qref-table tr:last-child td { border-bottom: none; }
   .qref-table tr:nth-child(even) td { background: var(--light); }
   .qref-table .normal { color: var(--teal); font-weight: 600; }
+
+  /* ── WIDE SECTIONS ── */
+  .wide-section { margin-top: 2.5rem; }
+  .overflow-x { overflow-x: auto; border-radius: 12px; }
+  .qref-table.lung-table { min-width: 700px; }
+  .qref-table.lung-table th:first-child { width: 130px; }
+  .qref-table.lung-table td:first-child { font-weight: 700; color: var(--teal); font-size: 0.83rem; }
+  .qref-table.lung-table td { font-size: 0.83rem; vertical-align: top; line-height: 1.5; }
+
+  /* ── TERMS SEARCH ── */
+  .terms-search {
+    padding: 0.55rem 0.9rem; width: 100%; max-width: 360px;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    background: var(--white); color: var(--dark);
+    margin-bottom: 0.9rem; outline: none; transition: border-color 0.2s;
+  }
+  .terms-search:focus { border-color: var(--teal); }
+
+  /* ── CITATION ── */
+  .citation-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--mid); line-height: 1.6; }
+  .citation-note a { color: var(--teal); text-decoration: none; }
+  .citation-note a:hover { text-decoration: underline; }
+
+  /* ── PBS GRID ── */
+  .pbs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 0.5rem; }
 
   /* ── FOOTER ── */
   footer {
@@ -181,6 +192,8 @@
   [data-theme="dark"] .section-header { border-color: #2d3f52; }
   [data-theme="dark"] .section-title { color: #e2e8f0; }
   [data-theme="dark"] footer { background: #0a1118; }
+  [data-theme="dark"] .terms-search { background: #1a2535; color: #e2e8f0; border-color: #2d3f52; }
+  [data-theme="dark"] .citation-note { color: #a0aec0; }
   .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 600; }
   .theme-toggle:hover { background: rgba(255,255,255,0.2); }
 
@@ -224,23 +237,29 @@
   <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
   <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
   <a class="sidebar-item active" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
-  <a class="sidebar-item" href="index.html#progressnote"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
   <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
   <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
   <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
 </nav>
 
 <!-- MAIN CONTENT -->
 <main class="main">
 
+  <!-- ══════════════════════════════════════
+       SECTION 1 — Quick Reference Tables
+       ══════════════════════════════════════ -->
   <div class="section-header">
     <div class="section-icon" style="background:#fff3e0;">📋</div>
-    <h2 class="section-title">Quick Reference Tables</h2>
+    <h1 class="section-title">Quick Reference Tables</h1>
   </div>
 
   <div class="tables-grid">
 
-    <!-- ── VITAL SIGNS ── -->
+    <!-- Vital Signs -->
     <div class="table-block">
       <h3>🩺 Normal Adult Vital Signs</h3>
       <table class="qref-table">
@@ -258,7 +277,7 @@
       <p>🌐 Values based on international consensus; confirm with your facility's policy.</p>
     </div>
 
-    <!-- ── ABBREVIATIONS ── -->
+    <!-- Abbreviations -->
     <div class="table-block">
       <h3>📝 Common Nursing Abbreviations</h3>
       <table class="qref-table">
@@ -279,7 +298,7 @@
       <p>🇦🇺 Verify abbreviations with your specific health facility's approved list.</p>
     </div>
 
-    <!-- ── GCS ── -->
+    <!-- GCS -->
     <div class="table-block">
       <h3>🧠 Glasgow Coma Scale (GCS)</h3>
       <table class="qref-table">
@@ -305,17 +324,228 @@
       <p>🌐 Teasdale &amp; Jennett, 1974. Full score = 15. Escalate ≤13.</p>
     </div>
 
-    <!-- ── ADD NEW TABLES BELOW THIS LINE ── -->
+  </div><!-- /tables-grid -->
 
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — Lung Pathologies
+       ══════════════════════════════════════ -->
+  <div class="wide-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f4fd;">🫁</div>
+      <h2 class="section-title">Lung Pathologies</h2>
+    </div>
+    <p style="font-size:0.83rem;color:var(--mid);margin-bottom:0.9rem;">
+      <strong>Note on "PE":</strong> PE most commonly refers to <em>Pulmonary Embolism</em>, but may also mean <em>Pleural Effusion</em>.
+      In some American literature it means Pulmonary Oedema, and in maternity/NICU contexts it refers to pre-eclampsia.
+    </p>
+    <div class="overflow-x">
+      <table class="qref-table lung-table">
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th>What is it?</th>
+            <th>How does it present?</th>
+            <th>How do we diagnose it?</th>
+            <th>What do we do to treat it?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pulmonary Embolism (PE)</td>
+            <td>Blood clot in the pulmonary arteries of the lungs. Usually from a DVT in the leg — caused by immobility in hospital, hormones, weight, or blood clotting issues.</td>
+            <td>Chest pain (especially on inspiration), ↓SpO₂, ↑HR &amp; RR, swollen leg</td>
+            <td>CT Pulmonary Angiogram (CTPA), VQ Scan, D-Dimer blood test. Leg DVT diagnosed by ultrasound.</td>
+            <td>Anticoagulation — Sub-cut Clexane (1mg/kg BD) then oral NOAC (apixaban/rivaroxaban). If severe (e.g. saddle PE): restricted mobility + heparin infusion.</td>
+          </tr>
+          <tr>
+            <td>Pleural Effusion (Pl. Eff)</td>
+            <td>Increased fluid between the pleural sac and lung. Can be due to trauma, lung cancer, or be spontaneous.</td>
+            <td>Shortness of breath, ↓SpO₂. Can develop slowly over days/weeks — may not be obvious at first.</td>
+            <td>Chest X-Ray</td>
+            <td>Depends on size. Sometimes diuretics. Often insertion of chest drain (UWSD or pigtail drain). If significant and persistent: talc pleurodesis or surgery.</td>
+          </tr>
+          <tr>
+            <td>Pulmonary Oedema (APO)</td>
+            <td>Build-up of fluid in the lungs (alveoli). Usually due to CCF and fluid overload. Anticipate in patients with cardiomyopathy, valve issues (e.g. MR), HFrEF (EF&lt;60), or renal disease.</td>
+            <td>Shortness of breath, ↓SpO₂, ↑RR, unable to lie flat, peripheral oedema. Can develop quickly or over several hours.</td>
+            <td>Increased JVP (distended neck vein), Chest X-Ray</td>
+            <td>IV diuretics, fluid restriction, therapeutic oxygen, upright patient positioning. Stop any IVT running. If severe: BiPAP / NHFO to help push fluid out.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="citation-note">📖 Content adapted from: E. Iussa, Clinical Facilitator (Feb 2024). For educational purposes only — always confirm management with your clinical team and relevant guidelines.</p>
   </div>
 
-  <!-- SEO text — crawlable context for Google -->
-  <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:#f8fafb;border-left:3px solid #0a7c6e;border-radius:0 8px 8px 0;font-size:0.82rem;color:#4a5568;line-height:1.7;">
-    <h2 style="font-size:0.9rem;font-weight:700;color:#1a2332;margin-bottom:0.4rem;">Nursing Quick Reference Guide for Australian Students & New Grads</h2>
-    <p>
-      This quick reference page provides the essential clinical values every Australian nursing student and new graduate nurse needs to know during placement and clinical practice. The normal adult vital signs table covers temperature, heart rate, blood pressure, respiratory rate, SpO₂ oxygen saturation, blood glucose level (BGL) in Australian mmol/L units, and Glasgow Coma Scale (GCS). These ranges are based on international consensus guidelines and should always be verified against your specific facility's clinical policies and the <a href="https://www.safetyandquality.gov.au" target="_blank" rel="noopener" style="color:#0a7c6e;">Australian Commission on Safety and Quality in Health Care</a> standards. The nursing abbreviations list includes common terms used in Australian hospital documentation including PRN, QID, TDS, IDC, NGT, NBM, PCA, and BSL/BGL — always verify approved abbreviations with your health service.
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — Medical Terminology
+       ══════════════════════════════════════ -->
+  <div class="wide-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#f0e6ff;">🔤</div>
+      <h2 class="section-title">Medical Terminology — Prefixes &amp; Suffixes</h2>
+    </div>
+    <input type="search" class="terms-search" id="termsSearch"
+      placeholder="🔍  Filter (e.g. brady, -oma, nephro)…"
+      oninput="filterTerms(this.value)"
+      aria-label="Filter medical terminology">
+    <div class="overflow-x">
+      <table class="qref-table" id="termsTable">
+        <thead><tr><th>Prefix / Suffix</th><th>Definition</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>a-</td><td>not, absence of</td><td>Avascular</td></tr>
+          <tr><td>-aemia</td><td>related to blood</td><td>Bacteraemia</td></tr>
+          <tr><td>-algia</td><td>pain</td><td>Hyperalgia</td></tr>
+          <tr><td>angio-</td><td>vessel</td><td>Angiogram</td></tr>
+          <tr><td>ante-</td><td>before</td><td>Antenatal</td></tr>
+          <tr><td>anti-</td><td>attacks, treats condition</td><td>Antibacterial</td></tr>
+          <tr><td>arthro-</td><td>related to a joint</td><td>Atherosclerosis</td></tr>
+          <tr><td>-ase</td><td>an enzyme</td><td>Lipase</td></tr>
+          <tr><td>baro-</td><td>pressure</td><td>Baroreceptor</td></tr>
+          <tr><td>bi-</td><td>two of</td><td>Bifurcation</td></tr>
+          <tr><td>brady-</td><td>slow</td><td>Bradycardia</td></tr>
+          <tr><td>cardio-</td><td>related to the heart</td><td>Cardioversion</td></tr>
+          <tr><td>-centesis</td><td>to puncture</td><td>Thoracocentesis</td></tr>
+          <tr><td>cephal-</td><td>head</td><td>Cephalic</td></tr>
+          <tr><td>contra-</td><td>to go against</td><td>Contraindicated</td></tr>
+          <tr><td>-cyst</td><td>related to the bladder</td><td>Cystoscopy</td></tr>
+          <tr><td>-cyt(e,o)-</td><td>cell(s)</td><td>Cytoplasm</td></tr>
+          <tr><td>dys-</td><td>abnormal</td><td>Dysuria</td></tr>
+          <tr><td>-ectomy</td><td>removal of</td><td>Hysterectomy</td></tr>
+          <tr><td>endo-</td><td>inside</td><td>Endometrium</td></tr>
+          <tr><td>erythr(o)-</td><td>red cells</td><td>Erythrocyte</td></tr>
+          <tr><td>extra-</td><td>outside</td><td>Extracellular</td></tr>
+          <tr><td>gastr(o)-</td><td>stomach</td><td>Gastroparesis</td></tr>
+          <tr><td>gen(esis)-</td><td>origin, new</td><td>Pathogen</td></tr>
+          <tr><td>gloss-</td><td>tongue</td><td>Glossitis</td></tr>
+          <tr><td>glyc(o)-</td><td>glucose (sugar)</td><td>Glycogenesis</td></tr>
+          <tr><td>hem(ato)-</td><td>blood</td><td>Haematopoiesis</td></tr>
+          <tr><td>hemi-</td><td>half</td><td>Hemiplegia</td></tr>
+          <tr><td>hepat(o)-</td><td>liver</td><td>Hepatocyte</td></tr>
+          <tr><td>hyper-</td><td>high, elevated</td><td>Hyperglycaemia</td></tr>
+          <tr><td>hypo-</td><td>low, depressed</td><td>Hypoglycaemia</td></tr>
+          <tr><td>intra-</td><td>within</td><td>Intracellular</td></tr>
+          <tr><td>-itis</td><td>inflammation</td><td>Appendicitis</td></tr>
+          <tr><td>leuk(o)-</td><td>white cells</td><td>Leukaemia</td></tr>
+          <tr><td>lip(id,o)-</td><td>fat</td><td>Lipoprotein</td></tr>
+          <tr><td>lysis-</td><td>break up, to destroy</td><td>Haemolysis</td></tr>
+          <tr><td>macro-</td><td>large</td><td>Macrosomia</td></tr>
+          <tr><td>mal-</td><td>bad, poor</td><td>Malnutrition</td></tr>
+          <tr><td>-mega(y,lo)-</td><td>large</td><td>Hepatomegaly</td></tr>
+          <tr><td>my(o)-</td><td>muscle</td><td>Myocyte</td></tr>
+          <tr><td>nephro-</td><td>kidney</td><td>Nephrectomy</td></tr>
+          <tr><td>-oma</td><td>tumour</td><td>Adenoma</td></tr>
+          <tr><td>osteo-</td><td>bone</td><td>Osteoporosis</td></tr>
+          <tr><td>-ostomy</td><td>to create an opening</td><td>Colostomy</td></tr>
+          <tr><td>-otomy</td><td>cut into</td><td>Craniotomy</td></tr>
+          <tr><td>-paenia / -penia</td><td>deficiency</td><td>Lymphopaenia</td></tr>
+          <tr><td>pan-</td><td>all, whole</td><td>Pansystolic</td></tr>
+          <tr><td>para-</td><td>beside</td><td>Paranasal</td></tr>
+          <tr><td>peri-</td><td>around</td><td>Pericardium</td></tr>
+          <tr><td>-phagia</td><td>eating</td><td>Dysphagia</td></tr>
+          <tr><td>-phasia</td><td>speech</td><td>Dysphasia</td></tr>
+          <tr><td>-plasty</td><td>surgical repair</td><td>Rhinoplasty</td></tr>
+          <tr><td>-plegia</td><td>paralysis</td><td>Paraplegia</td></tr>
+          <tr><td>pneumo-</td><td>lung</td><td>Pneumonitis</td></tr>
+          <tr><td>poly-</td><td>many, much</td><td>Polyuria</td></tr>
+          <tr><td>pseudo-</td><td>false</td><td>Pseudoaneurysm</td></tr>
+          <tr><td>py-</td><td>pus</td><td>Pyuria</td></tr>
+          <tr><td>-sclerosis</td><td>hardening</td><td>Atherosclerosis</td></tr>
+          <tr><td>tachy-</td><td>fast</td><td>Tachycardia</td></tr>
+          <tr><td>thoraco-</td><td>chest</td><td>Thoracostomy</td></tr>
+          <tr><td>thrombo-</td><td>blood clot</td><td>Thrombolytic</td></tr>
+          <tr><td>trans-</td><td>across or through</td><td>Transthoracic</td></tr>
+          <tr><td>-uria</td><td>relating to urine</td><td>Haematuria</td></tr>
+          <tr><td>vaso-</td><td>blood vessel</td><td>Vasospasm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="citation-note">📖 Source: St John WA — <a href="https://www.stjohnwa.com.au" target="_blank" rel="noopener">stjohnwa.com.au</a>. Adapted for nursing education.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — Data & Facts: Top PBS Drugs
+       ══════════════════════════════════════ -->
+  <div class="wide-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#e6f5f3;">💊</div>
+      <h2 class="section-title">Data &amp; Facts — Top PBS Drugs (2024–25)</h2>
+    </div>
+    <p style="font-size:0.83rem;color:var(--mid);margin-bottom:1rem;">
+      Australia's most commonly used Pharmaceutical Benefits Scheme (PBS) and Repatriation PBS (RPBS) drugs in 2024–25,
+      reported by two measures. Data period: 1 July 2024 – 30 June 2025.
+    </p>
+    <div class="pbs-grid">
+
+      <!-- Table 1: By DDD -->
+      <div class="table-block">
+        <h3>📊 Table 1 — By DDD/1000 Population/Day</h3>
+        <table class="qref-table">
+          <thead><tr><th>#</th><th>Drug</th><th>DDD/1000 pop/day</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Rosuvastatin</td><td class="normal">90.95</td></tr>
+            <tr><td>2</td><td>Atorvastatin</td><td class="normal">80.58</td></tr>
+            <tr><td>3</td><td>Perindopril</td><td class="normal">49.44</td></tr>
+            <tr><td>4</td><td>Amlodipine</td><td class="normal">46.94</td></tr>
+            <tr><td>5</td><td>Candesartan</td><td class="normal">33.15</td></tr>
+            <tr><td>6</td><td>Sertraline</td><td class="normal">31.85</td></tr>
+            <tr><td>7</td><td>Telmisartan</td><td class="normal">30.51</td></tr>
+            <tr><td>8</td><td>Escitalopram</td><td class="normal">29.45</td></tr>
+            <tr><td>9</td><td>Metformin</td><td class="normal">28.11</td></tr>
+            <tr><td>10</td><td>Ramipril</td><td class="normal">24.10</td></tr>
+          </tbody>
+        </table>
+        <p>DDD = Defined Daily Dose — measures drug utilisation independent of pack size or price.</p>
+      </div>
+
+      <!-- Table 2: By Prescription Count -->
+      <div class="table-block">
+        <h3>📋 Table 2 — By Prescription Count</h3>
+        <table class="qref-table">
+          <thead><tr><th>#</th><th>Drug</th><th>Prescriptions</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Rosuvastatin</td><td class="normal">16,313,366</td></tr>
+            <tr><td>2</td><td>Atorvastatin</td><td class="normal">11,319,805</td></tr>
+            <tr><td>3</td><td>Pantoprazole</td><td class="normal">11,030,917</td></tr>
+            <tr><td>4</td><td>Esomeprazole</td><td class="normal">7,974,275</td></tr>
+            <tr><td>5</td><td>Escitalopram</td><td class="normal">6,557,355</td></tr>
+            <tr><td>6</td><td>Perindopril</td><td class="normal">6,375,761</td></tr>
+            <tr><td>7</td><td>Sertraline</td><td class="normal">6,245,846</td></tr>
+            <tr><td>8</td><td>Metformin</td><td class="normal">6,147,265</td></tr>
+            <tr><td>9</td><td>Cefalexin</td><td class="normal">5,163,370</td></tr>
+            <tr><td>10</td><td>Amoxicillin</td><td class="normal">4,965,405</td></tr>
+          </tbody>
+        </table>
+        <p>Prescription counts = total subsidised items dispensed under PBS/RPBS.</p>
+      </div>
+
+    </div>
+    <p class="citation-note">
+      📚 Source: <em>Australian Prescriber</em>, Issue 6, December 2025 —
+      "<a href="https://australianprescriber.tg.org.au/articles/top-10-drugs-2024%E2%80%9325.html" target="_blank" rel="noopener">Top 10 drugs 2024–25</a>".
+      NPS MedicineWise / Therapeutic Guidelines. Data covers PBS/RPBS prescriptions dispensed 1 July 2024 – 30 June 2025.
     </p>
   </div>
+
+
+  <!-- SEO text block -->
+  <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:#f8fafb;border-left:3px solid #0a7c6e;border-radius:0 8px 8px 0;font-size:0.82rem;color:#4a5568;line-height:1.7;">
+    <h2 style="font-size:0.9rem;font-weight:700;color:#1a2332;margin-bottom:0.4rem;">Nursing Quick Reference Guide for Australian Students &amp; New Grads</h2>
+    <p>
+      This page provides essential clinical reference information for Australian nursing students and new graduate nurses.
+      Topics include: normal adult vital signs (temperature, heart rate, blood pressure, respiratory rate, SpO₂, BGL in mmol/L, GCS),
+      common nursing abbreviations (PRN, QID, TDS, IDC, NGT, NBM), the Glasgow Coma Scale,
+      lung pathologies comparison (pulmonary embolism vs pleural effusion vs pulmonary oedema),
+      medical terminology prefixes and suffixes for nursing,
+      and Australia's top PBS drugs by volume and prescription count for 2024–25.
+      Always verify clinical values against your facility's policy and
+      <a href="https://www.safetyandquality.gov.au" target="_blank" rel="noopener" style="color:#0a7c6e;">ACSQHC</a> standards.
+    </p>
+  </div>
+
 </main>
 
 <!-- FOOTER -->
@@ -340,6 +570,14 @@
       if (btn) btn.textContent = '☀️ Light';
     }
   })();
+
+  function filterTerms(q) {
+    var rows = document.querySelectorAll('#termsTable tbody tr');
+    q = q.toLowerCase();
+    rows.forEach(function(row) {
+      row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  }
 </script>
 </body>
 </html>
