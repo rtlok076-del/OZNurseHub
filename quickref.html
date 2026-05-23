@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Reference — OzNurse Hub</title>
+<title>Nursing Quick Reference — Vital Signs, GCS, Abbreviations | OzNurse Hub</title>
+
+<!-- SEO: Primary Meta -->
+<meta name="description" content="Free quick reference tables for Australian nursing students. Normal adult vital signs ranges, Glasgow Coma Scale (GCS) scoring, common nursing abbreviations (PRN, QID, IDC, ISBAR) and more.">
+<meta name="keywords" content="normal adult vital signs Australia, GCS Glasgow Coma Scale nursing, nursing abbreviations list, nursing quick reference card, clinical reference nursing students, blood pressure normal range nursing">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/quickref.html">
+
+<!-- SEO: Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/quickref.html">
+<meta property="og:title" content="Nursing Quick Reference Tables — Vital Signs, GCS & Abbreviations">
+<meta property="og:description" content="Free quick reference tables for Australian nursing students: normal vital signs ranges, GCS scoring guide, and common nursing abbreviations.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a7c6e">
@@ -153,6 +170,20 @@
   footer a { color: var(--teal-light); text-decoration: none; }
   footer strong { color: rgba(255,255,255,0.8); }
 
+  /* ── DARK MODE ── */
+  [data-theme="dark"] { --dark: #e2e8f0; --mid: #a0aec0; --light: #111b27; --white: #1a2535; --border: #2d3f52; }
+  [data-theme="dark"] body { background: #111b27; color: #e2e8f0; }
+  [data-theme="dark"] .qref-table { background: #1a2535; border-color: #2d3f52; }
+  [data-theme="dark"] .qref-table th { background: #0a1118; }
+  [data-theme="dark"] .qref-table td { border-color: #2d3f52; color: #e2e8f0; }
+  [data-theme="dark"] .qref-table tr:nth-child(even) td { background: #111b27; }
+  [data-theme="dark"] .table-block h3 { color: #e2e8f0; }
+  [data-theme="dark"] .section-header { border-color: #2d3f52; }
+  [data-theme="dark"] .section-title { color: #e2e8f0; }
+  [data-theme="dark"] footer { background: #0a1118; }
+  .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .sidebar { width: 54px; }
@@ -172,10 +203,13 @@
       <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><img src="icon.svg" alt="OzNurse" style="width:36px;height:36px;border-radius:10px;display:block;"></div>
       <div class="logo-text">Oz<span>Nurse</span> Hub</div>
     </a>
-    <div class="header-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span style="color:rgba(255,255,255,0.7);">Quick Reference</span>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+      <div class="header-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,0.7);">Quick Reference</span>
+      </div>
     </div>
   </div>
 </header>
@@ -274,6 +308,14 @@
     <!-- ── ADD NEW TABLES BELOW THIS LINE ── -->
 
   </div>
+
+  <!-- SEO text — crawlable context for Google -->
+  <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:#f8fafb;border-left:3px solid #0a7c6e;border-radius:0 8px 8px 0;font-size:0.82rem;color:#4a5568;line-height:1.7;">
+    <h2 style="font-size:0.9rem;font-weight:700;color:#1a2332;margin-bottom:0.4rem;">Nursing Quick Reference Guide for Australian Students & New Grads</h2>
+    <p>
+      This quick reference page provides the essential clinical values every Australian nursing student and new graduate nurse needs to know during placement and clinical practice. The normal adult vital signs table covers temperature, heart rate, blood pressure, respiratory rate, SpO₂ oxygen saturation, blood glucose level (BGL) in Australian mmol/L units, and Glasgow Coma Scale (GCS). These ranges are based on international consensus guidelines and should always be verified against your specific facility's clinical policies and the <a href="https://www.safetyandquality.gov.au" target="_blank" rel="noopener" style="color:#0a7c6e;">Australian Commission on Safety and Quality in Health Care</a> standards. The nursing abbreviations list includes common terms used in Australian hospital documentation including PRN, QID, TDS, IDC, NGT, NBM, PCA, and BSL/BGL — always verify approved abbreviations with your health service.
+    </p>
+  </div>
 </main>
 
 <!-- FOOTER -->
@@ -282,5 +324,22 @@
   <p>Content is for educational purposes only and does not replace clinical supervision, university curriculum, or AHPRA/NMBA professional standards.</p>
 </footer>
 
+<script>
+  function toggleTheme() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('oznurse_theme', newTheme);
+    document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
+</script>
 </body>
 </html>
