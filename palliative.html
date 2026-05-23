@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palliative Care & End of Life Care | OzNurse Hub</title>
+
+<meta name="description" content="Palliative care and end of life nursing guide for Australian nursing students. Covers PCOC phases, advance care planning, ACD, NFR, NIKI T34, VAD in SA, cultural considerations and nursing role in EOLC.">
+<meta name="keywords" content="palliative care nursing australia, end of life care nursing, PCOC phases, advance care directive SA, NFR not for resuscitation, NIKI T34 syringe driver, VAD voluntary assisted dying SA, palliative medications morphine midazolam, nursing end of life role, CAPCS south australia">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/palliative.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oznursehub.com/palliative.html">
+<meta property="og:title" content="Palliative Care & End of Life Care | OzNurse Hub">
+<meta property="og:description" content="Comprehensive palliative care and end of life nursing reference for Australian nursing students — PCOC phases, advance care planning, medications, VAD in SA.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Palliative Care & End of Life Care — Australian Nursing Reference",
+  "description": "Comprehensive palliative care reference for Australian nursing students covering PCOC phases, advance care planning, common medications, VAD in SA, and cultural considerations.",
+  "author": { "@type": "Organization", "name": "OzNurse Hub" },
+  "publisher": { "@type": "Organization", "name": "OzNurse Hub", "url": "https://oznursehub.com" },
+  "url": "https://oznursehub.com/palliative.html",
+  "inLanguage": "en-AU"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --sand: #f5f0e8;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --purple: #7b5ea7;
+    --purple-pale: #f0ebf8;
+  }
+
+  [data-theme="dark"] {
+    --light: #111827;
+    --white: #1f2937;
+    --dark: #f1f5f9;
+    --mid: #94a3b8;
+    --border: #374151;
+    --sand: #1e293b;
+    --teal-pale: #0d3330;
+    --purple-pale: #1e1729;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header { background: #1a2332; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; }
+  .logo-icon img { width: 36px; height: 36px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: #12a090; }
+  nav { display: flex; gap: 0.25rem; }
+  nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: 6px; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: white; background: rgba(255,255,255,0.1); }
+  .dark-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .dark-toggle:hover { background: rgba(255,255,255,0.18); }
+  @media (max-width: 768px) { nav { display: none; } }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: fixed; top: 64px; left: 0; bottom: 0; width: 200px; background: #0e1929; border-right: 1px solid rgba(255,255,255,0.07); overflow-y: auto; z-index: 50; display: flex; flex-direction: column; padding: 0.5rem 0 1rem; }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); padding: 0.5rem 1rem 0.25rem; }
+  .sidebar-item { display: flex; align-items: center; gap: 9px; padding: 0.6rem 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 600; transition: all 0.15s; text-decoration: none; border-left: 3px solid transparent; line-height: 1; }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.sidebar-active { color: #12a090; background: rgba(18,160,144,0.12); border-left-color: #12a090; }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+  }
+
+  /* ── MAIN ── */
+  .page-main { margin-left: 200px; padding: 2rem 2.5rem 4rem; }
+  @media (max-width: 768px) { .page-main { margin-left: 54px; padding: 1.25rem 1rem 3rem; } }
+
+  /* ── PAGE HEADER ── */
+  .page-header { background: linear-gradient(135deg, #2d1b4e 0%, #1a2332 55%, #0a3d35 100%); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.75rem; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: white; margin-bottom: 0.5rem; }
+  .page-header h1 em { font-style: italic; color: #c4b5fd; }
+  .page-header p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 700px; }
+  .page-header-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .page-badge { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+
+  /* ── NOTICE BANNERS ── */
+  .edu-notice { background: #f3e8ff; border: 1px solid #c084fc; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.75rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.82rem; color: #581c87; line-height: 1.6; }
+  .edu-notice strong { color: #3b0764; }
+  [data-theme="dark"] .edu-notice { background: #1e1033; border-color: #7c3aed; color: #c4b5fd; }
+  [data-theme="dark"] .edu-notice strong { color: #e9d5ff; }
+
+  .tip-notice { background: #e6f5f3; border-left: 4px solid var(--teal); border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: var(--dark); line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .warn-notice { background: #fff8e1; border-left: 4px solid #f6c90a; border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: #5d4037; line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .vad-notice { background: #fff1f2; border: 1.5px solid #fda4af; border-radius: 10px; padding: 0.85rem 1.1rem; font-size: 0.82rem; color: #881337; line-height: 1.7; margin-bottom: 1rem; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .vad-notice strong { color: #7f1d1d; }
+  [data-theme="dark"] .vad-notice { background: #3b0818; border-color: #be123c; color: #fecdd3; }
+  [data-theme="dark"] .vad-notice strong { color: #fecdd3; }
+
+  /* ── SECTION TITLES ── */
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
+  .content-section { margin-bottom: 2.25rem; }
+
+  /* ── COMPARISON GRID ── */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .compare-header { padding: 0.85rem 1.1rem; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1rem; color: white; }
+  .compare-header.teal { background: var(--teal); }
+  .compare-header.purple { background: var(--purple); }
+  .compare-body { padding: 1rem 1.1rem; }
+  .compare-point { display: flex; gap: 0.6rem; font-size: 0.84rem; color: var(--dark); line-height: 1.55; margin-bottom: 0.55rem; }
+  .c-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .c-dot.teal { background: var(--teal); }
+  .c-dot.purple { background: var(--purple); }
+
+  /* ── PHASE GRID ── */
+  .phase-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
+  @media (max-width: 900px) { .phase-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .phase-grid { grid-template-columns: 1fr 1fr; } }
+  .phase-card { border-radius: 12px; padding: 1rem 0.85rem; text-align: center; border: 1.5px solid transparent; }
+  .phase-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; line-height: 1; margin-bottom: 0.3rem; }
+  .phase-name { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .phase-desc { font-size: 0.73rem; line-height: 1.5; }
+  .ph-1 { background: #d1fae5; border-color: #34d399; color: #065f46; }
+  .ph-2 { background: #fef3c7; border-color: #fbbf24; color: #78350f; }
+  .ph-3 { background: #ffedd5; border-color: #fb923c; color: #7c2d12; }
+  .ph-4 { background: #fee2e2; border-color: #f87171; color: #7f1d1d; }
+  .ph-5 { background: #ede9fe; border-color: #a78bfa; color: #3730a3; }
+  [data-theme="dark"] .ph-1 { background: #064e3b; border-color: #059669; color: #a7f3d0; }
+  [data-theme="dark"] .ph-2 { background: #451a03; border-color: #d97706; color: #fde68a; }
+  [data-theme="dark"] .ph-3 { background: #431407; border-color: #ea580c; color: #fed7aa; }
+  [data-theme="dark"] .ph-4 { background: #450a0a; border-color: #dc2626; color: #fecaca; }
+  [data-theme="dark"] .ph-5 { background: #1e1b4b; border-color: #7c3aed; color: #ddd6fe; }
+
+  /* ── GENERAL CARDS ── */
+  .info-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; }
+  .info-card-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .info-card-body { font-size: 0.84rem; color: var(--mid); line-height: 1.7; }
+  .info-card-body ul { padding-left: 1.1rem; }
+  .info-card-body li { margin-bottom: 0.35rem; }
+  .info-card-body strong { color: var(--dark); }
+
+  /* ── LAYOUT GRIDS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  @media (max-width: 900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .three-col { grid-template-columns: 1fr; } }
+  .four-col { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.85rem; }
+
+  /* ── MEDICATION TABLE ── */
+  .overflow-x { overflow-x: auto; border-radius: 12px; }
+  .med-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); font-size: 0.83rem; min-width: 620px; }
+  .med-table th { background: #2d1b4e; color: white; padding: 0.65rem 1rem; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em; }
+  .med-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); vertical-align: top; line-height: 1.55; }
+  .med-table tr:last-child td { border-bottom: none; }
+  .med-table tr:nth-child(even) td { background: var(--light); }
+  .med-name { font-weight: 700; color: var(--purple); }
+
+  /* ── NIKI CHECKS ── */
+  .niki-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-top: 0.85rem; }
+  @media (max-width: 560px) { .niki-check-grid { grid-template-columns: 1fr; } }
+  .niki-check { background: var(--teal-pale); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.83rem; display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.5; color: var(--dark); }
+  .niki-check-icon { flex-shrink: 0; margin-top: 1px; }
+
+  /* ── CAPCS BOX ── */
+  .capcs-box { background: var(--teal-pale); border: 1.5px solid var(--teal); border-radius: 12px; padding: 1.1rem 1.5rem; display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+  .capcs-detail { font-size: 0.84rem; color: var(--dark); }
+  .capcs-detail strong { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); margin-bottom: 2px; font-weight: 700; }
+
+  /* ── STATS ── */
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+  @media (max-width: 640px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 0.35rem; }
+  .stat-label { font-size: 0.74rem; color: var(--mid); line-height: 1.4; }
+
+  /* ── SELF-CARE ── */
+  .selfcare-card { background: linear-gradient(135deg, #2d1b4e 0%, #1a2332 100%); border-radius: 12px; padding: 1.1rem 1.25rem; }
+  .selfcare-icon { font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
+  .selfcare-title { font-family: 'Fraunces', serif; font-size: 0.95rem; color: white; margin-bottom: 0.35rem; }
+  .selfcare-body { font-size: 0.8rem; color: rgba(255,255,255,0.62); line-height: 1.6; }
+  .selfcare-body a { color: #c4b5fd; text-decoration: none; }
+  .selfcare-body a:hover { text-decoration: underline; }
+
+  /* ── RESOURCE LIST ── */
+  .res-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .res-list li { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+  .res-list li:hover { border-color: var(--teal); transform: translateX(3px); }
+  .res-list a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; text-decoration: none; color: var(--dark); font-size: 0.87rem; font-weight: 500; }
+  .res-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .res-text { display: flex; flex-direction: column; }
+  .res-desc { font-size: 0.75rem; color: var(--mid); font-weight: 400; margin-top: 1px; }
+  .ext-arrow { margin-left: auto; color: var(--mid); font-size: 0.8rem; }
+
+  /* ── TAGS ── */
+  .tag-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.18rem 0.55rem; border-radius: 100px; }
+  .tag-sa { background: #e0f2fe; color: #075985; }
+  .tag-au { background: #dcfce7; color: #14532d; }
+  .tag-critical { background: #fee2e2; color: #7f1d1d; }
+  [data-theme="dark"] .tag-sa { background: #0c2d47; color: #7dd3fc; }
+  [data-theme="dark"] .tag-au { background: #052e16; color: #86efac; }
+  [data-theme="dark"] .tag-critical { background: #450a0a; color: #fca5a5; }
+
+  /* ── FOOTER ── */
+  footer { background: #1a2332; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; line-height: 1.8; }
+  footer a { color: #12a090; text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+</style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<link rel="apple-touch-icon" href="icon.svg">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse Hub"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quickref.html">Quick Ref</a>
+      <a href="bloods.html">Bloods</a>
+      <a href="palliative.html" class="active">Palliative</a>
+      <a href="progressnote.html">Progress Note</a>
+    </nav>
+    <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Pages</div>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item sidebar-active" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<!-- MAIN -->
+<main class="page-main">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>&#128330; Palliative Care &amp; <em>End of Life</em></h1>
+      <p>A guide for Australian nursing students — PCOC phases, advance care planning, palliative medications, NIKI T34, VAD in SA, cultural considerations, and the nursing role in end of life care.</p>
+      <div class="page-header-badges">
+        <span class="page-badge">&#127462;&#127482; Australia</span>
+        <span class="page-badge">Year 2 &amp; 3</span>
+        <span class="page-badge">Clinical Practice</span>
+        <span class="page-badge">PCOC Framework</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="edu-notice">
+    <span>&#127891;</span>
+    <span><strong>Educational Resource Only:</strong> This page supports nursing student learning and reference. Clinical decisions must always be guided by your institution's policies, clinical supervisors, and the patient's individual goals of care. Processes may vary between health services.</span>
+  </div>
+
+  <!-- ═══ SECTION 1: WHAT IS PALLIATIVE CARE ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128330; What is Palliative Care?</h2>
+    <div class="info-card">
+      <div class="info-card-body">
+        <p style="font-size:1rem; font-family:'Fraunces',serif; color:var(--dark); margin-bottom:0.5rem; line-height:1.65; font-style:italic;">"Maximise living, minimise suffering through comfort, care and choice for people facing a life-limiting illness."</p>
+        <p style="font-size:0.77rem; color:var(--mid); margin-bottom:1.1rem;">— Central Adelaide Palliative Care Service (CAPCS)</p>
+        <div class="three-col">
+          <div>
+            <strong>Physical Care</strong>
+            <ul style="margin-top:0.4rem;">
+              <li>Pain &amp; symptom management</li>
+              <li>Comfort-focused nursing</li>
+              <li>Medication optimisation</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Psychological &amp; Social</strong>
+            <ul style="margin-top:0.4rem;">
+              <li>Emotional support — patient &amp; family</li>
+              <li>Social work &amp; counselling</li>
+              <li>Bereavement support</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Spiritual &amp; Cultural</strong>
+            <ul style="margin-top:0.4rem;">
+              <li>Culturally sensitive care</li>
+              <li>Spiritual care chaplains</li>
+              <li>Respect for beliefs &amp; values</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip-notice" style="margin-top:0.9rem; margin-bottom:0;">
+          <span>&#128161;</span>
+          <span>Palliative care is <strong>not just for the last days of life.</strong> It can begin at diagnosis of a life-limiting illness and continue alongside active treatment — often commenced up to 12 months before death.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: PALLIATIVE vs EOLC ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9878;&#65039; Palliative Care vs End of Life Care</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-header teal">&#128330; Palliative Care</div>
+        <div class="compare-body">
+          <div class="compare-point"><span class="c-dot teal"></span>Specialist medical &amp; nursing approach</div>
+          <div class="compare-point"><span class="c-dot teal"></span>For those with life-limiting illnesses focusing on symptom control</div>
+          <div class="compare-point"><span class="c-dot teal"></span>Can continue daily activities at home</div>
+          <div class="compare-point"><span class="c-dot teal"></span>Usually commenced up to 12 months prior to death</div>
+          <div class="compare-point"><span class="c-dot teal"></span>In hospital, community, hospice, or RACF</div>
+          <div class="compare-point"><span class="c-dot teal"></span>May include palliative chemo or radiotherapy</div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-header purple">&#128148; End of Life Care (EOLC) / Comfort Care</div>
+        <div class="compare-body">
+          <div class="compare-point"><span class="c-dot purple"></span>Usually hospital, hospice or RACF-based</div>
+          <div class="compare-point"><span class="c-dot purple"></span>Entering last week(s) of life — managing symptoms only</div>
+          <div class="compare-point"><span class="c-dot purple"></span>No routine obs, no escalation of care</div>
+          <div class="compare-point"><span class="c-dot purple"></span>Sedatives and analgesia given as required</div>
+          <div class="compare-point"><span class="c-dot purple"></span>Comfort is priority — patient may be sedated</div>
+          <div class="compare-point"><span class="c-dot purple"></span>Also: Conservative Management | NFR | Ceiling of Care</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: WHO NEEDS PC ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#127973; Who Needs Palliative Care?</h2>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Life-Limiting Conditions</div>
+        <div class="info-card-body">
+          <ul>
+            <li><strong>Cancer</strong> — especially metastatic or advanced stage</li>
+            <li><strong>Neurodegenerative diseases</strong> — MND, MS, Huntington's, Parkinson's</li>
+            <li><strong>End-stage organ failure</strong> — heart, lung, kidney</li>
+            <li><strong>Advanced dementia</strong> or frailty</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Symptom-Based Triggers for Referral</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Uncontrolled pain &amp; nausea / vomiting</li>
+            <li>Psychological, spiritual &amp; family distress</li>
+            <li>Complex symptom management needs</li>
+            <li>Patient or family requesting a palliative approach</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: 5 PHASES (PCOC) ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128260; The 5 Phases of Palliative Care <span style="font-size:0.72rem; font-weight:400; color:var(--mid);">PCOC Framework</span></h2>
+    <p style="font-size:0.82rem; color:var(--mid); margin-bottom:1rem;">Phases are <strong>not sequential</strong> — patients can move back and forth between phases as their condition changes.</p>
+    <div class="phase-grid">
+      <div class="phase-card ph-1">
+        <div class="phase-num">1</div>
+        <div class="phase-name">Stable</div>
+        <div class="phase-desc">Symptoms adequately controlled. Developing &amp; implementing the care plan.</div>
+      </div>
+      <div class="phase-card ph-2">
+        <div class="phase-num">2</div>
+        <div class="phase-name">Unstable</div>
+        <div class="phase-desc">Urgent change in care plan required. New or worsening problem not previously anticipated.</div>
+      </div>
+      <div class="phase-card ph-3">
+        <div class="phase-num">3</div>
+        <div class="phase-name">Deteriorating</div>
+        <div class="phase-desc">Gradual worsening. No urgent intervention. Increased care needs expected. Shifting to EOLC.</div>
+      </div>
+      <div class="phase-card ph-4">
+        <div class="phase-num">4</div>
+        <div class="phase-name">Terminal</div>
+        <div class="phase-desc">Death likely within days. Focus on comfort, dignity &amp; emotional/spiritual support.</div>
+      </div>
+      <div class="phase-card ph-5">
+        <div class="phase-num">5</div>
+        <div class="phase-name">Bereavement</div>
+        <div class="phase-desc">Patient has died. Bereavement support provided to family &amp; carers is documented.</div>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:var(--mid); margin-top:0.75rem;">Source: PCOC (Palliative Care Outcomes Collaboration) | <a href="https://www.aihw.gov.au/reports/palliative-care-services/palliative-care-services-in-australia" target="_blank" rel="noopener" style="color:var(--teal);">AIHW 2025</a></p>
+  </div>
+
+  <!-- ═══ SECTION 5: ADVANCE CARE PLANNING ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128196; Advance Care Planning in Australia</h2>
+    <div class="tip-notice">
+      <span>&#128161;</span>
+      <span><strong>Key Principle:</strong> Encourage patients AND families to discuss and document wishes early. Often the patient wants something different from their family. Planning ahead ensures the patient's voice is heard, reduces family conflict, and facilitates death in the preferred place.</span>
+    </div>
+    <div class="two-col" style="margin-top:0.9rem;">
+      <div style="display:flex; flex-direction:column; gap:0.85rem;">
+        <div class="info-card">
+          <div class="info-card-title">&#128221; Advance Care Directive (ACD) <span class="tag-pill tag-sa">SA</span></div>
+          <div class="info-card-body">SA-based legal document. Patients can document EOL care wishes, healthcare preferences, values and refusals (e.g. blood transfusion refusal for Jehovah's Witnesses). <strong>Only activated when a patient cannot make their own decisions.</strong></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">&#128101; Power of Attorney / Guardianship</div>
+          <div class="info-card-body">An appointed person who makes decisions when the patient lacks capacity. Power of Attorney covers financial decisions; Guardianship covers healthcare. <strong>Distinct from the healthcare-specific Advance Care Directive.</strong></div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.85rem;">
+        <div class="info-card">
+          <div class="info-card-title">&#128683; NFR &amp; Ceiling of Care</div>
+          <div class="info-card-body">
+            <strong>NFR (Not For Resuscitation)</strong> — patient/family and medical team agree CPR will not be attempted. Must be clearly documented.<br><br>
+            <strong>Ceiling of Care</strong> — the maximum agreed treatment level (e.g. ward care only; IV antibiotics but no ICU). Both must be documented and communicated to the whole care team.
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">&#128203; 7-Step Pathway <span class="tag-pill tag-sa">SA Health</span></div>
+          <div class="info-card-body">A standardised SA Health process for developing and implementing a clinical care plan that documents treatment decisions relating to resuscitation and end-of-life care. Also consider organ and body donation — raise sensitively at the appropriate time.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: NURSING ROLE ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128105;&#8205;&#9877;&#65039; Nursing Role in Palliative &amp; End of Life Care</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:1rem;">This is one of the most important nursing roles — deeply human, family-centred, and largely nurse-driven.</p>
+    <div class="three-col">
+      <div class="info-card">
+        <div class="info-card-title">&#127807; Environment &amp; Comfort</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Ensure room is calm, private and tidy</li>
+            <li>Minimise unnecessary interventions</li>
+            <li>Consider whether routine obs are still appropriate</li>
+            <li>Advocate for a dignified environment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128138; Medication Management</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Subcutaneous route preferred in EOLC</li>
+            <li>Administer PRN medications promptly</li>
+            <li>Monitor for side effects &amp; symptom changes</li>
+            <li>Consult team early if symptoms uncontrolled</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128106; Family Communication</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Clear, compassionate communication at all times</li>
+            <li>Keep family informed at each step</li>
+            <li>Educate on mouth care and positioning</li>
+            <li>Explain what to expect as death approaches</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#129380; Nutrition &amp; Hydration</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Food for taste &amp; comfort — not nutrition targets</li>
+            <li>Mouth care is essential even without oral intake</li>
+            <li>MUST screening not required in terminal phase</li>
+            <li>Educate family: reduced intake is normal &amp; expected</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128202; Observations</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Visual observations only when appropriate</li>
+            <li>Assess pain &amp; sedation score regularly</li>
+            <li>Report changes to team promptly</li>
+            <li>Routine obs chart may be discontinued in EOLC</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128203; Documentation</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Document in the EMR contemporaneously</li>
+            <li>Record symptom assessments &amp; responses</li>
+            <li>Document all family conversations &amp; education</li>
+            <li>Record medication administration &amp; response</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7: MEDICATIONS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128138; Common Medications in Palliative Care</h2>
+    <div class="warn-notice">
+      <span>&#9888;&#65039;</span>
+      <span><strong>Opioids do NOT speed up death when used correctly.</strong> Types of pain in advanced illness: <em>background</em> (persistent, controlled by slow-release), <em>breakthrough</em> (unpredictable, PRN immediate-release), <em>incidental</em> (with activity). Remind patients: do not wait for severe pain — it becomes harder to control once established.</span>
+    </div>
+    <div class="overflow-x">
+      <table class="med-table">
+        <thead>
+          <tr>
+            <th>Medication</th>
+            <th>Used For</th>
+            <th>Common Route</th>
+            <th>Nursing Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="med-name">Morphine / Hydromorphone</span></td>
+            <td>Pain &amp; dyspnoea (breathlessness)</td>
+            <td>SC, oral, patch</td>
+            <td>Start low, titrate up. SC preferred in EOLC. Slow-release for background pain; immediate-release for breakthrough. Monitor sedation level.</td>
+          </tr>
+          <tr>
+            <td><span class="med-name">Midazolam</span></td>
+            <td>Anxiety, agitation, seizures, terminal restlessness</td>
+            <td>SC (NIKI pump or PRN)</td>
+            <td>Monitor respiratory rate. Common in end-stage agitation. Often combined with morphine in NIKI driver.</td>
+          </tr>
+          <tr>
+            <td><span class="med-name">Hyoscine Butylbromide</span></td>
+            <td>Excess secretions ('death rattle')</td>
+            <td>SC</td>
+            <td>Reduces respiratory secretions. Does not sedate. Reassure family — death rattle is normal and the patient is not distressed.</td>
+          </tr>
+          <tr>
+            <td><span class="med-name">Metoclopramide / Haloperidol</span></td>
+            <td>Nausea &amp; vomiting; terminal agitation/delirium</td>
+            <td>SC, oral</td>
+            <td>Nausea is often temporary and treatable. Haloperidol also effective for terminal delirium and agitation.</td>
+          </tr>
+          <tr>
+            <td><span class="med-name">Laxatives (e.g. Movicol)</span></td>
+            <td>Prevention of opioid-induced constipation</td>
+            <td>Oral</td>
+            <td>Constipation is very common with opioids — prescribe laxatives prophylactically from the start. Do not wait for the patient to complain.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.76rem; color:var(--mid); margin-top:0.65rem;">SC route is preferred in EOLC as swallowing often becomes difficult. Medications can be delivered via NIKI T34 syringe driver (continuous SC infusion) or as individual SC PRN injections.</p>
+  </div>
+
+  <!-- ═══ SECTION 8: NIKI T34 ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9881;&#65039; NIKI T34 Syringe Driver</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:1rem;">Used for continuous subcutaneous delivery of medications to improve patient comfort and control symptoms (pain, nausea, secretions). Standard device for SC continuous infusion in palliative care in SA.</p>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">&#9881;&#65039; Key Setup Points</div>
+        <div class="info-card-body">
+          <ul>
+            <li>9V Duracell Alkaline battery</li>
+            <li>BD 10 mL syringe (dilute to 10 mL) <em>or</em> BD 30 mL (dilute to 23 mL)</li>
+            <li>Extension tubing + anti-siphon valve required</li>
+            <li>Default: <strong>24-hour delivery duration</strong></li>
+            <li>Set in <strong>Palliative Care Mode</strong> (occlusion 540 mmHg, max rate 5 mL/hr)</li>
+            <li style="color:#7f1d1d; font-weight:600;">Must be kept in a LOCKED BOX at all times when loaded</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128276; Alarms to Know</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Syringe occluded or displaced</li>
+            <li>Pump paused too long</li>
+            <li>Infusion 15 minutes from finishing</li>
+            <li>Infusion complete</li>
+            <li>Battery low (15-min warning) or depleted</li>
+            <li>Technical fault → escalate to clinical team immediately</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-family:'Fraunces',serif; font-size:0.95rem; color:var(--dark); margin:1.1rem 0 0.25rem;">&#10003; Shift Change + 4-Hourly Monitoring Checks</h3>
+    <div class="niki-check-grid">
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>Medication</strong> — matches the medication chart exactly</span></div>
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>Pump delivering</strong> — display screen active and counting</span></div>
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>Infusion rate</strong> — verify rate is correct for the 24-hour volume</span></div>
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>SC cannula site</strong> — check for redness, swelling, leakage</span></div>
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>Pain score</strong> — assess and document response</span></div>
+      <div class="niki-check"><span class="niki-check-icon">&#10003;</span><span><strong>Sedation score</strong> — assess and document level of consciousness</span></div>
+    </div>
+    <p style="font-size:0.76rem; color:var(--mid); margin-top:0.75rem;">&#128218; Complete NIKI T34 training via your institution's learning management system before operating the device independently. Document all entries in the Medication Infusion Flowsheet in the EMR.</p>
+  </div>
+
+  <!-- ═══ SECTION 9: CAPCS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128222; CAPCS — Palliative Care Service in SA</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:0.9rem;">The <strong>Central Adelaide Palliative Care Service (CAPCS)</strong> supports people to remain at home and receive end-of-life care in their preferred place.</p>
+    <div class="capcs-box">
+      <div class="capcs-detail"><strong>Phone</strong>(08) 8222 6825</div>
+      <div class="capcs-detail"><strong>Email</strong>Health.QEHCAPCS@sa.gov.au</div>
+      <div class="capcs-detail"><strong>Hours</strong>Mon–Fri, 8:00 am – 5:00 pm</div>
+      <div class="capcs-detail"><strong>After Hours</strong>(08) 8222 6000</div>
+    </div>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Who Can Refer?</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Anyone can refer — with patient consent</li>
+            <li>GP must be informed of the referral</li>
+            <li>No charge for CAPCS services</li>
+            <li>Patients in the Central Adelaide Metropolitan region</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">What CAPCS Provides</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Specialist medical advice on symptom management</li>
+            <li>Community nurses for care coordination</li>
+            <li>Occupational therapy &amp; specialist pharmacy</li>
+            <li>Social work, counselling &amp; bereavement support</li>
+            <li>Telehealth, home visits, hospice &amp; outpatient clinics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 10: VAD ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9878;&#65039; Voluntary Assisted Dying (VAD) — South Australia <span class="tag-pill tag-sa" style="margin-left:0.3rem;">SA</span></h2>
+    <div class="vad-notice">
+      <span>&#128308;</span>
+      <span><strong>CRITICAL — Health practitioners MUST NOT initiate VAD discussions.</strong> Only the patient can raise VAD first. Contacting VAD services without patient consent is a breach of the Act. If a patient raises VAD, listen respectfully, then notify your NUM and consultant with the patient's consent.</span>
+    </div>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Voluntary Assisted Dying Act 2021 (SA) — Legal from 31 January 2023</div>
+        <div class="info-card-body">
+          <strong>Who may access VAD:</strong>
+          <ul style="margin-top:0.4rem;">
+            <li>Metastatic or advanced cancer</li>
+            <li>Neurodegenerative diseases (MND, MS, Huntington's, Parkinson's)</li>
+            <li>End-stage kidney, heart or lung disease</li>
+            <li>Must have <strong>full decision-making capacity</strong></li>
+            <li>Must meet strict eligibility criteria under the VAD Act 2021 SA</li>
+          </ul>
+          <div class="tip-notice" style="margin-top:0.75rem; margin-bottom:0;">
+            <span>&#128161;</span>
+            <span>A death following VAD is <strong>NOT a reportable death.</strong> The death certificate records the underlying disease — not VAD.</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128105;&#8205;&#9877;&#65039; Nursing Responsibilities with VAD</div>
+        <div class="info-card-body">
+          <strong>What to do:</strong>
+          <ul style="margin-top:0.35rem; margin-bottom:0.75rem;">
+            <li>Listen respectfully if the patient raises VAD</li>
+            <li>Notify NUM, Consultant &amp; VAD Liaison Nurse — with patient consent</li>
+            <li>Continue providing best possible palliative care regardless</li>
+            <li>VAD Liaison Nurse: <strong>0468 577 687</strong></li>
+          </ul>
+          <strong>What NOT to do:</strong>
+          <ul style="margin-top:0.35rem;">
+            <li>Do <strong>NOT</strong> initiate VAD discussions under any circumstances</li>
+            <li>Do <strong>NOT</strong> act as a formal witness or contact person</li>
+            <li>Staff may conscientiously object — but <strong>must not impede</strong> the patient's access to VAD</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 11: LIFE EXTINCT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#129658; Assessment of Life Extinct — RN Role in the Community</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:0.9rem;">Applies in <strong>community palliative care settings only</strong> — where the patient is NFR, no GP is available, and an expected death has occurred during office hours.</p>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Clinical Assessment (RN can perform)</div>
+        <div class="info-card-body">
+          <ul>
+            <li>No carotid pulse</li>
+            <li>No heart sounds × 2 minutes</li>
+            <li>No breath sounds × 2 minutes</li>
+            <li>Bilateral fixed &amp; dilated pupils</li>
+            <li>No response to stimuli</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Important Distinctions</div>
+        <div class="info-card-body">
+          <ul>
+            <li><strong>Assessment</strong> of life extinct → RN can undertake this</li>
+            <li><strong>Declaration</strong> of life extinct → RN can declare when patient is NFR AND no GP can attend</li>
+            <li><strong>Certification</strong> of death → <strong>ONLY a medical practitioner</strong> can certify (required within 48 hours — <em>Births, Deaths and Marriages Registration Act 1996, S.36</em>)</li>
+          </ul>
+          <div class="warn-notice" style="margin-top:0.75rem; margin-bottom:0; font-size:0.79rem;">
+            <span>&#9888;&#65039;</span>
+            <span>RN may <strong>NOT</strong> declare if: cause of death is unclear | uncertainty about life extinction | GP can attend | patient is an organ or tissue donor candidate.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-card" style="margin-top:0.85rem;">
+      <div class="info-card-title">After Declaration — Nursing Actions</div>
+      <div class="info-card-body">
+        <div style="display:flex; flex-wrap:wrap; gap:1.25rem; font-size:0.83rem;">
+          <span>&#128222; Notify Substitute Decision Maker / Emergency Contact</span>
+          <span>&#128222; Notify patient's GP</span>
+          <span>&#9994; Assist family with funeral director arrangements</span>
+          <span>&#128203; Document contemporaneously in the EMR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 12: CULTURAL ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#127775; Cultural &amp; Spiritual Considerations</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:1rem;">Australian healthcare is multicultural — both patients and staff. Culture and religion often become <em>more</em> significant at end of life. Never assume — always ask respectfully about preferences.</p>
+    <div class="three-col">
+      <div class="info-card">
+        <div class="info-card-title">&#129413; Aboriginal &amp; Torres Strait Islander</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Holistic view of wellbeing — culture, spirit &amp; community</li>
+            <li>Cyclical concepts of life, death &amp; spiritual dreaming</li>
+            <li>Consult Aboriginal Health Workers &amp; Liaison Officers</li>
+            <li>No direct equivalent for 'VAD' in some languages</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#127758; Culturally &amp; Linguistically Diverse (CALD)</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Use accredited NAATI interpreters — not family members</li>
+            <li>Interpreters must not benefit from the patient's death</li>
+            <li>Communication must be culturally aware at each step</li>
+            <li>VAD discussions via phone/video have legal limits in SA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#9997; Religion &amp; Body Preparation</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Different cultures require specific body preparation before &amp; after death</li>
+            <li>Plan ahead — engage spiritual care early in the admission</li>
+            <li>Spiritual Care Chaplains are qualified clinical staff</li>
+            <li>Document cultural and religious preferences in the care plan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 13: COMMUNICATION ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128172; Communication — Words Matter</h2>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Use Clear, Honest Language</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Use the words <em>"die"</em> and <em>"dead"</em> — avoid vague terms like <em>"passed away"</em> or <em>"gone to sleep"</em> which can cause confusion</li>
+            <li>Check understanding: <em>"Can you tell me what you understand about your situation?"</em></li>
+            <li><strong>Silence is okay</strong> — you don't need to fill every moment</li>
+            <li>Document all significant conversations contemporaneously in the EMR</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Practical Tips</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Ensure interpreter support for CALD patients at <em>every</em> stage</li>
+            <li>Be especially careful with language around VAD — never initiate</li>
+            <li>Families may use very different words for death — be culturally aware</li>
+            <li><strong>Communication is a clinical skill.</strong> Words matter enormously at end of life.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 14: AU STATS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128202; Palliative Care in Australia — By the Numbers</h2>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-num">107,500</div>
+        <div class="stat-label">Palliative care hospitalisations in Australia (2023–24)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">+46%</div>
+        <div class="stat-label">Increase in palliative hospitalisations since 2015–16</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">55%</div>
+        <div class="stat-label">Of palliative hospitalisations ended with the patient dying in hospital (2023–24)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">95,500</div>
+        <div class="stat-label">Palliative care episodes recorded in PCOC in 2024</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">92%</div>
+        <div class="stat-label">Of episodes commenced within 2 days of the patient being ready for care</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">86%</div>
+        <div class="stat-label">Of unstable phases resolved within 3 days</div>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:var(--mid); margin-top:0.75rem;">Source: AIHW (2025) <em>Palliative care services in Australia</em> — <a href="https://www.aihw.gov.au/reports/palliative-care-services/palliative-care-services-in-australia" target="_blank" rel="noopener" style="color:var(--teal);">aihw.gov.au</a></p>
+  </div>
+
+  <!-- ═══ SECTION 15: SELF-CARE ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128156; Self-Care for Nurses</h2>
+    <p style="font-size:0.83rem; color:var(--mid); margin-bottom:1rem;">Palliative and end of life care is deeply rewarding — and deeply challenging. It is okay to feel this. Looking after yourself is not optional; it enables you to care for others well.</p>
+    <div class="four-col">
+      <div class="selfcare-card">
+        <span class="selfcare-icon">&#127973;</span>
+        <div class="selfcare-title">Employee Assistance Program (EAP)</div>
+        <div class="selfcare-body">Free, confidential counselling available through most Australian health services. Available during your grad year and beyond. Ask your NUM or HR for the contact details.</div>
+      </div>
+      <div class="selfcare-card">
+        <span class="selfcare-icon">&#127891;</span>
+        <div class="selfcare-title">University Counselling</div>
+        <div class="selfcare-body">While studying, your university offers free student counselling services. Don't wait until you're overwhelmed — early support is most effective.</div>
+      </div>
+      <div class="selfcare-card">
+        <span class="selfcare-icon">&#129309;</span>
+        <div class="selfcare-title">Peer Support &amp; Debrief</div>
+        <div class="selfcare-body">Debrief after difficult shifts with trusted colleagues. Clinical supervision is available in many palliative care settings. You are not alone in this work.</div>
+      </div>
+      <div class="selfcare-card">
+        <span class="selfcare-icon">&#128222;</span>
+        <div class="selfcare-title">National Support Lines</div>
+        <div class="selfcare-body">
+          <a href="https://www.beyondblue.org.au" target="_blank">Beyond Blue</a>: 1300 22 4636<br>
+          Lifeline: 13 11 14<br>
+          <a href="https://nmsupport.org.au" target="_blank">nmsupport.org.au</a><br>
+          <span style="font-size:0.75rem; opacity:0.7;">24/7 nurse &amp; midwife support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 16: RESOURCES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128279; Key Resources</h2>
+    <ul class="res-list">
+      <li><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/conditions/end+of+life+care/voluntary+assisted+dying" target="_blank" rel="noopener"><div class="res-icon">&#9878;&#65039;</div><div class="res-text"><span>Voluntary Assisted Dying — SA Health</span><span class="res-desc">Official information on the VAD Act 2021 (SA) — legal from 31 January 2023</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+topics/palliative+care" target="_blank" rel="noopener"><div class="res-icon">&#127973;</div><div class="res-text"><span>SA Health Palliative Care Resources</span><span class="res-desc">Advance Care Directives, EOL care pathways &amp; clinical guidelines for SA</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://palliativecaresa.org.au" target="_blank" rel="noopener"><div class="res-icon">&#127807;</div><div class="res-text"><span>Palliative Care SA (PCSA)</span><span class="res-desc">SA peak body — education, advocacy &amp; resources for palliative care in South Australia</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://palliativecare.org.au" target="_blank" rel="noopener"><div class="res-icon">&#127462;&#127482;</div><div class="res-text"><span>Palliative Care Australia</span><span class="res-desc">National peak body — standards, advocacy &amp; 'What Matters Most' conversation tool</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://www.aihw.gov.au/reports/palliative-care-services/palliative-care-services-in-australia" target="_blank" rel="noopener"><div class="res-icon">&#128202;</div><div class="res-text"><span>AIHW Palliative Care Report 2025</span><span class="res-desc">Australian Institute of Health and Welfare — national palliative care statistics &amp; data</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://www.cancer.org.au" target="_blank" rel="noopener"><div class="res-icon">&#127895;</div><div class="res-text"><span>Cancer Council Australia</span><span class="res-desc">Patient resources including nutrition in palliative care booklets (free downloads)</span></div><span class="ext-arrow">&#8599;</span></a></li>
+      <li><a href="https://nmsupport.org.au" target="_blank" rel="noopener"><div class="res-icon">&#128156;</div><div class="res-text"><span>Nurse &amp; Midwife Support</span><span class="res-desc">Free 24/7 national support service for nurses &amp; midwives — 1800 667 877</span></div><span class="ext-arrow">&#8599;</span></a></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <strong>OzNurse Hub</strong> — Free, ad-free clinical reference for Australian nursing students &amp; new graduates<br>
+  Educational resource only — not a substitute for clinical training, institutional policy, or professional medical advice<br>
+  <a href="index.html">Home</a> · <a href="quickref.html">Quick Ref</a> · <a href="bloods.html">Bloods</a> · <a href="progressnote.html">Progress Note</a> · <a href="feedback.html">Feedback</a><br>
+  &copy; 2025 OzNurse Hub
+</footer>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('darkToggleBtn');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
+  function toggleDark() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('oznurse_theme', isDark ? 'light' : 'dark');
+    var btn = document.getElementById('darkToggleBtn');
+    if (btn) btn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  }
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js')
+        .then(function (reg) { console.log('OzNurse SW registered', reg.scope); })
+        .catch(function (err) { console.log('SW registration failed:', err); });
+    });
+  }
+</script>
+</body>
+</html>
