@@ -1,5 +1,5 @@
 // OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v5';
+const CACHE = 'oznurse-v6';
 
 const CORE_FILES = [
   './',
@@ -7,6 +7,7 @@ const CORE_FILES = [
   './quickref.html',
   './progressnote.html',
   './feedback.html',
+  './bloods.html',
   './clinical-quiz.html',
   './meds-quiz.html',
   './manifest.json',
