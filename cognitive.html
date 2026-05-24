@@ -249,6 +249,35 @@
   footer a { color: #12a090; text-decoration: none; }
   footer strong { color: rgba(255,255,255,0.8); }
 
+  /* ── DEMENTIA STATS ── */
+  .dstat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+  @media (max-width: 800px) { .dstat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .dstat-grid { grid-template-columns: 1fr 1fr; } }
+  .dstat-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+  .dstat-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--cog); line-height: 1; margin-bottom: 0.3rem; }
+  .dstat-label { font-size: 0.76rem; color: var(--mid); line-height: 1.4; }
+  .dstat-box.highlight { background: var(--cog-pale); border-color: var(--cog); }
+  .dstat-box.highlight .dstat-num { color: var(--cog); }
+  [data-theme="dark"] .dstat-box.highlight { background: #0c2233; }
+
+  /* ── RESTRAINT TYPES ── */
+  .restraint-types { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.65rem; margin: 0.85rem 0; }
+  .restraint-chip { background: #fff1f2; border: 1.5px solid #fda4af; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.82rem; color: #881337; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+  [data-theme="dark"] .restraint-chip { background: #3b0818; border-color: #be123c; color: #fecdd3; }
+
+  /* ── LANGUAGE TABLE ── */
+  .lang-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); font-size: 0.83rem; }
+  .lang-table th { padding: 0.6rem 1rem; text-align: left; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
+  .lang-table th.avoid { background: #fee2e2; color: #7f1d1d; }
+  .lang-table th.use { background: #dcfce7; color: #14532d; }
+  .lang-table td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); line-height: 1.5; vertical-align: top; }
+  .lang-table tr:last-child td { border-bottom: none; }
+  .lang-table td.avoid { color: #991b1b; background: #fff8f8; }
+  .lang-table td.use { color: #166534; background: #f0fdf4; }
+  [data-theme="dark"] .lang-table td.avoid { background: #2d0a0a; color: #fca5a5; }
+  [data-theme="dark"] .lang-table td.use { background: #052e16; color: #86efac; }
+  .lang-table-wrap { overflow-x: auto; border-radius: 12px; }
+
   /* ── MOBILE ── */
   @media (max-width: 520px) {
     .page-header { padding: 1.25rem 1.1rem; border-radius: 12px; }
@@ -576,7 +605,88 @@
     </div>
   </div>
 
-  <!-- ═══ SECTION 5: DETENTION ORDERS ═══ -->
+  <!-- ═══ SECTION 5: REDUCING RESTRAINT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128683; Reducing Restraint</h2>
+    <div class="info-card" style="margin-bottom:1rem;">
+      <div class="info-card-title">&#128218; What is Restraint?</div>
+      <div class="info-card-body">
+        <p style="margin-bottom:0.6rem;"><em>"Restraint is the restriction of an individual's freedom of movement."</em><br><span style="font-size:0.75rem; color:var(--mid);">— Australian Commission on Safety and Quality in Health Care (ACSQHC)</span></p>
+        <p style="margin-bottom:0.6rem;">It includes <strong>mechanical restraint</strong> (physical devices), <strong>physical restraint</strong> (hands-on force), and <strong>chemical/pharmacological restraint</strong> (medication whose primary purpose is to sedate or control behaviour).</p>
+        <p style="margin-bottom:0.75rem;"><strong>Things that count as restraint</strong> — these may not always look like restraint, but legally they are:</p>
+        <div class="restraint-types">
+          <div class="restraint-chip">&#128138; PRN psychotropics (chemical)</div>
+          <div class="restraint-chip">&#127905; Bed rails</div>
+          <div class="restraint-chip">&#128274; Inpatient Treatment Orders</div>
+          <div class="restraint-chip">&#128680; Code Black / Security Assist</div>
+          <div class="restraint-chip">&#129467; Physical restraint devices</div>
+        </div>
+        <div class="alert-notice" style="margin-top:0.75rem;">
+          <span>&#9888;&#65039;</span>
+          <div>Improper restraint can <strong>cause falls, skin tears, pressure injuries, aspiration, increased agitation, and psychological harm.</strong> Restraint should always be the last resort — not a convenience measure.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:1rem; color:var(--dark); margin-bottom:0.75rem;">&#10003; What Can We Do to Reduce Restraint?</h3>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">&#128138; Medication &amp; Pain</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Understand the <strong>benefits, indications and risks</strong> of common psychotropic medications — what to use and when</li>
+            <li>Identify and manage <strong>withdrawals</strong> — nicotine, alcohol, opioids, benzodiazepines</li>
+            <li>Use accurate <strong>pain assessment tools</strong> — PAIN-AD scale for non-verbal patients</li>
+            <li>Use <strong>analgesia as first line</strong> if the patient has a known painful condition (e.g. fracture, wound) — unmanaged pain is a common driver of agitation</li>
+            <li>Chemical restraint should only be used when a patient is a <strong>risk to themselves or others</strong> and other measures have failed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128172; De-escalation &amp; Communication</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Attend <strong>Safety Intervention / de-escalation training</strong> at your facility</li>
+            <li>Understand <strong>non-verbal communication</strong> — behaviour is often communication</li>
+            <li>Identify <strong>early signs of agitation</strong> — intervene before escalation</li>
+            <li>Use a calm voice, non-threatening posture, and give the person space</li>
+            <li>Offer choices and validate feelings — "I can see you're frustrated"</li>
+            <li>Involve family or familiar people — their presence can significantly reduce distress</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#128101; Planning &amp; Team</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Prompt and <strong>comprehensive discharge planning</strong> — prolonged hospital stays increase restraint risk</li>
+            <li><strong>Multi-disciplinary discussions</strong> — involve nursing, medical, allied health, social work</li>
+            <li>Have open <strong>conversations with family</strong> — discuss expectations, concerns, and options</li>
+            <li>Know your support options: Code Black, Security Assist, AIN/carer specials, PAO</li>
+            <li>Consider <strong>ITOs or SACAT</strong> orders through the appropriate team when clinically indicated</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#127774; Workplace Culture &amp; Self-care</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Foster a <strong>culture where patient care is the priority</strong> — not staff convenience</li>
+            <li>Speak up if you see restraint being used inappropriately — it is your professional obligation</li>
+            <li>Access <strong>staff psychological support</strong> — managing agitated patients is emotionally demanding</li>
+            <li>Debrief after difficult incidents with your manager, peers, or EAP</li>
+            <li>Familiarise yourself with Australian national standards and SA Health guidelines on minimising restrictive practices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tip-notice" style="margin-top:0.5rem;">
+      <span>&#128250;</span>
+      <span><strong>SA Health e-learning:</strong> Complete <em>'Minimising Restrictive Practices'</em> on Learning Central — this is relevant for all nursing students and graduates working in SA Health facilities.</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: DETENTION ORDERS ═══ -->
   <div class="content-section">
     <h2 class="section-title">&#128274; Detention Orders</h2>
     <div class="info-card">
@@ -741,7 +851,82 @@
     </div>
   </div>
 
-  <!-- ═══ SECTION 7: NURSING CONSIDERATIONS ═══ -->
+  <!-- ═══ SECTION: KEY DEMENTIA STATS ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128200; Key Dementia Statistics — Australia</h2>
+    <p style="font-size:0.82rem; color:var(--mid); margin-bottom:1rem;">Source: Australian Institute of Health and Welfare (AIHW)</p>
+
+    <div class="dstat-grid" style="margin-bottom:1rem;">
+      <div class="dstat-box highlight">
+        <div class="dstat-num">425,000</div>
+        <div class="dstat-label">Australians living with dementia — equivalent to 16 per 1,000 people</div>
+      </div>
+      <div class="dstat-box highlight">
+        <div class="dstat-num">65%</div>
+        <div class="dstat-label">Of those living with dementia are women</div>
+      </div>
+      <div class="dstat-box highlight">
+        <div class="dstat-num">1.1 million</div>
+        <div class="dstat-label">Estimated to have dementia by 2065 — expected to double in 40 years</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">68%</div>
+        <div class="dstat-label">Of all people with dementia live in the community (not in care facilities)</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">16%</div>
+        <div class="dstat-label">Of those in the community live alone</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">25%</div>
+        <div class="dstat-label">Of all people with dementia were born in a non-English speaking country</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">101,900</div>
+        <div class="dstat-label">Unpaid carers looked after people with dementia in 2024</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">42%</div>
+        <div class="dstat-label">Of family carers provided over 60 hours per week of care</div>
+      </div>
+      <div class="dstat-box">
+        <div class="dstat-num">69%</div>
+        <div class="dstat-label">Of people with dementia in the community have a 'profound disability'</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:1rem;">
+      <div class="info-card" style="border-color:#fda4af;">
+        <div class="info-card-title" style="color:#881337;">&#128148; Mortality &amp; Disease Burden</div>
+        <div class="info-card-body">
+          <ul>
+            <li>In 2023, dementia was the <strong>leading cause of death</strong> in Australia — 1 in every 10 deaths</li>
+            <li>It is the <strong>second leading cause of 'disease burden'</strong> after cardiovascular disease</li>
+            <li><strong>6 modifiable risk factors</strong> contribute to 43% of all dementia cases</li>
+            <li>Australia spent <strong>$3.6 billion</strong> of the direct health and aged care budget on dementia in 2020–21</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card" style="border-color:#fbbf24;">
+        <div class="info-card-title" style="color:#78350f;">&#9888;&#65039; Stigma &amp; Equity</div>
+        <div class="info-card-body">
+          <ul>
+            <li><strong>65%</strong> of people living with dementia feel discrimination is common or very common</li>
+            <li><strong>90%</strong> of friends and family say their person with dementia has received <strong>less respect</strong> than others</li>
+            <li>Only <strong>54%</strong> of Australians feel comfortable around people with dementia</li>
+            <li>People with dementia receive <strong>less pain relief</strong> than others with the same conditions (e.g. fractured bone)</li>
+            <li>People born overseas are less likely to be placed in nursing homes — often cared for at home by family</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tip-notice">
+      <span>&#129504;</span>
+      <span><strong>Clinical implication:</strong> Understanding the scale of dementia — and the stigma that surrounds it — is essential for providing respectful, dignified, person-centred care. Every patient statistic represents a person with a life history, relationships, and individual preferences.</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 8: NURSING CONSIDERATIONS ═══ -->
   <div class="content-section">
     <h2 class="section-title">&#128116; Nursing Considerations</h2>
     <div class="two-col">
@@ -798,6 +983,63 @@
             <li>Use your facility's <strong>Rapid Response / PACE</strong> system if patient deteriorates</li>
           </ul>
         </div>
+      </div>
+    </div>
+
+    <!-- RESPECTFUL LANGUAGE -->
+    <div class="info-card" style="margin-top:1rem; border-color: var(--cog);">
+      <div class="info-card-title" style="color:var(--cog);">&#128172; Respectful Language — Person First &amp; Identity First</div>
+      <div class="info-card-body">
+        <p style="margin-bottom:0.75rem;">Language matters. There has been a significant shift towards <strong>Person First Language</strong> — placing the person before their diagnosis to recognise they are more than their condition. Some individuals prefer <strong>Identity First Language</strong> (e.g. "autistic person") — always ask and follow the person's preference.</p>
+
+        <div class="lang-table-wrap" style="margin-bottom:0.85rem;">
+          <table class="lang-table">
+            <thead>
+              <tr>
+                <th class="avoid">&#10007; Avoid</th>
+                <th class="use">&#10003; Try instead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="avoid">Suffers with / suffers from dementia</td>
+                <td class="use">Lives with dementia</td>
+              </tr>
+              <tr>
+                <td class="avoid">Wheelchair bound</td>
+                <td class="use">Full-time wheelchair user / uses a wheelchair</td>
+              </tr>
+              <tr>
+                <td class="avoid">Victim of / afflicted by / crippled by</td>
+                <td class="use">Person who has / person living with</td>
+              </tr>
+              <tr>
+                <td class="avoid">Demented / simple / cuckoo</td>
+                <td class="use">Person with dementia / person with cognitive impairment</td>
+              </tr>
+              <tr>
+                <td class="avoid">Special needs / handicapable / differently-abled</td>
+                <td class="use">Person with a disability / person with support needs</td>
+              </tr>
+              <tr>
+                <td class="avoid">Retarded / handicapped / invalid / spastic</td>
+                <td class="use">Person with an intellectual disability</td>
+              </tr>
+              <tr>
+                <td class="avoid">"Inspirational" (for simply living with a disability)</td>
+                <td class="use">Treat the person as an individual — not a symbol</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-bottom:0.5rem;"><strong>Why this matters clinically:</strong></p>
+        <ul>
+          <li>Stigma makes people <strong>less likely to disclose</strong> their diagnosis, which means they are less likely to request accommodations — directly impacting their care outcomes</li>
+          <li>Offhand comments may be heard by patients, families, or colleagues who have that condition — making them feel unwelcome and unsafe</li>
+          <li>Older patients and staff may use outdated terms due to different generational exposure — correct gently and without shaming</li>
+          <li>The <strong>Social Model of Disability</strong> reminds us it is often the <em>environment</em> — not the person — that creates the barrier. Modify the environment wherever possible</li>
+        </ul>
       </div>
     </div>
   </div>
