@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANTT — Aseptic Non-Touch Technique | OzNurse Hub</title>
+
+<meta name="description" content="ANTT (Aseptic Non-Touch Technique) guide for Australian nursing students on clinical placement. Covers Standard vs Surgical ANTT, Key Parts, Key Sites, aseptic fields, hand hygiene, PPE and common clinical procedures.">
+<meta name="keywords" content="ANTT nursing Australia, aseptic non-touch technique, standard ANTT surgical ANTT, key parts key sites, aseptic technique nursing students, infection control clinical placement, hand hygiene 5 moments, aseptic field, SA Health ANTT, ACIPC aseptic technique">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/antt.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oznursehub.com/antt.html">
+<meta property="og:title" content="ANTT — Aseptic Non-Touch Technique | OzNurse Hub">
+<meta property="og:description" content="Complete ANTT guide for Australian nursing students — Standard vs Surgical ANTT, Key Parts, Key Sites, hand hygiene, PPE, and common clinical placement procedures.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ANTT — Aseptic Non-Touch Technique for Australian Nursing Students",
+  "description": "Complete ANTT framework guide covering Standard vs Surgical ANTT, Key Parts, Key Sites, aseptic fields, hand hygiene, PPE and common clinical procedures.",
+  "author": { "@type": "Organization", "name": "OzNurse Hub" },
+  "publisher": { "@type": "Organization", "name": "OzNurse Hub", "url": "https://oznursehub.com" },
+  "url": "https://oznursehub.com/antt.html",
+  "inLanguage": "en-AU"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --purple: #7b5ea7;
+    --purple-pale: #f0ebf8;
+    --antt: #15803d;
+    --antt-light: #16a34a;
+    --antt-pale: #dcfce7;
+    --antt-dark: #14532d;
+  }
+
+  [data-theme="dark"] {
+    --light: #111827;
+    --white: #1f2937;
+    --dark: #f1f5f9;
+    --mid: #94a3b8;
+    --border: #374151;
+    --teal-pale: #0d3330;
+    --purple-pale: #1e1729;
+    --antt-pale: #052e16;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header { background: #1a2332; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; }
+  .logo-icon img { width: 36px; height: 36px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: #12a090; }
+  nav { display: flex; gap: 0.25rem; }
+  nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: 6px; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: white; background: rgba(255,255,255,0.1); }
+  .dark-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .dark-toggle:hover { background: rgba(255,255,255,0.18); }
+  @media (max-width: 768px) { nav { display: none; } }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: fixed; top: 64px; left: 0; bottom: 0; width: 200px; background: #0e1929; border-right: 1px solid rgba(255,255,255,0.07); overflow-y: auto; z-index: 50; display: flex; flex-direction: column; padding: 0.5rem 0 1rem; }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); padding: 0.5rem 1rem 0.25rem; }
+  .sidebar-item { display: flex; align-items: center; gap: 9px; padding: 0.6rem 1rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 600; transition: all 0.15s; text-decoration: none; border-left: 3px solid transparent; line-height: 1; }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.sidebar-active { color: #12a090; background: rgba(18,160,144,0.12); border-left-color: #12a090; }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label, .sb-divider { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
+    .sb-icon { font-size: 1.1rem; }
+  }
+
+  /* ── MAIN ── */
+  .page-main { margin-left: 200px; padding: 2rem 2.5rem 4rem; }
+  @media (max-width: 768px) { .page-main { margin-left: 54px; padding: 1.25rem 1rem 3rem; } }
+
+  /* ── PAGE HEADER ── */
+  .page-header { background: linear-gradient(135deg, #052e16 0%, #1a2332 55%, #0a3d35 100%); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.75rem; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: white; margin-bottom: 0.5rem; }
+  .page-header h1 em { font-style: italic; color: #86efac; }
+  .page-header p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 700px; }
+  .page-header-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .page-badge { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+
+  /* ── NOTICE BANNERS ── */
+  .edu-notice { background: #f3e8ff; border: 1px solid #c084fc; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.75rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.82rem; color: #581c87; line-height: 1.6; }
+  .edu-notice strong { color: #3b0764; }
+  [data-theme="dark"] .edu-notice { background: #1e1033; border-color: #7c3aed; color: #c4b5fd; }
+  [data-theme="dark"] .edu-notice strong { color: #e9d5ff; }
+  .tip-notice { background: var(--antt-pale); border-left: 4px solid var(--antt); border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: var(--dark); line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .warn-notice { background: #fff8e1; border-left: 4px solid #f6c90a; border-radius: 0 10px 10px 0; padding: 0.8rem 1.1rem; font-size: 0.83rem; color: #5d4037; line-height: 1.65; margin: 0.85rem 0; display: flex; gap: 0.65rem; align-items: flex-start; }
+  .alert-notice { background: #fff1f2; border: 1.5px solid #fda4af; border-radius: 10px; padding: 0.85rem 1.1rem; font-size: 0.82rem; color: #881337; line-height: 1.7; margin-bottom: 1rem; display: flex; gap: 0.65rem; align-items: flex-start; }
+  [data-theme="dark"] .alert-notice { background: #3b0818; border-color: #be123c; color: #fecdd3; }
+
+  /* ── SECTION TITLES ── */
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
+  .content-section { margin-bottom: 2.25rem; }
+
+  /* ── GENERAL CARDS ── */
+  .info-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; }
+  .info-card-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .info-card-body { font-size: 0.84rem; color: var(--mid); line-height: 1.7; }
+  .info-card-body ul { padding-left: 1.1rem; }
+  .info-card-body li { margin-bottom: 0.35rem; }
+  .info-card-body strong { color: var(--dark); }
+
+  /* ── LAYOUT GRIDS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  @media (max-width: 900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .three-col { grid-template-columns: 1fr; } }
+
+  /* ── ANTT TYPE COMPARE ── */
+  .antt-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .antt-compare { grid-template-columns: 1fr; } }
+  .antt-card { background: var(--white); border: 2px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .antt-card-header { padding: 1rem 1.25rem; color: white; }
+  .antt-card-header.standard { background: var(--antt); }
+  .antt-card-header.surgical { background: #1d6fa4; }
+  .antt-card-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .antt-card-sub { font-size: 0.76rem; color: rgba(255,255,255,0.75); }
+  .antt-card-body { padding: 1rem 1.25rem; font-size: 0.84rem; color: var(--mid); line-height: 1.7; }
+  .antt-card-body ul { padding-left: 1rem; }
+  .antt-card-body li { margin-bottom: 0.35rem; }
+  .antt-card-body strong { color: var(--dark); }
+  .antt-card-section { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin: 0.75rem 0 0.3rem; }
+
+  /* ── KEY PARTS / SITES ── */
+  .kp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .kp-grid { grid-template-columns: 1fr; } }
+  .kp-card { border-radius: 12px; overflow: hidden; }
+  .kp-header { padding: 0.75rem 1.1rem; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1rem; color: white; }
+  .kp-header.parts { background: #dc2626; }
+  .kp-header.sites { background: #9333ea; }
+  .kp-body { background: var(--white); border: 1.5px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 0.9rem 1.1rem; font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+  .kp-body ul { padding-left: 1rem; }
+  .kp-body li { margin-bottom: 0.3rem; }
+  .kp-body strong { color: var(--dark); }
+
+  /* ── STEPS ── */
+  .steps-list { display: flex; flex-direction: column; gap: 0.65rem; }
+  .step-item { display: flex; gap: 0.85rem; align-items: flex-start; background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--antt); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-body { flex: 1; font-size: 0.84rem; color: var(--dark); line-height: 1.6; }
+  .step-body strong { color: var(--antt); }
+  [data-theme="dark"] .step-body strong { color: #4ade80; }
+
+  /* ── HAND HYGIENE MOMENTS ── */
+  .moments-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.65rem; }
+  @media (max-width: 900px) { .moments-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .moments-grid { grid-template-columns: 1fr; } }
+  .moment-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 0.85rem 0.75rem; text-align: center; }
+  .moment-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--antt); line-height: 1; margin-bottom: 0.3rem; }
+  .moment-label { font-size: 0.78rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+  .moment-sub { font-size: 0.72rem; color: var(--mid); line-height: 1.4; }
+
+  /* ── PROCEDURES TABLE ── */
+  .proc-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); font-size: 0.83rem; }
+  .proc-table th { background: #052e16; color: white; padding: 0.65rem 1rem; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em; }
+  .proc-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); vertical-align: top; line-height: 1.55; }
+  .proc-table tr:last-child td { border-bottom: none; }
+  .proc-table tr:nth-child(even) td { background: var(--light); }
+  .proc-overflow { overflow-x: auto; border-radius: 12px; }
+  .badge-standard { background: var(--antt-pale); color: var(--antt-dark); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 100px; white-space: nowrap; }
+  .badge-surgical { background: #e0f2fe; color: #0c4a6e; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 100px; white-space: nowrap; }
+  [data-theme="dark"] .badge-standard { background: #052e16; color: #86efac; }
+  [data-theme="dark"] .badge-surgical { background: #0c2d47; color: #7dd3fc; }
+
+  /* ── PPE CHIPS ── */
+  .ppe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.65rem; }
+  .ppe-chip { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.83rem; color: var(--dark); line-height: 1.5; }
+  .ppe-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  /* ── RESOURCE LIST ── */
+  .res-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .res-list li { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+  .res-list li:hover { border-color: var(--antt); transform: translateX(3px); }
+  .res-list a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; text-decoration: none; color: var(--dark); font-size: 0.87rem; font-weight: 500; }
+  .res-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--antt-pale); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .res-text { display: flex; flex-direction: column; }
+  .res-desc { font-size: 0.75rem; color: var(--mid); font-weight: 400; margin-top: 1px; }
+  .ext-arrow { margin-left: auto; color: var(--mid); font-size: 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer { background: #1a2332; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; line-height: 1.8; }
+  footer a { color: #12a090; text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 520px) {
+    .page-header { padding: 1.25rem 1.1rem; border-radius: 12px; }
+    .page-header h1 { font-size: 1.35rem; }
+    .page-header p { font-size: 0.82rem; }
+    .page-main { padding: 1rem 0.85rem 3rem; }
+    .section-title { font-size: 1.05rem; }
+    .info-card { padding: 0.9rem 1rem; }
+    .moments-grid { grid-template-columns: 1fr 1fr !important; }
+    .proc-table { font-size: 0.78rem; }
+    .proc-table td, .proc-table th { padding: 0.45rem 0.6rem; }
+  }
+</style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a7c6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+<link rel="apple-touch-icon" href="icon.svg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE58XZFM6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BYE58XZFM6');
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse Hub"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quickref.html">Quick Ref</a>
+      <a href="bloods.html">Bloods</a>
+      <a href="palliative.html">Palliative</a>
+      <a href="cognitive.html">Cognitive</a>
+      <a href="antt.html" class="active">ANTT</a>
+      <a href="progressnote.html">Progress Note</a>
+    </nav>
+    <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
+  <a class="sidebar-item" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
+  <a class="sidebar-item sidebar-active" href="antt.html"><span class="sb-icon">&#129521;</span><span class="sb-label">ANTT</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<!-- MAIN -->
+<main class="page-main">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>&#129521; ANTT — <em>Aseptic Non-Touch Technique</em></h1>
+      <p>A guide for Australian nursing students on clinical placement — understanding the ANTT framework, Key Parts, Key Sites, Standard vs Surgical ANTT, hand hygiene, PPE, and how to apply ANTT across common clinical procedures.</p>
+      <div class="page-header-badges">
+        <span class="page-badge">&#127462;&#127482; Australia</span>
+        <span class="page-badge">All Years</span>
+        <span class="page-badge">Clinical Placement</span>
+        <span class="page-badge">Infection Control</span>
+        <span class="page-badge">ACIPC Framework</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="edu-notice">
+    <span>&#127891;</span>
+    <span><strong>Educational Resource Only:</strong> This page supports nursing student learning. Always follow your clinical supervisor's guidance and your facility's specific ANTT/infection control policies. Procedural requirements may vary between health services.</span>
+  </div>
+
+  <!-- ═══ SECTION 1: WHAT IS ANTT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#129521; What is ANTT?</h2>
+    <div class="info-card" style="margin-bottom:1rem;">
+      <div class="info-card-body">
+        <p style="font-size:1rem; font-family:'Fraunces',serif; color:var(--dark); margin-bottom:0.6rem; line-height:1.65; font-style:italic;">"Aseptic Non-Touch Technique — a specific type of aseptic technique that is based on a unique theory and practice framework."</p>
+        <p style="font-size:0.77rem; color:var(--mid); margin-bottom:1rem;">— ANTT Clinical Practice Framework (ACIPC)</p>
+        <p style="margin-bottom:0.65rem;">ANTT is the <strong>national standard for aseptic practice</strong> in Australian healthcare, endorsed by ACIPC (Australasian College for Infection Prevention and Control) and incorporated into SA Health guidelines. It provides a consistent, evidence-based approach to preventing the introduction of micro-organisms into a patient during clinical procedures.</p>
+        <p>The core idea is simple: <strong>identify what must stay sterile, and never touch it</strong>. Every clinical procedure that bypasses the body's natural defences requires ANTT.</p>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="info-card" style="border-top: 3px solid var(--antt);">
+        <div class="info-card-title">&#127918; The Core Rule</div>
+        <div class="info-card-body">
+          Never directly touch — or allow anything non-sterile to touch — a <strong>Key Part</strong> or <strong>Key Site</strong>. If in doubt, treat it as contaminated and replace it.
+        </div>
+      </div>
+      <div class="info-card" style="border-top: 3px solid #1d6fa4;">
+        <div class="info-card-title">&#128269; When is ANTT Required?</div>
+        <div class="info-card-body">
+          Any procedure that <strong>bypasses the body's natural defences</strong> — skin, mucous membranes — requires ANTT. This includes IV access, wound care, catheter care, injections, and more.
+        </div>
+      </div>
+      <div class="info-card" style="border-top: 3px solid var(--purple);">
+        <div class="info-card-title">&#127973; Who Uses ANTT?</div>
+        <div class="info-card-body">
+          All healthcare workers performing invasive or sterile procedures — nurses, doctors, paramedics, allied health. As a nursing student, ANTT is <strong>one of the most important skills</strong> to master on placement.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: KEY PARTS & KEY SITES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128273; Key Parts &amp; Key Sites</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">The ANTT framework is built on two fundamental concepts. Before any procedure, <strong>always identify</strong> your Key Parts and Key Sites — then protect them for the entire procedure.</p>
+    <div class="kp-grid">
+      <div class="kp-card">
+        <div class="kp-header parts">&#128308; Key Parts — Equipment</div>
+        <div class="kp-body">
+          <p style="margin-bottom:0.6rem;"><strong>Definition:</strong> Parts of equipment that, if contaminated, could introduce micro-organisms directly into a patient.</p>
+          <p style="margin-bottom:0.5rem; font-weight:700; color:var(--dark);">Examples:</p>
+          <ul>
+            <li>Needle and cannula tips</li>
+            <li>Syringe tips and plungers</li>
+            <li>IV catheter hubs and needleless connectors</li>
+            <li>IV line connectors and open ports</li>
+            <li>Urinary catheter tip</li>
+            <li>Inner surface of sterile packaging once opened</li>
+            <li>Sterile gauze and dressing materials</li>
+          </ul>
+          <div style="margin-top:0.75rem; background:#fee2e2; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.79rem; color:#7f1d1d;">
+            &#128680; <strong>Never touch a Key Part</strong> directly with ungloved or non-sterile hands — not even briefly.
+          </div>
+        </div>
+      </div>
+      <div class="kp-card">
+        <div class="kp-header sites">&#128995; Key Sites — Patient</div>
+        <div class="kp-body">
+          <p style="margin-bottom:0.6rem;"><strong>Definition:</strong> Portals of entry into the patient's body or a connected invasive device — where micro-organisms could enter and cause infection.</p>
+          <p style="margin-bottom:0.5rem; font-weight:700; color:var(--dark);">Examples:</p>
+          <ul>
+            <li>Insertion site of an IV cannula</li>
+            <li>Central venous catheter insertion site</li>
+            <li>Wounds (surgical, traumatic, pressure injuries)</li>
+            <li>Urinary catheter insertion site (meatus)</li>
+            <li>Tracheostomy stoma</li>
+            <li>Surgical incision sites</li>
+            <li>Drain insertion sites</li>
+          </ul>
+          <div style="margin-top:0.75rem; background:#f3e8ff; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.79rem; color:#581c87;">
+            &#128161; Key Sites must be kept clean and protected — minimise exposure time and cover promptly after procedures.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: STANDARD vs SURGICAL ANTT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9878;&#65039; Standard ANTT vs Surgical ANTT</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">The type of ANTT used depends on the <strong>complexity of the procedure</strong> and the number and size of Key Parts and Key Sites involved.</p>
+    <div class="antt-compare">
+      <div class="antt-card">
+        <div class="antt-card-header standard">
+          <div class="antt-card-title">&#129521; Standard ANTT</div>
+          <div class="antt-card-sub">For routine procedures with small, manageable Key Parts</div>
+        </div>
+        <div class="antt-card-body">
+          <div class="antt-card-section">When to use</div>
+          <ul>
+            <li>Procedures with <strong>few, small Key Parts</strong> that can each be protected individually</li>
+            <li>Short-duration procedures</li>
+            <li>Key Parts can be kept sterile using their own packaging (Micro Critical Aseptic Field)</li>
+          </ul>
+          <div class="antt-card-section">Aseptic Field</div>
+          <ul>
+            <li>Uses a <strong>General Aseptic Field</strong> — a clean, non-touch work area (e.g. opened packaging, tray)</li>
+            <li>Key Parts protected individually — e.g. needle tip stays in cap until use</li>
+            <li><strong>Micro Critical Aseptic Fields</strong> — the sterile inner packaging immediately around a Key Part</li>
+          </ul>
+          <div class="antt-card-section">Gloves</div>
+          <ul>
+            <li><strong>Clean (non-sterile) gloves</strong> — as long as Key Parts are not directly touched</li>
+            <li>Sterile gloves if direct Key Part contact is unavoidable</li>
+          </ul>
+          <div class="antt-card-section">Common procedures</div>
+          <ul>
+            <li>IV cannulation</li>
+            <li>Drawing up and administering IV medications</li>
+            <li>Simple wound dressings</li>
+            <li>Urinary catheter care (not insertion)</li>
+            <li>Blood glucose monitoring</li>
+            <li>Subcutaneous / intramuscular injections</li>
+            <li>Nasogastric tube care</li>
+            <li>Blood cultures (peripheral)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="antt-card">
+        <div class="antt-card-header surgical">
+          <div class="antt-card-title">&#128137; Surgical ANTT</div>
+          <div class="antt-card-sub">For complex procedures with many or large Key Parts</div>
+        </div>
+        <div class="antt-card-body">
+          <div class="antt-card-section">When to use</div>
+          <ul>
+            <li>Procedures with <strong>many Key Parts</strong> or Key Parts too large to protect individually</li>
+            <li>Longer or more complex procedures</li>
+            <li>Higher risk of infection if contamination occurs</li>
+          </ul>
+          <div class="antt-card-section">Aseptic Field</div>
+          <ul>
+            <li>Requires a <strong>large Critical Aseptic Field</strong> — a covered sterile drape/surface</li>
+            <li>All Key Parts placed within the Critical Aseptic Field</li>
+            <li>The entire field must be maintained sterile throughout the procedure</li>
+          </ul>
+          <div class="antt-card-section">Gloves</div>
+          <ul>
+            <li><strong>Sterile gloves</strong> — required, as direct Key Part handling occurs within the Critical Aseptic Field</li>
+            <li>Applied using aseptic technique (don't contaminate outer surface)</li>
+          </ul>
+          <div class="antt-card-section">Common procedures</div>
+          <ul>
+            <li>Urinary catheter insertion</li>
+            <li>Central venous catheter (CVC) insertion / care</li>
+            <li>Complex or surgical wound dressings</li>
+            <li>Chest drain insertion / management</li>
+            <li>Lumbar puncture</li>
+            <li>Arterial line insertion</li>
+            <li>Surgical procedures (theatre)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tip-notice" style="margin-top:1rem;">
+      <span>&#128161;</span>
+      <span><strong>Decision rule:</strong> Ask yourself — <em>"Can I protect every Key Part individually without touching it?"</em> If yes → Standard ANTT. If no (too many, too large, or too complex) → Surgical ANTT.</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: PERFORMING ANTT ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9989; Performing ANTT — Step by Step</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">These steps apply to both Standard and Surgical ANTT, with differences noted where applicable.</p>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Prepare yourself</strong> — Ensure you are clinically clean. No jewellery below the elbow, short nails, no nail polish or false nails. Remove or roll up long sleeves (bare below elbows).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Perform hand hygiene (Moment 2)</strong> — Before a clean/aseptic procedure. Use ABHR (alcohol-based hand rub) for at least 20–30 seconds, or wash with soap and water if hands are visibly soiled.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Gather and check all equipment</strong> — Before entering the patient zone. Check expiry dates, packaging integrity, and that all required items are present. Never re-enter the clean trolley once in the patient zone without re-performing hand hygiene.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Prepare the work surface / aseptic field</strong> — Clean and dry the work surface. Open sterile packaging using non-touch technique — peel back, do not reach inside. For Surgical ANTT: lay out the sterile drape to create the Critical Aseptic Field.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-body"><strong>Don appropriate PPE</strong> — Minimum: clean gloves. Add apron, mask, eye protection as required by the procedure and local policy. For Surgical ANTT: sterile gloves, sterile gown if indicated.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-body"><strong>Identify and protect Key Parts throughout</strong> — Keep Key Parts within their Micro Critical Aseptic Field until the moment of use. Never place a Key Part down on a non-sterile surface. Never leave a Key Part uncovered and unattended.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">7</div>
+        <div class="step-body"><strong>Perform the procedure</strong> — Maintain the aseptic field for the entire procedure. If a Key Part is contaminated — replace it. Do not take shortcuts. Communicate clearly with assistants about what is and isn't sterile.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">8</div>
+        <div class="step-body"><strong>Dispose of sharps and waste immediately</strong> — Never resheath needles (unless using a one-handed resheathing device). Dispose of sharps directly into the sharps container at point of care. Remove PPE safely — doff in correct order.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">9</div>
+        <div class="step-body"><strong>Perform hand hygiene (Moment 3 or 4)</strong> — After body fluid exposure risk (Moment 3), or after touching the patient (Moment 4). Clean the trolley and work area. Document the procedure.</div>
+      </div>
+    </div>
+    <div class="alert-notice" style="margin-top:1rem;">
+      <span>&#9888;&#65039;</span>
+      <div><strong>If contamination occurs at any point — stop.</strong> Replace contaminated items before continuing. Never proceed with a contaminated Key Part. It is better to pause and restart than to cause a healthcare-associated infection.</div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: HAND HYGIENE ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#129510; Hand Hygiene — WHO 5 Moments</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">Hand hygiene is the <strong>single most effective way</strong> to prevent healthcare-associated infections (HAIs). The WHO 5 Moments define exactly when hand hygiene must be performed.</p>
+    <div class="moments-grid">
+      <div class="moment-card">
+        <div class="moment-num">1</div>
+        <div class="moment-label">Before touching the patient</div>
+        <div class="moment-sub">When approaching the patient — before any physical contact</div>
+      </div>
+      <div class="moment-card" style="border-color:var(--antt); background:var(--antt-pale);">
+        <div class="moment-num" style="color:var(--antt);">2</div>
+        <div class="moment-label">Before a clean / aseptic procedure</div>
+        <div class="moment-sub">Immediately before ANTT — this is the critical moment for infection prevention</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-num">3</div>
+        <div class="moment-label">After body fluid exposure risk</div>
+        <div class="moment-sub">After contact with blood, body fluids, secretions, excretions or wound dressings</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-num">4</div>
+        <div class="moment-label">After touching the patient</div>
+        <div class="moment-sub">After any physical contact — even if gloves were worn</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-num">5</div>
+        <div class="moment-label">After touching patient surroundings</div>
+        <div class="moment-sub">After touching objects or furniture in the patient's environment</div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:1rem;">
+      <div class="info-card">
+        <div class="info-card-title">&#129510; ABHR vs Soap &amp; Water</div>
+        <div class="info-card-body">
+          <ul>
+            <li><strong>ABHR (alcohol-based hand rub)</strong> is preferred for most clinical situations — faster, less skin damage, more effective against most pathogens</li>
+            <li><strong>Soap and water is required</strong> when hands are visibly soiled, after contact with a patient with <em>Clostridioides difficile (C. diff)</em>, or after caring for a patient with norovirus</li>
+            <li>Apply ABHR to all surfaces — palm, dorsum, fingers, between fingers, thumbs, fingertips, wrists — rub until dry (~20–30 seconds)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">&#9888;&#65039; Hand Hygiene Pitfalls</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Wearing rings, watches, or bracelets — <strong>increases bacterial load</strong> and reduces effectiveness</li>
+            <li>Artificial nails and nail polish harbour micro-organisms — <strong>not acceptable</strong> in clinical practice</li>
+            <li>Gloves do <strong>not</strong> replace hand hygiene — perform HH before donning and after doffing gloves</li>
+            <li>Over-reliance on gloves — gloves can become contaminated and spread pathogens just like hands</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: PPE ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#129521; PPE for ANTT Procedures</h2>
+    <p style="font-size:0.87rem; color:var(--mid); line-height:1.7; margin-bottom:1rem;">PPE selection depends on the procedure, anticipated exposure to body fluids, and transmission-based precaution requirements.</p>
+    <div class="ppe-grid">
+      <div class="ppe-chip"><div class="ppe-icon">&#129510;</div><div><strong>Clean gloves</strong><br><span style="font-size:0.77rem; color:var(--mid);">Required for Standard ANTT and all procedures with body fluid exposure risk</span></div></div>
+      <div class="ppe-chip"><div class="ppe-icon">&#129510;</div><div><strong>Sterile gloves</strong><br><span style="font-size:0.77rem; color:var(--mid);">Required for Surgical ANTT — when Key Parts must be directly handled</span></div></div>
+      <div class="ppe-chip"><div class="ppe-icon">&#129507;</div><div><strong>Apron (plastic)</strong><br><span style="font-size:0.77rem; color:var(--mid);">When clothing may be contaminated with body fluids or infectious material</span></div></div>
+      <div class="ppe-chip"><div class="ppe-icon">&#128137;</div><div><strong>Surgical mask</strong><br><span style="font-size:0.77rem; color:var(--mid);">When performing Surgical ANTT, or if droplet/contact precautions apply</span></div></div>
+      <div class="ppe-chip"><div class="ppe-icon">&#128064;</div><div><strong>Eye protection</strong><br><span style="font-size:0.77rem; color:var(--mid);">Goggles or face shield when splash or spray of body fluids is anticipated</span></div></div>
+      <div class="ppe-chip"><div class="ppe-icon">&#129517;</div><div><strong>P2/N95 respirator</strong><br><span style="font-size:0.77rem; color:var(--mid);">When performing aerosol-generating procedures or in airborne precaution settings</span></div></div>
+    </div>
+    <div class="warn-notice" style="margin-top:0.75rem;">
+      <span>&#9888;&#65039;</span>
+      <span><strong>Doff (remove) PPE in the correct order:</strong> Gloves → Apron → Eye protection → Mask. Perform hand hygiene after removing each item. The outside of PPE is contaminated — avoid touching your face.</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7: COMMON PROCEDURES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128203; ANTT by Procedure — Quick Reference</h2>
+    <div class="proc-overflow">
+      <table class="proc-table">
+        <thead>
+          <tr>
+            <th>Procedure</th>
+            <th>ANTT Type</th>
+            <th>Key Parts</th>
+            <th>Key Site</th>
+            <th>Gloves</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IV cannulation</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Cannula tip, needle, bung/cap</td>
+            <td>Venepuncture insertion site</td>
+            <td>Clean</td>
+          </tr>
+          <tr>
+            <td><strong>IV medication administration</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Syringe tip, needle, IV port</td>
+            <td>IV connector / port</td>
+            <td>Clean</td>
+          </tr>
+          <tr>
+            <td><strong>Simple wound dressing</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Sterile gauze, dressing materials</td>
+            <td>Wound bed</td>
+            <td>Clean (sterile if touching wound directly)</td>
+          </tr>
+          <tr>
+            <td><strong>Complex / surgical wound dressing</strong></td>
+            <td><span class="badge-surgical">Surgical</span></td>
+            <td>All sterile materials in field</td>
+            <td>Wound bed, drain sites</td>
+            <td>Sterile</td>
+          </tr>
+          <tr>
+            <td><strong>Urinary catheter insertion</strong></td>
+            <td><span class="badge-surgical">Surgical</span></td>
+            <td>Catheter tip, drainage bag connector</td>
+            <td>Urethral meatus</td>
+            <td>Sterile</td>
+          </tr>
+          <tr>
+            <td><strong>Urinary catheter care / bag change</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Catheter-bag connector</td>
+            <td>Catheter junction</td>
+            <td>Clean</td>
+          </tr>
+          <tr>
+            <td><strong>SC / IM injection</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Needle tip, syringe tip</td>
+            <td>Injection site (skin)</td>
+            <td>Clean</td>
+          </tr>
+          <tr>
+            <td><strong>Blood cultures</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Needle, blood culture bottle ports</td>
+            <td>Venepuncture site</td>
+            <td>Clean (strict non-touch)</td>
+          </tr>
+          <tr>
+            <td><strong>CVC / PICC line care</strong></td>
+            <td><span class="badge-surgical">Surgical</span></td>
+            <td>All line components, caps, connectors</td>
+            <td>CVC insertion site</td>
+            <td>Sterile</td>
+          </tr>
+          <tr>
+            <td><strong>Nasogastric tube insertion</strong></td>
+            <td><span class="badge-standard">Standard</span></td>
+            <td>Tube tip</td>
+            <td>Nasal/pharyngeal mucosa</td>
+            <td>Clean</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem; color:var(--mid); margin-top:0.5rem;">&#8203;Note: Always confirm ANTT type with your clinical supervisor and facility policy — some facilities apply Surgical ANTT to additional procedures.</p>
+  </div>
+
+  <!-- ═══ SECTION 8: COMMON MISTAKES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#9888;&#65039; Common ANTT Mistakes on Placement</h2>
+    <div class="two-col">
+      <div class="info-card" style="border-color:#fda4af;">
+        <div class="info-card-title" style="color:#881337;">&#10007; What Students Often Get Wrong</div>
+        <div class="info-card-body">
+          <ul>
+            <li>Touching the <strong>tip of a needle or syringe</strong> — even briefly — before use</li>
+            <li>Placing a sterile item on a <strong>non-sterile surface</strong> (e.g. patient's bed, locker top)</li>
+            <li>Reaching <strong>across</strong> a sterile field — always approach from the side</li>
+            <li>Leaving a Key Part <strong>uncapped and unattended</strong></li>
+            <li>Using a swab or dressing that has <strong>fallen or been placed non-sterile</strong></li>
+            <li>Skipping hand hygiene because gloves were worn</li>
+            <li>Not checking <strong>expiry dates</strong> or packaging integrity</li>
+            <li>Allowing a second person to contaminate the field by entering without warning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card" style="border-color:var(--antt);">
+        <div class="info-card-title" style="color:var(--antt);">&#10003; What to Do Instead</div>
+        <div class="info-card-body">
+          <ul>
+            <li><strong>Think out loud</strong> — narrate your actions during supervised practice ("I'm protecting this Key Part, I'm using a non-touch technique")</li>
+            <li>Set up your field <strong>before</strong> entering the patient zone — check everything is present first</li>
+            <li>If unsure whether something is contaminated — <strong>treat it as contaminated</strong> and replace it</li>
+            <li>Always <strong>tell your supervisor immediately</strong> if you contaminate a Key Part — it's safe to do so</li>
+            <li>Practice ANTT on <strong>clinical skill labs</strong> before placement so movements become automatic</li>
+            <li>Ask for a <strong>second check</strong> on your technique — supervisors expect this from students</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 9: RESOURCES ═══ -->
+  <div class="content-section">
+    <h2 class="section-title">&#128279; Resources &amp; Further Learning</h2>
+    <ul class="res-list">
+      <li>
+        <a href="https://www.acipc.org.au/resources/aseptic-technique/" target="_blank" rel="noopener">
+          <div class="res-icon">&#129521;</div>
+          <div class="res-text">
+            <span>ACIPC — Aseptic Technique Resources</span>
+            <span class="res-desc">Australasian College for Infection Prevention and Control — ANTT framework, clinician brochures, resources — acipc.org.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+programs+and+practice+guidelines/infection+and+injury+management/healthcare+associated+infections/aseptic+technique+infection+prevention+and+control+principles" target="_blank" rel="noopener">
+          <div class="res-icon">&#127973;</div>
+          <div class="res-text">
+            <span>SA Health — Aseptic Technique &amp; Infection Control Principles</span>
+            <span class="res-desc">Official SA Health guidance on aseptic technique for clinical staff — sahealth.sa.gov.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.safetyandquality.gov.au/standards/nsqhs-standards/preventing-and-controlling-healthcare-associated-infection-standard" target="_blank" rel="noopener">
+          <div class="res-icon">&#128203;</div>
+          <div class="res-text">
+            <span>ACSQHC — Preventing &amp; Controlling HAI Standard</span>
+            <span class="res-desc">National Safety and Quality Health Service Standard 3 — infection prevention frameworks — safetyandquality.gov.au</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.who.int/gpsc/5may/Hand_Hygiene_Why_How_and_When_Brochure.pdf" target="_blank" rel="noopener">
+          <div class="res-icon">&#129510;</div>
+          <div class="res-text">
+            <span>WHO — Hand Hygiene: Why, How &amp; When</span>
+            <span class="res-desc">WHO 5 Moments for Hand Hygiene brochure — free PDF — who.int</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.antt.org" target="_blank" rel="noopener">
+          <div class="res-icon">&#127758;</div>
+          <div class="res-text">
+            <span>ANTT.org — The ANTT Clinical Practice Framework</span>
+            <span class="res-desc">Official ANTT framework website — theory, practice guidance, and education resources — antt.org</span>
+          </div>
+          <span class="ext-arrow">&#8599;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <strong>OzNurse Hub</strong> — Free study resource for Australian nursing students.<br>
+  Not affiliated with any university, hospital, or health service. For educational use only. Email us at <a href="mailto:contact@oznursehub.com">contact@oznursehub.com</a><br>
+  <a href="index.html">Home</a> · <a href="feedback.html">Feedback</a>
+</footer>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('oznurse_theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var btn = document.getElementById('darkToggleBtn');
+      if (btn) btn.textContent = '☀️ Light';
+    }
+  })();
+  function toggleDark() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('oznurse_theme', isDark ? 'light' : 'dark');
+    var btn = document.getElementById('darkToggleBtn');
+    if (btn) btn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  }
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js')
+        .then(function (reg) { console.log('OzNurse SW registered', reg.scope); })
+        .catch(function (err) { console.log('SW registration failed:', err); });
+    });
+  }
+</script>
+</body>
+</html>
