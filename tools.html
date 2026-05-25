@@ -107,16 +107,18 @@
   .sb-label { overflow: hidden; text-overflow: ellipsis; }
   .sb-divider { height: 1px; background: var(--border); margin: 0.5rem 0.75rem; }
   .sb-section-label { font-size: 0.7rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 1rem; }
+  .hamburger { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; font-size: 1.15rem; color: white; flex-shrink: 0; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 89; }
+  .sidebar-overlay.open { display: block; }
   @media (max-width: 768px) {
-    .sidebar { width: 54px; }
-    .sb-label, .sb-section-label { display: none; }
-    .sidebar-item { justify-content: center; padding: 0.65rem; gap: 0; }
-    .sb-divider { margin: 0.5rem 0.4rem; }
+    .hamburger { display: flex; }
+    .sidebar { width: 220px; transform: translateX(-100%); transition: transform 0.28s ease; z-index: 200; }
+    .sidebar.open { transform: translateX(0); }
   }
 
   /* ── LAYOUT ── */
   .main { margin-left: 200px; padding: 2rem; max-width: 900px; }
-  @media (max-width: 768px) { .main { margin-left: 54px; padding: 1.25rem; } }
+  @media (max-width: 768px) { .main { margin-left: 0; padding: 1.25rem; } }
   @media (max-width: 520px) { .main { padding: 0.85rem; } }
 
   /* ── PAGE HERO ── */
@@ -327,9 +329,12 @@
       <a href="tools.html" class="active">Clinical Tools</a>
       <a href="progressnote.html">Progress Note</a>
     </nav>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
     <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
   </div>
 </header>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
 <!-- SIDEBAR -->
 <nav class="sidebar">
@@ -758,6 +763,13 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js').catch(function(){});
   });
+}
+
+// ── MOBILE SIDEBAR TOGGLE ──
+function toggleSidebar() {
+  document.querySelector('.sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+  document.body.style.overflow = document.querySelector('.sidebar').classList.contains('open') ? 'hidden' : '';
 }
 </script>
 
