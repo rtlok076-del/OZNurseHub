@@ -1170,12 +1170,15 @@
   .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #mainContent.with-sidebar { margin-left: 200px !important; max-width: calc(100% - 200px) !important; }
   .back-nav { display: none; }
+  .hub-hamburger { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; font-size: 1.15rem; color: white; flex-shrink: 0; margin-right: 0.5rem; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 89; }
+  .sidebar-overlay.open { display: block; }
   @media (max-width: 768px) {
-    .sidebar.sb-visible { width: 54px; }
-    .sb-label, .sb-section-label, .sb-divider { display: none; }
-    .sidebar-item { justify-content: center; padding: 0.65rem 0; }
-    .sb-icon { font-size: 1.1rem; }
-    #mainContent.with-sidebar { margin-left: 54px !important; max-width: calc(100% - 54px) !important; }
+    .hub-hamburger { display: flex; }
+    .sidebar { width: 220px; }
+    .sidebar.sb-visible { transform: translateX(-100%); transition: transform 0.28s ease; z-index: 200; }
+    .sidebar.sb-visible.sb-open { transform: translateX(0); }
+    #mainContent.with-sidebar { margin-left: 0 !important; max-width: 100% !important; }
   }
 
   /* -- 5+4 CENTRED TILE LAYOUT -- */
@@ -1227,6 +1230,7 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
+    <button class="hub-hamburger" id="hubHamburger" onclick="toggleMobileSidebar()" aria-label="Open menu">☰</button>
     <a href="javascript:void(0)" onclick="showHome()" class="logo">
       <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><img src="icon.svg" alt="OzNurse" style="width:36px;height:36px;border-radius:10px;display:block;"></div>
       <div class="logo-text">Oz<span>Nurse</span> Hub</div>
@@ -1377,6 +1381,7 @@
   <div class="sb-divider"></div>
   <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
 </nav>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 <main class="main" id="mainContent" style="display:none">
 
   <!-- SEARCH RESULTS BANNER — shown only during active search -->
@@ -2611,6 +2616,14 @@
 
 </script>
 <script>
+function toggleMobileSidebar() {
+  var sb = document.getElementById('sidebar');
+  if (!sb.classList.contains('sb-visible')) return;
+  sb.classList.toggle('sb-open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+  document.body.style.overflow = sb.classList.contains('sb-open') ? 'hidden' : '';
+}
+
 function showSection(id) {
   if (id === 'quickref') { window.location.href = './quickref.html'; return; }
   document.querySelector('.hero-banner').style.display = 'none';
@@ -2626,6 +2639,11 @@ function showSection(id) {
   document.querySelectorAll('.sidebar-item[data-section]').forEach(function(el) {
     el.classList.toggle('sidebar-active', el.dataset.section === id);
   });
+  // Close mobile sidebar after navigating to a section
+  sidebar.classList.remove('sb-open');
+  var ov = document.getElementById('sidebarOverlay');
+  if (ov) ov.classList.remove('open');
+  document.body.style.overflow = '';
   window.scrollTo(0, 0);
   if (history.pushState) history.pushState(null, '', '#' + id);
 }
@@ -2637,7 +2655,12 @@ function showHome() {
   main.classList.remove('with-sidebar');
   main.classList.remove('search-active');
   document.querySelectorAll('.section').forEach(function(s) { s.style.display = ''; });
-  document.getElementById('sidebar').classList.remove('sb-visible');
+  var sb = document.getElementById('sidebar');
+  sb.classList.remove('sb-visible');
+  sb.classList.remove('sb-open');
+  var ov = document.getElementById('sidebarOverlay');
+  if (ov) ov.classList.remove('open');
+  document.body.style.overflow = '';
   // Hide search banner
   var banner = document.getElementById('searchBanner');
   if (banner) banner.style.display = 'none';
