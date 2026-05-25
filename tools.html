@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Tools — Drug Calculator & Flashcards | OzNurse Hub</title>
+
+<meta name="description" content="Free drug dose calculator and clinical flashcards for Australian nursing students. Calculate mg/kg dosing, mg to mL, IV infusion rates, unit conversions, and study medications and clinical assessment with flip cards.">
+<meta name="keywords" content="drug dose calculator nursing students australia, mg/kg calculator nursing, IV infusion rate calculator, mg to mL nursing, nursing flashcards australia, medication flashcards nursing, clinical assessment study cards, nursing study tools australia">
+<meta name="robots" content="index, follow">
+<meta name="author" content="OzNurse Hub">
+<link rel="canonical" href="https://oznursehub.com/tools.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oznursehub.com/tools.html">
+<meta property="og:title" content="Clinical Tools — Drug Calculator & Flashcards | OzNurse Hub">
+<meta property="og:description" content="Drug dose calculator (mg/kg, mg→mL, IV rate, unit conversions) and clinical flashcards for Australian nursing students.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="OzNurse Hub">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OzNurse Clinical Tools",
+  "description": "Drug dose calculator and clinical flashcards for Australian nursing students.",
+  "url": "https://oznursehub.com/tools.html",
+  "publisher": { "@type": "Organization", "name": "OzNurse Hub", "url": "https://oznursehub.com" },
+  "applicationCategory": "EducationalApplication",
+  "inLanguage": "en-AU"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7c3aed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OzNurse Hub">
+
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #12a090;
+    --teal-pale: #e6f5f3;
+    --tools: #7c3aed;
+    --tools-light: #a78bfa;
+    --tools-pale: #ede9fe;
+    --dark: #1a2332;
+    --mid: #4a5568;
+    --light: #f8fafb;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --warn: #92400e;
+    --warn-pale: #fffbeb;
+    --warn-border: #f59e0b;
+  }
+
+  [data-theme="dark"] {
+    --light: #111827;
+    --white: #1f2937;
+    --dark: #f1f5f9;
+    --mid: #94a3b8;
+    --border: #374151;
+    --teal-pale: #0d3330;
+    --tools-pale: #2e1065;
+    --warn-pale: #1c1917;
+    --warn-border: #92400e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header { background: #1a2332; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; }
+  .logo-icon img { width: 36px; height: 36px; display: block; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+  .logo-text span { color: #12a090; }
+  nav { display: flex; gap: 0.25rem; }
+  nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: 6px; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: white; background: rgba(255,255,255,0.1); }
+  .dark-toggle { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .dark-toggle:hover { background: rgba(255,255,255,0.18); }
+  @media (max-width: 768px) { nav { display: none; } }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; left: 0; top: 64px; height: calc(100vh - 64px);
+    width: 200px; background: var(--white); border-right: 1px solid var(--border);
+    overflow-y: auto; z-index: 90; padding: 1rem 0;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0.55rem 1rem; text-decoration: none;
+    color: var(--mid); font-size: 0.85rem; font-weight: 500;
+    transition: all 0.15s; white-space: nowrap; overflow: hidden;
+    background: none; border: none; cursor: pointer; width: 100%; text-align: left;
+  }
+  .sidebar-item:hover { background: var(--teal-pale); color: var(--teal); }
+  .sidebar-item.sidebar-active { background: var(--tools-pale); color: var(--tools); font-weight: 600; }
+  .sb-icon { font-size: 1.1rem; flex-shrink: 0; width: 24px; text-align: center; }
+  .sb-label { overflow: hidden; text-overflow: ellipsis; }
+  .sb-divider { height: 1px; background: var(--border); margin: 0.5rem 0.75rem; }
+  .sb-section-label { font-size: 0.7rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 1rem; }
+  @media (max-width: 768px) {
+    .sidebar { width: 54px; }
+    .sb-label, .sb-section-label { display: none; }
+    .sidebar-item { justify-content: center; padding: 0.65rem; gap: 0; }
+    .sb-divider { margin: 0.5rem 0.4rem; }
+  }
+
+  /* ── LAYOUT ── */
+  .main { margin-left: 200px; padding: 2rem; max-width: 900px; }
+  @media (max-width: 768px) { .main { margin-left: 54px; padding: 1.25rem; } }
+  @media (max-width: 520px) { .main { padding: 0.85rem; } }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+    border-radius: 20px; padding: 2.5rem 2rem; margin-bottom: 2rem; color: white;
+  }
+  .page-hero h1 { font-family: 'Fraunces', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+  .page-hero p { opacity: 0.88; font-size: 1rem; max-width: 580px; line-height: 1.6; }
+  @media (max-width: 520px) { .page-hero { padding: 1.5rem 1.25rem; } .page-hero h1 { font-size: 1.5rem; } }
+
+  /* ── SECTION HEADER ── */
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; margin-top: 2.5rem; }
+  .section-icon { font-size: 1.5rem; }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--dark); }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: var(--warn-pale); border: 1px solid var(--warn-border);
+    border-left: 4px solid var(--warn-border); border-radius: 10px;
+    padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+    display: flex; gap: 0.75rem; align-items: flex-start;
+  }
+  .disclaimer-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .disclaimer-text { font-size: 0.875rem; color: var(--warn); line-height: 1.55; }
+  .disclaimer-text strong { font-weight: 700; }
+
+  /* ── CALCULATOR ── */
+  .calc-card {
+    background: var(--white); border-radius: 16px; border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 2.5rem;
+  }
+  .calc-tabs {
+    display: flex; border-bottom: 1px solid var(--border); background: var(--light);
+    overflow-x: auto;
+  }
+  .calc-tab {
+    flex: 1; min-width: 110px; padding: 0.9rem 0.5rem;
+    border: none; border-bottom: 3px solid transparent;
+    background: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.83rem; font-weight: 500;
+    color: var(--mid); transition: all 0.2s; white-space: nowrap;
+  }
+  .calc-tab:hover { color: var(--tools); background: var(--tools-pale); }
+  .calc-tab.active { color: var(--tools); font-weight: 600; border-bottom-color: var(--tools); background: var(--white); }
+
+  .calc-panel { padding: 1.75rem; display: none; }
+  .calc-panel.active { display: block; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .calc-grid { grid-template-columns: 1fr; } }
+
+  .calc-field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .calc-label { font-size: 0.78rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.05em; }
+  .calc-input {
+    padding: 0.65rem 0.85rem; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--dark);
+    background: var(--light); transition: border-color 0.2s; width: 100%;
+  }
+  .calc-input:focus { outline: none; border-color: var(--tools); }
+  select.calc-input { cursor: pointer; }
+
+  .calc-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .calc-btn {
+    padding: 0.72rem 2rem; background: var(--tools);
+    color: white; border: none; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .calc-btn:hover { background: #6d28d9; transform: translateY(-1px); }
+  .clear-btn {
+    padding: 0.62rem 1.1rem; background: none;
+    border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    color: var(--mid); cursor: pointer; transition: all 0.2s;
+  }
+  .clear-btn:hover { border-color: var(--tools); color: var(--tools); }
+
+  .calc-result {
+    margin-top: 1.25rem; padding: 1.1rem 1.25rem;
+    background: var(--tools-pale); border-radius: 10px;
+    border: 1px solid rgba(124,58,237,0.2); display: none;
+  }
+  .calc-result.show { display: block; }
+  .calc-result-main { font-family: 'Fraunces', serif; font-size: 1.7rem; color: var(--tools); font-weight: 700; }
+  .calc-result-sub { font-size: 0.82rem; color: var(--mid); margin-top: 0.3rem; }
+  .calc-result-extra { font-size: 0.92rem; color: var(--dark); margin-top: 0.6rem; font-weight: 500; }
+  .calc-error { color: #dc2626; font-size: 0.88rem; font-weight: 500; }
+
+  /* Unit conversion table */
+  .conv-table { width: 100%; border-collapse: collapse; margin-top: 0.25rem; font-size: 0.9rem; }
+  .conv-table th { background: var(--tools); color: white; padding: 0.55rem 0.75rem; text-align: left; font-weight: 600; font-size: 0.82rem; }
+  .conv-table td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .conv-table tr:last-child td { border-bottom: none; }
+  .conv-table tr:nth-child(even) td { background: rgba(124,58,237,0.04); }
+  .conv-highlight { font-weight: 700; color: var(--tools); }
+
+  /* ── FLASHCARDS ── */
+  .flash-section { margin-bottom: 3rem; }
+
+  .topic-toggle {
+    display: inline-flex; background: var(--light); border: 1px solid var(--border);
+    border-radius: 50px; padding: 4px; margin-bottom: 1.5rem; gap: 4px;
+  }
+  .topic-btn {
+    padding: 0.5rem 1.25rem; border-radius: 50px; border: none; background: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500;
+    color: var(--mid); cursor: pointer; transition: all 0.2s;
+  }
+  .topic-btn.active { background: var(--tools); color: white; font-weight: 600; }
+
+  .flash-counter {
+    font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem;
+    text-align: center; font-weight: 500;
+  }
+
+  .flash-scene {
+    perspective: 1200px; width: 100%; max-width: 640px; height: 300px;
+    margin: 0 auto 0.75rem; cursor: pointer;
+  }
+  .flash-card-inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .flash-card-inner.flipped { transform: rotateY(180deg); }
+  .flash-face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 1.75rem 2rem; text-align: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  }
+  .flash-front { background: var(--white); border: 2px solid var(--tools); }
+  .flash-back {
+    background: var(--tools-pale); border: 2px solid var(--tools);
+    transform: rotateY(180deg); justify-content: flex-start;
+    overflow-y: auto; text-align: left;
+  }
+  .flash-face-label {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--tools); margin-bottom: 0.75rem; opacity: 0.75;
+    flex-shrink: 0;
+  }
+  .flash-question { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--dark); line-height: 1.3; }
+  .flash-answer { font-size: 0.875rem; color: var(--dark); line-height: 1.65; width: 100%; }
+  .flash-hint { font-size: 0.75rem; color: var(--mid); text-align: center; margin-bottom: 1rem; opacity: 0.65; }
+
+  .flash-controls {
+    display: flex; justify-content: center; align-items: center; gap: 0.65rem;
+    flex-wrap: wrap; margin-bottom: 1.25rem;
+  }
+  .flash-btn {
+    padding: 0.58rem 1.25rem; border-radius: 50px;
+    border: 1.5px solid var(--border); background: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500;
+    color: var(--dark); cursor: pointer; transition: all 0.2s;
+  }
+  .flash-btn:hover { border-color: var(--tools); color: var(--tools); }
+  .flash-btn.primary { background: var(--tools); color: white; border-color: var(--tools); }
+  .flash-btn.primary:hover { background: #6d28d9; }
+  .flash-btn:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+
+  .progress-track {
+    max-width: 640px; margin: 0 auto;
+    background: var(--border); border-radius: 4px; height: 5px;
+  }
+  .progress-fill { height: 100%; background: var(--tools); border-radius: 4px; transition: width 0.35s; }
+
+  /* ── FOOTER ── */
+  footer { margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.82rem; color: var(--mid); }
+  footer a { color: var(--mid); text-decoration: none; }
+  footer a:hover { color: var(--tools); }
+
+  /* ── DARK MODE OVERRIDES ── */
+  [data-theme="dark"] .calc-input { background: #0d1117; border-color: #374151; color: #f1f5f9; }
+  [data-theme="dark"] .calc-input:focus { border-color: var(--tools-light); }
+  [data-theme="dark"] .flash-front { background: #1f2937; }
+  [data-theme="dark"] .flash-btn { background: #1f2937; color: var(--dark); }
+  [data-theme="dark"] .disclaimer-text { color: #fcd34d; }
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE58XZFM6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BYE58XZFM6');
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="icon.svg" alt="OzNurse Hub"></div>
+      <div class="logo-text">Oz<span>Nurse</span> Hub</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quickref.html">Quick Ref</a>
+      <a href="bloods.html">Bloods</a>
+      <a href="palliative.html">Palliative</a>
+      <a href="cognitive.html">Cognitive</a>
+      <a href="antt.html">ANTT</a>
+      <a href="tools.html" class="active">Clinical Tools</a>
+      <a href="progressnote.html">Progress Note</a>
+    </nav>
+    <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-item" href="index.html"><span class="sb-icon">&#127968;</span><span class="sb-label">Home</span></a>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Sections</div>
+  <a class="sidebar-item" href="index.html#study"><span class="sb-icon">&#128218;</span><span class="sb-label">Study Skills</span></a>
+  <a class="sidebar-item" href="index.html#clinical"><span class="sb-icon">&#127973;</span><span class="sb-label">Clinical</span></a>
+  <a class="sidebar-item" href="index.html#tips"><span class="sb-icon">&#128161;</span><span class="sb-label">Year Tips</span></a>
+  <a class="sidebar-item" href="index.html#wellbeing"><span class="sb-icon">&#129504;</span><span class="sb-label">Wellbeing</span></a>
+  <a class="sidebar-item" href="quickref.html"><span class="sb-icon">&#128203;</span><span class="sb-label">Quick Ref</span></a>
+  <a class="sidebar-item" href="bloods.html"><span class="sb-icon">&#129656;</span><span class="sb-label">Bloods</span></a>
+  <a class="sidebar-item" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
+  <a class="sidebar-item" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
+  <a class="sidebar-item" href="antt.html"><span class="sb-icon">&#129521;</span><span class="sb-label">ANTT</span></a>
+  <a class="sidebar-item sidebar-active" href="tools.html"><span class="sb-icon">&#129514;</span><span class="sb-label">Clinical Tools</span></a>
+  <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
+  <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
+  <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
+  <a class="sidebar-item" href="index.html#links"><span class="sb-icon">&#128279;</span><span class="sb-label">AU Resources</span></a>
+  <div class="sb-divider"></div>
+  <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
+</nav>
+
+<main class="main">
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <h1>🧪 Clinical Tools</h1>
+    <p>Drug dose calculator and study flashcards — built for Australian nursing students. Always verify calculations with a pharmacist or senior nurse before administration.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECTION 1: DRUG DOSE CALCULATOR                    -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">💊</span>
+    <h2 class="section-title">Drug Dose Calculator</h2>
+  </div>
+
+  <div class="disclaimer">
+    <span class="disclaimer-icon">⚠️</span>
+    <div class="disclaimer-text">
+      <strong>Educational use only.</strong> Always verify drug calculations with a registered pharmacist or senior nurse before administration. Never rely solely on any calculator for clinical decisions. Consult the AMH, MIMS, or your facility's drug reference for current dosing guidelines.
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="setCalcMode('mgkg', this)">mg/kg Dosing</button>
+      <button class="calc-tab" onclick="setCalcMode('mgtomL', this)">mg → mL</button>
+      <button class="calc-tab" onclick="setCalcMode('ivrate', this)">IV Infusion Rate</button>
+      <button class="calc-tab" onclick="setCalcMode('convert', this)">Unit Conversions</button>
+    </div>
+
+    <!-- Panel 1: mg/kg -->
+    <div class="calc-panel active" id="panel-mgkg">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="mgkg-weight">Patient Weight (kg)</label>
+          <input type="number" id="mgkg-weight" class="calc-input" placeholder="e.g. 70" min="0.1" step="0.1">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="mgkg-dose">Prescribed Dose (mg/kg)</label>
+          <input type="number" id="mgkg-dose" class="calc-input" placeholder="e.g. 15" min="0" step="0.01">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="mgkg-conc">Concentration mg/mL — optional</label>
+          <input type="number" id="mgkg-conc" class="calc-input" placeholder="To also get mL volume" min="0" step="0.01">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="mgkg-max">Maximum Single Dose mg — optional</label>
+          <input type="number" id="mgkg-max" class="calc-input" placeholder="e.g. 1000" min="0" step="1">
+        </div>
+      </div>
+      <div class="calc-actions">
+        <button class="calc-btn" onclick="calcMgKg()">Calculate</button>
+        <button class="clear-btn" onclick="clearPanel('mgkg')">Clear</button>
+      </div>
+      <div class="calc-result" id="result-mgkg"></div>
+    </div>
+
+    <!-- Panel 2: mg to mL -->
+    <div class="calc-panel" id="panel-mgtomL">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="ml-dose">Required Dose (mg)</label>
+          <input type="number" id="ml-dose" class="calc-input" placeholder="e.g. 250" min="0" step="0.01">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="ml-conc">Concentration (mg/mL)</label>
+          <input type="number" id="ml-conc" class="calc-input" placeholder="e.g. 5" min="0" step="0.01">
+        </div>
+      </div>
+      <div class="calc-actions">
+        <button class="calc-btn" onclick="calcMgToML()">Calculate</button>
+        <button class="clear-btn" onclick="clearPanel('mgtomL')">Clear</button>
+      </div>
+      <div class="calc-result" id="result-mgtomL"></div>
+    </div>
+
+    <!-- Panel 3: IV Infusion Rate -->
+    <div class="calc-panel" id="panel-ivrate">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="iv-volume">Volume to Infuse (mL)</label>
+          <input type="number" id="iv-volume" class="calc-input" placeholder="e.g. 500" min="0" step="1">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="iv-duration">Duration (hours)</label>
+          <input type="number" id="iv-duration" class="calc-input" placeholder="e.g. 4" min="0" step="0.25">
+        </div>
+        <div class="calc-field" style="grid-column: 1 / -1;">
+          <label class="calc-label" for="iv-drops">Drop Factor</label>
+          <select id="iv-drops" class="calc-input">
+            <option value="20">20 drops/mL — standard giving set</option>
+            <option value="60">60 drops/mL — microdrip / burette</option>
+            <option value="15">15 drops/mL — blood giving set</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-actions">
+        <button class="calc-btn" onclick="calcIVRate()">Calculate</button>
+        <button class="clear-btn" onclick="clearPanel('ivrate')">Clear</button>
+      </div>
+      <div class="calc-result" id="result-ivrate"></div>
+    </div>
+
+    <!-- Panel 4: Unit Conversions -->
+    <div class="calc-panel" id="panel-convert">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="conv-value">Value</label>
+          <input type="number" id="conv-value" class="calc-input" placeholder="e.g. 500" min="0" step="any">
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="conv-from">Convert From</label>
+          <select id="conv-from" class="calc-input">
+            <option value="g">g (grams)</option>
+            <option value="mg" selected>mg (milligrams)</option>
+            <option value="mcg">mcg / µg (micrograms)</option>
+            <option value="ng">ng (nanograms)</option>
+            <option value="L">L (litres)</option>
+            <option value="mL">mL (millilitres)</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-actions">
+        <button class="calc-btn" onclick="calcConvert()">Convert</button>
+        <button class="clear-btn" onclick="clearPanel('convert')">Clear</button>
+      </div>
+      <div class="calc-result" id="result-convert"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECTION 2: FLASHCARDS                              -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">🃏</span>
+    <h2 class="section-title">Study Flashcards</h2>
+  </div>
+
+  <div class="flash-section">
+    <div class="topic-toggle">
+      <button class="topic-btn active" onclick="setTopic('meds', this)">💊 Medications</button>
+      <button class="topic-btn" onclick="setTopic('clinical', this)">🩺 Clinical Assessment</button>
+    </div>
+
+    <div class="flash-counter" id="flashCounter">Card 1 of 14</div>
+
+    <div class="flash-scene" onclick="flipCard()">
+      <div class="flash-card-inner" id="flashCardInner">
+        <div class="flash-face flash-front">
+          <div class="flash-face-label">Question</div>
+          <div class="flash-question" id="flashQuestion"></div>
+        </div>
+        <div class="flash-face flash-back">
+          <div class="flash-face-label">Answer</div>
+          <div class="flash-answer" id="flashAnswer"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="flash-hint">Tap or click the card to flip it</p>
+
+    <div class="flash-controls">
+      <button class="flash-btn" id="prevBtn" onclick="prevCard()">← Prev</button>
+      <button class="flash-btn primary" onclick="flipCard()">Flip</button>
+      <button class="flash-btn" id="nextBtn" onclick="nextCard()">Next →</button>
+      <button class="flash-btn" onclick="shuffleCards()" style="margin-left:0.25rem">🔀 Shuffle</button>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="flashProgress" style="width:7%"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <a href="index.html">Home</a> · <a href="feedback.html">Feedback</a>
+</footer>
+
+<script>
+// ── DARK MODE ──
+(function() {
+  if (localStorage.getItem('oznurse_theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('darkToggleBtn');
+      if (btn) btn.textContent = '☀️ Light';
+    });
+  }
+})();
+function toggleDark() {
+  var html = document.documentElement;
+  var btn = document.getElementById('darkToggleBtn');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('oznurse_theme', 'light');
+    btn.textContent = '🌙 Dark';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('oznurse_theme', 'dark');
+    btn.textContent = '☀️ Light';
+  }
+}
+
+// ── CALCULATOR ──
+function setCalcMode(mode, btn) {
+  document.querySelectorAll('.calc-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.calc-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('panel-' + mode).classList.add('active');
+}
+
+function showResult(id, html) {
+  var el = document.getElementById(id);
+  el.innerHTML = html;
+  el.classList.add('show');
+}
+
+function clearPanel(mode) {
+  document.querySelectorAll('#panel-' + mode + ' input').forEach(function(i) { i.value = ''; });
+  var r = document.getElementById('result-' + mode);
+  r.classList.remove('show');
+  r.innerHTML = '';
+}
+
+function fmt(n, dp) {
+  if (dp === undefined) dp = 2;
+  var v = parseFloat(n.toFixed(dp));
+  return v.toString();
+}
+
+// mg/kg
+function calcMgKg() {
+  var wt  = parseFloat(document.getElementById('mgkg-weight').value);
+  var d   = parseFloat(document.getElementById('mgkg-dose').value);
+  var c   = parseFloat(document.getElementById('mgkg-conc').value);
+  var mx  = parseFloat(document.getElementById('mgkg-max').value);
+  if (isNaN(wt) || isNaN(d) || wt <= 0 || d <= 0) {
+    showResult('result-mgkg', '<div class="calc-error">Enter patient weight and prescribed dose.</div>');
+    return;
+  }
+  var raw = wt * d;
+  var total = raw;
+  var capped = false;
+  if (!isNaN(mx) && mx > 0 && raw > mx) { total = mx; capped = true; }
+  var html = '<div class="calc-result-main">' + fmt(total, 2) + ' mg</div>';
+  html += '<div class="calc-result-sub">' + fmt(wt,1) + ' kg × ' + fmt(d,3) + ' mg/kg = ' + fmt(raw,2) + ' mg';
+  if (capped) html += ' <span style="color:#dc2626"> — capped at max ' + fmt(mx,0) + ' mg</span>';
+  html += '</div>';
+  if (!isNaN(c) && c > 0) {
+    var vol = total / c;
+    html += '<div class="calc-result-extra">Volume to draw up: <strong>' + fmt(vol,2) + ' mL</strong> (at ' + fmt(c,2) + ' mg/mL)</div>';
+  }
+  showResult('result-mgkg', html);
+}
+
+// mg → mL
+function calcMgToML() {
+  var dose = parseFloat(document.getElementById('ml-dose').value);
+  var conc = parseFloat(document.getElementById('ml-conc').value);
+  if (isNaN(dose) || isNaN(conc) || dose <= 0 || conc <= 0) {
+    showResult('result-mgtomL', '<div class="calc-error">Enter dose and concentration.</div>');
+    return;
+  }
+  var vol = dose / conc;
+  var html = '<div class="calc-result-main">' + fmt(vol,2) + ' mL</div>';
+  html += '<div class="calc-result-sub">' + fmt(dose,2) + ' mg ÷ ' + fmt(conc,2) + ' mg/mL = ' + fmt(vol,2) + ' mL</div>';
+  showResult('result-mgtomL', html);
+}
+
+// IV rate
+function calcIVRate() {
+  var vol  = parseFloat(document.getElementById('iv-volume').value);
+  var dur  = parseFloat(document.getElementById('iv-duration').value);
+  var drps = parseInt(document.getElementById('iv-drops').value);
+  if (isNaN(vol) || isNaN(dur) || vol <= 0 || dur <= 0) {
+    showResult('result-ivrate', '<div class="calc-error">Enter volume and duration.</div>');
+    return;
+  }
+  var rate = vol / dur;
+  var dpm  = (rate * drps) / 60;
+  var html = '<div class="calc-result-main">' + fmt(rate,1) + ' mL/hr</div>';
+  html += '<div class="calc-result-sub">' + fmt(vol,0) + ' mL ÷ ' + fmt(dur,1) + ' hr = ' + fmt(rate,1) + ' mL/hr</div>';
+  html += '<div class="calc-result-extra">Drops per minute (' + drps + ' gtts/mL set): <strong>' + fmt(dpm,0) + ' drops/min</strong></div>';
+  html += '<div class="calc-result-sub" style="margin-top:0.2rem">Formula: (mL/hr × drop factor) ÷ 60 = drops/min</div>';
+  showResult('result-ivrate', html);
+}
+
+// Unit conversions
+function calcConvert() {
+  var val  = parseFloat(document.getElementById('conv-value').value);
+  var from = document.getElementById('conv-from').value;
+  if (isNaN(val)) {
+    showResult('result-convert', '<div class="calc-error">Enter a value to convert.</div>');
+    return;
+  }
+  var convMap = {
+    g:   [['mg', val*1e3], ['mcg', val*1e6], ['ng', val*1e9]],
+    mg:  [['g', val/1e3],  ['mcg', val*1e3], ['ng', val*1e6]],
+    mcg: [['g', val/1e6],  ['mg',  val/1e3], ['ng', val*1e3]],
+    ng:  [['g', val/1e9],  ['mg',  val/1e6], ['mcg', val/1e3]],
+    L:   [['mL', val*1e3]],
+    mL:  [['L',  val/1e3]]
+  };
+  var pairs = convMap[from];
+  if (!pairs) { showResult('result-convert', '<div class="calc-error">Conversion not available.</div>'); return; }
+  var labels = { g:'g', mg:'mg', mcg:'µg / mcg', ng:'ng', L:'L', mL:'mL' };
+  var rows = pairs.map(function(p) {
+    var disp = p[1];
+    var str;
+    if (Math.abs(disp) >= 1e6 || (Math.abs(disp) < 1e-4 && disp !== 0)) {
+      str = disp.toExponential(3);
+    } else {
+      str = parseFloat(disp.toPrecision(6)).toString();
+    }
+    return '<tr><td>' + val + ' ' + (labels[from]||from) + '</td><td>=</td><td class="conv-highlight">' + str + ' ' + (labels[p[0]]||p[0]) + '</td></tr>';
+  }).join('');
+  var html = '<table class="conv-table"><thead><tr><th>From</th><th></th><th>To</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  showResult('result-convert', html);
+}
+
+// ── FLASHCARDS ──
+var DECKS = {
+  meds: [
+    { q: 'Morphine', a: 'Opioid analgesic\n\nMechanism: μ-opioid receptor agonist → ↓ pain perception, ↑ pain threshold\n\nSide effects: nausea, constipation, sedation, respiratory depression, urinary retention\n\nAntidote: Naloxone (Narcan)\n\nNote: Controlled drug — double-check and document' },
+    { q: 'Warfarin', a: 'Oral anticoagulant\n\nMechanism: Vitamin K antagonist → ↓ clotting factors II, VII, IX, X\n\nMonitoring: INR (target 2–3 most indications; 2.5–3.5 for mechanical valves)\n\nAntidote: Vitamin K; FFP for urgent reversal\n\nMany drug and food interactions — consistent vitamin K intake important' },
+    { q: 'Frusemide (Furosemide)', a: 'Loop diuretic\n\nMechanism: Inhibits Na-K-2Cl transporter in ascending loop of Henle → ↑ urine output\n\nUses: Fluid overload, heart failure, hypertension, oedema\n\nSide effects: Hypokalaemia, dehydration, ototoxicity (high IV dose), hyponatraemia\n\nMonitor: Electrolytes, fluid balance, renal function' },
+    { q: 'Metformin', a: 'Biguanide antidiabetic\n\nMechanism: ↓ hepatic glucose production, ↑ insulin sensitivity\n\nAdvantage: No hypoglycaemia as monotherapy; weight neutral\n\nContraindications: eGFR <30; hold 48hrs around IV contrast\n\nSide effects: GI upset — take with food\n\nSerious but rare: Lactic acidosis' },
+    { q: 'Metoprolol', a: 'Cardioselective β1-adrenergic blocker\n\nMechanism: Blocks β1 receptors → ↓ HR, ↓ contractility, ↓ BP\n\nUses: Hypertension, angina, heart failure, AF rate control, post-MI\n\nContraindications: Severe bradycardia, heart block, asthma (relative)\n\nDo NOT stop abruptly — taper to avoid rebound tachycardia' },
+    { q: 'Perindopril (ACE Inhibitor)', a: 'ACE inhibitor\n\nMechanism: Blocks ACE → ↓ Angiotensin II → vasodilation + ↓ aldosterone → ↓ BP\n\nUses: Hypertension, heart failure, post-MI, diabetic nephropathy\n\nSide effects: Dry persistent cough (very common), hyperkalaemia, first-dose hypotension, angioedema (rare — serious)\n\nContraindicated in pregnancy' },
+    { q: 'Midazolam', a: 'Short-acting benzodiazepine\n\nMechanism: Enhances GABA at GABA-A receptors → CNS depression\n\nUses: Procedural sedation, seizures, pre-medication, palliative care\n\nSide effects: Sedation, respiratory depression, anterograde amnesia, paradoxical agitation\n\nAntidote: Flumazenil (short-acting — re-sedation can occur)\n\nControlled drug' },
+    { q: 'Ondansetron', a: '5-HT3 receptor antagonist (antiemetic)\n\nMechanism: Blocks serotonin at 5-HT3 receptors in GI tract and CTZ → ↓ nausea/vomiting\n\nUses: Chemotherapy-induced N&V, post-op N&V, gastroenteritis\n\nSide effects: Headache, constipation, QT prolongation (monitor ECG if IV)\n\nAvailable: PO, IV, ODT wafer' },
+    { q: 'Paracetamol', a: 'Non-opioid analgesic & antipyretic\n\nMechanism: Central prostaglandin inhibition\n\nMax adult dose: 1 g QID (4 g/24 hrs)\nReduce in: liver disease, malnutrition, alcohol excess, elderly\n\nAdvantage: Safe in most populations, no GI irritation, combine with opioids\n\nOverdose antidote: N-acetylcysteine (NAC) — time-sensitive' },
+    { q: 'Enoxaparin (Clexane)', a: 'Low Molecular Weight Heparin (LMWH)\n\nMechanism: Activates antithrombin III → inhibits Factor Xa\n\nRoute: Subcutaneous only\n\nUses: DVT/PE treatment & prophylaxis, ACS\n\nMonitoring: Usually not required; anti-Xa in renal impairment/obesity/pregnancy\n\nPartial antidote: Protamine sulfate\n\nAdjust dose if eGFR <30' },
+    { q: 'NovoRapid (Insulin Aspart) — Rapid-Acting', a: 'Rapid-acting insulin analogue\n\nOnset: 10–20 min | Peak: 1–3 hrs | Duration: 3–5 hrs\n\nGive with meals — ensure patient about to eat before administering\n\nKey risk: Hypoglycaemia\n\nRotate injection sites: abdomen, thigh, upper arm\n\nOther rapid-acting: Humalog (lispro), Apidra (glulisine)' },
+    { q: 'Amoxicillin', a: 'Aminopenicillin antibiotic\n\nMechanism: Inhibits bacterial cell wall synthesis → bactericidal\n\nCoverage: Gram-positive cocci, some Gram-negatives\n\nUses: Community-acquired pneumonia, UTI, otitis media, strep throat\n\nAlways check: Penicillin allergy (cross-reactivity with cephalosporins ~1–2%)\n\nSide effects: GI upset, rash, anaphylaxis (rare)' },
+    { q: 'Pantoprazole', a: 'Proton Pump Inhibitor (PPI)\n\nMechanism: Irreversibly inhibits H+/K+-ATPase → ↓↓ gastric acid\n\nUses: GORD, peptic ulcer, H. pylori eradication, stress ulcer prophylaxis\n\nLong-term side effects: ↓ Mg2+, ↓ Ca2+ (fracture risk), C. difficile risk, ↓ B12 absorption\n\nAvailable PO and IV' },
+    { q: 'Atorvastatin', a: 'HMG-CoA reductase inhibitor (Statin)\n\nMechanism: Inhibits HMG-CoA reductase → ↓ cholesterol synthesis → ↑ LDL-receptor expression → ↓ LDL\n\nUses: Hypercholesterolaemia, primary & secondary CVD prevention\n\nSide effects: Myopathy (check CK), ↑ LFTs\n\nSerious: Rhabdomyolysis (rare)\n\nGive at night (cholesterol synthesis peaks nocturnally)' }
+  ],
+  clinical: [
+    { q: 'Normal adult heart rate', a: '60–100 bpm\n\nBradycardia: <60 bpm\nTachycardia: >100 bpm\n\nRate alone doesn\'t determine haemodynamic stability — assess BP, perfusion, symptoms\n\nCommon causes of tachycardia: pain, fever, anxiety, dehydration, bleeding, infection, AF' },
+    { q: 'Normal adult blood pressure', a: 'Systolic: 90–120 mmHg\nDiastolic: 60–80 mmHg\n\nHypertension: ≥140/90 mmHg\nHypotension: Systolic <90 mmHg\n\nMAP = (SBP + 2×DBP) ÷ 3\nTarget MAP >65 mmHg for organ perfusion\n\nOrthostatic hypotension: ↓ SBP >20 or DBP >10 on standing' },
+    { q: 'Normal adult respiratory rate', a: '12–20 breaths per minute\n\nBradypnoea: <12 bpm\nTachypnoea: >20 bpm\n\nRR is a sensitive early warning sign of deterioration — count for a full 60 seconds\n\nCommon causes of tachypnoea: hypoxia, pain, anxiety, fever, metabolic acidosis, PE, pneumonia' },
+    { q: 'Normal adult SpO₂', a: '95–100%\n\n<94%: supplemental O₂ usually indicated\n<90%: significant hypoxia — urgent assessment\n\nTarget ranges:\n• Most adults: 94–98%\n• COPD / Type 2 respiratory failure: 88–92%\n\nMay be unreliable with poor perfusion, nail polish, cold peripheries' },
+    { q: 'Normal adult temperature', a: '36.1–37.2°C (oral)\n\nFever: >38.0°C\nHyperpyrexia: >40°C\nHypothermia: <35°C\n\nAxillary ≈ 0.5°C lower than oral\nTympanic/rectal ≈ 0.3–0.5°C higher\n\nElderly and immunocompromised may not mount a fever even when seriously infected' },
+    { q: 'GCS — Eye Opening (E)', a: 'E4: Spontaneous\nE3: To voice\nE2: To pain\nE1: None\n\nMax: 4\n\nDocument what the patient is doing, not just the number\n\nGCS ≤8 = consider airway management' },
+    { q: 'GCS — Verbal Response (V)', a: 'V5: Oriented (name, place, time)\nV4: Confused (speech present, disoriented)\nV3: Words only\nV2: Sounds (moaning, groaning)\nV1: No verbal response\n\nMax: 5\n\nIntubated patients: document as \'T\' (e.g. E3VTM5)\n\nTotal GCS range: 3–15' },
+    { q: 'GCS — Motor Response (M)', a: 'M6: Obeys commands\nM5: Localises pain\nM4: Withdraws from pain\nM3: Abnormal flexion (decorticate)\nM2: Extension (decerebrate)\nM1: No response\n\nMax: 6\nTotal max GCS: 15 (E4+V5+M6)\nTotal min: 3' },
+    { q: 'AVPU Scale', a: 'A — Alert: awake and aware\nV — Voice: responds to verbal stimuli\nP — Pain: responds only to pain\nU — Unresponsive\n\nApproximate GCS correlation:\nA = 15 | V ≈ 12–13 | P ≈ 8 | U ≈ 3\n\nAny response below A warrants urgent assessment and escalation' },
+    { q: 'Normal adult urine output', a: '0.5–1 mL/kg/hr\n\nFor 70 kg adult: 35–70 mL/hr\nClinical minimum: 30 mL/hr in most adults\n\nOliguria: <0.5 mL/kg/hr for >2 consecutive hours\nAnuria: <100 mL/24 hrs\n\nUrine output = key indicator of renal perfusion. Compare to fluid balance.' },
+    { q: 'Normal ABG values', a: 'pH: 7.35–7.45\nPaCO₂: 35–45 mmHg\nPaO₂: 80–100 mmHg\nHCO₃⁻: 22–26 mmol/L\nBase Excess: −2 to +2\n\nAcidosis: pH <7.35\nAlkalosis: pH >7.45\n\nInterpretation steps:\n1. pH normal?\n2. CO₂ the cause?\n3. HCO₃ compensating?' },
+    { q: 'MET Call Criteria', a: 'Call a MET for ANY of:\n\n• Airway threatened\n• RR <8 or >30 breaths/min\n• SpO₂ <90% despite O₂\n• HR <40 or >140 bpm\n• SBP <90 mmHg\n• GCS drop ≥2\n• Seizure\n• Nurse concerned\n\nOne criterion is enough — don\'t wait' },
+    { q: 'ISBAR Handover', a: 'I — Identify: your name, role, patient name, DOB, ward/bed\n\nS — Situation: what is happening right now\n\nB — Background: relevant history, diagnosis, medications\n\nA — Assessment: what you think is going on; relevant observations\n\nR — Recommendation: what you need — review, order, advice, transfer\n\nWrite it out before calling at night' },
+    { q: '13 Rights of Medication Administration', a: '1. Right patient\n2. Right medication\n3. Right dose\n4. Right route\n5. Right time\n6. Right documentation\n7. Right reason (indication)\n8. Right response (monitor effect)\n9. Right to refuse\n10. Right assessment (allergies, obs)\n11. Right education (explain to patient)\n12. Right evaluation (document outcome)\n13. Right form (tablet vs liquid vs IV)' }
+  ]
+};
+
+var deck = [];
+var idx  = 0;
+
+function setTopic(topic, btn) {
+  document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  deck = DECKS[topic].slice();
+  idx  = 0;
+  document.getElementById('flashCardInner').classList.remove('flipped');
+  render();
+}
+
+function render() {
+  var card = deck[idx];
+  document.getElementById('flashQuestion').textContent = card.q;
+  document.getElementById('flashAnswer').innerHTML = card.a.replace(/\n/g, '<br>');
+  document.getElementById('flashCounter').textContent = 'Card ' + (idx+1) + ' of ' + deck.length;
+  document.getElementById('flashProgress').style.width = (((idx+1)/deck.length)*100).toFixed(0) + '%';
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === deck.length - 1;
+  document.getElementById('flashCardInner').classList.remove('flipped');
+}
+
+function flipCard() { document.getElementById('flashCardInner').classList.toggle('flipped'); }
+
+function nextCard() { if (idx < deck.length-1) { idx++; render(); } }
+function prevCard() { if (idx > 0) { idx--; render(); } }
+
+function shuffleCards() {
+  for (var i = deck.length-1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i+1));
+    var t = deck[i]; deck[i] = deck[j]; deck[j] = t;
+  }
+  idx = 0;
+  render();
+}
+
+// Init flashcards
+deck = DECKS.meds.slice();
+render();
+
+// Service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
+</script>
+
+</body>
+</html>
