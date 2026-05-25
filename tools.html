@@ -90,23 +90,24 @@
   /* ── SIDEBAR ── */
   .sidebar {
     position: fixed; left: 0; top: 64px; height: calc(100vh - 64px);
-    width: 200px; background: var(--white); border-right: 1px solid var(--border);
-    overflow-y: auto; z-index: 90; padding: 1rem 0;
+    width: 200px; background: #0e1929; border-right: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto; z-index: 90; padding: 0.5rem 0 1rem;
     display: flex; flex-direction: column; gap: 2px;
   }
   .sidebar-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 0.55rem 1rem; text-decoration: none;
-    color: var(--mid); font-size: 0.85rem; font-weight: 500;
-    transition: all 0.15s; white-space: nowrap; overflow: hidden;
+    display: flex; align-items: center; gap: 9px;
+    padding: 0.6rem 1rem; text-decoration: none;
+    color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 600;
+    transition: all 0.15s;
     background: none; border: none; cursor: pointer; width: 100%; text-align: left;
+    border-left: 3px solid transparent; line-height: 1;
   }
-  .sidebar-item:hover { background: var(--teal-pale); color: var(--teal); }
-  .sidebar-item.sidebar-active { background: var(--tools-pale); color: var(--tools); font-weight: 600; }
-  .sb-icon { font-size: 1.1rem; flex-shrink: 0; width: 24px; text-align: center; }
-  .sb-label { overflow: hidden; text-overflow: ellipsis; }
-  .sb-divider { height: 1px; background: var(--border); margin: 0.5rem 0.75rem; }
-  .sb-section-label { font-size: 0.7rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 1rem; }
+  .sidebar-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); border-left-color: rgba(255,255,255,0.15); }
+  .sidebar-item.active { color: var(--teal-light); background: rgba(18,160,144,0.12); border-left-color: var(--teal-light); }
+  .sb-icon { font-size: 0.95rem; min-width: 18px; text-align: center; flex-shrink: 0; }
+  .sb-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sb-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.4rem 0; }
+  .sb-section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.22); padding: 0.5rem 1rem 0.25rem; }
   .hamburger { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; font-size: 1.15rem; color: white; flex-shrink: 0; }
   .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 89; }
   .sidebar-overlay.open { display: block; }
@@ -350,7 +351,7 @@
   <a class="sidebar-item" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
   <a class="sidebar-item" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
   <a class="sidebar-item" href="antt.html"><span class="sb-icon">&#129521;</span><span class="sb-label">ANTT</span></a>
-  <a class="sidebar-item sidebar-active" href="tools.html"><span class="sb-icon">&#129514;</span><span class="sb-label">Clinical Tools</span></a>
+  <a class="sidebar-item active" href="tools.html"><span class="sb-icon">&#129514;</span><span class="sb-label">Clinical Tools</span></a>
   <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
   <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
   <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
