@@ -34,7 +34,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#7c3aed">
+<meta name="theme-color" content="#0a7c6e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="OzNurse Hub">
 
@@ -43,9 +43,9 @@
     --teal: #0a7c6e;
     --teal-light: #12a090;
     --teal-pale: #e6f5f3;
-    --tools: #7c3aed;
-    --tools-light: #a78bfa;
-    --tools-pale: #ede9fe;
+    --tools: #0a7c6e;
+    --tools-light: #12a090;
+    --tools-pale: #e6f5f3;
     --dark: #1a2332;
     --mid: #4a5568;
     --light: #f8fafb;
@@ -63,7 +63,7 @@
     --mid: #94a3b8;
     --border: #374151;
     --teal-pale: #0d3330;
-    --tools-pale: #2e1065;
+    --tools-pale: #0d3330;
     --warn-pale: #1c1917;
     --warn-border: #92400e;
   }
@@ -121,7 +121,7 @@
 
   /* ── PAGE HERO ── */
   .page-hero {
-    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #064e3b 0%, #0a7c6e 100%);
     border-radius: 20px; padding: 2.5rem 2rem; margin-bottom: 2rem; color: white;
   }
   .page-hero h1 { font-family: 'Fraunces', serif; font-size: 2rem; margin-bottom: 0.5rem; }
@@ -186,7 +186,7 @@
     font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
     cursor: pointer; transition: all 0.2s;
   }
-  .calc-btn:hover { background: #6d28d9; transform: translateY(-1px); }
+  .calc-btn:hover { background: #086358; transform: translateY(-1px); }
   .clear-btn {
     padding: 0.62rem 1.1rem; background: none;
     border: 1.5px solid var(--border); border-radius: 10px;
@@ -277,7 +277,7 @@
   }
   .flash-btn:hover { border-color: var(--tools); color: var(--tools); }
   .flash-btn.primary { background: var(--tools); color: white; border-color: var(--tools); }
-  .flash-btn.primary:hover { background: #6d28d9; }
+  .flash-btn.primary:hover { background: #086358; }
   .flash-btn:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
 
   .progress-track {
@@ -293,7 +293,7 @@
 
   /* ── DARK MODE OVERRIDES ── */
   [data-theme="dark"] .calc-input { background: #0d1117; border-color: #374151; color: #f1f5f9; }
-  [data-theme="dark"] .calc-input:focus { border-color: var(--tools-light); }
+  [data-theme="dark"] .calc-input:focus { border-color: var(--teal-light); }
   [data-theme="dark"] .flash-front { background: #1f2937; }
   [data-theme="dark"] .flash-btn { background: #1f2937; color: var(--dark); }
   [data-theme="dark"] .disclaimer-text { color: #fcd34d; }
