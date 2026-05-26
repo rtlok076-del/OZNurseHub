@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clinical Tools — Drug Calculator & Flashcards | OzNurse Hub</title>
+<title>Tools — Drug Calculator, Flashcards, ISBAR & Clinical Reasoning | OzNurse Hub</title>
 
-<meta name="description" content="Free drug dose calculator and clinical flashcards for Australian nursing students. Calculate mg/kg dosing, mg to mL, IV infusion rates, unit conversions, and study medications and clinical assessment with flip cards.">
+<meta name="description" content="Free nursing tools for Australian nursing students: drug dose calculator (mg/kg, IV rate, unit conversions), clinical flashcards, ISBAR handover guide, and clinical reasoning cycle reference.">
 <meta name="keywords" content="drug dose calculator nursing students australia, mg/kg calculator nursing, IV infusion rate calculator, mg to mL nursing, nursing flashcards australia, medication flashcards nursing, clinical assessment study cards, nursing study tools australia">
 <meta name="robots" content="index, follow">
 <meta name="author" content="OzNurse Hub">
@@ -13,8 +13,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oznursehub.com/tools.html">
-<meta property="og:title" content="Clinical Tools — Drug Calculator & Flashcards | OzNurse Hub">
-<meta property="og:description" content="Drug dose calculator (mg/kg, mg→mL, IV rate, unit conversions) and clinical flashcards for Australian nursing students.">
+<meta property="og:title" content="Tools — Drug Calculator, Flashcards & Clinical Guides | OzNurse Hub">
+<meta property="og:description" content="Drug dose calculator, clinical flashcards, ISBAR handover guide, and clinical reasoning cycle reference for Australian nursing students.">
 <meta property="og:image" content="https://oznursehub.com/banner.png">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="OzNurse Hub">
@@ -23,8 +23,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "OzNurse Clinical Tools",
-  "description": "Drug dose calculator and clinical flashcards for Australian nursing students.",
+  "name": "OzNurse Tools",
+  "description": "Drug dose calculator, clinical flashcards, ISBAR guide, and clinical reasoning cycle reference for Australian nursing students.",
   "url": "https://oznursehub.com/tools.html",
   "publisher": { "@type": "Organization", "name": "OzNurse Hub", "url": "https://oznursehub.com" },
   "applicationCategory": "EducationalApplication",
@@ -289,6 +289,56 @@
   }
   .progress-fill { height: 100%; background: var(--tools); border-radius: 4px; transition: width 0.35s; }
 
+  /* ── REFERENCE SECTIONS ── */
+  .ref-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .ref-intro {
+    font-size: 0.875rem; color: var(--mid); line-height: 1.7;
+    margin-bottom: 1.25rem; padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .isbar-grid { display: flex; flex-direction: column; gap: 0.65rem; }
+  .isbar-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 1rem; background: var(--light); border-radius: 10px;
+  }
+  .isbar-letter {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: white;
+  }
+  .isbar-title { font-weight: 700; font-size: 0.875rem; color: var(--dark); margin-bottom: 0.3rem; }
+  .isbar-body { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+  .isbar-body ul { padding-left: 1.1rem; }
+  .isbar-body li { margin-bottom: 0.2rem; }
+  .ref-tip {
+    margin-top: 1.1rem;
+    background: rgba(10,124,110,0.08); border-left: 3px solid var(--tools);
+    border-radius: 0 8px 8px 0; padding: 0.75rem 1rem;
+    font-size: 0.83rem; color: var(--dark); line-height: 1.6;
+  }
+  .cycle-steps { display: flex; flex-direction: column; }
+  .cycle-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+  }
+  .cycle-step:last-child { border-bottom: none; }
+  .cycle-num {
+    width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+    background: var(--tools); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 0.9rem;
+    margin-top: 1px;
+  }
+  .cycle-content strong { font-size: 0.875rem; color: var(--dark); display: block; margin-bottom: 0.25rem; }
+  .cycle-content p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
   /* ── FOOTER ── */
   footer { margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.82rem; color: var(--mid); }
   footer a { color: var(--mid); text-decoration: none; }
@@ -328,7 +378,7 @@
       <a href="palliative.html">Palliative</a>
       <a href="cognitive.html">Cognitive</a>
       <a href="antt.html">ANTT</a>
-      <a href="tools.html" class="active">Clinical Tools</a>
+      <a href="tools.html" class="active">Tools</a>
       <a href="progressnote.html">Progress Note</a>
     </nav>
     <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
@@ -351,7 +401,7 @@
   <a class="sidebar-item" href="palliative.html"><span class="sb-icon">&#128330;</span><span class="sb-label">Palliative</span></a>
   <a class="sidebar-item" href="cognitive.html"><span class="sb-icon">&#129504;</span><span class="sb-label">Cognitive</span></a>
   <a class="sidebar-item" href="antt.html"><span class="sb-icon">&#129521;</span><span class="sb-label">ANTT</span></a>
-  <a class="sidebar-item active" href="tools.html"><span class="sb-icon">&#129514;</span><span class="sb-label">Clinical Tools</span></a>
+  <a class="sidebar-item active" href="tools.html"><span class="sb-icon">&#129514;</span><span class="sb-label">Tools</span></a>
   <a class="sidebar-item" href="progressnote.html"><span class="sb-icon">&#128221;</span><span class="sb-label">Progress Note</span></a>
   <a class="sidebar-item" href="index.html#apa"><span class="sb-icon">&#128214;</span><span class="sb-label">APA 7th</span></a>
   <a class="sidebar-item" href="index.html#quizzes"><span class="sb-icon">&#129513;</span><span class="sb-label">Quizzes</span></a>
@@ -364,8 +414,8 @@
 
   <!-- HERO -->
   <div class="page-hero">
-    <h1>🧪 Clinical Tools</h1>
-    <p>Drug dose calculator and study flashcards — built for Australian nursing students. Always verify calculations with a pharmacist or senior nurse before administration.</p>
+    <h1>🧪 Tools</h1>
+    <p>Drug dose calculator, study flashcards, ISBAR handover guide, and clinical reasoning cycle reference — built for Australian nursing students.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════════════ -->
@@ -532,6 +582,153 @@
     <div class="progress-track">
       <div class="progress-fill" id="flashProgress" style="width:7%"></div>
     </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECTION 3: ISBAR                                    -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">📞</span>
+    <h2 class="section-title">ISBAR — Clinical Handover</h2>
+  </div>
+
+  <div class="ref-card">
+    <p class="ref-intro">ISBAR is a structured communication framework used across Australian health services for escalating patient concerns, clinical handover, and communicating with medical staff. A clear ISBAR ensures critical information is delivered systematically and nothing is missed under pressure.</p>
+    <div class="isbar-grid">
+      <div class="isbar-step">
+        <div class="isbar-letter" style="background:#6366f1;">I</div>
+        <div>
+          <div class="isbar-title">Identify</div>
+          <div class="isbar-body"><ul>
+            <li>Your name and role (e.g. "This is Jane, student nurse on Ward 4")</li>
+            <li>Patient's full name, date of birth, and UR number</li>
+            <li>Ward and bed number</li>
+            <li>Confirm who you are speaking with</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="isbar-step">
+        <div class="isbar-letter" style="background:#dc2626;">S</div>
+        <div>
+          <div class="isbar-title">Situation</div>
+          <div class="isbar-body"><ul>
+            <li>What is happening right now — be specific and concise</li>
+            <li>State your concern clearly (e.g. "I'm concerned because…")</li>
+            <li>Current vital signs or relevant observations</li>
+            <li>Any acute change from the patient's baseline</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="isbar-step">
+        <div class="isbar-letter" style="background:#d97706;">B</div>
+        <div>
+          <div class="isbar-title">Background</div>
+          <div class="isbar-body"><ul>
+            <li>Reason for admission and current diagnosis</li>
+            <li>Relevant past medical history</li>
+            <li>Current medications and allergies</li>
+            <li>Recent investigations, procedures, or clinical events</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="isbar-step">
+        <div class="isbar-letter" style="background:#0a7c6e;">A</div>
+        <div>
+          <div class="isbar-title">Assessment</div>
+          <div class="isbar-body"><ul>
+            <li>Your clinical impression — what do you think is happening?</li>
+            <li>Relevant trends (improving or deteriorating?)</li>
+            <li>MET criteria met or approaching?</li>
+            <li>It's OK to say "I'm not sure — that's why I'm calling"</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="isbar-step">
+        <div class="isbar-letter" style="background:#1d4ed8;">R</div>
+        <div>
+          <div class="isbar-title">Recommendation</div>
+          <div class="isbar-body"><ul>
+            <li>What do you need? (e.g. urgent review, new order, advice, transfer)</li>
+            <li>Be specific — "I'd like you to come and review the patient now"</li>
+            <li>Confirm any verbal orders by reading them back</li>
+            <li>Document the time, who you spoke to, and the agreed plan</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+    <div class="ref-tip">💡 <strong>Preparation tips:</strong> Write your ISBAR out before calling · Have current obs, the medication chart, and recent results in front of you · Know the patient's code status · Anticipate "what do you want me to do?" — have a clear recommendation ready.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECTION 4: CLINICAL REASONING CYCLE                 -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">🔄</span>
+    <h2 class="section-title">Clinical Reasoning Cycle</h2>
+  </div>
+
+  <div class="ref-card">
+    <p class="ref-intro">The Clinical Reasoning Cycle (Levett-Jones et al.) is a framework widely used in Australian nursing education to develop structured clinical thinking. It guides nurses through a systematic process — from understanding the patient's situation to evaluating outcomes — helping to prevent missed cues and unsafe clinical decisions.</p>
+    <div class="cycle-steps">
+      <div class="cycle-step">
+        <div class="cycle-num">1</div>
+        <div class="cycle-content">
+          <strong>Consider the Patient Situation</strong>
+          <p>Understand the overall context — why is this patient admitted? What is their diagnosis, clinical trajectory, and current goals of care? Read the notes before entering the room.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">2</div>
+        <div class="cycle-content">
+          <strong>Collect Cues &amp; Information</strong>
+          <p>Gather data from all available sources: vital signs, physical assessment, patient interview, medical and nursing notes, medication chart, pathology results, and clinical handover.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">3</div>
+        <div class="cycle-content">
+          <strong>Process Information</strong>
+          <p>Interpret, discriminate, and relate the cues. What is normal vs. abnormal for this patient? What patterns emerge? Which cues are most significant and which can be set aside for now?</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">4</div>
+        <div class="cycle-content">
+          <strong>Identify Problems / Issues</strong>
+          <p>Synthesise the information into clear nursing problems or clinical concerns. Prioritise using frameworks like ABCs — life-threatening problems are addressed first.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">5</div>
+        <div class="cycle-content">
+          <strong>Establish Goals</strong>
+          <p>Define clear, measurable, patient-centred goals. What outcomes are you aiming for this shift or the next 24 hours? Goals guide your care priorities and give you criteria for evaluation.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">6</div>
+        <div class="cycle-content">
+          <strong>Take Action</strong>
+          <p>Implement evidence-based nursing interventions. Act within your scope of practice — escalate what you cannot manage alone. Document all actions contemporaneously.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">7</div>
+        <div class="cycle-content">
+          <strong>Evaluate Outcomes</strong>
+          <p>Reassess the patient against your established goals. Has the intervention worked? Are there new cues? Is escalation needed? Evaluation is continuous — not a single endpoint.</p>
+        </div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">8</div>
+        <div class="cycle-content">
+          <strong>Reflect on Process &amp; New Learning</strong>
+          <p>What went well? What would you do differently? Reflection builds clinical expertise over time. Use frameworks like Gibbs' Reflective Cycle to structure your learning from each patient encounter.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ref-tip">📚 <strong>Exam tip:</strong> In clinical reasoning questions, examiners look for evidence that you collected all relevant cues, processed them systematically, and prioritised correctly. Avoid jumping straight to actions (step 6) without demonstrating the earlier thinking steps.</div>
   </div>
 
 </main>
