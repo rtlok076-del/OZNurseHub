@@ -8,16 +8,32 @@
 <link rel="canonical" href="https://oznursehub.com/fables.html">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body{font-family:'DM Sans',sans-serif;margin:0;background:#f8fafb;color:#1a2332;}
-header{background:#1a2332;color:#fff;padding:0 2rem;position:sticky;top:0}
-.header-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-a{color:#0a7c6e;text-decoration:none}.logo{color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700}
-.main{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 4rem;line-height:1.7}
-.hero{background:linear-gradient(135deg,#1a2332,#0a4a3e);color:#fff;border-radius:24px;padding:3rem 2rem;margin-bottom:2rem}
-.hero h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.4rem);margin:0 0 1rem}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:1.25rem 1.5rem;margin:1rem 0;box-shadow:0 10px 30px rgba(26,35,50,.05)}
-.tag{display:inline-block;background:#e6f5f3;color:#0a7c6e;padding:.25rem .6rem;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-ul{padding-left:1.2rem}
+:root{--teal:#0a7c6e;--teal2:#12a090;--navy:#1a2332;--ink:#1a2332;--paper:#f8fafb;--line:#e2e8f0;--soft:#4a5568;--shadow:0 18px 50px rgba(26,35,50,.08)}
+body{font-family:'DM Sans',sans-serif;margin:0;background:radial-gradient(circle at top, #edf8f6 0, #f8fafb 36%, #f8fafb 100%);color:var(--ink);}
+header{background:rgba(26,35,50,.96);color:#fff;padding:0 2rem;position:sticky;top:0;backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.12)}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+a{color:var(--teal);text-decoration:none}.logo{color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;letter-spacing:.01em}
+.main{max-width:980px;margin:0 auto;padding:2.5rem 1.5rem 4rem;line-height:1.7}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a2332 0%, #143b46 55%, #0a4a3e 100%);color:#fff;border-radius:28px;padding:3.25rem 2.25rem;margin-bottom:2rem;box-shadow:var(--shadow)}
+.hero:after{content:'';position:absolute;inset:-20% -10% auto auto;width:280px;height:280px;background:radial-gradient(circle, rgba(255,255,255,.16), transparent 70%);pointer-events:none}
+.hero .tag{margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.1rem,5vw,4rem);line-height:1.05;margin:0 0 1rem;max-width:12ch}
+.hero p{max-width:62ch;color:rgba(255,255,255,.78);font-size:1.05rem;margin:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.35rem 1.5rem;box-shadow:var(--shadow)}
+.card h2,.card h3{font-family:'Fraunces',serif;margin-top:0}
+.featured{grid-column:1/-1;border-left:6px solid var(--teal);background:linear-gradient(180deg,#ffffff 0%, #f7fffd 100%)}
+.featured h2{font-size:1.8rem;margin-bottom:.25rem}
+.meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0 1rem}
+.tag{display:inline-block;background:#e6f5f3;color:var(--teal);padding:.28rem .65rem;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.story{grid-column:1 / span 7}
+.howto{grid-column:8 / -1}
+.story,.howto,.list{min-height:100%}
+ol,ul{padding-left:1.2rem;margin:0}
+li{margin:.45rem 0}
+.callout{background:#f3fbfa;border:1px solid #d4eeea;border-radius:18px;padding:1rem 1.1rem;color:var(--soft)}
+.footer-note{margin-top:1.25rem;color:var(--soft);font-size:.95rem}
+@media (max-width: 820px){.story,.howto{grid-column:1/-1}.hero{padding:2.4rem 1.4rem}.featured h2{font-size:1.5rem}}
 </style>
 </head>
 <body>
@@ -28,41 +44,43 @@ ul{padding-left:1.2rem}
     <h1>Fables that help nursing lessons stick</h1>
     <p>These short stories are designed to make practical nursing ideas easier to remember. They’re not replacements for the clinical content — they’re the memory hooks that go with it.</p>
   </section>
-  <section class="card featured-fable" style="border-left:5px solid #0a7c6e;">
-    <span class="tag">Featured fable</span>
-    <h2>The Magpie and the Too-Busy Shift</h2>
-    <p><strong>Story:</strong> A magpie tries to collect every shiny thing on the ward and ends up dropping the most important one.</p>
-    <p><strong>Reveal:</strong> Busy is not the same as effective. When everything feels urgent, prioritisation is what keeps the shift moving.</p>
-    <p><strong>Lesson:</strong> Write the list, sort the list, then act on the list — especially when the noise goes up.</p>
+
+  <section class="grid">
+    <article class="card featured">
+      <span class="tag">Featured fable</span>
+      <h2>The Magpie and the Too-Busy Shift</h2>
+      <div class="meta"><span class="tag">Prioritisation</span><span class="tag">Shift flow</span><span class="tag">Confidence</span></div>
+      <p><strong>Story:</strong> A magpie tries to collect every shiny thing on the ward and ends up dropping the most important one.</p>
+      <p><strong>Reveal:</strong> Busy is not the same as effective. When everything feels urgent, prioritisation is what keeps the shift moving.</p>
+      <p><strong>Lesson:</strong> Write the list, sort the list, then act on the list — especially when the noise goes up.</p>
+      <div class="footer-note">Use this as the story hook, then connect it to the real nursing skill underneath.</div>
+    </article>
+
+    <article class="card story">
+      <h3>How to read the fables</h3>
+      <ol>
+        <li>Read the story first</li>
+        <li>Look for the reveal</li>
+        <li>Apply the lesson to a real ward situation</li>
+      </ol>
+    </article>
+
+    <article class="card howto">
+      <h3>Planned themes</h3>
+      <ul>
+        <li>prioritisation on a busy shift</li>
+        <li>speaking up when something feels off</li>
+        <li>handover and communication</li>
+        <li>confidence when you don’t know everything</li>
+        <li>staying calm when the ward gets loud</li>
+      </ul>
+    </article>
+
+    <article class="card list" style="grid-column:1/-1;">
+      <h3>Suggest a story idea</h3>
+      <div class="callout">If you have a nursing lesson that would work well as a fable, send the idea through the site contact page and I’ll add it to the list.</div>
+    </article>
   </section>
-  <section class="card">
-    <h2>How to read the fables</h2>
-    <ul>
-      <li>Read the story first</li>
-      <li>Look for the reveal</li>
-      <li>Apply the lesson to a real ward situation</li>
-    </ul>
-  </section>
-  <section class="card">
-    <h2>Planned themes</h2>
-    <ul>
-      <li>prioritisation on a busy shift</li>
-      <li>speaking up when something feels off</li>
-      <li>handover and communication</li>
-      <li>confidence when you don’t know everything</li>
-      <li>staying calm when the ward gets loud</li>
-    </ul>
-  </section>
-  <section class="card">
-    <h2>Sample format</h2>
-    <p><strong>Story:</strong> A small animal gets overwhelmed by shiny tasks.</p>
-    <p><strong>Reveal:</strong> Doing everything at once feels productive, but it often delays the task that actually matters.</p>
-    <p><strong>Lesson:</strong> Prioritise, write it down, and work the list in the right order.</p>
-  </section>
-  <section class="card suggest-a-story">
-    <h2>Suggest a story idea</h2>
-    <p>If you have a nursing lesson that would work well as a fable, send the idea through the site contact page and I’ll add it to the list.</p>
-  </section>
-</main>
+</main></main>
 </body>
 </html>
