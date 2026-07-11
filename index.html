@@ -607,6 +607,14 @@
     background: radial-gradient(ellipse at 80% 10%, rgba(82,183,136,0.18) 0%, transparent 65%);
   }
   .quiz-meds:hover { box-shadow: 0 16px 48px rgba(26,74,58,0.55); }
+  .quiz-wardwise {
+    background: #2D3748;
+    box-shadow: 0 6px 32px rgba(45,55,72,0.35);
+  }
+  .quiz-wardwise::after {
+    background: radial-gradient(ellipse at 80% 10%, rgba(244,185,66,0.18) 0%, transparent 65%);
+  }
+  .quiz-wardwise:hover { box-shadow: 0 16px 48px rgba(45,55,72,0.55); }
   .quiz-card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
   .quiz-card-num {
     font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
@@ -2215,6 +2223,20 @@ without the fluff</h1>
           <span class="quiz-card-pill">Antibiotics</span>
         </div>
         <span class="quiz-card-cta">Start Quiz →</span>
+      </a>
+      <a class="quiz-launch-card quiz-wardwise" href="wardwise.html"
+         data-year="y2 y3" data-keywords="wardwise diagnosis game medical terminology clinical reasoning diagnosis differentials priority deterioration sepsis delirium dka pulmonary embolism picc adult learning">
+        <span class="quiz-card-icon">DX</span>
+        <div class="quiz-card-num">Game 03 - Year 2+</div>
+        <div class="quiz-card-title">WardWise Dx</div>
+        <div class="quiz-card-desc">A mature ward game for practising medical terminology, likely diagnoses, and safe first-priority actions using short interactive cases.</div>
+        <div class="quiz-card-pills">
+          <span class="quiz-card-pill">Diagnosis</span>
+          <span class="quiz-card-pill">Medical Terms</span>
+          <span class="quiz-card-pill">Priorities</span>
+          <span class="quiz-card-pill">Clinical Reasoning</span>
+        </div>
+        <span class="quiz-card-cta">Play Game -></span>
       </a>
 
     </div>

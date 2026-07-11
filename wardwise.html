@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WardWise Dx | OzNurse Hub</title>
+    <meta name="description" content="WardWise Dx is an interactive clinical reasoning game for nursing students to practise medical terminology, diagnosis patterns, and safe first-priority decisions." />
+    <link rel="canonical" href="https://oznursehub.com/wardwise.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://oznursehub.com/wardwise.html" />
+    <meta property="og:title" content="WardWise Dx | OzNurse Hub" />
+    <meta property="og:description" content="A mature, interactive ward game for practising diagnosis, medical terminology, and priority clinical reasoning." />
+    <meta property="og:image" content="https://oznursehub.com/banner.png" />
+    <link rel="stylesheet" href="wardwise.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="game-board" aria-label="WardWise Dx game">
+        <header class="topbar">
+          <div>
+            <a class="back-link" href="index.html#quizzes">Back to OzNurse Hub</a>
+            <p class="eyebrow">Clinical reasoning game</p>
+            <h1>WardWise Dx</h1>
+          </div>
+          <div class="score-strip" aria-label="Current score">
+            <div>
+              <span id="roundLabel">Case 1</span>
+              <strong id="scoreLabel">0 pts</strong>
+            </div>
+            <div>
+              <span>Streak</span>
+              <strong id="streakLabel">0</strong>
+            </div>
+            <div>
+              <span>Safety</span>
+              <strong id="safetyLabel">100%</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="status-band">
+          <div class="patient-card">
+            <div class="patient-avatar" id="patientAvatar" aria-hidden="true">
+              <span></span>
+            </div>
+            <div>
+              <p class="eyebrow">Current patient</p>
+              <h2 id="caseTitle">Loading case...</h2>
+              <p id="caseMeta"></p>
+            </div>
+          </div>
+          <div class="vitals-grid" id="vitalsGrid" aria-label="Patient observations"></div>
+        </section>
+
+        <section class="case-layout">
+          <article class="case-panel">
+            <div class="section-heading">
+              <h3>Clinical Notes</h3>
+              <span id="difficultyLabel"></span>
+            </div>
+            <p id="caseStem"></p>
+            <div class="tag-row" id="termTags" aria-label="Key medical terms"></div>
+          </article>
+
+          <aside class="challenge-panel">
+            <div class="mode-tabs" role="tablist" aria-label="Question type">
+              <button class="tab active" id="diagnosisTab" type="button">Dx</button>
+              <button class="tab" id="termsTab" type="button">Terms</button>
+              <button class="tab" id="priorityTab" type="button">Priority</button>
+            </div>
+
+            <div id="questionArea">
+              <p class="eyebrow" id="questionType">Most likely diagnosis</p>
+              <h3 id="questionText"></h3>
+              <div class="choices" id="choices"></div>
+            </div>
+
+            <div class="feedback hidden" id="feedbackBox" aria-live="polite"></div>
+
+            <div class="action-row">
+              <button class="secondary" id="hintButton" type="button">Hint</button>
+              <button class="primary" id="nextButton" type="button" disabled>Next Case</button>
+            </div>
+          </aside>
+        </section>
+
+        <footer class="round-log" aria-label="Learning log">
+          <div>
+            <p class="eyebrow">Learning log</p>
+            <p id="learningLog">Select an answer to build your clinical log.</p>
+          </div>
+          <button class="ghost" id="restartButton" type="button">Restart</button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="wardwise.js"></script>
+  </body>
+</html>
