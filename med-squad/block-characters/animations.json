@@ -1,0 +1,32 @@
+{
+  "frameWidth": 160,
+  "frameHeight": 192,
+  "columns": 8,
+  "actions": {
+    "idle": {
+      "row": 0,
+      "start": 1,
+      "count": 6,
+      "fps": 8
+    },
+    "walk": {
+      "row": 1,
+      "start": 7,
+      "count": 8,
+      "fps": 12
+    },
+    "treat": {
+      "row": 2,
+      "start": 15,
+      "count": 6,
+      "fps": 10
+    }
+  },
+  "roles": [
+    "nurse",
+    "doctor",
+    "paramedic",
+    "pharmacist",
+    "surgeon"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "frameWidth": 160,
+  "frameHeight": 192,
+  "columns": 8,
+  "roles": [
+    "syringe",
+    "saline",
+    "swab",
+    "bandage",
+    "amoxicillin",
+    "metronidazole",
+    "vancomycin",
+    "defibrillator",
+    "ppekit",
+    "nebuliser",
+    "oxygen",
+    "scalpel",
+    "microscope",
+    "vaccine"
+  ],
+  "titles": {
+    "syringe": "Syringe",
+    "saline": "Normal Saline",
+    "swab": "Alcohol Swab",
+    "bandage": "Bandage",
+    "amoxicillin": "Amoxicillin",
+    "metronidazole": "Metronidazole",
+    "vancomycin": "Vancomycin",
+    "defibrillator": "Defibrillator",
+    "ppekit": "PPE Kit",
+    "nebuliser": "Nebuliser",
+    "oxygen": "Oxygen Mask",
+    "scalpel": "Surgical Scalpel",
+    "microscope": "Microscope",
+    "vaccine": "Vaccine"
+  },
+  "actionLabels": {
+    "bandage": {
+      "attack": "Heal"
+    },
+    "oxygen": {
+      "attack": "Heal"
+    }
+  },
+  "actions": {
+    "idle": {
+      "row": 0,
+      "count": 8,
+      "fps": 8,
+      "loop": true
+    },
+    "walk": {
+      "row": 1,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+    },
+    "attack": {
+      "row": 2,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+    },
+    "defeat": {
+      "row": 3,
+      "count": 8,
+      "fps": 12,
+      "loop": false
+    }
+  }
+}

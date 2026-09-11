@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#fbeeea" />
+  <title>Med Squad</title>
+  <style>
+    @font-face {
+      font-family: "Fredoka";
+      src: url("fonts/fredoka/Fredoka-600.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Fredoka";
+      src: url("fonts/fredoka/Fredoka-700.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Barlow Condensed";
+      src: url("fonts/barlow-condensed/BarlowCondensed-Regular.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Barlow Condensed";
+      src: url("fonts/barlow-condensed/BarlowCondensed-Medium.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Barlow Condensed";
+      src: url("fonts/barlow-condensed/BarlowCondensed-SemiBold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Barlow Condensed";
+      src: url("fonts/barlow-condensed/BarlowCondensed-SemiBold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700 900;
+      font-display: swap;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fbeeea;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #opening-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #102337;
+      opacity: 1;
+      transition: opacity 320ms ease;
+      touch-action: manipulation;
+    }
+    #opening-intro.is-leaving {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #opening-intro-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #102337;
+    }
+    .opening-intro-skip {
+      position: absolute;
+      right: max(22px, env(safe-area-inset-right));
+      bottom: max(24px, calc(env(safe-area-inset-bottom) + 14px));
+      margin: 0;
+      padding: 8px 12px;
+      border: 2px solid rgba(255, 255, 255, 0.65);
+      background: rgba(16, 35, 55, 0.74);
+      color: #fff;
+      font: 700 18px "Barlow Condensed", "Arial Narrow", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    canvas {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    .cloud-startup-error {
+      width: min(440px, calc(100vw - 40px));
+      margin: 15vh auto 0;
+      padding: 32px;
+      border: 3px solid #6e575e;
+      background: #fbeeea;
+      color: #4b3940;
+      text-align: center;
+      box-shadow: 8px 8px 0 #d7b9b2;
+      font-family: "Barlow Condensed", Arial, sans-serif;
+    }
+    .cloud-startup-error h1 { margin: 0 0 12px; color: #d95772; }
+    .cloud-startup-error .detail { color: #7a646b; }
+    .cloud-startup-error button {
+      margin-top: 14px;
+      padding: 12px 28px;
+      border: 3px solid #4b3940;
+      background: #5bc4b0;
+      color: white;
+      font: 700 16px "Barlow Condensed", Arial, sans-serif;
+    }
+    .med-report-form {
+      width: 440px;
+      height: 220px;
+      box-sizing: border-box;
+      overflow: visible;
+      color: #302226;
+      font: 700 17px "Barlow Condensed", "Arial Narrow", sans-serif;
+    }
+    .med-report-form label { display: block; margin-bottom: 9px; text-align: left; }
+    .med-report-form textarea {
+      display: block;
+      width: 100%;
+      height: 176px;
+      resize: none;
+      border: 3px solid #5bc4b0;
+      border-radius: 0;
+      padding: 14px;
+      background: #fff7f2;
+      color: #302226;
+      outline: none;
+      box-sizing: border-box;
+      font: 600 19px/1.35 "Barlow Condensed", "Arial Narrow", sans-serif;
+      touch-action: manipulation;
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    .med-report-form textarea:focus { border-color: #7fb8e8; box-shadow: 0 0 0 3px rgba(127, 184, 232, .28); }
+    .med-report-counter { margin-top: 6px; color: #5f4b51; text-align: right; }
+  </style>
+  <script type="module" crossorigin src="./assets/index-D_wlyXTD.js"></script>
+</head>
+<body>
+  <div id="game"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "frameWidth": 160,
+  "frameHeight": 192,
+  "columns": 8,
+  "roles": [
+    "paracetamol",
+    "cefalexin"
+  ],
+  "actions": {
+    "idle": {
+      "row": 0,
+      "count": 8,
+      "fps": 8,
+      "loop": true
+    },
+    "walk": {
+      "row": 1,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+    },
+    "attack": {
+      "row": 2,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+    },
+    "defeat": {
+      "row": 3,
+      "count": 8,
+      "fps": 12,
+      "loop": false
+    }
+  }
+}
