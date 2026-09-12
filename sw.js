@@ -1,5 +1,5 @@
 // OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v13';
+const CACHE = 'oznurse-v14';
 
 const CORE_FILES = [
   './',
@@ -51,6 +51,21 @@ self.addEventListener('fetch', function (e) {
   if (e.request.method !== 'GET') return;
   // The game's versioned bundles must not receive the site's HTML fallback.
   if (new URL(e.request.url).pathname.startsWith('/med-squad/')) return;
+  // Prefer current navigation; retain cached pages only as an offline fallback.
+  if (e.request.mode === 'navigate') {
+    e.respondWith(fetch(e.request).then(function (response) {
+      if (response.ok) {
+        var copy = response.clone();
+        e.waitUntil(caches.open(CACHE).then(function (cache) { return cache.put(e.request, copy); }));
+      }
+      return response;
+    }).catch(function () {
+      return caches.match(e.request).then(function (cached) {
+        return cached || caches.match('./index.html');
+      });
+    }));
+    return;
+  }
 
   e.respondWith(
     caches.match(e.request).then(function (cached) {
