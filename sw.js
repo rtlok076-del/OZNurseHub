@@ -1,5 +1,5 @@
 // OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v14';
+const CACHE = 'oznurse-v15';
 
 const CORE_FILES = [
   './',
@@ -51,6 +51,7 @@ self.addEventListener('fetch', function (e) {
   if (e.request.method !== 'GET') return;
   // The game's versioned bundles must not receive the site's HTML fallback.
   if (new URL(e.request.url).pathname.startsWith('/med-squad/')) return;
+  if (new URL(e.request.url).pathname.startsWith('/med-survivor/')) return;
   // Prefer current navigation; retain cached pages only as an offline fallback.
   if (e.request.mode === 'navigate') {
     e.respondWith(fetch(e.request).then(function (response) {
