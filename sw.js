@@ -1,9 +1,20 @@
 // OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v15';
+const CACHE = 'oznurse-v17-elegant';
 
 const CORE_FILES = [
   './',
   './index.html',
+  './resources.html',
+  './learning-lab.html',
+  './medications.html',
+  './downloads.html',
+  './downloads.css',
+  './renovation.css',
+  './renovation.js',
+  './learning-lab.css',
+  './learning-lab.js',
+  './learning-data.js',
+  './hero-nursing-v2.png',
   './quickref.html',
   './progressnote.html',
   './feedback.html',
@@ -49,6 +60,7 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
   // Only handle GET requests
   if (e.request.method !== 'GET') return;
+  if (new URL(e.request.url).pathname.startsWith('/downloads/')) return;
   // The game's versioned bundles must not receive the site's HTML fallback.
   if (new URL(e.request.url).pathname.startsWith('/med-squad/')) return;
   if (new URL(e.request.url).pathname.startsWith('/med-survivor/')) return;

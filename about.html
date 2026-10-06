@@ -60,8 +60,8 @@ li{margin:.4rem 0;}
   .main{margin-left:0;padding:1.5rem 1rem 3rem;}
 }
 </style>
-</head>
-<body>
+<link rel="stylesheet" href="renovation.css"></head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 
 <header>
   <div class="header-inner">
@@ -104,7 +104,7 @@ li{margin:.4rem 0;}
   <a class="sidebar-item" href="feedback.html"><span class="sb-icon">&#128172;</span><span class="sb-label">Feedback</span></a>
 </nav>
 
-<main class="main">
+<span id="content" tabindex="-1"></span><main class="main">
   <section class="hero">
     <h1>About OzNurse Hub</h1>
     <p>OzNurse Hub is a practical, Australian-focused nursing resource for students and new grads who want clearer explanations, useful tools, and less noise. It grew out of the same feeling most nurses know: you can be trying hard, doing the right thing, and still feel a bit behind. This site is for the moments when you want the next step to be obvious.</p>
@@ -148,5 +148,5 @@ function toggleSidebar() {
   document.body.style.overflow = document.querySelector('.sidebar').classList.contains('open') ? 'hidden' : '';
 }
 </script>
-</body>
+<script src="renovation.js"></script></body>
 </html>
