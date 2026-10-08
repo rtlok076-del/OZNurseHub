@@ -1,0 +1,18 @@
+{
+  "id": "./medication-of-the-day.html",
+  "name": "Med of the Day",
+  "short_name": "Med of Day",
+  "description": "One Australian-named medicine a day from OzNurseHub. Say what you know, then reveal the card. Study only, no doses.",
+  "lang": "en-AU",
+  "dir": "ltr",
+  "start_url": "./medication-of-the-day.html",
+  "scope": "./medication-of-the-day.html",
+  "display": "standalone",
+  "background_color": "#193f35",
+  "theme_color": "#193f35",
+  "icons": [
+    { "src": "icon-motd-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-motd-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-motd-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

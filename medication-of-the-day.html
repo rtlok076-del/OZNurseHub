@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<title>Medication of the Day | OzNurseHub</title>
+<meta name="description" content="A free daily medicine card for Australian nursing students. Explain one Australian-named medicine in your own words, then check its class, uses and key risks. No doses. Add it to your phone's home screen.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-motd-180.png">
+<link rel="manifest" href="manifest-motd.json">
+<meta name="apple-mobile-web-app-title" content="Med of Day">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#193f35">
+<script>
+/* Home-screen "card view": on when opened as an installed web app, or forced with ?view=app (preview). ?view=page always shows the full page. */
+(function(){var v=null;try{v=new URLSearchParams(location.search).get('view');}catch(e){}var mm=function(q){return !!(window.matchMedia&&window.matchMedia(q).matches);};var installed=mm('(display-mode: standalone)')||mm('(display-mode: fullscreen)')||window.navigator.standalone===true;var c=document.documentElement.classList;if(v==='page'){c.add('md-page');}else if(v==='app'||installed){c.add('md-app');}})();
+</script>
+<link rel="stylesheet" href="renovation.css">
+<link rel="canonical" href="https://oznursehub.com/medication-of-the-day.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OzNurseHub">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://oznursehub.com/medication-of-the-day.html">
+<meta property="og:title" content="Medication of the Day | OzNurseHub">
+<meta property="og:description" content="One Australian-named medicine a day. Say what you know, then reveal the card. Free, no account, no doses.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<style>
+.md-main{max-width:1180px}
+.md-hero{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+.md-hero h1{font-size:clamp(36px,4.4vw,58px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0 0 20px;color:var(--teal)}
+.md-hero h1 em{font-weight:400;color:#92713b}
+.md-hero .lede{font-size:17px;color:var(--muted);max-width:600px;margin:0 0 26px}
+.md-safety{background:#efeade;border-left:3px solid #ad8a45;padding:14px 20px;font-size:13px;color:#5a5648;margin:0;align-self:end}
+.md-main h2{font-size:34px;font-weight:400;line-height:1.2;margin:0}
+.md-section{margin-top:70px}
+.md-section>.section-lead{margin-bottom:24px}
+.md-how .path-card{min-height:0}
+.md-how .path-card:hover{transform:none;box-shadow:none}
+.md-how .path-card h3{margin-top:16px}
+.md-how .path-card p{margin:0}
+.md-what{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin:0 0 22px;font-size:15px;color:var(--muted)}
+.md-what strong{color:var(--ink);font-weight:600}
+.md-what p{margin:0}
+.md-what p+p{margin-top:8px}
+.md-phone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 260px;gap:20px;align-items:start}
+.md-device{background:var(--white);border:1px solid var(--border);border-top:3px solid #a88a4d;border-radius:12px;padding:26px 26px 22px}
+.md-device h3{font-size:25px;font-weight:400;margin:0 0 4px;color:var(--teal)}
+.md-device .md-browser{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#76613c;font-weight:700;margin:0 0 16px}
+.md-device ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.md-device li{counter-increment:s;position:relative;padding:0 0 14px 40px;font-size:15px;line-height:1.6}
+.md-device li::before{content:counter(s);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--teal-pale);color:var(--teal);font:600 13px/26px 'DM Sans',sans-serif;text-align:center}
+.md-device li small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+.md-device .md-src{font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;margin:4px 0 0}
+.md-figure{margin:0;text-align:center}
+.md-figure img{width:100%;max-width:260px;height:auto;display:block;margin:0 auto}
+.md-figure figcaption{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5}
+.md-ui{font-weight:600;color:var(--ink)}
+.md-standalone{background:var(--teal-pale);border-radius:10px;padding:14px 18px;margin:0 0 22px;font-size:14px;color:var(--teal)}
+.md-remove{margin:22px 0 0;font-size:14px;color:var(--muted)}
+.md-faq details{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0 22px;margin:0 0 10px}
+.md-faq summary{cursor:pointer;padding:17px 0;font-weight:600;color:var(--teal);font-size:15px}
+.md-faq details[open] summary{border-bottom:1px solid var(--border);margin-bottom:12px}
+.md-faq details p,.md-faq details ul{color:var(--muted);font-size:15px;margin:0 0 12px}
+.md-faq details>:last-child{margin-bottom:18px}
+.md-main p.editorial-note{font-size:12px}
+.md-appbar,.md-appfoot{display:none}
+body.renovated{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+/* Card view: installed web app (display-mode) or ?view=app preview */
+@media (display-mode: standalone),(display-mode: fullscreen){
+html:not(.md-page) body.renovated{background:#193f35!important;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+html:not(.md-page) .elegant-header,html:not(.md-page) .elegant-skip,html:not(.md-page) .elegant-footer,html:not(.md-page) .md-hero,html:not(.md-page) .md-section,html:not(.md-page) .md-main>.editorial-note,html:not(.md-page) .ozw-intro{display:none!important}
+html:not(.md-page) .md-main{padding:0;max-width:460px;width:100%;margin:0 auto}
+html:not(.md-page) .md-appbar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 6px 14px}
+html:not(.md-page) .md-appname{font:400 25px/1.2 'Fraunces',Georgia,serif;color:#fcfaf2;margin:0}
+html:not(.md-page) .md-appsub{font:700 11px 'DM Sans',Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d7c38f;margin:0}
+html:not(.md-page) .ozw-motd{display:block;margin:0}
+html:not(.md-page) .ozw-card{border:0;border-top:4px solid #a88a4d;border-radius:28px;padding:28px 24px 24px;min-height:min(560px,66vh);min-height:min(560px,66dvh);box-shadow:0 18px 40px rgba(0,0,0,.28);touch-action:pan-y}
+html:not(.md-page) .ozw-name{font-size:clamp(38px,11vw,50px);margin:18px 0 16px}
+html:not(.md-page) .ozw-prompt{font-size:17px}
+html:not(.md-page) .ozw-actions{flex-wrap:nowrap}
+html:not(.md-page) .ozw-actions .ozw-btn{flex:1 1 0;min-height:56px;font-size:16px;border-radius:12px;padding:12px 10px;white-space:nowrap}
+html:not(.md-page) .ozw-top .ozw-over{font-size:13px}
+html:not(.md-page) .ozw-answer dd{font-size:17px}
+html:not(.md-page) .ozw-foot{flex-direction:column;gap:10px;font-size:14px}
+html:not(.md-page) .md-appfoot{display:block;text-align:center;color:#d4e2d7;margin:16px 6px 0;font-size:13px}
+html:not(.md-page) .md-hint{margin:0 0 8px}
+html:not(.md-page) .md-applinks a{color:#eddfba;margin:0 10px}
+html:not(.md-page) .md-appnote{font-size:11px;color:#a9bfb2;margin:8px 0 0}
+}
+html.md-app body.renovated{background:#193f35!important;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+html.md-app .elegant-header,html.md-app .elegant-skip,html.md-app .elegant-footer,html.md-app .md-hero,html.md-app .md-section,html.md-app .md-main>.editorial-note,html.md-app .ozw-intro{display:none!important}
+html.md-app .md-main{padding:0;max-width:460px;width:100%;margin:0 auto}
+html.md-app .md-appbar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 6px 14px}
+html.md-app .md-appname{font:400 25px/1.2 'Fraunces',Georgia,serif;color:#fcfaf2;margin:0}
+html.md-app .md-appsub{font:700 11px 'DM Sans',Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d7c38f;margin:0}
+html.md-app .ozw-motd{display:block;margin:0}
+html.md-app .ozw-card{border:0;border-top:4px solid #a88a4d;border-radius:28px;padding:28px 24px 24px;min-height:min(560px,66vh);min-height:min(560px,66dvh);box-shadow:0 18px 40px rgba(0,0,0,.28);touch-action:pan-y}
+html.md-app .ozw-name{font-size:clamp(38px,11vw,50px);margin:18px 0 16px}
+html.md-app .ozw-prompt{font-size:17px}
+html.md-app .ozw-actions{flex-wrap:nowrap}
+html.md-app .ozw-actions .ozw-btn{flex:1 1 0;min-height:56px;font-size:16px;border-radius:12px;padding:12px 10px;white-space:nowrap}
+html.md-app .ozw-top .ozw-over{font-size:13px}
+html.md-app .ozw-answer dd{font-size:17px}
+html.md-app .ozw-foot{flex-direction:column;gap:10px;font-size:14px}
+html.md-app .md-appfoot{display:block;text-align:center;color:#d4e2d7;margin:16px 6px 0;font-size:13px}
+html.md-app .md-hint{margin:0 0 8px}
+html.md-app .md-applinks a{color:#eddfba;margin:0 10px}
+html.md-app .md-appnote{font-size:11px;color:#a9bfb2;margin:8px 0 0}
+
+@media(max-width:1000px){.md-hero{grid-template-columns:1fr;gap:24px}.md-phone{grid-template-columns:1fr 1fr}.md-figure{grid-column:1/-1}}
+@media(max-width:700px){.md-main h2{font-size:29px}.md-section{margin-top:50px}.md-phone{grid-template-columns:1fr}.md-device{padding:22px 20px 18px}.md-how .path-card h3{margin-top:10px}.md-figure img{max-width:220px}}
+</style>
+</head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<main class="renovation-main md-main" id="content">
+
+<section class="md-hero" aria-labelledby="page-title">
+<div><p class="overline">Daily practice / Two minutes a day</p><h1 id="page-title">Medication of the Day.<br><em>One card, every day.</em></h1>
+<p class="lede">Each day there's a new Australian-named medicine to explain in your own words. Then reveal the card and see how close you were. Keep it on your phone's home screen so it's one tap away.</p>
+<div class="action-row"><a class="elegant-button" href="#medication-of-the-day">Try today's card ↓</a><a class="elegant-button secondary" href="#add-to-phone">Add it to your phone ↓</a></div></div>
+<aside class="md-safety">For study only. Selected uses and risks are not complete medicine guidance. No dosage recommendations. Follow local policy and clinical supervision in practice. <a href="medications.html#references">Sources &amp; review scope</a></aside>
+</section>
+
+<div class="md-appbar" aria-hidden="false"><p class="md-appname">Med of the Day</p><p class="md-appsub">OzNurseHub</p></div>
+<!-- Medication of the Day widget: same code as the homepage widget snippet (widget-snippet.html). Uses learning-data.js. No doses shown. -->
+<section class="ozw-motd" id="medication-of-the-day" aria-labelledby="ozw-title">
+<style>
+.ozw-motd{margin:54px 0 0;display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;font-family:'DM Sans',Arial,sans-serif;color:var(--ink,#193c35)}
+.ozw-motd *{box-sizing:border-box}
+.ozw-intro .ozw-over,.ozw-card .ozw-over{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#76613c;margin:0 0 16px;font-weight:700}
+.ozw-intro h2{font-family:'Fraunces',Georgia,serif;font-size:34px;font-weight:400;line-height:1.2;margin:0 0 14px;color:var(--ink,#193c35)}
+.ozw-intro p{margin:0 0 12px;color:var(--muted,#53635d);font-size:15px;line-height:1.65}
+.ozw-intro .ozw-small{font-size:12px}
+.ozw-card{position:relative;background:var(--white,#fffefa);border:1px solid var(--border,#dce4db);border-top:3px solid #a88a4d;border-radius:15px;padding:34px 36px 30px;min-height:330px;display:flex;flex-direction:column}
+.ozw-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.ozw-top .ozw-over{margin:0}
+.ozw-topic{font-size:12px;color:var(--teal,#155e53);background:var(--teal-pale,#eaf2ec);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.ozw-name{font-family:'Fraunces',Georgia,serif;font-size:36px;font-weight:400;line-height:1.2;margin:14px 0 14px;color:var(--teal,#155e53);overflow-wrap:anywhere}
+.ozw-name:focus{outline:none}
+.ozw-prompt{font-size:15px;color:var(--muted,#53635d);margin:0 0 22px;line-height:1.65}
+.ozw-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ozw-btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--teal,#155e53);border-radius:7px;background:var(--teal,#155e53);color:#fff;padding:12px 20px;font:500 14px 'DM Sans',Arial,sans-serif;cursor:pointer;min-height:46px;text-decoration:none}
+.ozw-btn:hover{background:var(--teal-light,#297b6c)}
+.ozw-btn.ozw-secondary{background:transparent;color:var(--teal,#155e53);border-color:#b9c9bf}
+.ozw-btn.ozw-secondary:hover{background:#f0f5ef}
+.ozw-btn:focus-visible,.ozw-motd a:focus-visible{outline:3px solid #a17836;outline-offset:4px}
+.ozw-btn[disabled]{opacity:.5;cursor:not-allowed}
+.ozw-answer:empty{display:none}
+.ozw-answer{animation:ozw-in .35s ease}
+.ozw-answer dl{margin:22px 0 0;padding-top:4px;border-top:1px solid var(--border,#dce4db)}
+.ozw-answer dt{text-transform:uppercase;letter-spacing:.1em;font-size:10px;color:#76613c;margin:18px 0 5px;font-weight:700}
+.ozw-answer dd{margin:0;font-size:16px;line-height:1.55}
+.ozw-note{font-size:13px;background:#f5efdf;padding:12px;border-radius:6px;margin:18px 0 0}
+.ozw-tip{font-size:12px;color:var(--muted,#53635d);margin:18px 0 0}
+.ozw-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:auto;padding-top:22px;font-size:13px}
+.ozw-foot a{color:var(--teal,#155e53)}
+.ozw-foot .ozw-more{font-weight:600}
+@keyframes ozw-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ozw-answer{animation:none}}
+@media(max-width:900px){.ozw-motd{grid-template-columns:1fr;gap:22px}}
+@media(max-width:700px){.ozw-motd{margin-top:35px}.ozw-intro h2{font-size:29px}.ozw-card{padding:26px 22px 24px;min-height:0}.ozw-name{font-size:30px}.ozw-actions .ozw-btn{flex:1 1 auto}}
+</style>
+<div class="ozw-intro">
+<p class="ozw-over">Medication of the day</p>
+<h2 id="ozw-title">One medicine.<br>In your own words.</h2>
+<p>A new Australian-named medicine every day, the same one for everyone. Say what you know first, then reveal the card and check.</p>
+<p class="ozw-small">Learning support only. No suggested doses. Always use current local policies, medicine information and supervision in practice.</p>
+</div>
+<div class="ozw-card">
+<div class="ozw-top"><p class="ozw-over" id="ozw-label">Today</p><span class="ozw-topic" id="ozw-topic" hidden></span></div>
+<h3 class="ozw-name" id="ozw-name" tabindex="-1">Loading today’s medicine…</h3>
+<p class="ozw-prompt" id="ozw-prompt">Explain it in your own words: what class is it, what is it used for, and which risks would you want to remember?</p>
+<div class="ozw-actions">
+<button class="ozw-btn" id="ozw-reveal" type="button" aria-expanded="false" aria-controls="ozw-answer" disabled>Reveal the card</button>
+<button class="ozw-btn ozw-secondary" id="ozw-next" type="button" disabled>Next one →</button>
+</div>
+<div class="ozw-answer" id="ozw-answer" aria-live="polite"></div>
+<noscript><p class="ozw-prompt">This card needs JavaScript. You can still read all 100 medicines in the <a href="medications.html">Medication Library</a>.</p></noscript>
+<div class="ozw-foot"><a class="ozw-more" href="medications.html">Practise more medications →</a><a id="ozw-ref" href="medications.html" hidden>See this medicine’s reference card ↗</a></div>
+</div>
+<script>
+(function(){'use strict';
+var $=function(id){return document.getElementById(id)};
+var TZ='Australia/Adelaide',GROUPS={pain:'Pain & anaesthesia',digestive:'Nausea & digestive health',infection:'Infection treatment',heart:'Heart, circulation & clotting',hormones:'Diabetes & hormones',airways:'Airways & allergy',emergency:'Antidotes & emergency care',neuro:'Brain, mental health & seizures',bone:'Bone health & gout'};
+var list=[],day=0,offset=0,revealed=false,current=null;
+function adelaideParts(){try{var p={};new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return [+p.year,+p.month,+p.day];}catch(e){var d=new Date();return [d.getFullYear(),d.getMonth()+1,d.getDate()];}}
+function gcd(a,b){return b?gcd(b,a%b):a}
+function pick(n,k){var step=37;while(gcd(step,n)!==1)step++;return ((((day+k)*step+11)%n)+n)%n;}
+function dateLabel(){try{return new Intl.DateTimeFormat('en-AU',{timeZone:TZ,weekday:'long',day:'numeric',month:'long'}).format(new Date());}catch(e){return 'Today';}}
+function render(){current=list[pick(list.length,offset)];revealed=false;
+$('ozw-label').textContent=offset===0?'Today / '+dateLabel():'Extra practice / Card '+(offset+1);
+$('ozw-name').textContent=String(current.name).replace(/\*$/,'');
+var t=$('ozw-topic');t.textContent=GROUPS[current.group]||'';t.hidden=!GROUPS[current.group];
+$('ozw-answer').textContent='';
+var r=$('ozw-reveal');r.textContent='Reveal the card';r.setAttribute('aria-expanded','false');
+var ref=$('ozw-ref');ref.href='medications.html#medicine-'+current.id;ref.hidden=false;}
+function reveal(){var a=$('ozw-answer'),r=$('ozw-reveal');revealed=!revealed;a.textContent='';
+if(revealed){var dl=document.createElement('dl');[['Drug class',current.category],['Selected uses',current.uses],['Key risks',current.risks]].forEach(function(x){var dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=x[0];dd.textContent=x[1];dl.appendChild(dt);dl.appendChild(dd);});a.appendChild(dl);
+if(current.note){var n=document.createElement('p');n.className='ozw-note';n.textContent=current.note;a.appendChild(n);}
+var tip=document.createElement('p');tip.className='ozw-tip';tip.textContent='How close were you? Pause and explain one key point in your own words.';a.appendChild(tip);}
+r.textContent=revealed?'Hide the card':'Reveal the card';r.setAttribute('aria-expanded',String(revealed));}
+function start(){list=(window.OZ_MEDICINES||[]).filter(function(m){return m&&m.name&&m.category&&m.uses&&m.risks;}).sort(function(a,b){return a.id-b.id});
+if(!list.length){$('ozw-name').textContent='Medicine cards are resting today.';$('ozw-prompt').textContent='You can still explore all 100 medicines in the Medication Library.';return;}
+var p=adelaideParts();day=Math.floor(Date.UTC(p[0],p[1]-1,p[2])/864e5);
+$('ozw-reveal').disabled=false;$('ozw-next').disabled=list.length<2;
+$('ozw-reveal').addEventListener('click',reveal);
+$('ozw-next').addEventListener('click',function(){offset=(offset+1)%list.length;render();$('ozw-name').focus();});
+render();}
+if(window.OZ_MEDICINES){start();}else{var s=document.createElement('script');s.src='learning-data.js';s.async=true;s.onload=start;s.onerror=start;document.head.appendChild(s);}
+})();
+</script>
+</section>
+<div class="md-appfoot"><p class="md-hint" id="md-hint">Swipe left or tap <strong>Next one</strong> for another card.</p><p class="md-applinks"><a href="medications.html">Medication Library ↗</a><a href="medication-of-the-day.html?view=page">About this card</a></p><p class="md-appnote">For study only. No doses. Follow local policy and supervision in practice.</p></div>
+
+<section class="md-section md-how" aria-labelledby="how-title">
+<div class="section-lead"><div><p class="overline">How it works</p><h2 id="how-title">Say it first. Then check.</h2><p>Trying to recall before you look is what makes it stick.</p></div></div>
+<div class="path-grid">
+<div class="path-card"><span class="step">01 / RECALL</span><h3>Say what you know.</h3><p>Look at today's medicine. Out loud or in your head, say its class, what it's used for and the risks you'd watch for.</p></div>
+<div class="path-card"><span class="step">02 / CHECK</span><h3>Reveal the card.</h3><p>See the drug class, selected uses and key risks. Notice what you missed and explain one point again in your own words.</p></div>
+<div class="path-card"><span class="step">03 / KEEP GOING</span><h3>Want more?</h3><p>Tap <span class="md-ui">Next one →</span> for extra cards, open the medicine's reference card, or practise more in the <a href="learning-lab.html">Learning Lab</a>.</p></div>
+</div>
+</section>
+
+<section class="md-section" id="add-to-phone" aria-labelledby="phone-title">
+<div class="section-lead"><div><p class="overline">Add it to your phone</p><h2 id="phone-title">One tap from your home screen.</h2><p>Add this page to your home screen and it opens like an app, straight to today's card.</p></div></div>
+<p class="md-standalone" id="md-standalone" hidden>You're already using the home-screen version. Nice! There's nothing more to set up.</p>
+<div class="md-what"><p><strong>What you'll get:</strong> a <span class="md-ui">Med of Day</span> icon on your home screen. Tap it and today's card opens full-screen in its own window, without the browser's address bar or the rest of this page. It's built to feel like a widget. <a href="medication-of-the-day.html?view=app">Preview the card view</a></p><p><strong>What it isn't:</strong> it's a home-screen shortcut to a web app, not a native home-screen widget or an app from the App Store or Google Play. It won't show the medicine on your home screen until you tap it, and it won't send reminders.</p></div>
+<div class="md-phone">
+<article class="md-device" aria-labelledby="iphone-title"><h3 id="iphone-title">iPhone</h3><p class="md-browser">Using Safari</p>
+<ol>
+<li>Open this page in <span class="md-ui">Safari</span>.</li>
+<li>Tap the <span class="md-ui">More</span> button (<span aria-hidden="true">•••</span>), then tap <span class="md-ui">Share</span>.<small>On some Safari layouts and older versions of iOS, the Share button (a square with an arrow pointing up) is on the toolbar. Tap that instead.</small></li>
+<li>Scroll down and tap <span class="md-ui">Add to Home Screen</span>.<small>Can't see it? Scroll to the bottom, tap <span class="md-ui">Edit Actions</span>, then add <span class="md-ui">Add to Home Screen</span>.</small></li>
+<li>Check <span class="md-ui">Open as Web App</span> is turned on, so it opens straight into the card view.<small>You'll see this option on iOS 26 and later. If it's off, the icon opens this full page in Safari instead.</small></li>
+<li>Tap <span class="md-ui">Add</span>. Look for the <span class="md-ui">Med of Day</span> icon on your Home Screen.</li>
+</ol>
+<p class="md-src">Steps based on Apple's guide, <a href="https://support.apple.com/guide/iphone/open-as-web-app-iphea86e5236/ios" rel="noopener">Turn a website into an app in Safari on iPhone</a>.</p>
+</article>
+<article class="md-device" aria-labelledby="android-title"><h3 id="android-title">Android</h3><p class="md-browser">Using Chrome</p>
+<ol>
+<li>Open this page in <span class="md-ui">Chrome</span>.</li>
+<li>Tap <span class="md-ui">More</span> (<span aria-hidden="true">⋮</span>) to the right of the address bar.</li>
+<li>Tap <span class="md-ui">Add to home screen</span>.<small>In some versions of Chrome, this is called <span class="md-ui">Install and create shortcut</span>.</small></li>
+<li>Tap <span class="md-ui">Install</span> so it opens straight into the card view.<small>If you choose <span class="md-ui">Create shortcut</span> instead, the icon opens this full page in a normal Chrome tab.</small></li>
+<li>Follow the on-screen steps to finish. Look for the <span class="md-ui">Med of Day</span> icon on your home screen or in your apps.</li>
+</ol>
+<p class="md-src">Steps based on Google's guides, <a href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid" rel="noopener">Use web apps</a> and <a href="https://support.google.com/chrome/answer/15085120?co=GENIE.Platform%3DAndroid" rel="noopener">Create shortcuts for websites</a>.</p>
+</article>
+<figure class="md-figure"><img src="medication-of-the-day-phone.png" width="536" height="1118" alt="Preview of the card view on a phone: a dark green screen with Med of the Day at the top and today's medicine card, with Reveal the card and Next one buttons." loading="lazy"><figcaption>The card view you get when you open it from your home screen. This is a preview of our page, not a picture of your phone's home screen.</figcaption></figure>
+</div>
+<p class="md-remove">Menus vary a little between phones and versions. Using another browser? Look for <span class="md-ui">Add to Home screen</span> or <span class="md-ui">Install</span> in its menu. To remove the icon later, touch and hold it, then choose the option to remove or uninstall it.</p>
+</section>
+
+<section class="md-section md-faq" aria-labelledby="faq-title">
+<div class="section-lead"><div><p class="overline">Questions</p><h2 id="faq-title">Good to know.</h2></div></div>
+<details><summary>Does it cost anything?</summary><p>No. Medication of the Day is free, like everything on OzNurseHub, and you don't need an account. Adding it to your home screen is free too. Nothing is downloaded from an app store.</p></details>
+<details><summary>Does it work offline?</summary><p>Yes, once you've opened it with an internet connection. Your phone keeps a copy of this page and the medicine list. Today's medicine is worked out on your phone from the date, so it still changes each day when you're offline.</p><p>If you've added it to an iPhone Home Screen, open it from the icon once while you're online so that version saves its own copy. Offline, the fonts may look a little different. Other OzNurseHub pages will only work if your phone has already saved them.</p></details>
+<details><summary>How much data does it use?</summary><p>The page itself is small: about 140 KB, including the 100-medicine list, styles and fonts. The first time you visit OzNurseHub, your browser also saves the site's main pages and images for offline use, which adds about 4 to 5 MB in the background. After that, your phone reuses its saved copy and only checks for updates, so daily visits use very little data. Opening it on Wi-Fi the first time is a good idea if your data is limited.</p></details>
+<details><summary>Does it collect any information about me?</summary><p>This page doesn't need an account, doesn't use cookies or analytics, and the card doesn't save your answers. Your browser keeps an offline copy of the site's files on your phone. The page's fonts come from Google Fonts, so your browser makes a standard request to Google when it loads them.</p></details>
+<details><summary>Is it a real home-screen widget?</summary><p>Not quite. Apple and Google widgets have to come from an app installed from their app stores, and OzNurseHub is a website. What you get is the closest thing a website can offer: an icon that opens straight into a full-screen card, without the browser around it. It doesn't show the medicine on your home screen until you tap the icon.</p></details>
+<details><summary>Will it remind me to study?</summary><p>No. It doesn't send notifications. Making it part of a routine helps, for example opening it on the bus or before a shift.</p></details>
+<details><summary>Why does everyone get the same medicine? When does it change?</summary><p>Everyone sees the same medicine each day, so you can quiz a friend or your study group. It changes at midnight Adelaide time (<span lang="en">Australia/Adelaide</span>). Over time it works through all 100 medicines. <span class="md-ui">Next one →</span> gives you extra cards, and today's card comes back the next time you open the page.</p></details>
+<details><summary>Does it tell me doses?</summary><p>No. The cards cover drug classes, selected uses and key risks for study only. Always use current local policies, medicine information and supervision in practice.</p></details>
+<details><summary>Where does the information come from?</summary><p>The cards use the same 100 medicines as the <a href="medications.html">Medication Library</a> and the <a href="learning-lab.html">Learning Lab</a>. You can read about their sources in <a href="medications.html#references">Australian references &amp; review scope</a>.</p></details>
+<details><summary>It's not working. What can I try?</summary><ul><li>If it says <em>“Loading today's medicine…”</em>, check JavaScript is turned on in your browser, then refresh.</li><li>If it says <em>“Medicine cards are resting today”</em>, the medicine list didn't load. Check your connection and try again.</li><li>If you still see an older version after an update, close the page or app fully, then open it again.</li></ul><p>Still stuck? Let us know through the <a href="feedback.html">feedback page</a>.</p></details>
+</section>
+
+<p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. Always use current local policies, medicine information and supervision in practice.</p>
+</main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
+<script>
+(function(){'use strict';
+var root=document.documentElement;
+if(root.classList.contains('md-app')||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches&&!root.classList.contains('md-page'))){
+var card=document.querySelector('.ozw-card'),next=document.getElementById('ozw-next'),x0=null,y0=null;
+if(card&&next){
+card.addEventListener('touchstart',function(e){if(e.touches.length!==1){x0=null;return;}x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+card.addEventListener('touchend',function(e){if(x0===null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(dx<-50&&Math.abs(dy)<Math.abs(dx)*0.6&&!next.disabled){next.click();}},{passive:true});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'&&!next.disabled&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){next.click();}});
+}}
+var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;if(standalone){var n=document.getElementById('md-standalone');if(n)n.hidden=false;}})();
+</script>
+</body></html>
