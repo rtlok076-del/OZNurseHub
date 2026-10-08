@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
 <title>Obs chart and escalation simulator: recognise, escalate, ISBAR | OzNurseHub</title>
-<meta name="description" content="Practise recognising and escalating clinical deterioration. Plot a set of observations on an example ADDS-style colour-zoned chart, work through fictional ward scenarios, build an ISBAR phone call and a MET call handover, and learn phrases for speaking up. Free, no account, nothing saved.">
+<meta name="description" content="Practise recognising and escalating clinical deterioration. Plot a set of observations on an example colour-zoned chart based on SA Health's sample adult RDR chart, work through fictional ward scenarios, build an ISBAR phone call and a MET call handover, and learn phrases for speaking up. Free, no account, nothing saved or sent.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#193f35">
 <link rel="stylesheet" href="renovation.css">
@@ -153,10 +153,10 @@
 <div><p class="overline">Recognise and escalate / Simulator</p><h1 id="page-title">Spot the change.<br><em>Make the call.</em></h1>
 <p class="lede">Plot a set of obs on an example colour-zoned chart and see what it asks you to do. Work through fictional patients as they deteriorate, then practise the ISBAR phone call and the MET handover before you ever need them.</p>
 <div class="action-row"><a class="elegant-button" href="#chart">Plot a set of obs ↓</a><a class="elegant-button secondary" href="#scenarios">Try a scenario ↓</a></div></div>
-<aside class="st-safety"><strong>Practice only.</strong> The zones here are an example, based on ADDS-style charts. Hospitals set their own triggers and responses, and a doctor can change them for one patient. Always follow your local chart and escalation policy, and tell your supervising RN straight away if you're worried. <a href="#sources">Sources</a></aside>
+<aside class="st-safety"><strong>Practice only.</strong> The zones here are an example, based on SA Health's sample adult Rapid Detection and Response (RDR) chart. Hospitals set their own triggers and responses, and a doctor can change them for one patient. Always follow your local chart and escalation policy, and tell your supervising RN straight away if you're worried. <a href="#sources">Sources</a></aside>
 </section>
 
-<div class="st-privacy"><p><strong>Nothing you type here is saved or sent.</strong> Obs, ISBAR notes and handovers stay on this screen and are gone when you close the page. Only your scenario scores and checklist ticks are kept in this browser. Use made-up details. Never enter real names, dates of birth or record numbers.</p><button class="st-btn ghost small" type="button" data-clear-page>Clear my scores and ticks</button></div>
+<div class="st-privacy"><p><strong>Nothing you enter here is saved or sent anywhere.</strong> Obs, scenario scores, ISBAR notes, handovers and checklist ticks stay on this screen only, and clear when you leave or refresh the page. Use made-up details. Never enter real names, dates of birth or record numbers.</p></div>
 <ul class="st-jump" aria-label="Tools on this page"><li><a href="#chart">1. Obs chart</a></li><li><a href="#scenarios">2. Scenarios</a></li><li><a href="#isbar">3. ISBAR call</a></li><li><a href="#met">4. MET handover</a></li><li><a href="#speak">5. Speaking up</a></li><li><a href="#evidence">Evidence</a></li><li><a href="#sources">Sources</a></li></ul>
 
 <!-- 1. OBS CHART -->
@@ -250,7 +250,7 @@
 <li><strong>30-minute rule.</strong> If an RN review or medical review hasn't happened within 30 minutes, or you're more worried, go up a level.</li>
 <li><strong>Worry is a trigger.</strong> Your worry, or the patient's or family's, is a reason to escalate even when every number is in range. In SA public hospitals, patients and families can raise concerns themselves through "You're worried, we're listening".</li>
 <li><strong>Other charts.</strong> Some Australian charts, like the Commission's ADDS chart, give each observation a score and act on the total. The thresholds and names differ (MET, MER, rapid response, Code Blue), but the idea is the same: the further from normal, the faster the response.</li>
-<li><strong>Modifications.</strong> A doctor can document different calling criteria for one patient for a set time. One example is a lower SpO₂ target in some chronic lung disease. This simulator doesn't apply them, so always check the chart and the resuscitation plan or goals of care.</li>
+<li><strong>Modifications.</strong> A doctor can document different calling criteria for one patient for a set time. One example is a lower SpO₂ target in some chronic lung disease. Apart from the 88–92% SpO₂ target option above, this simulator doesn't apply them, so always check the chart and the resuscitation plan or goals of care.</li>
 </ul>
 </details>
 </section>
@@ -352,18 +352,18 @@
 <div class="st-panel" data-met="medical" id="met-panel">
 <div class="met-head">
 <fieldset class="st-radios ce-noprint" id="met-type"><legend>Ward type</legend>
-<label><input type="radio" name="mettype" value="medical" checked> Medical</label>
-<label><input type="radio" name="mettype" value="surgical"> Surgical</label>
-<label><input type="radio" name="mettype" value="neuro"> Neuro</label>
+<label><input type="radio" name="mettype" value="medical" autocomplete="off" checked> Medical</label>
+<label><input type="radio" name="mettype" value="surgical" autocomplete="off"> Surgical</label>
+<label><input type="radio" name="mettype" value="neuro" autocomplete="off"> Neuro</label>
 </fieldset>
 <p class="st-help" style="margin:0"><strong id="met-title-print">Medical ward</strong> MET handover · ISBAR</p>
 </div>
 <table class="met-sheet" id="met-sheet">
-<tr><th scope="row"><span>I</span>Identify</th><td><p class="met-prompts">Your name and role. Patient's name and age.</p><textarea name="mi" aria-label="Identify"></textarea></td></tr>
-<tr><th scope="row"><span>S</span>Situation</th><td><p class="met-prompts">Why you called the MET. Why they're in hospital and their day of stay.<span class="met-only surgical"> The operation, post-op day and any complications.</span><span class="met-only neuro"> What's changed neurologically, and when.</span></p><textarea name="ms" aria-label="Situation"></textarea></td></tr>
-<tr><th scope="row"><span>B</span>Background</th><td><p class="met-prompts">Relevant history, especially heart and lungs. Usual cognition. Allergies. Resuscitation plan or goals of care. Infection precautions.<span class="met-only surgical"> Lines, drains, catheters, wound, epidural or PCA.</span><span class="met-only neuro"> Usual neuro status (GCS, pupils, limb strength, speech). Seizure history.</span></p><textarea name="mb" aria-label="Background"></textarea></td></tr>
-<tr><th scope="row"><span>A</span>Assessment</th><td><p class="met-prompts">Obs now and their usual. ECG, BGL. IV access and whether it works.<span class="met-only surgical"> Fluid balance, urine output, drain and wound loss.</span><span class="met-only neuro"> GCS now vs before, pupils, limb strength, neurovascular obs.</span> What you've done: position, oxygen, medicines given and when.</p><textarea name="ma" aria-label="Assessment"></textarea></td></tr>
-<tr><th scope="row"><span>R</span>Recommendation</th><td><p class="met-prompts">Treating doctor and team. Do they know? Family or substitute decision-maker, and how to reach them. What you need from the team.</p><textarea name="mr" aria-label="Recommendation"></textarea></td></tr>
+<tr><th scope="row"><span>I</span>Identify</th><td><p class="met-prompts">Your name and role. Patient's name and age.</p><textarea name="mi" autocomplete="off" aria-label="Identify"></textarea></td></tr>
+<tr><th scope="row"><span>S</span>Situation</th><td><p class="met-prompts">Why you called the MET. Why they're in hospital and their day of stay.<span class="met-only surgical"> The operation, post-op day and any complications.</span><span class="met-only neuro"> What's changed neurologically, and when.</span></p><textarea name="ms" autocomplete="off" aria-label="Situation"></textarea></td></tr>
+<tr><th scope="row"><span>B</span>Background</th><td><p class="met-prompts">Relevant history, especially heart and lungs. Usual cognition. Allergies. Resuscitation plan or goals of care. Infection precautions.<span class="met-only surgical"> Lines, drains, catheters, wound, epidural or PCA.</span><span class="met-only neuro"> Usual neuro status (GCS, pupils, limb strength, speech). Seizure history.</span></p><textarea name="mb" autocomplete="off" aria-label="Background"></textarea></td></tr>
+<tr><th scope="row"><span>A</span>Assessment</th><td><p class="met-prompts">Obs now and their usual. ECG, BGL. IV access and whether it works.<span class="met-only surgical"> Fluid balance, urine output, drain and wound loss.</span><span class="met-only neuro"> GCS now vs before, pupils, limb strength, neurovascular obs.</span> What you've done: position, oxygen, medicines given and when.</p><textarea name="ma" autocomplete="off" aria-label="Assessment"></textarea></td></tr>
+<tr><th scope="row"><span>R</span>Recommendation</th><td><p class="met-prompts">Treating doctor and team. Do they know? Family or substitute decision-maker, and how to reach them. What you need from the team.</p><textarea name="mr" autocomplete="off" aria-label="Recommendation"></textarea></td></tr>
 </table>
 <div class="st-actions ce-noprint"><button class="st-btn" type="button" id="met-print">Print</button><button class="st-btn ghost" type="button" id="met-blank">Print a blank template</button><button class="st-btn ghost" type="button" id="met-example">Load the Dorothy example</button><button class="st-btn ghost" type="button" id="met-copy">Copy</button><button class="st-btn danger" type="button" id="met-clear">Clear</button><span class="st-status" id="met-status" role="status"></span></div>
 <div class="met-prep">
@@ -444,6 +444,5 @@
 
 <p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. No medicine doses are given. Always follow your local observation chart, escalation policy and your supervising RN.</p>
 </main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
-<script src="student-tools.js"></script>
 <script src="clinical-escalation.js"></script>
 </body></html>

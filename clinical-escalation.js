@@ -1,9 +1,59 @@
 /* OzNurseHub obs chart and escalation simulator (clinical-escalation.html).
-   Example zones only, based on ADDS-style track-and-trigger charts and the bands on SA Health's
-   public sample adult RDR chart (MR59A, 2020 revision). Nothing typed here is stored, apart from
-   scenario scores and checklist ticks (localStorage via student-tools.js). No doses anywhere. */
+   Example zones only, based on the bands on SA Health's public sample adult RDR chart
+   (MR59A, 2020 revision). No doses anywhere.
+   SAVES NOTHING: this page deliberately does not load student-tools.js and never touches
+   localStorage, sessionStorage, IndexedDB or cookies. Scores and checklist ticks live in memory
+   only and reset when the page is left or refreshed. Keep it that way. */
 (function(){'use strict';
-var O=window.OZT,$=O.$,$$=O.$$,el=O.el;
+/* ---------- Page-local helpers (memory only; mirrors the non-storage parts of student-tools.js) ---------- */
+function $(sel,root){return (root||document).querySelector(sel);}
+function $$(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+function el(tag,attrs,children){var n=document.createElement(tag);if(attrs){Object.keys(attrs).forEach(function(k){var v=attrs[k];if(v==null||v===false)return;if(k==='text')n.textContent=v;else if(k==='class')n.className=v;else if(k.indexOf('on')===0&&typeof v==='function')n.addEventListener(k.slice(2),v);else n.setAttribute(k,v===true?'':v);});}
+  (children||[]).forEach(function(c){if(c==null)return;n.appendChild(typeof c==='string'?document.createTextNode(c):c);});return n;}
+var timers={};
+function status(node,msg){if(!node)return;node.textContent=msg;clearTimeout(timers[node.id]);timers[node.id]=setTimeout(function(){node.textContent='';},3500);}
+function copy(text,statusNode){
+  function fallback(){var t=el('textarea',{style:'position:fixed;top:-1000px;opacity:0','aria-hidden':'true'});t.value=text;document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}document.body.removeChild(t);status(statusNode,ok?'Copied. Paste it wherever you need it.':'Couldn\u2019t copy automatically. Select the text and copy it yourself.');}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(function(){status(statusNode,'Copied. Paste it wherever you need it.');},fallback);}else{fallback();}
+}
+function syncMirrors(root){
+  $$('textarea,input[type=text],input[type=time],input[type=number]',root||document).forEach(function(f){
+    var m=f.nextElementSibling;
+    if(!m||!m.classList||!m.classList.contains('st-pm')){m=el('div',{class:'st-pm','aria-hidden':'true'});f.parentNode.insertBefore(m,f.nextSibling);}
+    m.textContent=f.value||'';
+  });
+}
+window.addEventListener('beforeprint',function(){if(!document.body.hasAttribute('data-print'))syncMirrors();});
+function printSection(section,opts){
+  opts=opts||{};syncMirrors();
+  var body=document.body;
+  section.classList.add('st-print-target');body.setAttribute('data-print',section.id||'section');if(opts.className)body.classList.add(opts.className);
+  var done=false;function cleanup(){if(done)return;done=true;section.classList.remove('st-print-target');body.removeAttribute('data-print');if(opts.className)body.classList.remove(opts.className);window.removeEventListener('afterprint',cleanup);}
+  window.addEventListener('afterprint',cleanup);
+  setTimeout(function(){window.print();setTimeout(cleanup,1500);},30);
+}
+/* In-memory checklist: ticks are never written anywhere. */
+function checklist(root,groups,progressRoot){
+  var done={};
+  root.textContent='';
+  groups.forEach(function(g){
+    var ul=el('ul');
+    g.items.forEach(function(it){
+      var cb=el('input',{type:'checkbox','data-id':it.id,autocomplete:'off'});
+      var span=el('span',null,[it.text,it.note?el('small',{text:it.note}):null]);
+      ul.appendChild(el('li',null,[el('label',{class:'st-check'},[cb,span])]));
+    });
+    root.appendChild(el('div',{class:'st-checkgroup'},[el('h3',{text:g.title}),ul]));
+  });
+  function update(){var boxes=$$('input[type=checkbox]',root),n=boxes.filter(function(b){return b.checked;}).length;
+    if(progressRoot){$('.st-bar span',progressRoot).style.width=(boxes.length?Math.round(n/boxes.length*100):0)+'%';$('.st-progress-text',progressRoot).textContent=n+' of '+boxes.length+' done';}}
+  root.addEventListener('change',function(e){var id=e.target.getAttribute('data-id');if(!id)return;if(e.target.checked)done[id]=1;else delete done[id];update();});
+  update();
+}
+var O={status:status,copy:copy,printSection:printSection};
+/* Coming back with the browser's Back button can restore a frozen copy of the page. Reload instead,
+   so nothing typed earlier reappears. */
+window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();});
 var SVGNS='http://www.w3.org/2000/svg';
 var RANK={w:0,y:1,r:2,p:3};
 var ZNAME={w:'no trigger',y:'yellow',r:'red',p:'purple'};
@@ -281,12 +331,12 @@ var CASES=[
  debrief:['Modifications change what\u2019s "normal" for one patient. Always check they\u2019re current and signed.','Higher SpO\u2082 isn\u2019t always better. Know the patient\u2019s target.','Drowsiness in someone with COPD on oxygen is a red flag.'],
  isbar:{me:'Sam, RN',ward:'the respiratory ward, bed 9',who:'the medical registrar',pt:'Joan, 72',sit:'I\u2019m calling about Joan, admitted with a COPD flare. She\u2019s become very drowsy and her breathing is slow since her oxygen was turned up to 4 L/min.',worried:true,obs:'RR 10 (22 at 10:00), SpO\u2082 97% on 4 L/min nasal prongs (target 88\u201392%), HR 100, BP 142/80, temp 37.2 \u00b0C. Sedation score 2.',see:'Hard to keep awake, slow shallow breathing.',done:'Sat her up, increased obs, told the RN in charge.',think:'I\u2019m worried she\u2019s retaining carbon dioxide.',ask:'Please come and review the patient',when:'within 30 minutes',spec:'a blood gas and a plan for her oxygen'}}
 ];
-var scores=O.get('scores',{})||{};
+var scores={}; /* memory only: resets on reload */
 function renderCases(){
   var list=$('#sc-list');list.textContent='';
   CASES.forEach(function(c,i){
     var sc=scores[c.id];
-    var b=el('button',{class:'ce-case',type:'button',onclick:function(){startCase(i);}},[el('em',{text:c.ward}),el('strong',{text:c.name}),el('span',{text:c.hook}),el('span',{class:'ce-score',text:sc?'Your best: '+sc.best+' / '+c.steps.length*2:c.steps.length+' decisions'})]);
+    var b=el('button',{class:'ce-case',type:'button',onclick:function(){startCase(i);}},[el('em',{text:c.ward}),el('strong',{text:c.name}),el('span',{text:c.hook}),el('span',{class:'ce-score',text:sc?'Best this visit: '+sc.best+' / '+c.steps.length*2:c.steps.length+' decisions'})]);
     list.appendChild(b);
   });
 }
@@ -337,7 +387,7 @@ function answer(id,opts,fb){
 }
 function debrief(){
   var c=cur.c,max=c.steps.length*2,prev=scores[c.id];
-  scores[c.id]={best:Math.max(cur.score,prev?prev.best:0),last:cur.score,at:Date.now()};O.set('scores',scores);
+  scores[c.id]={best:Math.max(cur.score,prev?prev.best:0),last:cur.score};
   play.textContent='';
   var panel=el('div',{class:'st-panel'},[el('p',{class:'overline',text:'Debrief \u00b7 '+c.name}),el('h3',{text:'You scored '+cur.score+' out of '+max+'.'}),el('p',{class:'st-help',text:'2 points for the best answer, 1 for escalating one step more than needed, 0 for under-escalating.'}),
     el('ul',{class:'st-list',style:'margin-top:12px'},c.debrief.map(function(d){return el('li',{text:d});}))]);
@@ -410,7 +460,7 @@ $('#met-clear').addEventListener('click',function(){$$('textarea',mp).forEach(fu
 $('#met-copy').addEventListener('click',function(){O.copy(metText(),$('#met-status'));});
 $('#met-print').addEventListener('click',function(){O.printSection($('#met'));});
 $('#met-blank').addEventListener('click',function(){O.printSection($('#met'),{className:'met-blank'});});
-var prep=O.checklist($('#prep-list'),'metprep',[
+checklist($('#prep-list'),[
  {title:'Get the information ready',items:[{id:'p1',text:'Notes, latest results and the obs chart open, on the computer or on paper'},{id:'p2',text:'Medication chart at the bedside'},{id:'p3',text:'Know the resuscitation plan or goals of care'},{id:'p4',text:'If it won\u2019t delay anything: ECG and BGL done, history checked',note:'Never delay the call to do these. Call first, prepare while the team is on the way.'},{id:'p5',text:'Your ISBAR handover ready: why you called, what\u2019s changed, what you\u2019ve done'}]},
  {title:'Get the space ready',items:[{id:'s1',text:'Stay with the patient. Position them (for example, sit up if breathless) and start first steps as per protocol'},{id:'s2',text:'Clear the bed space: move tables, chairs and clutter'},{id:'s3',text:'Emergency trolley, suction and oxygen within reach'},{id:'s4',text:'Check IV access works'},{id:'s5',text:'Only the people needed in the room. Someone looks after the rest of the ward, and someone supports the family'}]}
 ],$('#prep-progress'));

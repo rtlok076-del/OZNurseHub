@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v22-escalation-simulator';
+const CACHE = 'oznurse-v24-escalation-simulator';
 
 const CORE_FILES = [
   './',
