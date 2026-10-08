@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v20-student-tools';
+const CACHE = 'oznurse-v21-skills-logbook';
 
 const CORE_FILES = [
   './',
@@ -20,6 +20,8 @@ const CORE_FILES = [
   './placement-prep.html',
   './student-tools.css',
   './student-tools.js',
+  './clinical-skills-logbook.html',
+  './clinical-skills-logbook.js',
   './hero-nursing-v2.png',
   './quickref.html',
   './progressnote.html',
