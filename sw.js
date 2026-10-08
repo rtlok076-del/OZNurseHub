@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v18-accuracy';
+const CACHE = 'oznurse-v19-motd';
 
 const CORE_FILES = [
   './',
@@ -14,6 +14,8 @@ const CORE_FILES = [
   './learning-lab.css',
   './learning-lab.js',
   './learning-data.js',
+  './medication-of-the-day.html',
+  './manifest-motd.json',
   './hero-nursing-v2.png',
   './quickref.html',
   './progressnote.html',
