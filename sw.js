@@ -20,6 +20,8 @@ const CORE_FILES = [
   './placement-prep.html',
   './student-tools.css',
   './student-tools.js',
+  './clinical-escalation.html',
+  './clinical-escalation.js',
   './clinical-skills-logbook.html',
   './clinical-skills-logbook.js',
   './hero-nursing-v2.webp',
