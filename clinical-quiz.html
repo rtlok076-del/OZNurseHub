@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <title>Clinical Scenarios Quiz</title>
@@ -180,6 +180,7 @@
   }
   .name-input::placeholder { color: var(--cream-muted); }
   .name-input:focus { border-color: rgba(74,144,217,0.6); background: rgba(74,144,217,0.05); }
+  .name-note { font-size: 13px; line-height: 1.55; color: #4a5568; margin-top: 10px; }
 
   /* Start button */
   .start-btn {
@@ -520,7 +521,7 @@
 <div id="landing" class="screen active">
   <div class="inner">
     <div class="landing-top">
-    <a href="about.html" class="back-link">About OzNurse Hub</a><span class="dot-sep">·</span><a href="fables.html" class="back-link">Fables</a>
+    <a href="about.html" class="back-link">About OzNurseHub</a><span class="dot-sep">·</span><a href="fables.html" class="back-link">Fables</a>
       <a class="back-link" href="index.html">← Hub</a>
       <span class="dot-sep">·</span>
       <span class="back-link" style="cursor:default;">Clinical Quiz</span>
@@ -548,10 +549,12 @@
 
     <div class="name-section">
       <label class="name-label" for="nameInput">Your name (optional)</label>
-      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" onkeydown="if(event.key==='Enter') beginQuiz()">
+      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" aria-describedby="nameNote" onkeydown="if(event.key==='Enter') beginQuiz()">
+      <p class="name-note" id="nameNote">🔒 When you finish, your score and the name you enter (or “Anonymous” if you leave it blank) are sent to a Google Sheet kept by OzNurseHub. Leave it blank or use a nickname if you’d rather not share your name.</p>
     </div>
 
     <button class="start-btn" onclick="beginQuiz()">Start Quiz →</button>
+    <p class="last-reviewed" style="font-size:12px;color:#4a5568;text-align:center;margin-top:14px;">Last reviewed: October 2026</p>
   </div>
 </div>
 
@@ -596,10 +599,10 @@ const BANK = [
   {tag:'dka', q:`Initial IV fluid in DKA is usually:`,o:[`Hartmann's`,`0.9% Sodium Chloride`,`5% Dextrose`,`0.45% Sodium Chloride`],c:1,e:`Isotonic saline restores intravascular volume and improves perfusion. Fluid resuscitation comes before insulin effects.`},
   {tag:'dka', q:`When should you switch to 4% glucose + 0.18% sodium chloride?`,o:[`When BGL < 20 mmol/L`,`When BGL < 15 mmol/L`,`When ketones < 0.6`,`When pH normal`],c:1,e:`Glucose is added once BGL falls to avoid hypoglycaemia while continuing insulin to clear ketones.`},
   {tag:'dka', q:`What insulin mix is used for Actrapid infusion?`,o:[`100 units in 100 mL NaCl`,`50 units Actrapid + 49.5 mL NaCl`,`10 units Actrapid + 90 mL glucose`,`Any concentration`],c:1,e:`Standardised concentration ensures safe titration and reduces medication error risk. Know your local protocol concentrations.`},
-  {tag:'dka', q:`Who must double‑check infusion changes?`,o:[`One nurse`,`Two staff, one RN`,`Any students`,`RN only`],c:1,e:`Independent double checks reduce high‑risk medication errors. High‑risk meds = double check culture.`},
+  {tag:'dka', q:`Who must double‑check infusion changes?`,o:[`One nurse`,`Two staff, one RN`,`Any students`,`RN only`],c:1,e:`Independent double checks reduce high‑risk medication errors. Most Australian hospitals require two staff (at least one an RN) to check insulin infusion changes, but the exact rules depend on state and facility policy — always follow your local protocol.`},
   {tag:'dka', q:`When can insulin infusion be ceased?`,o:[`When BGL < 10`,`After meal + ketones <0.3 + pH >7.3`,`Ketones <0.6 only`,`Immediately`],c:1,e:`Resolution criteria ensure DKA has cleared before stopping infusion. Look at the whole picture, not just glucose.`},
   {tag:'blood', q:`Baseline observations before transfusion should be within:`,o:[`15 minutes`,`30 minutes`,`60 minutes`,`2 hours`],c:2,e:`Recent baseline observations help detect transfusion reactions early. Good baseline = early detection.`},
-  {tag:'blood', q:`How many staff must perform final bedside check?`,o:[`One`,`Two staff`,`Three`,`Doctor only`],c:1,e:`A double independent check reduces risk of wrong blood administration. Never skip the bedside check.`},
+  {tag:'blood', q:`How many staff must perform final bedside check?`,o:[`One`,`Two staff`,`Three`,`Doctor only`],c:1,e:`A double independent check reduces the risk of wrong blood administration. Most Australian facilities require two staff for the bedside check, but requirements vary (e.g. where electronic patient ID systems are used) — follow your local transfusion policy. Never skip the bedside check.`},
   {tag:'blood', q:`Minimum vital sign monitoring includes:`,o:[`Start only`,`Start, 15 min, hourly, completion`,`4 hourly`,`Only if reaction`],c:1,e:`Regular observations detect early transfusion reactions. The 15‑minute check is critical.`},
   {tag:'blood', q:`Universally compatible IV fluid with blood:`,o:[`Hartmann's`,`0.9% Sodium Chloride`,`5% Dextrose`,`Any`],c:1,e:`Normal saline does not cause haemolysis or clotting. Use saline with blood products.`},
   {tag:'blood', q:`Which fluid is incompatible (contains calcium)?`,o:[`0.9% Sodium Chloride`,`Hartmann's`,`Albumin`,`None`],c:1,e:`Calcium can promote clotting within the line. Know your incompatible fluids.`},
