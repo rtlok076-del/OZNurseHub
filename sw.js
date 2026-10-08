@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v20-student-tools';
+const CACHE = 'oznurse-v22-escalation-simulator';
 
 const CORE_FILES = [
   './',
@@ -20,6 +20,8 @@ const CORE_FILES = [
   './placement-prep.html',
   './student-tools.css',
   './student-tools.js',
+  './clinical-escalation.html',
+  './clinical-escalation.js',
   './hero-nursing-v2.png',
   './quickref.html',
   './progressnote.html',
