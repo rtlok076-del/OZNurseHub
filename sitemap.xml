@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://oznursehub.com/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -99,8 +99,12 @@
   <url><loc>https://oznursehub.com/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://oznursehub.com/fables.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://oznursehub.com/med-survivor/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://oznursehub.com/resources.html</loc></url>
+  <url><loc>https://oznursehub.com/resources.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://oznursehub.com/learning-lab.html</loc></url>
   <url><loc>https://oznursehub.com/downloads.html</loc></url>
   <url><loc>https://oznursehub.com/medication-of-the-day.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oznursehub.com/student-to-rn.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oznursehub.com/placement-prep.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oznursehub.com/clinical-skills-logbook.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oznursehub.com/clinical-escalation.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

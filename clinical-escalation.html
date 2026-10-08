@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en-AU" data-tools="clinical-escalation">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Obs chart and escalation simulator: recognise, escalate, ISBAR | OzNurseHub</title>
+<meta name="description" content="Practise recognising and escalating clinical deterioration. Plot a set of observations on an example colour-zoned chart based on SA Health's sample adult RDR chart, work through fictional ward scenarios, build an ISBAR phone call and a MET call handover, and learn phrases for speaking up. Free, no account, nothing saved or sent.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#193f35">
+<link rel="stylesheet" href="renovation.css">
+<link rel="stylesheet" href="student-tools.css">
+<link rel="canonical" href="https://oznursehub.com/clinical-escalation.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OzNurseHub">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://oznursehub.com/clinical-escalation.html">
+<meta property="og:title" content="Obs chart and escalation simulator | OzNurseHub">
+<meta property="og:description" content="Plot obs on an example colour-zoned chart, work through fictional deterioration scenarios, and practise your ISBAR call and MET handover. Free, no account.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<style>
+/* Zones: colour is always paired with a letter and words */
+.ce-z{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px 3px 4px;font-size:12.5px;font-weight:600;line-height:1.3;border:1px solid transparent;white-space:nowrap}
+.ce-z b{display:inline-block;width:20px;height:20px;border-radius:50%;text-align:center;line-height:20px;font-size:11px;color:#fff;flex:0 0 20px}
+.ce-z.w{background:#eef2ee;color:#2f4a40;border-color:#d3ddd5}.ce-z.w b{background:#6b7f76}
+.ce-z.y{background:#fff4b8;color:#4d4100;border-color:#e6d26a}.ce-z.y b{background:#8a7300}
+.ce-z.r{background:#fbd5cf;color:#6e1e12;border-color:#ec9f94}.ce-z.r b{background:#b0392a}
+.ce-z.p{background:#e6dbf5;color:#3e2264;border-color:#b79ad9}.ce-z.p b{background:#5e3a91}
+.ce-key{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.ce-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px 16px;align-items:end}
+.ce-inline{display:flex;gap:8px}.ce-inline>*{flex:1;min-width:0}
+.ce-sub{font:700 11px 'DM Sans',Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#76613c;margin:24px 0 10px}
+.ce-credit{margin:0 0 14px;font-style:italic}
+#speak .ce-credit{margin:16px 0 0}
+.ce-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 18px;margin:0;padding:0;border:0}
+.ce-checks legend{font-size:13px;font-weight:600;margin-bottom:6px;padding:0}
+.ce-checks label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:14.5px;line-height:1.45;cursor:pointer}
+.ce-checks input{accent-color:var(--teal);width:20px;height:20px;flex:0 0 20px;margin:1px 0 0}
+.ce-checks small{display:block;color:var(--muted);font-size:12.5px}
+.ce-tag{font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:4px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+.ce-tag.y{background:#fff4b8;color:#4d4100}.ce-tag.r{background:#fbd5cf;color:#6e1e12}.ce-tag.p{background:#e6dbf5;color:#3e2264}
+.ce-worry{display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0 0 6px;padding:0}
+.ce-worry legend{font-size:13px;font-weight:600;margin-bottom:6px;padding:0;width:100%}
+.ce-worry label{display:inline-flex;align-items:center;gap:8px;border:1px solid #c9d5cb;border-radius:8px;padding:9px 14px;background:#fff;font-size:14px;cursor:pointer;min-height:44px}
+.ce-worry input{accent-color:var(--teal);width:18px;height:18px;margin:0}
+.ce-out{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start;margin-top:18px}
+.ce-result{border-radius:14px;padding:22px 24px;border:2px solid #d3ddd5;background:#f6f8f4}
+.ce-result.y{background:#fffbe3;border-color:#e6d26a}.ce-result.r{background:#fff1ee;border-color:#ec9f94}.ce-result.p{background:#f5effc;border-color:#9e7cc9}
+.ce-result h3{font-size:24px;font-weight:400;margin:6px 0 8px;color:var(--ink)}
+.ce-result .ce-why{font-size:14px;color:var(--muted);margin:0 0 12px}
+.ce-result ol,.ce-result ul{margin:0 0 10px;padding-left:20px;font-size:14.5px}
+.ce-result li{margin:0 0 5px}
+.ce-result .ce-student{background:#fff;border-radius:8px;padding:10px 14px;font-size:13.5px;margin:12px 0 0;border-left:3px solid var(--teal)}
+.ce-list{list-style:none;margin:0;padding:0;font-size:14px}
+.ce-list li{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid #edf1ec;padding:7px 0}
+.ce-list li:first-child{border-top:0}
+.ce-counts{font-size:13px;color:var(--muted);margin:8px 0 0}
+.ce-chartwrap{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;overflow-x:auto}
+.ce-chartwrap svg{display:block;max-width:none}
+.ce-chartcap{font-size:12.5px;color:var(--muted);margin:8px 2px 0}
+.ce-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ce-note{background:#f5efdf;color:#5a4a2a;border-radius:8px;padding:10px 14px;font-size:13px;margin:14px 0 0}
+.ce-err{color:#8a3b2c;font-size:13px;margin:8px 0 0;min-height:1em}
+/* Scenarios */
+.ce-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.ce-case{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--white);border:1px solid var(--border);border-top:3px solid #a88a4d;border-radius:12px;padding:16px 18px;cursor:pointer;font:inherit;color:inherit}
+.ce-case:hover,.ce-case:focus-visible{background:#f6f9f5;outline:none;box-shadow:0 0 0 3px #a1783640}
+.ce-case strong{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:20px;color:var(--teal)}
+.ce-case span{font-size:13.5px;color:var(--muted)}
+.ce-case em{font-style:normal;font-size:12px;color:#76613c;font-weight:600}
+.ce-play{margin-top:18px}
+.ce-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.ce-when{font:700 12px 'DM Sans',Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#76613c;margin:0}
+.ce-obsline{font-size:15px;margin:8px 0;line-height:1.7}
+.ce-obsline span{display:inline-block;background:#f1f5f0;border-radius:6px;padding:1px 8px;margin:0 4px 4px 0;white-space:nowrap}
+.ce-seen{font-size:15px;margin:10px 0;padding:12px 14px;background:#fcfbf6;border-left:3px solid #a88a4d;border-radius:0 8px 8px 0}
+.ce-opts{display:grid;gap:8px;margin:14px 0 0}
+.ce-opt{display:flex;gap:12px;align-items:flex-start;text-align:left;border:1px solid #c9d5cb;background:#fff;border-radius:10px;padding:12px 14px;font:inherit;font-size:14.5px;cursor:pointer;color:var(--ink);min-height:44px}
+.ce-opt:hover{background:#f6f9f5}.ce-opt:disabled{cursor:default}
+.ce-opt b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--teal-pale);color:var(--teal);text-align:center;line-height:26px;font-size:13px}
+.ce-opt.chosen{border-width:2px;border-color:var(--teal)}
+.ce-opt.best{background:#eaf2ec;border-color:#5f9a83}
+.ce-opt.best b{background:var(--teal);color:#fff}
+.ce-fb{border-radius:12px;padding:16px 18px;margin:14px 0 0;font-size:14.5px;background:#f6f8f4;border:1px solid var(--border)}
+.ce-fb h4{margin:0 0 6px!important;font:600 16px 'DM Sans',Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important;color:var(--ink)!important}
+.ce-fb p{margin:0 0 8px}
+.ce-score{font-size:14px;color:var(--teal);font-weight:600}
+.ce-mod{background:#eef3fb;border-left:3px solid #4a6fa5;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;margin:10px 0}
+/* ISBAR + MET */
+.ce-letter{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;border-top:1px solid #edf1ec;padding:18px 0}
+.ce-letter:first-of-type{border-top:0;padding-top:4px}
+.ce-letter>b{width:46px;height:46px;border-radius:12px;background:var(--teal);color:#fff;font:400 26px/46px 'Fraunces',Georgia,serif;text-align:center}
+.ce-letter h3{font-size:20px!important;margin:6px 0 10px!important}
+.ce-letter .st-form{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.ce-readback{background:#eaf2ec;border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0 0;white-space:pre-wrap}
+.ce-script{list-style:none;margin:0;padding:0;counter-reset:s}
+.ce-script li{counter-increment:s;position:relative;padding:10px 0 10px 40px;border-top:1px solid #edf1ec;font-size:15px}
+.ce-script li:first-child{border-top:0}
+.ce-script li::before{content:counter(s);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;background:#f3ead4;color:#6c5428;text-align:center;line-height:26px;font-size:13px;font-weight:700}
+.ce-script q{font-weight:600;color:var(--ink)}
+.met-sheet{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:16px;font-size:14px}
+.met-sheet th,.met-sheet td{border:1px solid #c9d5cb;vertical-align:top;padding:10px}
+.met-sheet th{width:150px;background:var(--teal);color:#fff;text-align:left;font-weight:600}
+.met-sheet th span{display:block;font:400 30px/1 'Fraunces',Georgia,serif}
+.met-sheet .met-prompts{font-size:12.5px;color:var(--muted);margin:0 0 6px}
+.met-sheet textarea{min-height:70px!important;font-size:14px!important}
+.met-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;align-items:end}
+.met-only{display:none}
+[data-met=surgical] .met-only.surgical,[data-met=neuro] .met-only.neuro,[data-met=medical] .met-only.medical{display:inline}
+/* Speaking up */
+.ce-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ce-col{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.ce-col h3{font-size:20px!important;margin:0 0 8px!important}
+.ce-col.mid{border:2px solid var(--teal)}
+.ce-ladder{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ce-ladder li{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:14px}
+.ce-ladder li strong{display:block;font:400 19px 'Fraunces',Georgia,serif;color:var(--teal);margin-bottom:4px}
+.ce-ev{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.ce-ev div{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px;font-size:14.5px}
+.ce-ev strong{display:block;font:400 22px 'Fraunces',Georgia,serif;color:var(--teal);margin-bottom:6px;line-height:1.2}
+.ce-ev cite{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:8px}
+.ce-refs{font-size:14px;color:var(--muted);padding-left:0;list-style:none}
+.ce-refs li{margin:0 0 10px;padding-left:28px;text-indent:-28px}
+@media(max-width:1000px){.ce-out,.ce-step{grid-template-columns:1fr}.ce-cols{grid-template-columns:1fr}.ce-ladder{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.ce-letter{grid-template-columns:1fr;gap:6px}.ce-letter>b{width:38px;height:38px;font-size:22px;line-height:38px;border-radius:10px}.met-sheet th{width:auto;display:block}.met-sheet td{display:block}.met-sheet tr{display:block;margin-bottom:10px}.ce-ladder{grid-template-columns:1fr}}
+@media print{
+  .ce-result,.ce-chartwrap,.ce-fb{break-inside:avoid}
+  .ce-chartwrap{border:0;padding:0;overflow:visible}
+  .ce-noprint,.ce-cases,.ce-opts button:not(.chosen):not(.best){display:none!important}
+  .met-sheet{font-size:10pt;margin-top:6px}.met-sheet th{background:#fff!important;color:#000;border-color:#666}.met-sheet td{border-color:#666;height:19mm;padding:6px 8px}.met-sheet th{padding:6px 8px}
+  .met-sheet th span{font-size:20pt}
+  .met-sheet .st-pm{border:0;font-size:10pt}
+  body.met-blank .met-sheet .st-pm,body.met-blank .met-head .st-pm{visibility:hidden}
+  body[data-print] .st-print-target .st-panel{break-inside:auto}
+  body[data-print] .st-print-target .section-lead h2{font-size:17pt}
+  body[data-print=met] #met .st-panel{border:0;padding:0}
+  body[data-print=met] .met-prep{font-size:9pt}
+  body[data-print=met] .met-prep h4{margin:10px 0 6px}
+  body[data-print=met] .met-prep .st-checkgroup h3{font-size:12pt;margin:0 0 4px}
+  body.print-obs .ce-result,body.print-obs .ce-chartwrap{break-inside:auto}
+  body.print-obs .ce-chartwrap svg{height:185mm;width:auto}
+  body.print-obs #chart .st-panel{padding:12px 14px}
+  body.print-obs .ce-key,body.print-obs .ce-chartcap,body.print-obs .ce-student{display:none!important}
+  body[data-print=met] .met-prep .st-checkgroup{padding:8px 10px}
+  body[data-print=met] .met-prep .st-check{padding:2px 0;font-size:9pt}
+  .ce-result.y,.ce-result.r,.ce-result.p,.ce-z{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ce-chartwrap svg{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<main class="renovation-main st-main" id="content">
+
+<section class="st-hero" aria-labelledby="page-title">
+<div><p class="overline">Recognise and escalate / Simulator</p><h1 id="page-title">Spot the change.<br><em>Make the call.</em></h1>
+<p class="lede">Plot a set of obs on an example colour-zoned chart and see what it asks you to do. Work through fictional patients as they deteriorate, then practise the ISBAR phone call and the MET handover before you ever need them.</p>
+<div class="action-row"><a class="elegant-button" href="#chart">Plot a set of obs ↓</a><a class="elegant-button secondary" href="#scenarios">Try a scenario ↓</a></div></div>
+<aside class="st-safety"><strong>Practice only.</strong> The zones here are an example, based on SA Health's sample adult Rapid Detection and Response (RDR) chart. Hospitals set their own triggers and responses, and a doctor can change them for one patient. Always follow your local chart and escalation policy, and tell your supervising RN straight away if you're worried. <a href="#sources">Sources</a></aside>
+</section>
+
+<div class="st-privacy"><p><strong>Nothing you enter here is saved or sent anywhere.</strong> Obs, scenario scores, ISBAR notes, handovers and checklist ticks stay on this screen only, and clear when you leave or refresh the page. Use made-up details. Never enter real names, dates of birth or record numbers.</p></div>
+<ul class="st-jump" aria-label="Tools on this page"><li><a href="#chart">1. Obs chart</a></li><li><a href="#scenarios">2. Scenarios</a></li><li><a href="#isbar">3. ISBAR call</a></li><li><a href="#met">4. MET handover</a></li><li><a href="#speak">5. Speaking up</a></li><li><a href="#evidence">Evidence</a></li><li><a href="#sources">Sources</a></li></ul>
+
+<!-- 1. OBS CHART -->
+<section class="st-section" id="chart" aria-labelledby="chart-title">
+<div class="section-lead"><div><p class="overline">Tool 1 / Obs chart</p><h2 id="chart-title">Plot the obs. Read the zone.</h2><p>Enter a set of adult observations. Each one lands in a zone, and the most serious zone, plus a few extra rules, tells you who needs to know and how fast.</p></div></div>
+<div class="st-panel">
+<form id="obs-form" novalidate autocomplete="off">
+<div class="ce-grid">
+<label class="st-field"><span>Time</span><input type="time" name="time" id="o-time"></label>
+<label class="st-field"><span>Respiratory rate <small>breaths/min</small></span><input type="number" name="rr" inputmode="numeric" min="0" max="80" step="1"></label>
+<label class="st-field"><span>SpO₂ <small>%</small></span><input type="number" name="spo2" inputmode="numeric" min="40" max="100" step="1"></label>
+<label class="st-field"><span>Oxygen delivery</span><select name="o2dev"><option value="RA">Room air</option><option value="NP">Nasal prongs</option><option value="FM">Simple face mask</option><option value="VM">Venturi mask</option><option value="NRB">Non-rebreather mask</option><option value="HF">High-flow nasal oxygen</option><option value="OT">Other (e.g. tracheostomy)</option></select></label>
+<label class="st-field"><span>O₂ flow <small>L/min</small></span><input type="number" name="flow" inputmode="decimal" min="0" max="80" step="0.5" disabled></label>
+<div class="st-field"><span class="st-label" id="bp-lab">Blood pressure <small>mmHg</small></span><div class="ce-inline"><input type="number" name="sbp" inputmode="numeric" min="30" max="300" aria-label="Systolic" placeholder="Sys"><input type="number" name="dbp" inputmode="numeric" min="10" max="200" aria-label="Diastolic" placeholder="Dia"></div></div>
+<label class="st-field"><span>Heart rate <small>beats/min</small></span><input type="number" name="hr" inputmode="numeric" min="10" max="250"></label>
+<label class="st-field"><span>Temperature <small>°C</small></span><input type="number" name="temp" inputmode="decimal" min="30" max="44" step="0.1"></label>
+<label class="st-field" style="grid-column:span 2"><span>Consciousness and sedation</span><select name="loc"><option value="">Choose…</option><option value="0">Alert, awake (A)</option><option value="1">Drowsy, rouses easily to voice and stays awake (V)</option><option value="2">Rouses to voice but can't stay awake: eyes close within 10 seconds (V)</option><option value="3">Hard to rouse: responds only to touch or pain, or not at all (P / U)</option></select></label>
+<label class="st-field"><span>Pain at rest <small>0–10, optional</small></span><input type="number" name="pain" inputmode="numeric" min="0" max="10"></label>
+<label class="st-field"><span>Urine output <small>mL/hr, average over last 4 h, optional</small></span><input type="number" name="uo" inputmode="numeric" min="0" max="2000"></label>
+</div>
+<p class="ce-err" id="obs-err" role="alert"></p>
+
+<p class="ce-sub">Other things that trigger a response</p>
+<fieldset class="ce-checks"><legend class="ce-sr">Other triggers</legend>
+<label><input type="checkbox" name="x" value="airway"><span>Airway is threatened, or there's new noisy breathing (stridor) <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="x" value="arrest"><span>Not breathing, or no pulse <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="x" value="locdrop"><span>Sudden drop in level of consciousness <small>For example, GCS falls by 2 or more</small> <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="x" value="seizure"><span>New, prolonged or repeated seizure <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="x" value="bleed"><span>Significant bleeding <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="x" value="chestpain"><span>Chest pain that isn't relieved <span class="ce-tag r">R</span></span></label>
+<label><input type="checkbox" name="x" value="novoid"><span>Hasn't passed urine for over 12 hours <span class="ce-tag r">R</span></span></label>
+<label><input type="checkbox" name="x" value="behaviour"><span>New or unexplained change in behaviour or confusion <span class="ce-tag y">Y</span></span></label>
+<label><input type="checkbox" name="x" value="newpain"><span>New or unexpected pain <span class="ce-tag y">Y</span></span></label>
+<label><input type="checkbox" name="x" value="rndelay"><span>An RN review was asked for over 30 minutes ago and hasn't happened <span class="ce-tag r">R</span></span></label>
+<label><input type="checkbox" name="x" value="mddelay"><span>A medical review was asked for over 30 minutes ago and hasn't happened <span class="ce-tag p">P</span></span></label>
+<label><input type="checkbox" name="target"><span>Their doctor has documented an SpO₂ target of 88–92% <small>A modification, sometimes used in chronic lung disease. 88–92% then counts as no trigger, and above 92% on oxygen needs a medical review.</small></span></label>
+</fieldset>
+
+<p class="ce-sub">Worry counts</p>
+<fieldset class="ce-worry"><legend>How worried are you about this patient?</legend>
+<label><input type="radio" name="worry" value="" checked> Not worried</label>
+<label><input type="radio" name="worry" value="y"> Something's not right</label>
+<label><input type="radio" name="worry" value="r"> I'm worried</label>
+<label><input type="radio" name="worry" value="p"> Seriously worried</label>
+</fieldset>
+<fieldset class="ce-checks" style="margin-top:10px"><legend>Signs behind the worry <small style="font-weight:400;color:var(--muted)">(tick any that are new)</small></legend>
+<label><input type="checkbox" name="w" value="breathing"><span>Breathing has changed<small>Noisy, short of breath, can't finish a sentence, using extra muscles</small></span></label>
+<label><input type="checkbox" name="w" value="circulation"><span>Circulation has changed<small>Pale or grey, sweaty or clammy, cool to touch, new swelling</small></span></label>
+<label><input type="checkbox" name="w" value="rigors"><span>Shivering or rigors</span></label>
+<label><input type="checkbox" name="w" value="mentation"><span>Thinking has changed<small>Drowsy, flat, newly muddled</small></span></label>
+<label><input type="checkbox" name="w" value="agitation"><span>Restless, agitated or anxious</span></label>
+<label><input type="checkbox" name="w" value="pain"><span>Pain that's new, worse, or won't settle</span></label>
+<label><input type="checkbox" name="w" value="trajectory"><span>Not on the expected track<small>Not improving, bloated belly, vomiting, bleeding, dizzy, fainted or fell</small></span></label>
+<label><input type="checkbox" name="w" value="unwell"><span>Says they feel unwell, or that something bad is about to happen</span></label>
+<label><input type="checkbox" name="w" value="look"><span>They just don't look right<small>A change in how they look or behave that you can't quite name</small></span></label>
+<label><input type="checkbox" name="w" value="family"><span>The patient or their family is worried</span></label>
+</fieldset>
+
+<div class="st-actions">
+<button class="st-btn" type="submit">Check the zone</button>
+<button class="st-btn ghost" type="button" id="obs-add">Add this set to the chart</button>
+<button class="st-btn ghost" type="button" id="obs-example">Load an example</button>
+<button class="st-btn ghost" type="button" id="obs-clear">Clear</button>
+<span class="st-status" id="obs-status" role="status"></span>
+</div>
+</form>
+
+<div class="ce-out" id="obs-out" hidden>
+<div><div class="ce-result" id="obs-result" aria-live="polite" tabindex="-1"></div></div>
+<div>
+<div class="ce-chartwrap" id="obs-chart"></div>
+<p class="ce-chartcap">Each dot is a value. The band it lands in sets its zone. Grey rows have no trigger. <span id="obs-chart-n"></span></p>
+<div class="st-actions ce-noprint">
+<a class="st-btn ghost small" href="#isbar" id="obs-to-isbar">Use these obs in an ISBAR call →</a>
+<button class="st-btn ghost small" type="button" id="obs-print">Print chart and result</button>
+<button class="st-btn ghost small" type="button" id="obs-reset-chart">Start a new chart</button>
+</div>
+</div>
+</div>
+<ul class="ce-key" aria-label="Zone key">
+<li><span class="ce-z w"><b aria-hidden="true">–</b>No trigger</span></li>
+<li><span class="ce-z y"><b aria-hidden="true">Y</b>Yellow: RN review</span></li>
+<li><span class="ce-z r"><b aria-hidden="true">R</b>Red: medical review</span></li>
+<li><span class="ce-z p"><b aria-hidden="true">P</b>Purple: rapid response (MET) call</span></li>
+</ul>
+</div>
+<details class="st-acc" style="margin-top:18px"><summary>How the example zones work</summary>
+<ul class="st-list">
+<li><strong>The zones.</strong> The bands follow the layout of the sample adult Rapid Detection and Response (RDR) chart that SA Health publishes (2020 revision). That chart follows the national approach: colour bands for each observation, and a set response for each colour. Normal SpO₂ is 95–100%.</li>
+<li><strong>Counting rule.</strong> Three or more yellow observations need a medical review. Three or more red observations need a rapid response call.</li>
+<li><strong>30-minute rule.</strong> If an RN review or medical review hasn't happened within 30 minutes, or you're more worried, go up a level.</li>
+<li><strong>Worry is a trigger.</strong> Your worry, or the patient's or family's, is a reason to escalate even when every number is in range. In SA public hospitals, patients and families can raise concerns themselves through "You're worried, we're listening".</li>
+<li><strong>Other charts.</strong> Some Australian charts, like the Commission's ADDS chart, give each observation a score and act on the total. The thresholds and names differ (MET, MER, rapid response, Code Blue), but the idea is the same: the further from normal, the faster the response.</li>
+<li><strong>Modifications.</strong> A doctor can document different calling criteria for one patient for a set time. One example is a lower SpO₂ target in some chronic lung disease. Apart from the 88–92% SpO₂ target option above, this simulator doesn't apply them, so always check the chart and the resuscitation plan or goals of care.</li>
+</ul>
+</details>
+</section>
+
+<!-- 2. SCENARIOS -->
+<section class="st-section" id="scenarios" aria-labelledby="sc-title">
+<div class="section-lead"><div><p class="overline">Tool 2 / Scenarios</p><h2 id="sc-title">What would you do now?</h2><p>Six fictional patients. Each set of obs is plotted as it comes in. Decide what happens next, then see the feedback. Trends matter as much as single numbers.</p></div></div>
+<div class="ce-cases" id="sc-list"></div>
+<div class="ce-play" id="sc-play" hidden></div>
+</section>
+
+<!-- 3. ISBAR -->
+<section class="st-section" id="isbar" aria-labelledby="isbar-title">
+<div class="section-lead"><div><p class="overline">Tool 3 / ISBAR phone call</p><h2 id="isbar-title">Build the call before you dial.</h2><p>Know what you're asking for, and by when, before you pick up the phone. Fill in the gaps, practise it out loud, and finish with a read-back so everyone leaves with the same plan.</p></div></div>
+<p class="st-help" style="margin:-8px 0 16px">On placement your supervising RN usually makes this call. Building the ISBAR is still the best way to hand over clearly to them, and it's good practice for when you're the RN.</p>
+<div class="st-two">
+<form class="st-panel" id="isbar-form" autocomplete="off">
+<div class="st-actions" style="margin-top:0"><button class="st-btn ghost small" type="button" id="is-fill">Fill from my obs chart</button><button class="st-btn ghost small" type="button" id="is-example">Load the Dorothy example</button><button class="st-btn danger small" type="button" id="is-clear">Clear</button></div>
+
+<div class="ce-letter" style="margin-top:14px"><b aria-hidden="true">I</b><div><h3>Identify</h3>
+<div class="st-form">
+<label class="st-field"><span>Who you are <small>name and role</small></span><input type="text" name="me" placeholder="e.g. Alex, RN"></label>
+<label class="st-field"><span>Where <small>ward or unit</small></span><input type="text" name="ward" placeholder="e.g. medical ward, bed 8"></label>
+<label class="st-field"><span>Who you're calling</span><input type="text" name="who" placeholder="e.g. the medical registrar"></label>
+<label class="st-field"><span>The patient <small>practice details only</small></span><input type="text" name="pt" placeholder="e.g. Dorothy, 85"></label>
+</div></div></div>
+
+<div class="ce-letter"><b aria-hidden="true">S</b><div><h3>Situation</h3>
+<label class="st-field"><span>Why you're calling, and what has changed</span><textarea name="sit" placeholder="e.g. Her breathing has got worse over the last hour and she now meets rapid response criteria."></textarea></label>
+<div class="ce-checks" style="margin-top:6px"><label><input type="checkbox" name="worried"><span>Say it plainly: "I am worried about this patient."</span></label></div>
+</div></div>
+
+<div class="ce-letter"><b aria-hidden="true">B</b><div><h3>Background</h3>
+<div class="st-form">
+<label class="st-field"><span>Why they're in hospital, day of stay</span><textarea name="adm" placeholder="e.g. Day 5 after admission with a fall and a sore right leg"></textarea></label>
+<label class="st-field"><span>Relevant history</span><textarea name="hx" placeholder="e.g. Heart failure, AF, dementia"></textarea></label>
+<label class="st-field"><span>Baseline <small>usual obs, cognition, mobility</small></span><textarea name="base" placeholder="e.g. Usually sats well on room air. Oriented to person and place."></textarea></label>
+<label class="st-field"><span>Allergies, resuscitation plan or goals of care</span><textarea name="plan" placeholder="e.g. Codeine (rash). Not for CPR or intubation; for ICU review if the cause is reversible."></textarea></label>
+</div></div></div>
+
+<div class="ce-letter"><b aria-hidden="true">A</b><div><h3>Assessment</h3>
+<label class="st-field"><span>Obs now, and how they've changed</span><textarea name="obs" placeholder="Use 'Fill from my obs chart', or type them in."></textarea></label>
+<div class="st-form" style="margin-top:12px">
+<label class="st-field"><span>What you can see <small>A to E, colour, work of breathing</small></span><textarea name="see" placeholder="e.g. Speaking in short phrases, using her shoulders to breathe, pale"></textarea></label>
+<label class="st-field"><span>What you've already done</span><textarea name="done" placeholder="e.g. Sat her up, started oxygen per protocol, ECG done, BGL checked"></textarea></label>
+</div>
+<label class="st-field" style="margin-top:12px"><span>What you think is going on <small>optional, it's fine to say you're not sure</small></span><input type="text" name="think" placeholder="e.g. I'm concerned this could be a PE or a chest infection."></label>
+</div></div>
+
+<div class="ce-letter"><b aria-hidden="true">R</b><div><h3>Recommendation</h3>
+<div class="st-form">
+<label class="st-field"><span>What I'm asking for</span><select name="ask"><option value="">Choose…</option><option>Please come and review the patient</option><option>Please review the patient and the medication chart</option><option>I’d like advice on what to do now</option><option>Please review whether they need a higher level of care</option><option>I’m letting you know that I’ve called a rapid response</option></select></label>
+<label class="st-field"><span>By when</span><select name="when"><option value="">Choose…</option><option>now</option><option>within 15 minutes</option><option>within 30 minutes</option><option>within the hour</option></select></label>
+</div>
+<label class="st-field" style="margin-top:12px"><span>Anything specific <small>tests, orders, a plan for the night</small></span><input type="text" name="spec" placeholder="e.g. a chest X-ray, bloods, a plan if her sats drop again"></label>
+<fieldset class="ce-checks" style="margin-top:10px"><legend>Before you hang up, ask</legend>
+<label><input type="checkbox" name="meantime" checked><span>"What would you like me to do in the meantime?"</span></label>
+<label><input type="checkbox" name="callback" checked><span>"What should I call you back for?"</span></label>
+</fieldset>
+</div></div>
+
+<div class="ce-letter"><b aria-hidden="true">✓</b><div><h3>Read it back</h3>
+<p class="st-help" style="margin:0 0 10px">Closed-loop communication: repeat the plan in your own words so any mix-up shows up now, not at 3 am.</p>
+<div class="st-form">
+<label class="st-field"><span>What they said they'll do</span><input type="text" name="their" placeholder="e.g. come and see her within 15 minutes"></label>
+<label class="st-field"><span>What I'll do in the meantime</span><input type="text" name="mine" placeholder="e.g. repeat obs every 15 minutes, keep her sitting up"></label>
+<label class="st-field"><span>Call back if</span><input type="text" name="cb" placeholder="e.g. SpO₂ drops below 92% or RR goes above 30"></label>
+</div>
+<div class="ce-readback" id="is-readback" aria-live="polite"></div>
+</div></div>
+</form>
+
+<div>
+<div class="st-panel">
+<h3>Your call</h3>
+<p class="st-help">Read it aloud. Aim for about a minute.</p>
+<div class="st-preview" id="is-preview" data-empty="Your ISBAR builds here as you type." style="margin-top:12px"></div>
+<div class="st-actions"><button class="st-btn" type="button" id="is-copy">Copy</button><button class="st-btn ghost" type="button" id="is-print">Print</button><span class="st-status" id="is-status" role="status"></span></div>
+</div>
+<div class="st-panel" id="not-concerned">
+<h3>If they're not concerned</h3>
+<p class="st-help">Stay polite, stay on the facts, and keep the patient at the centre.</p>
+<ol class="ce-script" style="margin-top:10px">
+<li>Ask them to explain: <q>Can you help me understand why you're not concerned? I might be missing something.</q> They may know something you don't.</li>
+<li>Restate the worry with the facts: <q>Her RR has gone from 18 to 30 in two hours and she's on new oxygen. I'm still worried.</q></li>
+<li>Ask for something specific: <q>Would you be able to see her within 30 minutes?</q> or <q>What would make you want to come in?</q></li>
+<li>Agree on what happens next, and read it back.</li>
+<li>Document it: the time, who you spoke to, what you reported and the plan.</li>
+<li>Still worried? Escalate up the chain: the RN in charge, then a more senior doctor. If the patient meets the criteria, or you're seriously worried, call a rapid response. You never need permission to do that.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 4. MET HANDOVER -->
+<section class="st-section" id="met" aria-labelledby="met-title">
+<div class="section-lead"><div><p class="overline">Tool 4 / MET call handover</p><h2 id="met-title">Thirty seconds of handover when the team walks in.</h2><p>When the rapid response team arrives, they need the key facts fast. Pick the ward type, fill it in or print a blank one to keep on your clipboard.</p></div></div>
+<p class="st-help ce-credit">Template adapted, with permission, from MET call handover resources by Elizabeth RN.</p>
+<div class="st-panel" data-met="medical" id="met-panel">
+<div class="met-head">
+<fieldset class="st-radios ce-noprint" id="met-type"><legend>Ward type</legend>
+<label><input type="radio" name="mettype" value="medical" autocomplete="off" checked> Medical</label>
+<label><input type="radio" name="mettype" value="surgical" autocomplete="off"> Surgical</label>
+<label><input type="radio" name="mettype" value="neuro" autocomplete="off"> Neuro</label>
+</fieldset>
+<p class="st-help" style="margin:0"><strong id="met-title-print">Medical ward</strong> MET handover · ISBAR</p>
+</div>
+<table class="met-sheet" id="met-sheet">
+<tr><th scope="row"><span>I</span>Identify</th><td><p class="met-prompts">Your name and role. Patient's name and age.</p><textarea name="mi" autocomplete="off" aria-label="Identify"></textarea></td></tr>
+<tr><th scope="row"><span>S</span>Situation</th><td><p class="met-prompts">Why you called the MET. Why they're in hospital and their day of stay.<span class="met-only surgical"> The operation, post-op day and any complications.</span><span class="met-only neuro"> What's changed neurologically, and when.</span></p><textarea name="ms" autocomplete="off" aria-label="Situation"></textarea></td></tr>
+<tr><th scope="row"><span>B</span>Background</th><td><p class="met-prompts">Relevant history, especially heart and lungs. Usual cognition. Allergies. Resuscitation plan or goals of care. Infection precautions.<span class="met-only surgical"> Lines, drains, catheters, wound, epidural or PCA.</span><span class="met-only neuro"> Usual neuro status (GCS, pupils, limb strength, speech). Seizure history.</span></p><textarea name="mb" autocomplete="off" aria-label="Background"></textarea></td></tr>
+<tr><th scope="row"><span>A</span>Assessment</th><td><p class="met-prompts">Obs now and their usual. ECG, BGL. IV access and whether it works.<span class="met-only surgical"> Fluid balance, urine output, drain and wound loss.</span><span class="met-only neuro"> GCS now vs before, pupils, limb strength, neurovascular obs.</span> What you've done: position, oxygen, medicines given and when.</p><textarea name="ma" autocomplete="off" aria-label="Assessment"></textarea></td></tr>
+<tr><th scope="row"><span>R</span>Recommendation</th><td><p class="met-prompts">Treating doctor and team. Do they know? Family or substitute decision-maker, and how to reach them. What you need from the team.</p><textarea name="mr" autocomplete="off" aria-label="Recommendation"></textarea></td></tr>
+</table>
+<div class="st-actions ce-noprint"><button class="st-btn" type="button" id="met-print">Print</button><button class="st-btn ghost" type="button" id="met-blank">Print a blank template</button><button class="st-btn ghost" type="button" id="met-example">Load the Dorothy example</button><button class="st-btn ghost" type="button" id="met-copy">Copy</button><button class="st-btn danger" type="button" id="met-clear">Clear</button><span class="st-status" id="met-status" role="status"></span></div>
+<div class="met-prep">
+<h4>Be prepared: while you wait for the team</h4>
+<div class="st-progress ce-noprint" id="prep-progress"><div class="st-bar"><span></span></div><span class="st-progress-text"></span></div>
+<div class="st-checkgroups" id="prep-list"></div>
+</div>
+</div>
+</section>
+
+<!-- 5. SPEAKING UP -->
+<section class="st-section" id="speak" aria-labelledby="speak-title">
+<div class="section-lead"><div><p class="overline">Tool 5 / Speaking up</p><h2 id="speak-title">Say it clearly. Keep the patient at the centre.</h2><p>Speaking up is easier with the words ready. Focus on the patient and the facts, not the person. Use "I" statements, and be clear about what you need.</p></div></div>
+<div class="ce-cols">
+<div class="ce-col"><h3>Passive</h3><ul class="st-list"><li>Quiet, hesitant, hard to hear</li><li>Apologises for calling</li><li>Hints instead of asking</li><li>Closed body language, little eye contact</li><li>The concern gets lost</li></ul></div>
+<div class="ce-col mid"><h3>Assertive</h3><ul class="st-list"><li>Calm, clear, a volume that suits the space</li><li>Facts first, then the concern</li><li>Says exactly what's needed and by when</li><li>Open body language, eye contact, respects personal space</li><li>Respects the other person's view, and asks for it</li></ul></div>
+<div class="ce-col"><h3>Aggressive</h3><ul class="st-list"><li>Loud, fast, interrupting</li><li>Blames or accuses</li><li>Crowds personal space</li><li>Shuts down questions</li><li>People get defensive, and the message is lost</li></ul></div>
+</div>
+<h4 class="ce-sub" style="margin-top:34px">Four steps when you're not being heard</h4>
+<ol class="ce-ladder">
+<li><strong>1. Concern</strong>"I'm concerned about Bed 4. Her breathing rate has doubled since this morning."</li>
+<li><strong>2. Question</strong>"Can we look at her obs together? Am I missing something?"</li>
+<li><strong>3. Request</strong>"I need a medical review within 30 minutes, please."</li>
+<li><strong>4. Escalate</strong>"I'm still worried, so I'm going to call the registrar, or a rapid response."</li>
+</ol>
+<p class="st-help" style="margin-top:12px">Many hospitals teach a named speaking-up program in orientation. Find out which one your placement uses and the words it teaches.</p>
+<div class="st-panel" style="margin-top:22px">
+<h3>Phrase bank</h3>
+<p class="st-help">Tap a phrase to copy it. They're starting points, so make them sound like you.</p>
+<div class="st-checkgroups" id="phrases" style="margin-top:14px"></div>
+<p class="st-status" id="ph-status" role="status"></p>
+</div>
+<details class="st-acc" style="margin-top:18px"><summary>Hierarchy and confidence</summary>
+<ul class="st-list">
+<li>Differences in role, age, experience, gender and culture can make speaking up feel harder. That's normal, and it's why escalation systems exist.</li>
+<li>The patient is the shared goal. Keep coming back to them and to the facts.</li>
+<li>It's better to escalate and have no change to the plan than to stay quiet and be wrong. Escalating a real concern is never a waste of anyone's time.</li>
+<li>Get to know the team when you see them in person. A familiar voice on the phone is easier to listen to.</li>
+<li>If someone responds with rudeness or belittling, that's a conduct issue. Report it to the RN in charge or your facilitator. It never stops you escalating.</li>
+</ul>
+</details>
+<p class="st-help ce-credit">Adapted, with permission, from assertive communication and phone escalation teaching resources by Elizabeth RN.</p>
+</section>
+
+<!-- EVIDENCE -->
+<section class="st-section" id="evidence" aria-labelledby="ev-title">
+<div class="section-lead"><div><p class="overline">Evidence / Why it matters</p><h2 id="ev-title">Worry is data. Clear calls get action.</h2></div></div>
+<div class="ce-ev">
+<div><strong>Worry predicts deterioration.</strong>In 3,522 surgical ward patients in the Netherlands, nurses' worry on its own was a good predictor of unplanned ICU or HDU admission or unexpected death. Adding the signs behind the worry to vital-sign scores predicted it better than vital signs alone.<cite>Douw et al., 2016</cite></div>
+<div><strong>Nurses' worry is often right.</strong>In a US study across four adult wards, 77% of the deterioration events that nurses flagged were confirmed by reviewers. A raised worry score was strongly linked with ICU transfer in the next 24 hours.<cite>Romero-Brufau et al., 2019</cite></div>
+<div><strong>Not every escalation starts with a score.</strong>In 151 observed escalations on UK wards, about half weren't triggered by an early warning score at all, but by things like bleeding, infection or chest pain. The most common type was the call where the person escalating already knew the outcome they wanted.<cite>Ede et al., 2025</cite></div>
+<div><strong>Delays are often about culture, not knowledge.</strong>Nurses at an Australian private hospital linked delays to hierarchy and indecision, to gatekeeping and rigid protocols, and to their own confidence to escalate.<cite>Noye et al., 2023</cite></div>
+<div><strong>Nurses see it coming.</strong>Surgical nurses in Melbourne described recognising deterioration before patients met rapid response criteria. Track-and-trigger charts helped them act early.<cite>Mohammmed Iddrisu et al., 2018</cite></div>
+<div><strong>Being wrong about calling is OK.</strong>After an escalation course, one doctor in training reflected that it's acceptable to be wrong about needing to escalate, but not about failing to escalate.<cite>Cotter et al., 2019</cite></div>
+</div>
+</section>
+
+<!-- SOURCES -->
+<section class="st-section" id="sources" aria-labelledby="sources-title">
+<div class="section-lead"><div><p class="overline">Sources</p><h2 id="sources-title">Where this comes from.</h2><p>Checked in October 2026. Scenarios are fictional.</p></div></div>
+<ul class="st-list st-sources">
+<li>Australian Commission on Safety and Quality in Health Care, <a href="https://www.safetyandquality.gov.au/standards/nsqhs-standards/recognising-and-responding-acute-deterioration-standard" rel="noopener">Recognising and Responding to Acute Deterioration Standard</a> (NSQHS Standard 8), including escalation for worry from staff, patients and families, and sample observation and response charts.</li>
+<li>Australian Commission on Safety and Quality in Health Care, <a href="https://www.safetyandquality.gov.au/publications-and-resources/resource-library/adult-deterioration-detection-system-adds-without-blood-pressure-table" rel="noopener">Adult Deterioration Detection System (ADDS) chart</a> (2012).</li>
+<li>SA Health, <a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+programs+and+practice+guidelines/safety+and+wellbeing/clinical+deterioration/rapid+detection+and+response+rdr+observation+charts" rel="noopener">Rapid Detection and Response (RDR) observation charts</a>: the sample adult chart and its 2020 revision fact sheet, used for the example bands, the counting rule and the 30-minute rule.</li>
+<li>SA Health, <a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/clinical+resources/clinical+programs+and+practice+guidelines/safety+and+wellbeing/clinical+deterioration/consumer+initiated+escalation+of+care" rel="noopener">You're worried, we're listening</a>: consumer-initiated escalation of care.</li>
+</ul>
+<h4 class="ce-sub">References</h4>
+<ul class="ce-refs">
+<li>Al-Hawaiti, M. R., Sharif, L., &amp; Elsayes, H. (2025). Assertiveness in nursing: A systematic review of its role and impact in healthcare settings. <em>Nursing Reports, 15</em>(3), 102. <a href="https://doi.org/10.3390/nursrep15030102" rel="noopener">https://doi.org/10.3390/nursrep15030102</a></li>
+<li>Cotter, J. M., Ziniel, S., Lockwood, J., &amp; Reese, J. (2019). Care escalation: Teaching residents how to effectively communicate patient care concerns. <em>MedEdPORTAL, 15</em>, 10833. <a href="https://doi.org/10.15766/mep_2374-8265.10833" rel="noopener">https://doi.org/10.15766/mep_2374-8265.10833</a></li>
+<li>Douw, G., Huisman-de Waal, G., van Zanten, A. R. H., van der Hoeven, J. G., &amp; Schoonhoven, L. (2016). Nurses' 'worry' as predictor of deteriorating surgical ward patients: A prospective cohort study of the Dutch-Early-Nurse-Worry-Indicator-Score. <em>International Journal of Nursing Studies, 59</em>, 134–140. <a href="https://doi.org/10.1016/j.ijnurstu.2016.04.006" rel="noopener">https://doi.org/10.1016/j.ijnurstu.2016.04.006</a></li>
+<li>Ede, J., Kent, B., Watkinson, P., &amp; Endacott, R. (2025). Successfully initiating an escalation of care in acute ward settings: A qualitative observational study. <em>Journal of Advanced Nursing, 81</em>(2), 887–896. <a href="https://doi.org/10.1111/jan.16248" rel="noopener">https://doi.org/10.1111/jan.16248</a></li>
+<li>Mohammmed Iddrisu, S., Hutchinson, A. F., Sungkar, Y., &amp; Considine, J. (2018). Nurses' role in recognising and responding to clinical deterioration in surgical patients. <em>Journal of Clinical Nursing, 27</em>(9–10), 1920–1930. <a href="https://doi.org/10.1111/jocn.14331" rel="noopener">https://doi.org/10.1111/jocn.14331</a></li>
+<li>Noye, S., Kumar, K., Hutchinson, A., &amp; Willcox, J. (2023). Nurses' perspectives on delays in care escalation in an acute private hospital. <em>Collegian, 30</em>(5), 660–667. <a href="https://doi.org/10.1016/j.colegn.2023.07.006" rel="noopener">https://doi.org/10.1016/j.colegn.2023.07.006</a></li>
+<li>Romero-Brufau, S., Gaines, K., Nicolas, C. T., Johnson, M. G., Hickman, J., &amp; Huddleston, J. M. (2019). The fifth vital sign? Nurse worry predicts inpatient deterioration within 24 hours. <em>JAMIA Open, 2</em>(4), 465–470. <a href="https://doi.org/10.1093/jamiaopen/ooz033" rel="noopener">https://doi.org/10.1093/jamiaopen/ooz033</a></li>
+</ul>
+<p class="st-help">The "signs behind the worry" list paraphrases the nine indicators in the Dutch-Early-Nurse-Worry-Indicator-Score (DENWIS; Douw et al., 2016).</p>
+<h4 class="ce-sub">Acknowledgement</h4>
+<p class="st-help">Parts of this page are adapted, with permission, from teaching resources by Elizabeth RN, including the MET call handover template, the phone escalation tips and the speaking-up content.</p>
+</section>
+
+<p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. No medicine doses are given. Always follow your local observation chart, escalation policy and your supervising RN.</p>
+</main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
+<script src="clinical-escalation.js"></script>
+</body></html>

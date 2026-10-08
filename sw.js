@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v19-motd';
+const CACHE = 'oznurse-v25-publish-oct';
 
 const CORE_FILES = [
   './',
@@ -16,7 +16,15 @@ const CORE_FILES = [
   './learning-data.js',
   './medication-of-the-day.html',
   './manifest-motd.json',
-  './hero-nursing-v2.png',
+  './student-to-rn.html',
+  './placement-prep.html',
+  './student-tools.css',
+  './student-tools.js',
+  './clinical-escalation.html',
+  './clinical-escalation.js',
+  './clinical-skills-logbook.html',
+  './clinical-skills-logbook.js',
+  './hero-nursing-v2.webp',
   './quickref.html',
   './progressnote.html',
   './feedback.html',
@@ -32,7 +40,7 @@ const CORE_FILES = [
   './wardwise.js',
   './manifest.json',
   './icon.svg',
-  './banner.png'
+  './banner.webp'
 ];
 
 // ── Install: cache all core files ──
