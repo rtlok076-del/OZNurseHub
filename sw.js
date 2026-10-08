@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v21-skills-logbook';
+const CACHE = 'oznurse-v23-skills-logbook';
 
 const CORE_FILES = [
   './',

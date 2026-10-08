@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
 <title>Clinical skills logbook: track placement skills and print a PDF | OzNurseHub</title>
-<meta name="description" content="A free clinical skills logbook for Australian nursing students. Log skills on placement by level, supervisor initials, reflection and NMBA standard, track your progress and print a PDF summary with a facilitator sign-off box. Saved on your device only.">
+<meta name="description" content="A free clinical skills logbook for Australian nursing students. Log skills on placement by level, supervisor initials and NMBA standard, reflect with guided questions, track your progress and print a PDF summary with a facilitator sign-off box. Saved on your device only.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#193f35">
 <link rel="stylesheet" href="renovation.css">
@@ -29,8 +29,45 @@
 .lb-levels,.lb-stds{border:0;margin:0;padding:0;min-width:0}
 .lb-stds .st-chipcheck label{padding:7px 12px;min-height:40px;font-size:13px}
 .lb-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px 18px;margin-top:16px}
-.lb-warn{background:#f5efdf;color:#5a4a2a;border-radius:8px;padding:10px 14px;font-size:13px;margin:10px 0 0}
-.lb-warn[hidden]{display:none}
+/* Reference-only note */
+.lb-ref{border:1px solid #d9c79c;border-left:5px solid #ad8a45;background:#fbf7ec;border-radius:10px;padding:14px 18px;margin:0 0 18px;font-size:14px;line-height:1.5;color:#4a3d22}
+.lb-ref strong{color:#5b4520}
+.lb-ref.small{font-size:13px;padding:10px 14px;margin:8px 0 0;border-left-width:4px}
+/* Privacy block */
+.lb-block{background:#fbecea;color:#6e2a1f;border:1px solid #e3b5ab;border-left:5px solid #a8402e;border-radius:8px;padding:12px 16px;font-size:14px;line-height:1.45;margin:14px 0 0}
+.lb-block[hidden]{display:none}
+.lb-block strong{display:block;margin-bottom:4px;color:#7d2d20}
+.lb-block ul{margin:6px 0 0;padding-left:18px}
+.lb-block li{margin:2px 0}
+.st-field>span.lb-fielderr,.lb-fielderr{display:block;font-size:12.5px;font-weight:400;line-height:1.4;color:#8a2f20;margin-top:2px}
+.lb-fielderr[hidden]{display:none}
+textarea.lb-flag,input.lb-flag,textarea.lb-flag:focus,input.lb-flag:focus{border-color:#b6412d!important;outline-color:#b6412d!important;box-shadow:0 0 0 3px #b6412d33!important;background:#fffafa}
+/* Guided reflection */
+.lb-refl{border:1px solid #c9d5cb;border-radius:12px;background:#f8faf6;margin-top:18px;padding:0}
+.lb-refl>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-weight:600;font-size:15px;color:var(--teal)}
+.lb-refl>summary::-webkit-details-marker{display:none}
+.lb-refl>summary::after{content:"";order:3;margin-left:auto;flex:0 0 9px;width:9px;height:9px;border-right:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(45deg);position:relative;top:-3px}
+.lb-refl[open]>summary::after{transform:rotate(-135deg);top:2px}
+.lb-refl>summary small{font-weight:400;color:var(--muted);font-size:12.5px;order:4;flex:1 1 100%}
+.lb-reflbody{padding:0 16px 16px;display:grid;gap:14px}
+.lb-reflbody>p.st-help{margin:0}
+.lb-q>span{display:flex;gap:8px;align-items:baseline}
+.lb-q>span b{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;text-align:center;line-height:22px;font-size:12px}
+.lb-q>span small{display:block}
+.lb-q textarea{min-height:58px}
+.lb-conf{border:0;margin:0;padding:0;min-width:0}
+.lb-conf legend{font-size:13px;font-weight:600;margin-bottom:6px;padding:0}
+.lb-conf .lb-scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.lb-conf label{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid #c9d5cb;border-radius:8px;background:#fff;padding:7px 4px;font-size:12px;line-height:1.2;text-align:center;cursor:pointer;min-height:44px;color:var(--muted)}
+.lb-conf label b{font-size:16px;color:var(--ink)}
+.lb-conf label:has(input:checked){border-color:var(--teal);background:#e8f1ec;color:var(--teal);box-shadow:inset 0 -3px 0 var(--teal)}
+.lb-conf input{position:absolute;opacity:0;width:1px;height:1px}
+.lb-conf label:has(input:focus-visible){outline:2px solid var(--teal);outline-offset:2px}
+.lb-potd{background:#fff;border:1px dashed #b9c9bf;border-radius:10px;padding:12px 14px;font-size:14px}
+.lb-potd p{margin:0 0 8px}
+.lb-potd .overline{margin:0 0 4px;font-size:11px}
+.lb-potd q{font-style:italic;color:#33463f}
+.lb-potd .st-actions{margin-top:6px;gap:8px}
 .lb-count{font-size:12px;color:var(--muted);text-align:right}
 .lb-editing{background:#f3ead4;color:#6c5428;border-radius:8px;padding:8px 12px;font-size:13px;margin:0 0 14px}
 .lb-guide dt{font-weight:600;color:var(--teal);margin-top:12px;display:flex;align-items:center;gap:10px}
@@ -76,6 +113,14 @@
 .lb-entry h3{font:600 15.5px 'DM Sans',Arial,sans-serif;color:var(--ink);margin:0 0 4px}
 .lb-entry .lb-emeta{font-size:13px;color:var(--muted);margin:0}
 .lb-entry .lb-enote{font-size:14px;margin:8px 0 0;white-space:pre-wrap;color:#33463f}
+.lb-rdet{margin-top:8px;font-size:14px}
+.lb-rdet summary{cursor:pointer;color:var(--teal);font-weight:600;font-size:13px}
+.lb-rdet dl{margin:6px 0 0}
+.lb-rdet dt{font-size:12px;font-weight:600;color:var(--muted);margin-top:6px}
+.lb-rdet dd{margin:1px 0 0;white-space:pre-wrap;color:#33463f}
+.lb-flagtag{display:inline-block;font-size:11px;letter-spacing:.04em;color:#7d2d20;background:#fbecea;border:1px solid #e3b5ab;border-radius:999px;padding:2px 9px;margin-left:6px;vertical-align:1px}
+.lb-entry.flagged{border-left-color:#a8402e}
+.lb-flagnote{background:#fbecea;color:#6e2a1f;border-radius:8px;padding:10px 14px;font-size:13.5px;margin:0 0 12px}
 .lb-entry .st-actions{margin-top:10px;gap:8px}
 .lb-more{text-align:center;margin-top:10px}
 /* Export */
@@ -114,6 +159,16 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 .rp-ent+.rp-ent{border-top:1px dotted #ccd5ce}
 .rp-ent em{display:block;font-style:italic;color:#3d4f48;margin:1px 0 2px;white-space:pre-wrap}
 .rp-key{font-size:11px;color:#53635d;margin:8px 0 0}
+.rp-ref{font-size:11px;color:#4a3d22;border:1px solid #d9c79c;background:#fbf7ec;border-radius:6px;padding:8px 12px;margin:10px 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.rp-rtag{font-weight:700;color:#155e53}
+.rp-refls{margin-top:4px}
+.rp-refl{border:1px solid #c9d5cb;border-radius:6px;padding:8px 12px;margin:0 0 8px;font-size:11px;break-inside:avoid;page-break-inside:avoid}
+.rp-refl h4{font:700 11.5px 'DM Sans',Arial,sans-serif;color:#193c35;margin:0 0 4px}
+.rp-refl h4 span{font-weight:400;color:#53635d}
+.rp-refl dl{margin:0;display:grid;grid-template-columns:30% 1fr;gap:2px 10px}
+.rp-refl dt{font-weight:600;color:#53635d}
+.rp-refl dd{margin:0;white-space:pre-wrap;color:#1b2a25}
+.rp-refl .rp-hidden{font-style:italic;color:#8a3b2c}
 .rp-note{font-size:11px;color:#53635d;border-left:3px solid #ad8a45;background:#f7f3e8;padding:8px 12px;margin:16px 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .rp-sign{border:1.5px solid #193c35;border-radius:8px;padding:14px 16px;margin-top:22px;break-inside:avoid;page-break-inside:avoid}
 .rp-sign h3{font:400 17px 'Fraunces',Georgia,serif;color:#155e53;margin:0 0 4px}
@@ -127,6 +182,8 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 @media(max-width:900px){.lb-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-filters,.lb-filters.four{grid-template-columns:1fr 1fr}.lb-filters>:first-child{grid-column:1/-1}}
 @media(max-width:700px){
  .lb-addskill{grid-template-columns:1fr}
+ .lb-conf label{font-size:10.5px;padding:6px 2px}
+ .rp-refl dl{grid-template-columns:1fr}
  .lb-skill{grid-template-columns:minmax(0,1fr) auto;padding:12px 0}
  .lb-skill .lb-pips{grid-column:1;grid-row:auto}
  .lb-skill .st-btn{grid-column:2;grid-row:1/4;flex:0 0 auto}
@@ -136,7 +193,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
  .rp-lines{grid-template-columns:1fr}
 }
 /* Print: the logbook always prints as the report, whichever way printing starts. */
-@page{size:A4;margin:14mm 14mm 16mm;@bottom-right{content:"Page " counter(page) " of " counter(pages);font:8pt 'DM Sans',Arial,sans-serif;color:#53635d}@bottom-left{content:"OzNurseHub clinical skills logbook";font:8pt 'DM Sans',Arial,sans-serif;color:#53635d}}
+@page{size:A4;margin:14mm 14mm 16mm;@bottom-right{content:"Page " counter(page) " of " counter(pages);font:8pt 'DM Sans',Arial,sans-serif;color:#53635d}@bottom-left{content:"OzNurseHub clinical skills logbook \00B7  Skill list for reference only: always follow your facility\2019s guidelines";font:8pt 'DM Sans',Arial,sans-serif;color:#53635d}}
 @media print{
  .renovation-main>*:not(#export){display:none!important}
  #export>*:not(#lb-report){display:none!important}
@@ -157,20 +214,21 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <div><p class="overline">Clinical skills logbook / Tools for your shift</p><h1 id="page-title">Every skill, logged.<br><em>Ready to show.</em></h1>
 <p class="lede">Record the skills you practise on placement in under a minute. See how far you've come with each one, then print a tidy PDF summary for your facilitator to sign.</p>
 <div class="action-row"><a class="elegant-button" href="#log">Log a skill ↓</a><a class="elegant-button secondary" href="#export">Print my PDF summary ↓</a></div></div>
-<aside class="st-safety"><strong>Check your uni and facility scope.</strong> The skill list is a general guide, not permission. What you can do depends on what your uni has taught and assessed, your facility's policies and your supervising RN on the day. <a href="placement-prep.html#scope">What can I do in my year?</a></aside>
+<aside class="st-safety"><strong>The skill list is for reference only.</strong> It isn't a scope of practice or permission to do anything. Always follow your facility's guidelines and policies, your uni's placement rules and your facilitator or supervising RN on what you can do on placement. <a href="placement-prep.html#scope">What can I do in my year?</a></aside>
 </section>
 
-<div class="st-privacy"><p><strong>Your logbook stays on this device.</strong> Entries are saved in this browser only (localStorage). Nothing is sent to OzNurseHub or anyone else. <strong>Never record anything that could identify a patient</strong>: no patient names or initials, bed numbers, dates of birth, record or Medicare numbers. Use supervisor initials only. Download a backup now and then, because clearing your browser data deletes your log.</p><button class="st-btn ghost small" type="button" data-clear-page>Clear everything on this page</button></div>
+<div class="st-privacy"><p><strong>Your logbook stays on this device.</strong> Entries are saved in this browser only (localStorage). Nothing is sent to OzNurseHub or anyone else. <strong>Never record anything that could identify a patient</strong>: no patient names or initials, bed numbers, dates of birth, record or Medicare numbers. Use supervisor initials only. The logbook won't save an entry that looks like it has patient details in it, but it can't catch everything, so read before you save. Download a backup now and then, because clearing your browser data deletes your log.</p><button class="st-btn ghost small" type="button" data-clear-page>Clear everything on this page</button></div>
 <p class="st-help st-storage-off" hidden>Your browser isn't letting this page save, so your log will be lost when you close it. Download a backup or print your summary before you leave.</p>
 <ul class="st-jump" aria-label="Sections on this page"><li><a href="#log">1. Log a skill</a></li><li><a href="#progress">2. My progress</a></li><li><a href="#entries">3. My entries</a></li><li><a href="#export">4. PDF summary and backup</a></li><li><a href="#sources">Sources</a></li></ul>
 
 <!-- 1. Log a skill -->
 <section class="st-section" id="log" aria-labelledby="log-title">
-<div class="section-lead"><div><p class="overline">Step 1 / Log a skill</p><h2 id="log-title">Log it while it's fresh.</h2><p>Pick the skill, how involved you were and who supervised. A one-line reflection is plenty. Log the same skill again each time you do it, so you can see yourself progress.</p></div></div>
+<div class="section-lead"><div><p class="overline">Step 1 / Log a skill</p><h2 id="log-title">Log it while it's fresh.</h2><p>Pick the skill, how involved you were and who supervised. Then answer as many of the reflection questions as you like. Log the same skill again each time you do it, so you can see yourself progress.</p></div></div>
 <div class="st-two">
 <div class="st-panel" id="lb-form">
 <p class="lb-editing" id="lb-editing" hidden>You're editing a saved entry. <button type="button" class="lb-del" id="lb-cancel2">Cancel editing</button></p>
 <label class="st-field"><span>Skill</span><select id="lb-skill" required></select></label>
+<p class="lb-ref small"><strong>For reference only.</strong> Being on this list doesn't mean you can do a skill. Always check your facility's guidelines and policies, your uni's rules and your supervising RN first.</p>
 <div class="lb-row">
 <label class="st-field"><span>Date</span><input type="date" id="lb-date" required></label>
 <label class="st-field"><span>Placement type <small>General type only</small></span><select id="lb-setting"></select></label>
@@ -178,9 +236,28 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 </div>
 <fieldset class="lb-levels" id="lb-levels" style="margin-top:18px"><legend>My level of involvement</legend></fieldset>
 <fieldset class="lb-stds" style="margin-top:18px"><legend>NMBA RN standards this shows <small style="font-weight:400;color:var(--muted)">Optional. Pick any that apply.</small></legend><div class="st-chipcheck" id="lb-stds"></div></fieldset>
-<label class="st-field" style="margin-top:18px"><span>Reflection <small>Optional. What went well, what you learnt, what's next.</small></span><textarea id="lb-note" rows="3" maxlength="1000" placeholder="e.g. First time setting up the dressing trolley by myself. Need to practise keeping key parts protected when opening packs."></textarea></label>
-<div class="lb-count" id="lb-count">0 / 1000</div>
-<p class="lb-warn" id="lb-warn" role="alert" hidden></p>
+<details class="lb-refl" id="lb-refl" open>
+<summary>Reflect on it <small id="lb-rcount">Optional. Answer any, skip any.</small></summary>
+<div class="lb-reflbody">
+<p class="st-help">Short answers are fine. Describe the skill and what you learnt, not the person. No names, initials, bed numbers or dates of birth.</p>
+<label class="st-field lb-q"><span><b>1</b><span>What happened? <small>The situation and your part in it, with no patient details.</small></span></span><textarea id="lb-r-what" data-rk="what" rows="2" maxlength="600" placeholder="e.g. Did a simple dressing on a lower leg wound with my RN watching."></textarea><span class="lb-fielderr" hidden></span></label>
+<label class="st-field lb-q"><span><b>2</b><span>What went well?</span></span><textarea id="lb-r-well" data-rk="well" rows="2" maxlength="600" placeholder="e.g. I explained each step and set up my field without rushing."></textarea><span class="lb-fielderr" hidden></span></label>
+<label class="st-field lb-q"><span><b>3</b><span>What was hard, or what would you do differently?</span></span><textarea id="lb-r-hard" data-rk="hard" rows="2" maxlength="600" placeholder="e.g. Opening packs without touching key parts. Next time I'd open everything before I start."></textarea><span class="lb-fielderr" hidden></span></label>
+<label class="st-field lb-q"><span><b>4</b><span>What did you learn? <small>Link it to your theory or an NMBA standard if you can.</small></span></span><textarea id="lb-r-learn" data-rk="learn" rows="2" maxlength="600" placeholder="e.g. Why key parts matter in ANTT. Std 6: safe, quality practice."></textarea><span class="lb-fielderr" hidden></span></label>
+<label class="st-field lb-q"><span><b>5</b><span>What will you practise or ask about next time?</span></span><textarea id="lb-r-next" data-rk="next" rows="2" maxlength="600" placeholder="e.g. Ask my RN to watch me measure and document the wound."></textarea><span class="lb-fielderr" hidden></span></label>
+<fieldset class="lb-conf" id="lb-conf"><legend>How confident do you feel with this skill now? <small style="font-weight:400;color:var(--muted)">Tap again to clear.</small></legend><div class="lb-scale">
+<label><input type="radio" name="lbconf" value="1"><b>1</b>Not yet</label>
+<label><input type="radio" name="lbconf" value="2"><b>2</b>A little</label>
+<label><input type="radio" name="lbconf" value="3"><b>3</b>Getting there</label>
+<label><input type="radio" name="lbconf" value="4"><b>4</b>Fairly</label>
+<label><input type="radio" name="lbconf" value="5"><b>5</b>Confident</label>
+</div></fieldset>
+<div class="lb-potd" id="lb-potd"><p class="overline">Need a nudge? Reflection prompt of the day</p><p><q id="lb-potd-q"></q></p><div class="st-actions"><button type="button" class="st-btn ghost small" id="lb-potd-next">Another prompt</button><button type="button" class="st-btn ghost small" id="lb-potd-use">Add it to my notes</button></div></div>
+<label class="st-field lb-q"><span><span>Other notes <small>Anything else, or your answer to a prompt above.</small></span></span><textarea id="lb-note" data-rk="note" rows="2" maxlength="1000"></textarea><span class="lb-fielderr" hidden></span></label>
+<div class="lb-count" id="lb-count" hidden>0 / 1000</div>
+</div>
+</details>
+<div class="lb-block" id="lb-block" role="alert" hidden></div>
 <div class="st-actions"><button class="st-btn" type="button" id="lb-save">Save entry</button><button class="st-btn ghost" type="button" id="lb-cancel" hidden>Cancel editing</button><span class="st-status" id="lb-status" role="status"></span></div>
 </div>
 <div>
@@ -190,6 +267,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <li>Leave out patient names and initials, bed or room numbers, dates of birth, record numbers and unusual details that could identify someone.</li>
 <li>Use your supervisor's initials only, and only if they're happy for you to.</li>
 <li>Don't log anything you weren't allowed to do. If you're unsure whether a skill is in your scope, ask before, not after.</li>
+<li>If an entry looks like it includes a name with a title, a record number, a date of birth, a bed number, a phone number or an address, the logbook won't save it until you take it out.</li>
 </ul></div>
 </div>
 </div>
@@ -198,6 +276,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <!-- 2. Progress -->
 <section class="st-section" id="progress" aria-labelledby="progress-title">
 <div class="section-lead"><div><p class="overline">Step 2 / My progress</p><h2 id="progress-title">See where you're at.</h2><p>Each bar shows the highest level you've logged for that skill. Tap an area to open or close it, and tap Log to record a skill again.</p></div></div>
+<div class="lb-ref" id="lb-refnote"><strong>This skill list is for reference only.</strong> It's a general list of skills nursing students may come across. It isn't a scope of practice, a checklist you have to finish or permission to do any skill. What you can do on placement depends on your facility's guidelines and policies, what your uni has taught and assessed, and your facilitator or supervising RN on the day. Always check first.</div>
 <div class="lb-stats" id="lb-stats"></div>
 <div class="lb-filters" role="search">
 <label class="st-field"><span>Search skills</span><input type="text" id="pg-q" placeholder="e.g. dressing, BGL, handover" autocomplete="off"></label>
@@ -207,7 +286,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <p class="st-count" id="pg-count" aria-live="polite"></p>
 <div class="lb-areas" id="lb-areas"></div>
 <div class="st-panel" style="margin-top:18px"><h3>Add a skill from your uni's list</h3><p class="st-help">Your own skills appear in your progress view and your PDF summary, marked as your own.</p>
-<div class="lb-addskill"><label class="st-field"><span>Area</span><select id="cs-area"></select></label><label class="st-field"><span>Skill name</span><input type="text" id="cs-name" maxlength="90" autocomplete="off" placeholder="e.g. Tracheostomy suctioning (observed)"></label><button class="st-btn" type="button" id="cs-add">Add skill</button></div>
+<div class="lb-addskill"><label class="st-field"><span>Area</span><select id="cs-area"></select></label><label class="st-field"><span>Skill name</span><input type="text" id="cs-name" maxlength="90" autocomplete="off" placeholder="e.g. Tracheostomy suctioning (observed)"><span class="lb-fielderr" id="cs-err" hidden></span></label><button class="st-btn" type="button" id="cs-add">Add skill</button></div>
 <span class="st-status" id="cs-status" role="status"></span>
 </div>
 </section>
@@ -228,7 +307,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 
 <!-- 4. Export -->
 <section class="st-section" id="export" aria-labelledby="export-title">
-<div class="section-lead"><div><p class="overline">Step 4 / PDF summary and backup</p><h2 id="export-title">Print it, sign it, back it up.</h2><p>Your PDF summary has a cover page, a table of every skill with dates and levels, and a sign-off box for your facilitator. It's made on your device. Nothing is uploaded.</p></div></div>
+<div class="section-lead"><div><p class="overline">Step 4 / PDF summary and backup</p><h2 id="export-title">Print it, sign it, back it up.</h2><p>Your PDF summary has a cover page, a table of every skill with dates and levels, your reflections if you choose to add them, and a sign-off box for your facilitator. It's made on your device. Nothing is uploaded.</p></div></div>
 <div class="st-two">
 <div class="st-panel" id="pf-form">
 <h3>Your details for the cover</h3><p class="st-help">Only you see these. They're saved on this device and printed on the cover page.</p>
@@ -245,7 +324,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <h4>What to include</h4>
 <div class="lb-checks">
 <label><input type="checkbox" name="range" checked><span><strong>Only entries within my placement dates.</strong> Uses the start and end dates above, if both are filled in.</span></label>
-<label><input type="checkbox" name="refl"><span><strong>Include my reflections.</strong> Off by default. Read them through for anything identifying before you share.</span></label>
+<label><input type="checkbox" name="refl"><span><strong>Include my reflections.</strong> Off by default. Adds your answers to the reflection questions, your confidence ratings and notes on extra pages. Read them through before you share.</span></label>
 <label><input type="checkbox" name="gaps"><span><strong>List skills I haven't logged yet.</strong> Handy for planning with your facilitator.</span></label>
 </div>
 </div>
@@ -255,7 +334,7 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <div class="st-actions"><button class="st-btn" type="button" id="ex-print">Print or save as PDF</button><button class="st-btn ghost" type="button" id="ex-preview" aria-expanded="false" aria-controls="lb-report">Preview the summary</button></div>
 <ul class="lb-howto"><li><strong>Computer:</strong> choose "Save as PDF" as the printer.</li><li><strong>iPhone or iPad:</strong> tap Print, then Share, then Save to Files.</li><li><strong>Android:</strong> choose "Save as PDF" at the top of the print screen.</li></ul>
 <h4>Backup and move devices</h4>
-<p class="st-help">A backup file holds your whole logbook. Keep it somewhere private. Restore it here on a new phone or computer.</p>
+<p class="st-help">A backup file holds your whole logbook. Keep it somewhere private. Restore it here on a new phone or computer. Entries that look like they include patient details are left out when you restore.</p>
 <div class="st-actions"><button class="st-btn ghost" type="button" id="ex-json">Download backup</button><button class="st-btn ghost" type="button" id="ex-restore">Restore a backup</button><button class="st-btn ghost" type="button" id="ex-csv">Download spreadsheet (CSV)</button><input type="file" id="ex-file" accept=".json,application/json" hidden></div>
 <div class="lb-import" id="ex-import" hidden></div>
 <span class="st-status" id="ex-status" role="status"></span>
@@ -274,11 +353,12 @@ body.lb-show-report #lb-report{display:block;background:#fff;border:1px solid va
 <li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/professional-standards/registered-nurse-standards-for-practice.aspx" rel="noopener">Registered nurse standards for practice</a>: the seven standards you can link each entry to.</li>
 <li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/frameworks.aspx" rel="noopener">Frameworks</a>, including the decision-making framework for nursing and midwifery, which explains how scope and delegation work.</li>
 <li>Australian Commission on Safety and Quality in Health Care, <a href="https://www.safetyandquality.gov.au/standards/nsqhs-standards" rel="noopener">NSQHS Standards</a>: the skill areas line up with the Preventing and Controlling Infections, Medication Safety, Comprehensive Care, Communicating for Safety and Recognising and Responding to Acute Deterioration standards.</li>
+<li>Oxford Brookes University, <a href="https://www.brookes.ac.uk/students/academic-development/online-resources/reflection" rel="noopener">Reflection</a>: an overview of common reflective frameworks, including Gibbs' reflective cycle (Gibbs 1988, <em>Learning by doing</em>) and "What? So what? Now what?" (Rolfe, Freshwater and Jasper 2001). Our reflection questions are a simplified version, written for placement.</li>
 <li>More on OzNurseHub: <a href="antt.html">Aseptic technique</a>, <a href="progressnote.html">Progress note builder</a> and the <a href="placement-prep.html">Placement prep kit</a>.</li>
 </ul>
 </section>
 
-<p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. This logbook doesn't replace your uni's official skills record or assessment. Always follow your uni's placement requirements, local policies and your supervising RN.</p>
+<p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. The skill list is for reference only and isn't a scope of practice. This logbook doesn't replace your uni's official skills record or assessment. Always follow your facility's guidelines and policies, your uni's placement requirements and your supervising RN.</p>
 </main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
 <script src="student-tools.js"></script>
 <script src="clinical-skills-logbook.js"></script>
