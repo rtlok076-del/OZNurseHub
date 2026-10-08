@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en-AU" data-tools="student-to-rn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Student to RN: graduate pathway planner | OzNurseHub</title>
+<meta name="description" content="Plan your move from nursing student to registered nurse in Australia. Get a personalised timeline for grad programs and Ahpra registration, a checklist that saves your progress, a STAR answer builder mapped to the NMBA standards and interview practice cards.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#193f35">
+<link rel="stylesheet" href="renovation.css">
+<link rel="stylesheet" href="student-tools.css">
+<link rel="canonical" href="https://oznursehub.com/student-to-rn.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OzNurseHub">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://oznursehub.com/student-to-rn.html">
+<meta property="og:title" content="Student to RN: graduate pathway planner | OzNurseHub">
+<meta property="og:description" content="Your state, your finish date, your plan. Grad program and Ahpra timeline, checklist, STAR answer builder and interview practice. Free, no account.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+</head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<main class="renovation-main st-main" id="content">
+
+<section class="st-hero" aria-labelledby="page-title">
+<div><p class="overline">Graduate pathway / Plan, prepare, practise</p><h1 id="page-title">Student to RN.<br><em>Your next step, mapped out.</em></h1>
+<p class="lede">Pick your state and when you expect to finish. You'll get a timeline for grad program applications and Ahpra registration. Then tick off what's done, build your interview answers and practise them out loud.</p>
+<div class="action-row"><a class="elegant-button" href="#timeline">Build my timeline ↓</a><a class="elegant-button secondary" href="#practice">Practise interview questions ↓</a></div></div>
+<aside class="st-safety">Dates and rules change every year. This planner shows typical timing only, based on recent rounds. Always check the official page for your state's program and Ahpra before you rely on a date. <a href="#sources">Sources</a></aside>
+</section>
+
+<div class="st-privacy"><p><strong>Your plan stays on this device.</strong> What you type and tick here is saved in this browser only (localStorage). Nothing is sent to OzNurseHub or anyone else. It won't sync to your other devices, and clearing your browser data deletes it.</p><button class="st-btn ghost small" type="button" data-clear-page>Clear everything on this page</button></div>
+<p class="st-help st-storage-off" hidden>Your browser isn't letting this page save, so your work will be lost when you close it. Copy or print anything you want to keep.</p>
+<ul class="st-jump" aria-label="Tools on this page"><li><a href="#timeline">1. My timeline</a></li><li><a href="#checklist">2. Checklist</a></li><li><a href="#star">3. STAR answer builder</a></li><li><a href="#practice">4. Interview practice</a></li><li><a href="#en">Enrolled nurse pathway</a></li><li><a href="#sources">Sources</a></li></ul>
+
+<!-- 1. Timeline -->
+<section class="st-section" id="timeline" aria-labelledby="timeline-title">
+<div class="section-lead"><div><p class="overline">Tool 1 / My timeline</p><h2 id="timeline-title">When does everything happen?</h2><p>Your timeline updates as you choose. Program windows are shown as "usually", because they're set fresh each year.</p></div></div>
+<div class="st-panel st-noprint">
+<form class="st-form" id="tl-form" onsubmit="return false">
+<label class="st-field"><span>State or territory</span><select name="state" id="tl-state"><option value="">Choose…</option><option value="SA">South Australia</option><option value="NSW">New South Wales</option><option value="VIC">Victoria</option><option value="QLD">Queensland</option><option value="WA">Western Australia</option><option value="TAS">Tasmania</option><option value="ACT">Australian Capital Territory</option><option value="NT">Northern Territory</option></select></label>
+<label class="st-field"><span>When do you expect to finish? <small>Your last placement or exam. Not sure of the day? Pick the end of the month.</small></span><input type="date" name="finish" id="tl-finish"></label>
+<fieldset class="st-radios"><legend>I'm becoming</legend><label><input type="radio" name="role" value="RN" checked> a registered nurse</label><label><input type="radio" name="role" value="EN"> an enrolled nurse</label></fieldset>
+</form>
+</div>
+<div id="tl-output" aria-live="polite"><p class="st-empty" id="tl-empty">Choose your state and finish date to see your timeline.</p></div>
+<div class="st-actions" id="tl-actions" hidden><button class="st-btn" type="button" id="tl-print">Print my timeline</button><button class="st-btn ghost" type="button" id="tl-copy">Copy as text</button><span class="st-status" id="tl-status" role="status"></span></div>
+</section>
+
+<!-- 2. Checklist -->
+<section class="st-section" id="checklist" aria-labelledby="checklist-title">
+<div class="section-lead"><div><p class="overline">Tool 2 / Checklist</p><h2 id="checklist-title">Tick it off as you go.</h2><p>Your ticks are saved on this device, so you can come back to it all year.</p></div></div>
+<div class="st-progress" id="ck-progress"><div class="st-bar" aria-hidden="true"><span></span></div><span class="st-progress-text">0 done</span></div>
+<div class="st-checkgroups" id="ck-root"></div>
+<div class="st-actions"><button class="st-btn" type="button" id="ck-print">Print checklist</button><button class="st-btn ghost" type="button" id="ck-copy">Copy as text</button><button class="st-btn danger" type="button" id="ck-reset">Untick everything</button><span class="st-status" id="ck-status" role="status"></span></div>
+</section>
+
+<!-- 3. STAR builder -->
+<section class="st-section" id="star" aria-labelledby="star-title">
+<div class="section-lead"><div><p class="overline">Tool 3 / STAR answer builder</p><h2 id="star-title">Turn placement stories into strong answers.</h2><p>Grad applications and interviews ask for examples. STAR keeps them clear: Situation, Task, Action, Result. Link each one to the NMBA Registered nurse standards for practice.</p></div></div>
+<div class="st-two">
+<div class="st-panel st-noprint" id="star-form">
+<label class="st-field"><span>Question or selection criterion</span><input type="text" name="q" id="star-q" list="star-qs" placeholder="e.g. Tell us about a time you recognised a patient was deteriorating"></label>
+<datalist id="star-qs"></datalist>
+<p class="st-label" style="margin:18px 0 8px">Which NMBA RN standards does your example show? <small style="font-weight:400;color:var(--muted)">Pick one to three.</small></p>
+<div class="st-chipcheck" id="star-stds"></div>
+<div class="st-prompts" id="star-prompts" aria-live="polite"></div>
+<div class="st-star-grid" style="margin-top:18px">
+<label class="st-field"><span><b>S</b>Situation <small>Where were you and what was happening? Keep it short.</small></span><textarea name="s" rows="3"></textarea></label>
+<label class="st-field"><span><b>T</b>Task <small>What did you need to do, or what was the challenge?</small></span><textarea name="t" rows="2"></textarea></label>
+<label class="st-field"><span><b>A</b>Action <small>What did <em>you</em> do, step by step? This should be the longest part. Say "I", not "we".</small></span><textarea name="a" rows="5"></textarea></label>
+<label class="st-field"><span><b>R</b>Result <small>What happened? How do you know it worked?</small></span><textarea name="r" rows="3"></textarea></label>
+<label class="st-field"><span>What I learnt <small>Optional. What would you do the same or differently next time?</small></span><textarea name="l" rows="2"></textarea></label>
+</div>
+<p class="st-count" id="star-count" aria-live="polite">0 words</p>
+<div class="st-actions"><button class="st-btn" type="button" id="star-save">Save to my answers</button><button class="st-btn ghost" type="button" id="star-copy">Copy</button><button class="st-btn ghost" type="button" id="star-new">Start a new answer</button><span class="st-status" id="star-status" role="status"></span></div>
+<p class="st-help">Keep it de-identified: no patient or staff names, bed numbers, dates or anything else that could identify someone. Write your answers yourself. Some employers check video interviews and applications for AI-generated content.</p>
+</div>
+<div>
+<div class="st-panel st-noprint"><h3>Preview</h3><div class="st-preview" id="star-preview" data-empty="Your answer appears here as you type."></div></div>
+<div class="st-panel st-noprint"><h3>My saved answers</h3><p class="st-help" style="margin-bottom:14px">Saved on this device. Aim for one strong example for each standard.</p><ul class="st-bank" id="star-bank"></ul><div class="st-actions"><button class="st-btn" type="button" id="star-print">Print my answers</button></div></div>
+</div>
+</div>
+<div class="st-printonly" id="star-printout"></div>
+</section>
+
+<!-- 4. Interview practice -->
+<section class="st-section" id="practice" aria-labelledby="practice-title">
+<div class="section-lead"><div><p class="overline">Tool 4 / Interview practice</p><h2 id="practice-title">Say it out loud before the real thing.</h2><p>Answer each question out loud, or record yourself on your phone. Many grad interviews are now recorded video interviews with a time limit for each answer.</p></div></div>
+<div class="st-panel st-noprint" style="margin-bottom:18px">
+<div class="st-form">
+<label class="st-field"><span>Theme</span><select id="pc-theme"></select></label>
+<div class="st-field"><span class="st-label">Practised</span><p style="margin:0;font-size:15px" id="pc-progress">0 of 0</p></div>
+</div>
+<p class="st-help">Recent SA Health TPPP applicant handbooks listed six themes for the scored video interview questions: communication, teamwork, clinical competence, organisation and priority setting, theory to practice and critical thinking, and person-centred care. Other states and employers use their own formats.</p>
+</div>
+<div class="st-card" id="pc-card">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><span class="st-tag gold" id="pc-tag">Theme</span><span class="st-count" id="pc-pos"></span></div>
+<h3 class="st-q" id="pc-q" tabindex="-1">Loading questions…</h3>
+<div class="st-hints" id="pc-hints" hidden></div>
+<div class="st-cardfoot">
+<div class="st-actions" style="margin-top:0">
+<button class="st-btn ghost" type="button" id="pc-hint" aria-expanded="false" aria-controls="pc-hints">Show hints</button>
+<button class="st-btn ghost" type="button" id="pc-timer">Start 2-minute timer</button><span class="st-timer" id="pc-time" aria-live="off"></span>
+</div>
+<div class="st-actions">
+<button class="st-btn" type="button" id="pc-next">Next question →</button>
+<button class="st-btn ghost" type="button" id="pc-done" aria-pressed="false">Mark as practised</button>
+<button class="st-btn ghost" type="button" id="pc-star">Build a STAR answer for this</button>
+<button class="st-btn ghost" type="button" id="pc-shuffle">Shuffle</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EN pathway -->
+<section class="st-section" id="en" aria-labelledby="en-title">
+<div class="section-lead"><div><p class="overline">Enrolled nurses</p><h2 id="en-title">The enrolled nurse pathway, briefly.</h2></div></div>
+<div class="st-panel">
+<ul class="st-list">
+<li><strong>Registration works the same way.</strong> Enrolled nurses (ENs) qualify with a Diploma of Nursing and apply to the Nursing and Midwifery Board of Australia (NMBA) through Ahpra's graduate application, so the Ahpra steps in the timeline and checklist apply to you too.</li>
+<li><strong>Different standards.</strong> ENs work to the NMBA <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/professional-standards/enrolled-nurse-standards-for-practice.aspx" rel="noopener">Enrolled nurse standards for practice</a>: 10 standards in three domains. ENs work under the direct or indirect supervision of an RN. If you're building STAR answers for an EN role, link them to the EN standards instead.</li>
+<li><strong>Grad and transition programs.</strong> Some programs take newly qualified ENs. For example, WA's GradConnect includes ENs, and Tasmania runs a transition to practice program for ENs. Check your state's page and local employers.</li>
+<li><strong>Medicines.</strong> What an EN can do with medicines depends on their education. Read the NMBA <a href="https://www.nursingmidwiferyboard.gov.au/Codes-Guidelines-Statements/FAQ/Enrolled-nurses-and-medicine-administration.aspx" rel="noopener">fact sheet on enrolled nurses and medicines administration</a>, and check your employer's policy.</li>
+<li><strong>EN to RN.</strong> Many universities give credit for a Diploma of Nursing towards a Bachelor of Nursing. Ask your uni what credit you'd get. Many ENs keep working as ENs while they study.</li>
+</ul>
+</div>
+</section>
+
+<!-- Sources -->
+<section class="st-section" id="sources" aria-labelledby="sources-title">
+<div class="section-lead"><div><p class="overline">Sources</p><h2 id="sources-title">Where this comes from.</h2><p>Checked in October 2026. Program dates change every year, so always use the official page.</p></div></div>
+<details class="st-acc"><summary>Registration and standards</summary><ul class="st-sources">
+<li>Ahpra, <a href="https://www.ahpra.gov.au/Registration/Graduate-Applications.aspx" rel="noopener">Graduate registration</a> and <a href="https://www.ahpra.gov.au/Registration/Graduate-registration/Graduate-FAQ" rel="noopener">Graduate registration FAQs</a>: when to apply, identity check and assessment times.</li>
+<li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/professional-standards/registered-nurse-standards-for-practice.aspx" rel="noopener">Registered nurse standards for practice</a> and <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/professional-standards/enrolled-nurse-standards-for-practice.aspx" rel="noopener">Enrolled nurse standards for practice</a>.</li>
+<li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/registration-and-endorsement/forms" rel="noopener">Applying for registration</a>.</li>
+</ul></details>
+<details class="st-acc"><summary>Grad programs by state and territory</summary><ul class="st-sources">
+<li>SA Health, <a href="https://www.sahealth.sa.gov.au/tppp" rel="noopener">Transition to Professional Practice Program (TPPP)</a> and its applicant handbook.</li>
+<li>NSW Health, <a href="https://www.health.nsw.gov.au/gradstart" rel="noopener">GradStart</a>.</li>
+<li>PMCV, <a href="https://gnmp.pmcv.com.au/" rel="noopener">Graduate Nurse and Midwifery Program (GNMP) Match</a> (Victoria).</li>
+<li>Queensland Health, <a href="https://www.careers.health.qld.gov.au/nursing-and-midwifery-careers/nurse-and-midwife-graduate-program" rel="noopener">Registered Nurse and Midwife Graduate Program</a>, and Queensland Government, <a href="https://www.qld.gov.au/jobs/graduates/graduate-programs/programs/nurse-and-midwife" rel="noopener">application periods</a>.</li>
+<li>WA Health, <a href="https://www.health.wa.gov.au/GradConnect" rel="noopener">GradConnect</a>.</li>
+<li>Tasmanian Department of Health, <a href="https://www.health.tas.gov.au/careers/graduate-opportunities" rel="noopener">Graduate opportunities</a>.</li>
+<li>Canberra Health Services, <a href="https://www.canberrahealthservices.act.gov.au/careers/nursing-and-midwifery-careers/graduate-nursing-and-midwifery-programs" rel="noopener">Graduate Nursing and Midwifery Programs</a>.</li>
+<li>NT Health, <a href="https://health.nt.gov.au/careers/nursing-and-midwifery/career-structure-and-pathways/graduate-programs" rel="noopener">Graduate programs</a>.</li>
+</ul></details>
+</section>
+
+<p class="editorial-note" style="margin-top:40px">Learning and planning support only. OzNurseHub isn't affiliated with Ahpra, the NMBA or any health service. Always check official information before you apply.</p>
+</main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
+<script src="student-tools.js"></script>
+<script>
+(function(){'use strict';
+var O=window.OZT,$=O.$,$$=O.$$,el=O.el;
+/* ---------- Standards ---------- */
+var STD={1:'Thinks critically and analyses nursing practice',2:'Engages in therapeutic and professional relationships',3:'Maintains the capability for practice',4:'Comprehensively conducts assessments',5:'Develops a plan for nursing practice',6:'Provides safe, appropriate and responsive quality nursing practice',7:'Evaluates outcomes to inform nursing practice'};
+var PROMPTS={1:['used evidence, policy or the law to guide what you did','reflected on what shaped your thinking','documented clearly and on time','respected culture, or used an ethical approach'],
+2:['communicated respectfully and kept professional boundaries','advocated for the person and respected their choices','worked with, consulted or referred to the team','helped build a culture of safety and learning'],
+3:['looked after your own or a colleague\u2019s wellbeing and fitness to practise','gave health education so the person could make decisions','sought feedback and acted on it','took responsibility for your decisions and actions'],
+4:['did a holistic, culturally appropriate assessment','used assessment tools and techniques systematically','worked with the person or family to work out priorities'],
+5:['used assessment findings and evidence to plan care','agreed goals and priorities with the person and team','documented the plan and changed it when needed'],
+6:['gave safe care within your scope and under supervision','followed policies and guidelines','raised or reported a risk or a concern about practice'],
+7:['checked whether the care was working','changed the plan based on what you found','communicated next steps to the person and team']};
+/* ---------- 1. Timeline ---------- */
+var PROGRAMS={
+SA:{name:'Transition to Professional Practice Program (TPPP)',short:'TPPP',by:'SA Health',url:'https://www.sahealth.sa.gov.au/tppp',
+ timing:'In recent rounds, applications opened in early June and stayed open for about three weeks. First offers came out from August to September.',
+ extra:'Recent rounds had three stages: an online application (CV and transcript; no cover letter), two clinical referees (one from your most recent placement) and a recorded video interview. Check the current applicant handbook for eligibility, including the limit on paid RN experience.',
+ en:'TPPP is for newly qualified registered nurses and midwives. ENs, check SA Health and other employers for EN roles.',
+ window:function(y,m){var yr=m<=2?y-1:y;return {label:'Usually early June '+yr,end:new Date(yr,5,30)};}},
+NSW:{name:'GradStart',short:'GradStart',by:'NSW Health',url:'https://www.health.nsw.gov.au/gradstart',
+ timing:'In recent years, applications opened in mid-June for about two weeks. Interviews were held in August, and outcomes came out in October.',
+ extra:'GradStart is one statewide application each year. NSW Health suggests getting a NSW Working with Children Check for paid work before applications open. Late applications generally aren\u2019t accepted.',
+ en:'Check NSW Health for EN roles and programs.',
+ window:function(y,m){var yr=m>=6?y:y-1;return {label:'Usually mid-June '+yr,end:new Date(yr,5,30)};}},
+VIC:{name:'Graduate Nurse and Midwifery Program (GNMP) Match',short:'GNMP Match',by:'PMCV, for the Victorian Department of Health',url:'https://gnmp.pmcv.com.au/',
+ timing:'In recent years, the Match opened in early June and closed in early July. A video interview followed in July, and results came out in mid-September.',
+ extra:'You apply to PMCV and to each health service on your preference list. PMCV expects you to apply in the year you complete your training. If you finish early in the year, read their FAQs about which Match to enter.',
+ en:'Check PMCV and Victorian health services for EN programs.',
+ window:function(y,m){var yr=m<=2?y-1:y;return {label:'Usually June to early July '+yr,end:new Date(yr,6,10)};}},
+QLD:{name:'Registered Nurse and Midwife Graduate Program',short:'Queensland Health graduate program',by:'Queensland Health',url:'https://www.careers.health.qld.gov.au/nursing-and-midwifery-careers/nurse-and-midwife-graduate-program',
+ timing:'Queensland Health runs two campaigns each year: the main campaign around July and a mid-year campaign in February.',
+ extra:'You start with an expression of interest that nominates two referees. Once their reports are in, you\u2019re invited to complete the application form. Late applications aren\u2019t accepted.',
+ en:'Check Queensland Health for EN roles and programs.',
+ window:function(y,m){if(m>=7)return {label:'Usually around July '+y+' (main campaign)',end:new Date(y,7,31)};if(m===1)return {label:'Usually around July '+(y-1)+' (main campaign) or February '+y+' (mid-year campaign)',end:new Date(y,2,31)};return {label:'Usually February '+y+' (mid-year campaign)',end:new Date(y,2,31)};}},
+WA:{name:'GradConnect',short:'GradConnect',by:'WA Health',url:'https://www.health.wa.gov.au/GradConnect',
+ timing:'GradConnect opens once a year. The most recent round ran from late February to mid-March, for positions starting between July that year and June the next.',
+ extra:'GradConnect is coordinated centrally for WA public health services and some private providers.',
+ en:'GradConnect includes positions for newly qualified enrolled nurses.',
+ window:function(y,m){var s=new Date(y,m-1+2,1),yr=s.getMonth()>=6?s.getFullYear():s.getFullYear()-1;return {label:'Usually late February to March '+yr,end:new Date(yr,2,31)};}},
+TAS:{name:'Transition to Practice',short:'Transition to Practice',by:'Tasmanian Department of Health',url:'https://www.health.tas.gov.au/careers/graduate-opportunities',
+ timing:'Positions are advertised on Tasmanian Government Jobs. Timing can vary, so check the page early in your final year and set up job alerts.',
+ extra:'',en:'Tasmania also runs a transition to practice program for enrolled nurses.',window:null},
+ACT:{name:'Graduate Nursing and Midwifery Programs',short:'Canberra Health Services graduate program',by:'Canberra Health Services',url:'https://www.canberrahealthservices.act.gov.au/careers/nursing-and-midwifery-careers/graduate-nursing-and-midwifery-programs',
+ timing:'Recent rounds were advertised mid-year through university communications and the Canberra Health Services careers page, with outcomes in October.',
+ extra:'Recent rounds asked for a CV, two referee reports and your academic transcript. An ANSAT was accepted in place of one referee report.',
+ en:'Check Canberra Health Services for EN roles and programs.',
+ window:function(y,m){var yr=m<=2?y-1:y;return {label:'Usually mid-year '+yr,end:new Date(yr,6,31)};}},
+NT:{name:'Graduate Nursing and Midwifery Program',short:'NT Health graduate program',by:'NT Health',url:'https://health.nt.gov.au/careers/nursing-and-midwifery/career-structure-and-pathways/graduate-programs',
+ timing:'Advertised on NT Government jobs, recently as a register of interest. Check the page for the current round.',
+ extra:'',en:'Check NT Health for EN roles and programs.',window:null}};
+var fmtDay=function(d){return d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short',year:'numeric'});};
+var fmtMonth=function(d){return d.toLocaleDateString('en-AU',{month:'long',year:'numeric'});};
+function buildTimeline(state,finishStr,role){
+  var p=PROGRAMS[state],parts=finishStr.split('-').map(Number),C=new Date(parts[0],parts[1]-1,parts[2]),today=new Date();today.setHours(0,0,0,0);
+  var ahpra=new Date(C);ahpra.setDate(ahpra.getDate()-90);
+  var items=[],w=p.window?p.window(parts[0],parts[1]):null,finished=C<today;
+  items.push({when:'Start now',title:'Research programs and go to information sessions',text:'Look at the '+p.short+' and other employers in your state. Private hospitals, aged care and community services often run their own grad programs with their own dates. Information sessions are a good place to hear about this year\u2019s process.'});
+  items.push({when:'Before applications open',title:'Get your documents ready',text:'Update your CV with your placements, GPA and any related work, such as assistant in nursing or carer roles. Get a copy of your academic transcript. Ask your referees early, and keep your ANSATs and placement feedback.'});
+  var prog={when:w?w.label:'Check the official page',title:(role==='EN'?'Grad and transition programs':p.short+' applications'),text:p.timing,links:[[p.name+' ('+p.by+') \u2197',p.url]],cls:'key'};
+  if(role==='EN')prog.note=p.en;
+  if(w&&w.end<today){prog.cls='key passed';prog.note=(prog.note?prog.note+' ':'')+'This window may already have passed for your intake. Check the official page for later rounds or vacancies, and look at other employers.';}
+  items.push(prog);
+  items.push({when:'Before and during the application window',title:'Practise your interview',text:'Build STAR examples and practise out loud with the question cards below.',links:[['Go to interview practice \u2193','#practice']]});
+  items.push({when:'Well before you apply to Ahpra',title:'Check the English language skills standard',text:'Every applicant has to meet the NMBA\u2019s English language skills registration standard. If you need to sit an English test, book it early so your results are ready in time.'});
+  items.push({when:finished?'Now':'From about '+fmtDay(ahpra),title:'Apply to Ahpra for registration',cls:'key',text:'Ahpra recommends applying early, up to 90 days before you expect to finish all your course requirements, including placements. You don\u2019t need to wait until you graduate. Use a personal email for your Ahpra portal, not your uni email, and set up multifactor authentication.',links:[['Ahpra graduate registration \u2197','https://www.ahpra.gov.au/Registration/Graduate-Applications.aspx']]});
+  items.push({when:'Soon after you apply',title:'Complete your identity check',text:'After you submit, Ahpra\u2019s identity check provider emails you a secure link. Ahpra says you have 30 days to complete it, or your application is withdrawn. Do it as soon as the email arrives.'});
+  items.push({when:fmtDay(C),title:'Finish your course',cls:finished?'passed':'',text:'Your education provider sends your results to Ahpra directly.'});
+  items.push({when:'After your results reach Ahpra',title:'Get registered',text:'Ahpra aims to finalise a complete application within two weeks of receiving your results. Before your first shift, check your name is on the public Register of practitioners.'});
+  items.push({when:'Before your first shift',title:'Pre-employment checks',text:'Your employer will tell you what they need. This often includes a working with children check, a police check and immunisation records. Checks you did for placement may not count for paid work.'});
+  items.push({when:'Your first year',title:'Start your CPD record',text:'Once you\u2019re registered, the NMBA\u2019s continuing professional development (CPD) standard applies. Keep a log from day one, and make the most of your program\u2019s study days and support.'});
+  return {program:p,items:items};
+}
+function renderTimeline(){
+  var f=$('#tl-form'),state=f.state.value,finish=f.finish.value,role=(f.querySelector('input[name=role]:checked')||{}).value||'RN',out=$('#tl-output');
+  if(!state||!finish){out.textContent='';out.appendChild(el('p',{class:'st-empty',text:'Choose your state and finish date to see your timeline.'}));$('#tl-actions').hidden=true;return;}
+  var r=buildTimeline(state,finish,role),p=r.program;out.textContent='';
+  var card=el('div',{class:'st-panel st-program'},[el('div',null,[el('p',{class:'st-when',text:'Your main public program'}),el('h3',{text:p.name}),el('p',{text:'Run by '+p.by+'.'}),p.extra?el('p',{class:'st-help',text:p.extra}):null,role==='EN'?el('p',{class:'st-help',text:p.en}):null]),el('a',{class:'st-btn st-official',href:p.url,rel:'noopener',text:'Official page \u2197'})]);
+  out.appendChild(card);
+  var ol=el('ol',{class:'st-timeline'});
+  r.items.forEach(function(it){var li=el('li',{class:it.cls||''},[el('p',{class:'st-when',text:it.when}),el('h3',{text:it.title}),el('p',{text:it.text})]);
+    if(it.links){var p2=el('p',{style:'margin-top:6px'});it.links.forEach(function(l){p2.appendChild(el('a',{href:l[1],rel:l[1].charAt(0)==='#'?null:'noopener',text:l[0]}));p2.appendChild(document.createTextNode(' '));});li.appendChild(p2);}
+    if(it.note)li.appendChild(el('p',{class:'st-note',text:it.note}));ol.appendChild(li);});
+  out.appendChild(el('div',{class:'st-panel'},[ol,el('p',{class:'st-help',text:'Times marked \u201cusually\u201d are based on recent rounds and can change. Use the official pages for this year\u2019s dates.'}),el('p',{class:'st-print-url',text:'oznursehub.com/student-to-rn.html'})]));
+  out.lastTimeline=r;$('#tl-actions').hidden=false;
+}
+var tlStore=O.persist($('#tl-form'),'timeline',renderTimeline);renderTimeline();
+$('#tl-print').addEventListener('click',function(){O.printSection($('#timeline'));});
+$('#tl-copy').addEventListener('click',function(){var r=$('#tl-output').lastTimeline;if(!r)return;var t='My student to RN timeline ('+r.program.short+')\n\n'+r.items.map(function(i){return i.when+': '+i.title+'\n'+i.text+(i.note?'\nNote: '+i.note:'')+(i.links?'\n'+i.links.filter(function(l){return l[1].charAt(0)!=='#';}).map(function(l){return l[1];}).join('\n'):'');}).join('\n\n')+'\n\nMade with oznursehub.com/student-to-rn.html. Check official pages for this year\u2019s dates.';O.copy(t,$('#tl-status'));});
+/* ---------- 2. Checklist ---------- */
+var GROUPS=[
+{title:'Get ready (final year)',items:[
+{id:'g1',text:'Research grad programs in my state, including private and aged care employers'},
+{id:'g2',text:'Go to at least one information session'},
+{id:'g3',text:'Update my CV',note:'Placements, GPA, related work (AIN, carer, EN) and any placements still to come.'},
+{id:'g4',text:'Get a copy of my academic transcript'},
+{id:'g5',text:'Ask two referees and check they\u2019re happy to be contacted',note:'Many programs want clinical referees, such as a facilitator or RN from a recent placement.'},
+{id:'g6',text:'Keep copies of my ANSATs and placement feedback'},
+{id:'g7',text:'Write STAR examples for each NMBA standard'}]},
+{title:'Grad program application',items:[
+{id:'a1',text:'Read the applicant handbook or candidate guide for this year'},
+{id:'a2',text:'Check eligibility rules and key dates, and put them in my calendar'},
+{id:'a3',text:'Choose preferences in my real order of preference',note:'Check locations, rotations, travel and full- or part-time options.'},
+{id:'a4',text:'Submit my application well before it closes'},
+{id:'a5',text:'Nominate referees and check their reports are done'},
+{id:'a6',text:'Do a mock video interview on the device I\u2019ll use',note:'Check camera, sound, lighting and a quiet space.'},
+{id:'a7',text:'Complete my interview before the deadline'}]},
+{title:'Ahpra registration',items:[
+{id:'r1',text:'Set up my Ahpra portal with a personal email and multifactor authentication'},
+{id:'r2',text:'Check how I meet the English language skills standard'},
+{id:'r3',text:'Gather any documents the application asks for',note:'Some may need to be certified copies.'},
+{id:'r4',text:'Apply up to 90 days before I finish'},
+{id:'r5',text:'Declare any criminal history and relevant health impairment honestly'},
+{id:'r6',text:'Pay the application and registration fee'},
+{id:'r7',text:'Complete the identity check as soon as the email arrives',note:'Ahpra gives you 30 days.'},
+{id:'r8',text:'Track my application in the portal and reply quickly to any requests'},
+{id:'r9',text:'Check my name is on the public Register of practitioners'}]},
+{title:'Before my first shift',items:[
+{id:'b1',text:'Accept my offer and sign my contract'},
+{id:'b2',text:'Complete my employer\u2019s pre-employment checks',note:'Often a working with children check, police check and immunisation records.'},
+{id:'b3',text:'Sort out uniform, ID, transport and parking'},
+{id:'b4',text:'Find out who my educator or preceptor is and when orientation is'},
+{id:'b5',text:'Start my CPD log'}]}];
+var ck=O.checklist($('#ck-root'),'checklist',GROUPS,$('#ck-progress'));
+$('#ck-reset').addEventListener('click',function(){if(confirm('Untick everything on this checklist?'))ck.reset();});
+$('#ck-print').addEventListener('click',function(){O.printSection($('#checklist'));});
+$('#ck-copy').addEventListener('click',function(){O.copy('My student to RN checklist\n\n'+ck.text(),$('#ck-status'));});
+/* ---------- 4. Practice cards (data used by STAR too) ---------- */
+var THEMES={about:'About you and your motivation',comm:'Communication',team:'Teamwork',clin:'Clinical competence and safety',prio:'Organisation, priorities and adaptability',crit:'Theory to practice and critical thinking',pcc:'Person-centred care',prof:'Professionalism and wellbeing'};
+var CARDS=[
+{t:'about',q:'Tell us about yourself and why you chose nursing.',h:['Keep it to one or two minutes.','Link your experience to this role, not your whole life story.','Finish with why you want this program.'],s:[3]},
+{t:'about',q:'Why have you applied to this program and this health service?',h:['Show you\u2019ve researched their services, values and rotations.','Connect what they offer to your goals.'],s:[3]},
+{t:'about',q:'What are your strengths, and what are you working on?',h:['Give an example for each.','Show what you\u2019re doing about the area you\u2019re developing.'],s:[3]},
+{t:'about',q:'Where do you see yourself at the end of your first year?',h:['Be realistic: consolidating skills, confidence, a clearer interest.','Mention how you\u2019ll use the program\u2019s support.'],s:[3]},
+{t:'comm',q:'Tell us about a time you communicated with a patient or family member who was upset.',h:['What did you notice?','How did you listen and respond?','Who did you involve, and what was the outcome?'],s:[2]},
+{t:'comm',q:'Describe a time you used a structured handover or escalated a concern.',h:['Name the framework, such as ISBAR or the local format.','What made it clear and safe?'],s:[2,6]},
+{t:'comm',q:'How would you communicate with a patient who speaks limited English?',h:['Accredited interpreters, not family, for important information.','Check understanding, for example with teach-back.'],s:[2,4]},
+{t:'comm',q:'Tell us about a time you received feedback you didn\u2019t expect.',h:['How did you respond in the moment?','What did you change afterwards?'],s:[3]},
+{t:'team',q:'Describe a time you worked well with a multidisciplinary team.',h:['Who was involved and what was your role?','What did the patient get because you worked together?'],s:[2]},
+{t:'team',q:'Tell us about a time you disagreed with a colleague. How did you handle it?',h:['Stay professional and patient-focused.','Show how you raised it and what you learnt.'],s:[2]},
+{t:'team',q:'What would you do if you saw a colleague skip hand hygiene or another safety step?',h:['Patient safety first.','Speak up respectfully, then escalate if needed.'],s:[2,6]},
+{t:'clin',q:'Your patient\u2019s observations have changed and they look unwell. What do you do?',h:['Assess systematically, for example with ABCDE.','Compare with their baseline and the local observation chart.','Escalate using the local process, and stay with the patient.','Document.'],s:[4,6]},
+{t:'clin',q:'A patient tells you they\u2019ve just fallen in the bathroom. Walk us through what you\u2019d do.',h:['Check for injury before moving them.','Call for help and follow the local post-fall process.','Inform the medical team and family, and document.'],s:[4,6]},
+{t:'clin',q:'How do you make sure you give medicines safely?',h:['Safety checks every time, including identity and allergies.','Know why the person is getting each medicine.','Follow policy, and stop and ask if anything doesn\u2019t look right.'],s:[6]},
+{t:'clin',q:'You\u2019re asked to do something you haven\u2019t been taught or assessed on. What do you do?',h:['Know your scope.','Say so honestly and ask for help or supervision.','Use it as a learning opportunity.'],s:[6,3]},
+{t:'prio',q:'Several things are due for your patients at the same time. How do you prioritise?',h:['Airway, breathing, circulation and safety first.','Time-critical tasks, such as some medicines.','Ask for help and delegate within scope. Tell your team leader.'],s:[5,6]},
+{t:'prio',q:'Tell us about a time your plans for a shift changed suddenly.',h:['What changed?','How did you reprioritise and communicate?'],s:[5]},
+{t:'prio',q:'How do you organise your shift?',h:['A brain sheet or plan, checked after handover.','Clustering care, and reviewing the plan during the shift.'],s:[5]},
+{t:'crit',q:'Tell us about a time you linked theory to what you saw on placement.',h:['Name the concept, such as pathophysiology or a medicine\u2019s action.','How did it change what you did or noticed?'],s:[1,4]},
+{t:'crit',q:'Tell us about a time you noticed something that others had missed.',h:['What did you see, and why did it matter?','Who did you tell, and what happened?'],s:[4,7]},
+{t:'crit',q:'How do you keep your practice evidence-based?',h:['Local policies and guidelines, reputable sources and asking educators.','Give a recent example.'],s:[1]},
+{t:'crit',q:'Tell us about a mistake or near miss you were involved in. What did you learn?',h:['Be honest. Patient safety first.','What did you do and report?','What did you change afterwards?'],s:[3,6]},
+{t:'pcc',q:'What does person-centred care mean to you? Give an example.',h:['The person is the expert in their own life.','Show how you involved them in decisions.'],s:[2,5]},
+{t:'pcc',q:'Tell us about a time you advocated for a patient.',h:['What did the person need or want?','How did you raise it, and with whom?'],s:[2]},
+{t:'pcc',q:'How would you provide culturally safe care for an Aboriginal or Torres Strait Islander patient?',h:['Ask about what matters to them, and involve family and community.','Offer the Aboriginal liaison service where available.','Reflect on your own assumptions.'],s:[1,2]},
+{t:'pcc',q:'A patient refuses care you think they need. What do you do?',h:['Find out why, and give information.','Respect their choice, and consider capacity.','Tell the team and document.'],s:[2,6]},
+{t:'prof',q:'How do you look after your own wellbeing?',h:['Be specific: sleep, debriefing, support people.','Link it to safe practice.'],s:[3]},
+{t:'prof',q:'A patient asks to add you on social media. How do you respond?',h:['Professional boundaries.','A kind, clear no, and know the policy.'],s:[2]},
+{t:'prof',q:'What would you do if you thought a colleague was impaired at work?',h:['Patient safety first.','Escalate to the person in charge and follow policy.'],s:[3,6]},
+{t:'prof',q:'Do you have any questions for us?',h:['Have two ready, for example about support, rotations or study days.','Avoid asking things that are already on their website.'],s:[3]}];
+/* ---------- 3. STAR builder ---------- */
+var stdBox=$('#star-stds');
+Object.keys(STD).forEach(function(k){stdBox.appendChild(el('label',{title:STD[k]},[el('input',{type:'checkbox',name:'std',value:k}),'Std '+k+': '+STD[k]]));});
+var dl=$('#star-qs');CARDS.forEach(function(c){dl.appendChild(el('option',{value:c.q}));});
+var form=$('#star-form');
+var draft=O.persist(form,'star-draft',renderStar);
+var editingId=O.get('star-editing',null);
+function starData(){var d={q:form.querySelector('[name=q]').value.trim(),std:$$('input[name=std]:checked',form).map(function(b){return b.value;})};['s','t','a','r','l'].forEach(function(k){d[k]=form.querySelector('[name='+k+']').value.trim();});return d;}
+function starText(d){var L=[];if(d.q)L.push('Question: '+d.q);if(d.std&&d.std.length)L.push('NMBA RN standards: '+d.std.map(function(k){return k+' ('+STD[k]+')';}).join('; '));
+ [['s','Situation'],['t','Task'],['a','Action'],['r','Result'],['l','What I learnt']].forEach(function(x){if(d[x[0]])L.push('\n'+x[1]+': '+d[x[0]]);});return L.join('\n');}
+function renderStar(){var d=starData(),n=['s','t','a','r','l'].reduce(function(a,k){return a+O.words(d[k]);},0),mins=n/130;
+ $('#star-preview').textContent=(d.s||d.t||d.a||d.r)?starText(d):'';
+ $('#star-count').textContent=n+' words \u00b7 about '+(mins<1?Math.max(0,Math.round(mins*60))+' seconds':(Math.round(mins*2)/2)+' minutes')+' to say'+(n>390?' \u00b7 that\u2019s long for a timed answer, so try trimming the situation':'');
+ var pr=$('#star-prompts');pr.textContent='';
+ d.std.forEach(function(k){pr.appendChild(el('strong',{text:'Standard '+k+' prompts: did you show that you\u2026'}));var ul=el('ul');PROMPTS[k].forEach(function(p){ul.appendChild(el('li',{text:p}));});pr.appendChild(ul);});
+ $('#star-save').textContent=editingId?'Update saved answer':'Save to my answers';}
+function bank(){return O.get('star-bank',[])||[];}
+function renderBank(){var b=bank(),ul=$('#star-bank');ul.textContent='';
+ if(!b.length){ul.appendChild(el('li',{class:'st-empty',style:'border:0;padding:0;background:none',text:'No saved answers yet.'}));}
+ b.forEach(function(it){var tags=el('div');(it.std||[]).forEach(function(k){tags.appendChild(el('span',{class:'st-tag',text:'Std '+k}));});
+  var wc=['s','t','a','r','l'].reduce(function(a,k){return a+O.words(it[k]);},0);
+  ul.appendChild(el('li',null,[el('p',{text:it.q||'Untitled answer'}),tags,el('span',{class:'st-count',text:wc+' words'}),el('div',{class:'st-actions'},[
+   el('button',{class:'st-btn small ghost',type:'button',text:'Edit',onclick:function(){loadAnswer(it);}}),
+   el('button',{class:'st-btn small ghost',type:'button',text:'Copy',onclick:function(){O.copy(starText(it),$('#star-status'));}}),
+   el('button',{class:'st-btn small danger',type:'button',text:'Delete',onclick:function(){if(confirm('Delete this saved answer?')){O.set('star-bank',bank().filter(function(x){return x.id!==it.id;}));if(editingId===it.id){editingId=null;O.set('star-editing',null);renderStar();}renderBank();}}})])]));});
+ var po=$('#star-printout');po.textContent='';po.appendChild(el('h2',{text:'My STAR answers'}));b.forEach(function(it){po.appendChild(el('div',{class:'st-print-answer'},[el('h3',{text:it.q||'Untitled answer'}),document.createTextNode(starText(it).replace(/^Question: .*\n?/,''))]));});
+ po.appendChild(el('p',{class:'st-print-url',text:'Made with oznursehub.com/student-to-rn.html'}));}
+function setForm(d){form.querySelector('[name=q]').value=d.q||'';$$('input[name=std]',form).forEach(function(b){b.checked=(d.std||[]).indexOf(b.value)>-1;});['s','t','a','r','l'].forEach(function(k){form.querySelector('[name='+k+']').value=d[k]||'';});draft.save();renderStar();}
+function loadAnswer(it){editingId=it.id;O.set('star-editing',editingId);setForm(it);form.scrollIntoView({behavior:'smooth',block:'start'});form.querySelector('[name=s]').focus({preventScroll:true});O.status($('#star-status'),'Editing a saved answer.');}
+$('#star-save').addEventListener('click',function(){var d=starData();if(!d.s&&!d.t&&!d.a&&!d.r){O.status($('#star-status'),'Write at least one part of your answer first.');return;}
+ var b=bank();d.updated=Date.now();if(editingId&&b.some(function(x){return x.id===editingId;})){b=b.map(function(x){return x.id===editingId?Object.assign({id:editingId},d):x;});}else{editingId=O.uid();d.id=editingId;b.unshift(d);}
+ O.set('star-bank',b);O.set('star-editing',editingId);renderBank();renderStar();O.status($('#star-status'),'Saved on this device.');});
+$('#star-new').addEventListener('click',function(){editingId=null;O.set('star-editing',null);setForm({});form.querySelector('[name=q]').focus();});
+$('#star-copy').addEventListener('click',function(){var d=starData();if(!(d.s||d.t||d.a||d.r)){O.status($('#star-status'),'Nothing to copy yet.');return;}O.copy(starText(d),$('#star-status'));});
+$('#star-print').addEventListener('click',function(){if(!bank().length){O.status($('#star-status'),'Save an answer first, then print.');return;}O.printSection($('#star'));});
+renderStar();renderBank();
+/* ---------- 4. Practice card behaviour ---------- */
+var themeSel=$('#pc-theme');themeSel.appendChild(el('option',{value:'',text:'All themes ('+CARDS.length+')'}));Object.keys(THEMES).forEach(function(k){var n=CARDS.filter(function(c){return c.t===k;}).length;themeSel.appendChild(el('option',{value:k,text:THEMES[k]+' ('+n+')'}));});
+var practised=O.get('practised',{})||{},deck=[],pos=0,timer=null,remain=0;
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function makeDeck(random){deck=CARDS.map(function(c,i){return i;}).filter(function(i){return !themeSel.value||CARDS[i].t===themeSel.value;});if(random)shuffle(deck);pos=0;}
+function stopTimer(){clearInterval(timer);timer=null;$('#pc-time').textContent='';$('#pc-timer').textContent='Start 2-minute timer';}
+function showCard(focus){stopTimer();var c=CARDS[deck[pos]];$('#pc-tag').textContent=THEMES[c.t];$('#pc-q').textContent=c.q;$('#pc-pos').textContent='Question '+(pos+1)+' of '+deck.length;
+ var h=$('#pc-hints');h.textContent='';h.hidden=true;h.appendChild(el('strong',{text:'Think about:'}));var ul=el('ul');c.h.forEach(function(x){ul.appendChild(el('li',{text:x}));});h.appendChild(ul);h.appendChild(el('p',{class:'st-help',text:'Links to NMBA standards: '+c.s.map(function(k){return k+' ('+STD[k]+')';}).join('; ')}));
+ var hb=$('#pc-hint');hb.textContent='Show hints';hb.setAttribute('aria-expanded','false');
+ var done=!!practised[c.q],db=$('#pc-done');db.textContent=done?'\u2713 Practised':'Mark as practised';db.setAttribute('aria-pressed',String(done));
+ var n=CARDS.filter(function(x){return practised[x.q];}).length;$('#pc-progress').textContent=n+' of '+CARDS.length+' questions';if(focus)$('#pc-q').focus();}
+themeSel.addEventListener('change',function(){makeDeck(false);showCard(false);});
+$('#pc-next').addEventListener('click',function(){pos=(pos+1)%deck.length;showCard(true);});
+$('#pc-shuffle').addEventListener('click',function(){makeDeck(true);showCard(true);});
+$('#pc-hint').addEventListener('click',function(){var h=$('#pc-hints'),open=h.hidden;h.hidden=!open;this.textContent=open?'Hide hints':'Show hints';this.setAttribute('aria-expanded',String(open));});
+$('#pc-done').addEventListener('click',function(){var c=CARDS[deck[pos]];if(practised[c.q])delete practised[c.q];else practised[c.q]=1;O.set('practised',practised);showCard(false);});
+$('#pc-timer').addEventListener('click',function(){if(timer){stopTimer();return;}remain=120;var t=$('#pc-time'),b=this;b.textContent='Stop timer';
+ function tick(){var m=Math.floor(remain/60),s=remain%60;t.textContent=m+':'+(s<10?'0':'')+s;if(remain<=0){clearInterval(timer);timer=null;t.textContent='Time!';b.textContent='Start 2-minute timer';}remain--;}tick();timer=setInterval(tick,1000);});
+$('#pc-star').addEventListener('click',function(){var c=CARDS[deck[pos]];editingId=null;O.set('star-editing',null);setForm({q:c.q,std:c.s.map(String)});$('#star').scrollIntoView({behavior:'smooth',block:'start'});form.querySelector('[name=s]').focus({preventScroll:true});});
+makeDeck(false);showCard(false);
+})();
+</script>
+</body></html>

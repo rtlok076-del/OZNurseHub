@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en-AU" data-tools="placement-prep">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Placement prep kit: brain sheet, goals and checklists | OzNurseHub</title>
+<meta name="description" content="Free placement tools for Australian nursing students: a fillable brain sheet that prints on one A4 page, a SMART learning goals builder, a first-week checklist, a scope-by-year-level guide and an ANSAT-aware feedback reflection.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#193f35">
+<link rel="stylesheet" href="renovation.css">
+<link rel="stylesheet" href="student-tools.css">
+<link rel="canonical" href="https://oznursehub.com/placement-prep.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OzNurseHub">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://oznursehub.com/placement-prep.html">
+<meta property="og:title" content="Placement prep kit | OzNurseHub">
+<meta property="og:description" content="Plan your shift on a printable brain sheet, set SMART learning goals, tick off your first week and reflect on feedback. Free, no account, saved on your device.">
+<meta property="og:image" content="https://oznursehub.com/banner.png">
+<style>
+/* Brain sheet */
+.bs-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 18px;align-items:end}
+.bs-keep{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:16px 0 0;cursor:pointer}
+.bs-keep input{accent-color:var(--teal);width:20px;height:20px;flex:0 0 20px;margin:1px 0 0}
+.bs-warn{background:#f5efdf;color:#5a4a2a;border-radius:8px;padding:10px 14px;font-size:13px;margin:14px 0 0}
+.bs-chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;align-items:center}
+.bs-chips .st-label{margin-right:6px}
+.bs-chip{border:1px solid #c9d5cb;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--teal);min-height:34px}
+.bs-chip:hover{background:#f0f5ef}
+.bs-sheet{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;margin-top:18px}
+.bs-head{display:grid;grid-template-columns:auto repeat(5,minmax(0,1fr));gap:10px;align-items:end;margin-bottom:12px}
+.bs-title{font:400 22px/1.1 'Fraunces',Georgia,serif;color:var(--teal);margin:0;padding-right:8px}
+.bs-title small{display:block;font:700 10px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#76613c;margin-top:4px}
+.bs-head .st-field>span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bs-head input,.bs-head select{min-height:38px!important;padding:6px 8px!important;font-size:14px!important}
+.bs-wrap{overflow-x:auto}
+.bs-grid{width:100%;border-collapse:collapse;table-layout:fixed;min-width:980px}
+.bs-grid th{font:700 11px 'DM Sans',sans-serif;letter-spacing:.04em;color:#fff;background:var(--teal);padding:7px 6px;text-align:left;border:1px solid var(--teal)}
+.bs-grid th.bs-t{text-align:center}
+.bs-grid td{border:1px solid #c9d5cb;vertical-align:top;padding:4px}
+.bs-grid col.c-pt{width:170px}.bs-grid col.c-care{width:170px}.bs-grid col.c-todo{width:130px}
+.bs-grid textarea,.bs-grid input{border:0!important;border-radius:4px!important;background:#fbfcfa!important;font-size:13px!important;padding:4px 6px!important;min-height:0!important;width:100%;resize:none;line-height:1.35}
+.bs-grid textarea{height:100%;min-height:96px!important}
+.bs-grid textarea:focus,.bs-grid input:focus{background:#fff!important;box-shadow:0 0 0 2px #a1783680!important}
+.bs-grid td.bs-time textarea{min-height:160px!important;font-size:12px!important;padding:3px 4px!important;overflow-wrap:normal}
+.bs-row2{display:flex;gap:4px;margin-bottom:4px}
+.bs-row2 input{flex:1}
+.bs-lab{display:flex;gap:4px;align-items:center;margin-bottom:3px}
+.bs-lab span{font:700 9.5px 'DM Sans',sans-serif;color:#76613c;letter-spacing:.03em;text-transform:uppercase;flex:0 0 52px}
+.bs-care input{font-size:12px!important}
+.bs-pt textarea{min-height:56px!important;margin-bottom:4px}
+.bs-pt textarea.bs-alert{min-height:40px!important;background:#fdf6ec!important}
+.bs-foot{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-top:10px}
+.bs-foot textarea{min-height:60px}
+.bs-remind{font-size:12px;color:var(--muted);margin:0;align-self:center}
+.bs-remind strong{color:var(--teal)}
+.bs-tlabel{display:none}
+@media(max-width:760px){
+ .bs-head{grid-template-columns:1fr 1fr}.bs-title{grid-column:1/-1}
+ .bs-grid,.bs-grid tbody,.bs-grid tr,.bs-grid td{display:block;min-width:0;width:auto}
+ .bs-grid colgroup,.bs-grid thead{display:none}
+ .bs-grid tr{border:1px solid #c9d5cb;border-radius:10px;padding:8px;margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+ .bs-grid td{border:0;padding:0}
+ .bs-grid tbody{counter-reset:pt}
+ .bs-grid tr{counter-increment:pt}
+ .bs-grid tr::before{content:"Patient " counter(pt);grid-column:1/-1;font:400 19px 'Fraunces',Georgia,serif;color:var(--teal)}
+ .bs-grid td.bs-pt,.bs-grid td.bs-care,.bs-grid td.bs-todo{grid-column:1/-1}
+ .bs-tlabel{display:block;font:700 11px 'DM Sans',sans-serif;color:var(--teal);margin:0 0 2px}
+ .bs-grid textarea{height:auto!important}
+ .bs-pt textarea{min-height:64px!important}
+ .bs-pt textarea.bs-alert{min-height:44px!important}
+ .bs-grid td.bs-time textarea{min-height:56px!important}
+ .bs-care .bs-lab input{min-height:34px!important}
+ .bs-foot{grid-template-columns:1fr}
+}
+/* Goals, scope, reflection */
+.gl-card{border-top:3px solid #a88a4d}
+.gl-fields{display:grid;gap:12px;margin-top:14px}
+.gl-fields .st-field>span b{display:inline-block;min-width:26px;height:26px;border-radius:13px;background:var(--teal);color:#fff;text-align:center;line-height:26px;font-size:13px;margin-right:6px;padding:0 6px}
+.gl-fields textarea{min-height:64px}
+.sc-table{width:100%;border-collapse:collapse;font-size:14px}
+.sc-table th{text-align:left;font:700 11px 'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#76613c;padding:8px 6px;border-bottom:2px solid var(--border)}
+.sc-table th.c,.sc-table td.c{text-align:center;width:84px}
+.sc-table td{padding:8px 6px;border-bottom:1px solid #edf1ec}
+.sc-table input[type=checkbox]{accent-color:var(--teal);width:20px;height:20px}
+.sc-add{display:flex;gap:8px;margin-top:12px}
+.sc-add input{flex:1}
+.rf-std summary small{font-weight:400;color:var(--muted);margin-left:6px}
+.rf-std .st-form{grid-template-columns:200px 1fr 1fr}
+@media(max-width:700px){.sc-table th.c,.sc-table td.c{width:64px}.sc-table th{font-size:10px}.rf-std .st-form{grid-template-columns:1fr}}
+/* Brain sheet print: one landscape A4 page */
+@page brainsheet{size:A4 landscape;margin:7mm}
+@media print{
+ body[data-print=brain] .st-print-target{page:brainsheet}
+ body[data-print=brain] #brain>.section-lead,body[data-print=brain] #brain .bs-controls-panel{display:none!important}
+ #brain .bs-sheet{border:0;padding:0;margin:0;border-radius:0}
+ #brain .bs-head{grid-template-columns:auto repeat(5,minmax(0,1fr));gap:6px;margin-bottom:4px}
+ #brain .bs-title{font-size:15pt}
+ #brain .bs-head .st-pm{font-size:9pt;min-height:5mm}
+ #brain .bs-head select{font-size:9pt!important;min-height:0!important;height:auto}
+ #brain .bs-wrap{overflow:visible}
+ #brain .bs-grid{min-width:0;font-size:7.5pt}
+ #brain .bs-grid th{padding:2px 4px;font-size:7.5pt;background:#e6eee8!important;color:#000;border-color:#777;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ #brain .bs-grid td{border-color:#777;padding:1mm;height:calc(144mm / var(--bs-rows,4));overflow:hidden}
+ #brain .bs-grid col.c-pt{width:44mm}#brain .bs-grid col.c-care{width:40mm}#brain .bs-grid col.c-todo{width:34mm}
+ #brain .bs-grid .st-pm{border:0;padding:0;font-size:7.5pt;line-height:1.25;min-height:0}
+ #brain .bs-lab{margin:0}
+ #brain .bs-time .st-pm,#brain .bs-todo .st-pm{max-height:calc(144mm / var(--bs-rows,4) - 3mm);overflow:hidden}
+ #brain .bs-pt>.st-pm{max-height:calc(144mm / var(--bs-rows,4) * .42);overflow:hidden}
+ #brain .bs-pt>.bs-alert+.st-pm{max-height:calc(144mm / var(--bs-rows,4) * .26)}
+ #brain .bs-lab{max-height:calc(144mm / var(--bs-rows,4) / 5.3);overflow:hidden}
+ #brain .bs-foot .st-pm{max-height:14mm;overflow:hidden}
+ #brain .bs-lab span{flex:0 0 13mm;font-size:6.5pt}
+ #brain .bs-lab .st-pm{display:inline;flex:1}
+ #brain .bs-pt .st-pm{margin-bottom:1mm}
+ #brain .bs-row2 .st-pm{display:inline;font-weight:700}
+ #brain .bs-row2{display:block}
+ #brain .bs-foot{margin-top:2mm;grid-template-columns:2fr 1fr;gap:4mm}
+ #brain .bs-foot .st-pm{min-height:9mm;border:1px solid #777;padding:1mm;font-size:8pt}
+ #brain .bs-remind{font-size:7.5pt}
+ #brain .bs-row2>.st-pm:nth-of-type(1){margin-right:3mm}
+ #brain .bs-row2>.st-pm:nth-of-type(1)::before{content:"Bed ";font-weight:400;font-size:6.5pt;color:#76613c;text-transform:uppercase}
+ body.bs-blank #brain .bs-head select{color:transparent}
+ body.bs-blank #brain .bs-lab{margin-bottom:3.2mm}
+ body.bs-blank #brain .bs-row2>.st-pm:nth-of-type(2)::before{content:"Age/sex ";font-size:6.5pt;font-weight:400;color:#76613c;text-transform:uppercase;margin-left:12mm}
+ body.bs-blank #brain .bs-pt>.st-pm{min-height:8mm}
+ body.bs-blank #brain .bs-pt>.st-pm::before{content:"Background";font-size:6.5pt;color:#76613c;text-transform:uppercase;font-weight:700}
+ body.bs-blank #brain .bs-pt>.bs-alert+.st-pm::before{content:"Alerts"}
+ #brain .st-print-url{font-size:7pt;margin-top:1mm}
+}
+</style>
+</head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<main class="renovation-main st-main" id="content">
+
+<section class="st-hero" aria-labelledby="page-title">
+<div><p class="overline">Placement prep kit / Tools for your shift</p><h1 id="page-title">Placement prep.<br><em>Walk in ready.</em></h1>
+<p class="lede">Plan your shift on a brain sheet that prints on one page. Set learning goals your facilitator will recognise, tick off your first week, and turn feedback into your next step.</p>
+<div class="action-row"><a class="elegant-button" href="#brain">Open the brain sheet ↓</a><a class="elegant-button secondary" href="#goals">Set my learning goals ↓</a></div></div>
+<aside class="st-safety">Your uni and your placement facility decide what students can do. These tools help you plan and reflect. They don't replace your facilitator, your supervising RN or local policy. <a href="#sources">Sources</a></aside>
+</section>
+
+<div class="st-privacy"><p><strong>Your work stays on this device.</strong> Goals, ticks and reflections are saved in this browser only (localStorage). Nothing is sent to OzNurseHub or anyone else. The brain sheet isn't saved unless you turn that on.</p><button class="st-btn ghost small" type="button" data-clear-page>Clear everything on this page</button></div>
+<p class="st-help st-storage-off" hidden>Your browser isn't letting this page save, so your work will be lost when you close it. Copy or print anything you want to keep.</p>
+<ul class="st-jump" aria-label="Tools on this page"><li><a href="#brain">1. Brain sheet</a></li><li><a href="#goals">2. Learning goals</a></li><li><a href="#week1">3. First-week checklist</a></li><li><a href="#scope">4. What can I do?</a></li><li><a href="#reflect">5. Feedback reflection</a></li><li><a href="#sources">Sources</a></li></ul>
+
+<!-- 1. Brain sheet -->
+<section class="st-section" id="brain" aria-labelledby="brain-title">
+<div class="section-lead"><div><p class="overline">Tool 1 / Brain sheet</p><h2 id="brain-title">Plan your shift on one page.</h2><p>Fill it in on screen after handover, or print a blank one to write on. It prints on one landscape A4 page.</p></div></div>
+<div class="st-panel bs-controls-panel">
+<div class="bs-controls">
+<label class="st-field"><span>Patients</span><select id="bs-n"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+<label class="st-field"><span>First time slot</span><input type="time" id="bs-start" value="07:00" step="1800"></label>
+<label class="st-field"><span>Hours to show</span><select id="bs-hours"><option>6</option><option>7</option><option selected>8</option><option>9</option><option>10</option></select></label>
+</div>
+<label class="bs-keep"><input type="checkbox" id="bs-keep"><span><strong>Keep a draft on this device.</strong> Off by default. Turn it on only if no one else uses this device, and clear it at the end of your shift.</span></label>
+<p class="bs-warn"><strong>Protect patient privacy.</strong> Use bed numbers, and initials at most. Never enter names, dates of birth, record numbers or Medicare numbers. If you print it, follow your facility's rules for handover sheets, including disposing of them securely.</p>
+<div class="bs-chips" id="bs-chips"><span class="st-label">Quick add to a time box:</span></div>
+</div>
+<div class="bs-sheet" id="bs-sheet">
+<div class="bs-head">
+<p class="bs-title">Brain sheet<small>OzNurseHub</small></p>
+<label class="st-field"><span>Date</span><input type="date" data-bs="date"></label>
+<label class="st-field"><span>Shift</span><select data-bs="shift"><option value="">–</option><option>Morning</option><option>Afternoon</option><option>Night</option><option>Other</option></select></label>
+<label class="st-field"><span>Ward or unit</span><input type="text" data-bs="ward" autocomplete="off"></label>
+<label class="st-field"><span>Supervising RN</span><input type="text" data-bs="rn" autocomplete="off"></label>
+<label class="st-field"><span>Facilitator / contact</span><input type="text" data-bs="fac" autocomplete="off"></label>
+</div>
+<div class="bs-wrap"><table class="bs-grid" id="bs-grid"><colgroup id="bs-cols"></colgroup><thead><tr id="bs-headrow"></tr></thead><tbody id="bs-body"></tbody></table></div>
+<div class="bs-foot">
+<label class="st-field"><span class="st-label">Questions to ask and things to look up</span><textarea data-bs="notes" rows="2"></textarea></label>
+<p class="bs-remind"><strong>Every shift:</strong> hand hygiene · check patient ID · escalate early · document as you go · ask before you do anything new.</p>
+</div>
+<p class="st-print-url">oznursehub.com/placement-prep.html · Dispose of this sheet securely.</p>
+</div>
+<div class="st-actions"><button class="st-btn" type="button" id="bs-print">Print brain sheet</button><button class="st-btn ghost" type="button" id="bs-blank">Print a blank sheet</button><button class="st-btn danger" type="button" id="bs-clear">Clear the sheet</button><span class="st-status" id="bs-status" role="status"></span></div>
+</section>
+
+<!-- 2. SMART goals -->
+<section class="st-section" id="goals" aria-labelledby="goals-title">
+<div class="section-lead"><div><p class="overline">Tool 2 / Learning goals</p><h2 id="goals-title">Set SMART goals in two minutes.</h2><p>Pick your year, placement and what you want to work on. You'll get a draft SMART goal (Specific, Measurable, Achievable, Relevant, Time-bound) linked to the NMBA standards. Edit it until it sounds like you.</p></div></div>
+<div class="st-two">
+<div>
+<div class="st-panel">
+<form class="st-form" id="gl-form" onsubmit="return false">
+<label class="st-field"><span>Year level</span><select name="year"><option value="1">Year 1</option><option value="2" selected>Year 2</option><option value="3">Year 3</option></select></label>
+<label class="st-field"><span>Placement</span><select name="area"><option>medical or surgical ward</option><option>aged care</option><option>mental health</option><option>community or primary care</option><option>rehabilitation</option><option>perioperative</option><option>emergency</option><option>paediatrics</option><option>other</option></select></label>
+<label class="st-field"><span>I want to work on</span><select name="focus" id="gl-focus"></select></label>
+<label class="st-field"><span>Placement length</span><select name="weeks"><option value="1">1 week</option><option value="2">2 weeks</option><option value="3">3 weeks</option><option value="4" selected>4 weeks</option><option value="5">5 weeks</option><option value="6">6 weeks</option><option value="8">8 weeks</option><option value="10">10 weeks</option></select></label>
+</form>
+</div>
+<div class="st-panel gl-card">
+<h3>Your draft goal</h3><p class="st-help">Edit any part. Change numbers and timeframes to suit your placement.</p>
+<div class="gl-fields" id="gl-fields">
+<label class="st-field"><span><b>S</b>Specific: I will…</span><textarea id="gl-s" rows="2"></textarea></label>
+<label class="st-field"><span><b>M</b>Measurable: I'll know I've done it when…</span><textarea id="gl-m" rows="2"></textarea></label>
+<label class="st-field"><span><b>A</b>Achievable: support and scope</span><textarea id="gl-a" rows="2"></textarea></label>
+<label class="st-field"><span><b>R</b>Relevant: this matters because…</span><textarea id="gl-r" rows="3"></textarea></label>
+<label class="st-field"><span><b>T</b>Time-bound: by…</span><input type="text" id="gl-t"></label>
+</div>
+<div class="st-actions"><button class="st-btn" type="button" id="gl-add">Add to my goals</button><button class="st-btn ghost" type="button" id="gl-reset">Reset to suggestion</button><span class="st-status" id="gl-status" role="status"></span></div>
+</div>
+</div>
+<div class="st-panel" id="gl-mine-panel">
+<h3>My goals</h3><p class="st-help" style="margin-bottom:14px">Saved on this device. Two or three goals per placement is plenty. Share them with your facilitator in your first week.</p>
+<ul class="st-bank" id="gl-list"></ul>
+<div class="st-actions"><button class="st-btn" type="button" id="gl-print">Print my goals</button><button class="st-btn ghost" type="button" id="gl-copy">Copy all</button></div>
+<div class="st-printonly" id="gl-printout"></div>
+</div>
+</div>
+</section>
+
+<!-- 3. First week -->
+<section class="st-section" id="week1" aria-labelledby="week1-title">
+<div class="section-lead"><div><p class="overline">Tool 3 / First-week checklist</p><h2 id="week1-title">Your first week, sorted.</h2><p>Ticks are saved on this device. Untick everything before your next placement.</p></div></div>
+<div class="st-progress" id="wk-progress"><div class="st-bar" aria-hidden="true"><span></span></div><span class="st-progress-text">0 done</span></div>
+<div class="st-checkgroups" id="wk-root"></div>
+<div class="st-actions"><button class="st-btn" type="button" id="wk-print">Print checklist</button><button class="st-btn danger" type="button" id="wk-reset">Untick everything</button></div>
+</section>
+
+<!-- 4. Scope by year -->
+<section class="st-section" id="scope" aria-labelledby="scope-title">
+<div class="section-lead"><div><p class="overline">Tool 4 / What can I do?</p><h2 id="scope-title">What can I do in my year? Check, don't guess.</h2><p>There's no single list for every student. What you can do depends on what your uni has taught and assessed, your facility's policies and your supervising RN on the day.</p></div></div>
+<div class="st-panel">
+<fieldset class="st-radios" id="sc-year"><legend>My year level</legend><label><input type="radio" name="scyear" value="1"> Year 1</label><label><input type="radio" name="scyear" value="2" checked> Year 2</label><label><input type="radio" name="scyear" value="3"> Year 3</label></fieldset>
+<div id="sc-focus" aria-live="polite" style="margin-top:18px"></div>
+</div>
+<div class="st-two" style="margin-top:18px">
+<div class="st-panel"><h3>Ask on day one</h3><ul class="st-list" style="margin-top:10px">
+<li>What has my uni taught and assessed me on so far? Bring your skills record if you have one.</li>
+<li>Which activities does this facility let students do, and which need direct supervision?</li>
+<li>Who's my supervising RN each shift, and who do I go to if they're busy?</li>
+<li>How do I say so if I'm asked to do something outside my scope?</li>
+</ul>
+<h4>Check, don't assume</h4><p class="st-help" style="margin-bottom:8px">Rules for students often differ in these areas. Ask before you're involved.</p>
+<ul class="st-list"><li>Medicines that need extra checks or are legally restricted, such as Schedule 8 medicines</li><li>Intravenous medicines, fluids and blood products</li><li>Acting as a second checker</li><li>Taking verbal or phone orders</li><li>Electronic records and logins</li><li>Invasive devices and higher-risk procedures</li></ul>
+</div>
+<div class="st-panel"><h3>My scope tracker</h3><p class="st-help">Tick as you confirm each one. Saved on this device. Add skills from your uni's list.</p>
+<div style="overflow-x:auto;margin-top:12px"><table class="sc-table"><thead><tr><th scope="col">Skill</th><th scope="col" class="c">Taught &amp; assessed at uni</th><th scope="col" class="c">Facility allows</th><th scope="col" class="c">Done with supervision</th></tr></thead><tbody id="sc-body"></tbody></table></div>
+<div class="sc-add st-noprint"><input type="text" id="sc-new" placeholder="Add a skill" aria-label="Add a skill"><button class="st-btn small" type="button" id="sc-addbtn">Add</button></div>
+<div class="st-actions"><button class="st-btn ghost" type="button" id="sc-print">Print my tracker</button><button class="st-btn danger" type="button" id="sc-reset">Reset tracker</button></div>
+</div>
+</div>
+</section>
+
+<!-- 5. Reflection -->
+<section class="st-section" id="reflect" aria-labelledby="reflect-title">
+<div class="section-lead"><div><p class="overline">Tool 5 / Feedback reflection</p><h2 id="reflect-title">Turn feedback into your next step.</h2><p>Many Australian nursing courses assess placements with the ANSAT (Australian Nursing Standards Assessment Tool), which is mapped to the NMBA Registered nurse standards for practice. Use this before your mid-placement and final assessments, or after any feedback.</p></div></div>
+<div class="st-panel" id="rf-form">
+<div class="st-form">
+<label class="st-field"><span>Placement</span><input type="text" name="area" placeholder="e.g. Surgical ward, Year 2"></label>
+<label class="st-field"><span>Week</span><input type="text" name="week" placeholder="e.g. Week 2"></label>
+<label class="st-field"><span>Type</span><select name="type"><option>Feedback after a shift</option><option>Before my mid-placement assessment</option><option>Before my final assessment</option><option>After an assessment</option></select></label>
+<label class="st-field"><span>Feedback from <small>Role only, no names</small></span><input type="text" name="from" placeholder="e.g. Facilitator, buddy RN"></label>
+</div>
+<label class="st-field" style="margin-top:16px"><span>What feedback did I get?</span><textarea name="fb" rows="3"></textarea></label>
+<h4>By standard <small style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)">Open the ones that apply</small></h4>
+<div id="rf-stds"></div>
+<p class="st-help">Self-ratings use the ANSAT's 1 to 5 scale and are for your own reflection. Your assessor rates you against what's expected at your year level, and on the ANSAT a 1 or 2 means that standard hasn't been achieved. Your uni's form and instructions come first.</p>
+<h4>Reflect: what, so what, now what?</h4>
+<div class="st-form" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+<label class="st-field"><span>What happened?</span><textarea name="what" rows="3"></textarea></label>
+<label class="st-field"><span>So what? Why does it matter?</span><textarea name="sowhat" rows="3"></textarea></label>
+<label class="st-field"><span>Now what? What will I do next?</span><textarea name="nowwhat" rows="3"></textarea></label>
+</div>
+<h4>Summary for my assessment</h4>
+<div class="st-form" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+<label class="st-field"><span>What have I done well?</span><textarea name="well" rows="3"></textarea></label>
+<label class="st-field"><span>What strategies will I use to keep improving?</span><textarea name="strat" rows="3"></textarea></label>
+<label class="st-field"><span>Questions for my facilitator</span><textarea name="qs" rows="3"></textarea></label>
+</div>
+<div class="st-actions"><button class="st-btn" type="button" id="rf-save">Save a copy</button><button class="st-btn ghost" type="button" id="rf-print">Print</button><button class="st-btn ghost" type="button" id="rf-copy">Copy</button><button class="st-btn ghost" type="button" id="rf-new">Start a new reflection</button><span class="st-status" id="rf-status" role="status"></span></div>
+<p class="st-help">Keep it de-identified. Don't include patient or staff names or details that could identify anyone.</p>
+</div>
+<div class="st-panel st-noprint"><h3>Saved reflections</h3><ul class="st-bank" id="rf-list" style="margin-top:12px"></ul></div>
+</section>
+
+<!-- Sources -->
+<section class="st-section" id="sources" aria-labelledby="sources-title">
+<div class="section-lead"><div><p class="overline">Sources</p><h2 id="sources-title">Where this comes from.</h2><p>Checked in October 2026.</p></div></div>
+<ul class="st-sources st-panel" style="padding-left:40px">
+<li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/professional-standards/registered-nurse-standards-for-practice.aspx" rel="noopener">Registered nurse standards for practice</a>: the seven standards used in the goals and reflection tools.</li>
+<li>ANSAT, <a href="https://www.ansat.com.au/home/resources" rel="noopener">Tools and resources for registered nurse students</a>: the 1 to 5 rating scale and assessment questions.</li>
+<li>NMBA, <a href="https://www.nursingmidwiferyboard.gov.au/codes-guidelines-statements/frameworks.aspx" rel="noopener">Frameworks</a>, including the decision-making framework for nursing and midwifery.</li>
+<li>Australian Commission on Safety and Quality in Health Care, <a href="https://www.safetyandquality.gov.au/clinical-topics/infection-prevention-and-control/national-hand-hygiene-initiative" rel="noopener">National Hand Hygiene Initiative</a>: the 5 Moments for Hand Hygiene.</li>
+<li>Rolfe, G., Freshwater, D., &amp; Jasper, M. (2001). <em>Critical reflection for nursing and the helping professions: A user's guide</em>. Palgrave: the "What? So what? Now what?" model.</li>
+</ul>
+</section>
+
+<p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. Always follow your uni's placement requirements, local policies and your supervising RN.</p>
+</main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
+<script src="student-tools.js"></script>
+<script>
+(function(){'use strict';
+var O=window.OZT,$=O.$,$$=O.$$,el=O.el;
+var STD={1:'Thinks critically and analyses nursing practice',2:'Engages in therapeutic and professional relationships',3:'Maintains the capability for practice',4:'Comprehensively conducts assessments',5:'Develops a plan for nursing practice',6:'Provides safe, appropriate and responsive quality nursing practice',7:'Evaluates outcomes to inform nursing practice'};
+/* ---------- 1. Brain sheet ---------- */
+var keep=$('#bs-keep');keep.checked=!!O.get('brain-keep',false);
+var bs=(keep.checked&&O.get('brain',null))||{meta:{},rows:[],n:4,start:'07:00',hours:8};
+$('#bs-n').value=String(bs.n||4);$('#bs-start').value=bs.start||'07:00';$('#bs-hours').value=String(bs.hours||8);
+var CARE=[['obs','Obs'],['mob','Mobility'],['diet','Diet/fluids'],['lines','Lines/IV'],['other','Other']];
+var lastBox=null;
+function slots(){var st=($('#bs-start').value||'07:00').split(':'),h=+st[0],m=+st[1]||0,n=+$('#bs-hours').value,out=[];for(var i=0;i<n;i++){var hh=(h+i)%24;out.push((hh<10?'0':'')+hh+':'+(m<10?'0':'')+m);}return out;}
+function rowData(i){bs.rows[i]=bs.rows[i]||{t:[]};bs.rows[i].t=bs.rows[i].t||[];return bs.rows[i];}
+function save(){bs.n=+$('#bs-n').value;bs.start=$('#bs-start').value;bs.hours=+$('#bs-hours').value;if(keep.checked){O.set('brain',bs);}}
+function field(tag,attrs,value,onInput){var f=el(tag,attrs);f.value=value||'';f.addEventListener('input',function(){onInput(f.value);save();});return f;}
+function renderGrid(){
+  var n=+$('#bs-n').value,t=slots(),cols=$('#bs-cols'),head=$('#bs-headrow'),body=$('#bs-body');
+  cols.textContent='';head.textContent='';body.textContent='';
+  cols.appendChild(el('col',{class:'c-pt'}));cols.appendChild(el('col',{class:'c-care'}));t.forEach(function(){cols.appendChild(el('col'));});cols.appendChild(el('col',{class:'c-todo'}));
+  head.appendChild(el('th',{scope:'col',text:'Patient'}));head.appendChild(el('th',{scope:'col',text:'Care needs'}));t.forEach(function(x){head.appendChild(el('th',{scope:'col',class:'bs-t',text:x}));});head.appendChild(el('th',{scope:'col',text:'To do / handover'}));
+  for(var i=0;i<n;i++)(function(i){var r=rowData(i),tr=el('tr');
+    var pt=el('td',{class:'bs-pt'});
+    pt.appendChild(el('div',{class:'bs-row2'},[field('input',{type:'text','aria-label':'Patient '+(i+1)+' bed',placeholder:'Bed',autocomplete:'off'},r.bed,function(v){r.bed=v;}),field('input',{type:'text','aria-label':'Patient '+(i+1)+' age and sex',placeholder:'Age/sex',autocomplete:'off'},r.age,function(v){r.age=v;})]));
+    pt.appendChild(field('textarea',{'aria-label':'Patient '+(i+1)+' background',placeholder:'Reason for admission, background, plan'},r.bg,function(v){r.bg=v;}));
+    pt.appendChild(field('textarea',{class:'bs-alert','aria-label':'Patient '+(i+1)+' alerts',placeholder:'Alerts: allergies, falls, infection, resus plan'},r.alerts,function(v){r.alerts=v;}));
+    tr.appendChild(pt);
+    var care=el('td',{class:'bs-care'});CARE.forEach(function(c){care.appendChild(el('label',{class:'bs-lab'},[el('span',{text:c[1]}),field('input',{type:'text','aria-label':'Patient '+(i+1)+' '+c[1],autocomplete:'off'},r[c[0]],function(v){r[c[0]]=v;})]));});tr.appendChild(care);
+    t.forEach(function(x,j){var td=el('td',{class:'bs-time'});td.appendChild(el('span',{class:'bs-tlabel','aria-hidden':'true',text:x}));var ta=field('textarea',{'aria-label':'Patient '+(i+1)+' at '+x},r.t[j],function(v){r.t[j]=v;});ta.addEventListener('focus',function(){lastBox=ta;});td.appendChild(ta);tr.appendChild(td);});
+    var todo=el('td',{class:'bs-todo'});var tt=field('textarea',{'aria-label':'Patient '+(i+1)+' to do and handover'},r.todo,function(v){r.todo=v;});tt.addEventListener('focus',function(){lastBox=tt;});todo.appendChild(tt);tr.appendChild(todo);
+    body.appendChild(tr);})(i);
+  $('#bs-sheet').style.setProperty('--bs-rows',String(n));
+}
+$$('[data-bs]').forEach(function(f){var k=f.getAttribute('data-bs');f.value=(bs.meta||{})[k]||'';f.addEventListener('input',function(){bs.meta=bs.meta||{};bs.meta[k]=f.value;save();});f.addEventListener('change',function(){bs.meta=bs.meta||{};bs.meta[k]=f.value;save();});if(f.tagName==='TEXTAREA')f.addEventListener('focus',function(){lastBox=null;});});
+['#bs-n','#bs-hours','#bs-start'].forEach(function(s){$(s).addEventListener('change',function(){save();renderGrid();});});
+keep.addEventListener('change',function(){O.set('brain-keep',keep.checked);if(keep.checked){save();O.status($('#bs-status'),'Draft saved on this device. Clear it at the end of your shift.');}else{O.remove('brain');O.status($('#bs-status'),'Draft removed from this device.');}});
+['Obs','Meds','BGL','Pain score','Pressure care','Fluid balance','Hygiene','Mobilise','Wound care','Ward round','Family','Document'].forEach(function(c){$('#bs-chips').appendChild(el('button',{type:'button',class:'bs-chip',text:'+ '+c,onclick:function(){
+  if(!lastBox||!document.body.contains(lastBox)){O.status($('#bs-status'),'Tap a time box first, then a quick-add button.');return;}
+  lastBox.value=lastBox.value?(lastBox.value.replace(/\s+$/,'')+', '+c):c;lastBox.dispatchEvent(new Event('input'));lastBox.focus();}}));});
+$('#bs-print').addEventListener('click',function(){O.printSection($('#brain'));});
+$('#bs-blank').addEventListener('click',function(){O.printSection($('#brain'),{className:'bs-blank',prepare:function(){$$('#brain .st-pm').forEach(function(m){m.textContent='';});}});});
+$('#bs-clear').addEventListener('click',function(){if(!confirm('Clear everything on the brain sheet?'))return;bs={meta:{},rows:[],n:+$('#bs-n').value,start:$('#bs-start').value,hours:+$('#bs-hours').value};$$('[data-bs]').forEach(function(f){f.value='';});if(keep.checked)O.set('brain',bs);renderGrid();O.status($('#bs-status'),'Sheet cleared.');});
+renderGrid();
+/* ---------- 2. SMART goals ---------- */
+var FOCUS={
+assess:{label:'Assessment and vital signs',std:[4],
+ 1:['measure and record vital signs accurately for the patients I\u2019m allocated, and explain what each result tells me','my buddy RN has checked my readings on at least three shifts, and I can explain the normal ranges and the local observation chart'],
+ 2:['complete a systematic head-to-toe assessment of my allocated patients early in each shift and identify changes from their baseline','I\u2019ve talked my findings through with my buddy RN each shift and they agree I\u2019ve picked up the key issues'],
+ 3:['complete focused assessments for my patient load, prioritise what I find and act on abnormal findings using the local escalation process','I\u2019ve reported my findings in a structured way every shift, and my facilitator has observed me at least once a week']},
+comm:{label:'Communication and handover',std:[2],
+ 1:['introduce myself, explain what I\u2019m doing and use open questions with every patient I care for','my buddy RN has observed two of my conversations each week and given me feedback'],
+ 2:['give a structured handover (ISBAR or the local format) for my allocated patients','I\u2019ve handed over at least one patient each shift and my buddy RN agrees nothing important was missed'],
+ 3:['give a concise, structured handover for my whole patient load, including concerns and anything outstanding','I\u2019ve led bedside handover for my patients at least three times a week with my buddy RN present']},
+doc:{label:'Documentation',std:[1],
+ 1:['write clear, objective entries on the charts I\u2019m allowed to complete, such as observation and fluid balance charts','my buddy RN has reviewed my entries each shift and I\u2019ve fixed any gaps they pointed out'],
+ 2:['write progress notes for my allocated patients using a structured format','my buddy RN has reviewed each note before it\u2019s entered and is suggesting fewer changes by the end of placement'],
+ 3:['document assessments, care and evaluation for my patient load accurately and on time','my notes meet the facility\u2019s documentation requirements when my buddy RN reviews them each shift']},
+meds:{label:'Medication safety (no doses)',std:[6],
+ 1:['explain the safety checks my buddy RN completes when giving medicines, and the purpose of each medicine my patient takes','I can explain the checks, and each medicine\u2019s class, purpose and key nursing considerations, for at least three medicines a shift'],
+ 2:['take part in medication administration only as my uni and the facility allow, under direct supervision, completing every safety check','my supervising RN has observed every administration, and I can explain why the person is getting each medicine and what to monitor'],
+ 3:['manage medication administration for my patient load under direct supervision, within my uni and facility scope','my supervising RN confirms I complete all the checks, monitoring and documentation on each round']},
+time:{label:'Time management and priorities',std:[5],
+ 1:['plan my shift with a brain sheet so I know when observations, hygiene, meals and other care are due','I\u2019ve completed my planned care on time on most shifts and reviewed my plan with my buddy RN at each break'],
+ 2:['use a brain sheet to plan care for my allocated patients, and reprioritise when things change','my buddy RN agrees with my priorities each shift, and I\u2019ve explained a change to my plan at least once a week'],
+ 3:['plan, prioritise and coordinate care for my patient load, asking for help early when I need it','my facilitator agrees I\u2019m managing the patient load we agreed on without missed care']},
+det:{label:'Recognising deterioration',std:[4,6],
+ 1:['recognise observations outside the expected range on the local observation chart and report them to my buddy RN straight away','I can explain the chart\u2019s escalation criteria to my buddy RN by the end of my first week, and I\u2019ve reported every abnormal set I recorded'],
+ 2:['recognise early signs of deterioration in my allocated patients and report them using ISBAR','my buddy RN has heard me give or practise at least two ISBAR escalations and given me feedback'],
+ 3:['recognise, escalate and document deterioration following the local escalation process','I can talk my facilitator through the escalation process, and I\u2019ve escalated any concerns promptly with my buddy RN']},
+pcc:{label:'Person-centred and culturally safe care',std:[2],
+ 1:['learn each patient\u2019s preferred name and ask what matters most to them today','I can tell my buddy RN one thing that matters to each patient I care for'],
+ 2:['involve my patients and their families in planning daily care, and respect their preferences','I\u2019ve handed over or documented at least one patient preference each shift'],
+ 3:['plan care in partnership with patients and families, including culturally safe care and interpreters or Aboriginal liaison services when needed','my facilitator has seen me involve patients in decisions, and I\u2019ve reflected on one example each week']},
+ipc:{label:'Infection prevention',std:[6],
+ 1:['follow the 5 Moments for Hand Hygiene and standard precautions every time','my buddy RN has observed my hand hygiene and PPE use, and I\u2019ve corrected anything they pointed out'],
+ 2:['use aseptic technique for the procedures I\u2019ve been taught, and choose the right PPE for transmission-based precautions','my supervising RN has observed my aseptic technique at least twice and given me feedback'],
+ 3:['apply infection prevention principles across my patient load, including aseptic technique and transmission-based precautions','my facilitator has observed my practice and I can explain the risk assessment behind my choices']},
+skill:{label:'A clinical skill',std:[6],
+ 1:['perform [name a skill you\u2019ve been taught and assessed at uni] safely under direct supervision','my supervising RN has observed me at least twice and given feedback, and I can explain each step and why it matters'],
+ 2:['perform [name a skill you\u2019ve been taught and assessed at uni] safely under direct supervision','my supervising RN has observed me at least twice and given feedback, and I can explain each step and why it matters'],
+ 3:['perform [name a skill you\u2019ve been taught and assessed at uni] safely and with less prompting, under supervision','my supervising RN has observed me at least three times and agrees I need less prompting each time']},
+edu:{label:'Patient education',std:[3],
+ 1:['explain to patients, in plain language, why we do common care such as observations or helping them mobilise','my buddy RN has heard me explain at least two things to patients and given me feedback'],
+ 2:['give simple health education about a condition or the purpose of a medicine, and check understanding with teach-back','I\u2019ve used teach-back at least once a week and my buddy RN has given me feedback'],
+ 3:['prepare and deliver discharge or self-care education with my patients, checking understanding with teach-back','my supervising RN has observed me give education at least twice and agrees the patient understood']}};
+var gf=$('#gl-form'),focusSel=$('#gl-focus');Object.keys(FOCUS).forEach(function(k){focusSel.appendChild(el('option',{value:k,text:FOCUS[k].label}));});
+O.persist(gf,'goal-inputs',suggest);
+function suggest(){var y=gf.year.value,f=FOCUS[gf.focus.value],w=+gf.weeks.value,area=gf.area.value,tw=w>=2?Math.ceil(w/2):1;
+  $('#gl-s').value=f[y][0];$('#gl-m').value=f[y][1];
+  $('#gl-a').value='My supervising RN and facilitator will support me. I\u2019ll check what my uni and the facility allow before I start, and ask for feedback each shift.';
+  $('#gl-r').value='it builds my practice on my '+(area==='other'?'':area+' ')+'placement and links to NMBA RN Standard'+(f.std.length>1?'s ':' ')+f.std.map(function(k){return k+' ('+STD[k]+')';}).join(' and ')+'.';
+  $('#gl-t').value=w>=2?'the end of week '+tw+', ready for my mid-placement review':'the end of my placement';}
+function goalText(g){return 'By '+g.t+', I will '+g.s.replace(/\.$/,'')+'. I\u2019ll know I\u2019ve done it when '+g.m.replace(/\.$/,'')+'. '+g.a+(g.a&&!/[.!?]$/.test(g.a)?'.':'')+' This matters because '+g.r.replace(/\.$/,'')+'.';}
+function goals(){return O.get('goals',[])||[];}
+function renderGoals(){var ul=$('#gl-list'),g=goals();ul.textContent='';if(!g.length)ul.appendChild(el('li',{class:'st-empty',style:'border:0;padding:0;background:none',text:'No goals yet. Build one and tap Add to my goals.'}));
+  g.forEach(function(it,i){ul.appendChild(el('li',null,[el('span',{class:'st-tag gold',text:'Goal '+(i+1)+' \u00b7 '+(FOCUS[it.focus]?FOCUS[it.focus].label:'Custom')}),el('p',{style:'font-weight:400;margin-top:6px',text:goalText(it)}),el('div',{class:'st-actions'},[
+   el('button',{class:'st-btn small ghost',type:'button',text:'Edit',onclick:function(){['s','m','a','r'].forEach(function(k){$('#gl-'+k).value=it[k];});$('#gl-t').value=it.t;O.set('goals',goals().filter(function(x){return x.id!==it.id;}));renderGoals();$('#gl-fields').scrollIntoView({behavior:'smooth',block:'center'});O.status($('#gl-status'),'Editing. Tap Add to my goals to save it again.');}}),
+   el('button',{class:'st-btn small ghost',type:'button',text:'Copy',onclick:function(){O.copy(goalText(it),$('#gl-status'));}}),
+   el('button',{class:'st-btn small danger',type:'button',text:'Delete',onclick:function(){if(confirm('Delete this goal?')){O.set('goals',goals().filter(function(x){return x.id!==it.id;}));renderGoals();}}})])]));});
+  var po=$('#gl-printout');po.textContent='';po.appendChild(el('h2',{text:'My learning goals'}));g.forEach(function(it,i){po.appendChild(el('div',{class:'st-print-answer'},[el('h3',{text:'Goal '+(i+1)}),document.createTextNode(goalText(it))]));});po.appendChild(el('p',{class:'st-print-url',text:'Made with oznursehub.com/placement-prep.html'}));}
+$('#gl-add').addEventListener('click',function(){var g={id:O.uid(),focus:gf.focus.value,s:$('#gl-s').value.trim(),m:$('#gl-m').value.trim(),a:$('#gl-a').value.trim(),r:$('#gl-r').value.trim(),t:$('#gl-t').value.trim()};if(!g.s){O.status($('#gl-status'),'Add what you will do first.');return;}var all=goals();all.push(g);O.set('goals',all);renderGoals();O.status($('#gl-status'),'Added to your goals.');});
+$('#gl-reset').addEventListener('click',suggest);
+$('#gl-copy').addEventListener('click',function(){var g=goals();if(!g.length){O.status($('#gl-status'),'No goals to copy yet.');return;}O.copy('My learning goals\n\n'+g.map(function(it,i){return (i+1)+'. '+goalText(it);}).join('\n\n'),$('#gl-status'));});
+$('#gl-print').addEventListener('click',function(){if(!goals().length){O.status($('#gl-status'),'Add a goal first, then print.');return;}O.printSection($('#goals'));});
+suggest();renderGoals();
+/* ---------- 3. First week ---------- */
+var WEEK=[
+{title:'Before you start',items:[
+{id:'p1',text:'Uni compliance done and uploaded',note:'For example immunisations, police check, working with children check and any facility forms. Your uni tells you what\u2019s needed.'},
+{id:'p2',text:'Read the facility\u2019s orientation information or student pack'},
+{id:'p3',text:'Know your shift times, where to go and who to ask for on day one'},
+{id:'p4',text:'Plan travel and parking. Do a practice run if you can.'},
+{id:'p5',text:'Set two or three learning goals',note:'Use the goals builder above.'},
+{id:'p6',text:'Revise common conditions and medicines for this area'}]},
+{title:'The night before',items:[
+{id:'n1',text:'Uniform, student ID and enclosed shoes ready'},
+{id:'n2',text:'Fob watch, pens, a small notebook and brain sheets'},
+{id:'n3',text:'Lunch, water bottle and anything personal you need'},
+{id:'n4',text:'Facilitator\u2019s and ward\u2019s phone numbers saved'}]},
+{title:'Day one',items:[
+{id:'d1',text:'Meet your supervising RN and facilitator. Share your year level and goals.'},
+{id:'d2',text:'Talk through your scope: what you\u2019ve been taught and assessed, and what the facility allows'},
+{id:'d3',text:'Find the emergency trolley, oxygen, suction, call bells and emergency buzzers'},
+{id:'d4',text:'Learn how to call for help in an emergency and how the rapid response system works here'},
+{id:'d5',text:'Find fire exits, alarms and the evacuation point'},
+{id:'d6',text:'Find hand hygiene stations and PPE'},
+{id:'d7',text:'Find out where policies and procedures are kept'},
+{id:'d8',text:'Check break times and who to tell when you leave the ward'},
+{id:'d9',text:'Ask how handover works on this ward'}]},
+{title:'Week one',items:[
+{id:'w1',text:'Put your mid-placement and final assessment dates in your calendar'},
+{id:'w2',text:'Ask for feedback at least once a shift'},
+{id:'w3',text:'Write a short reflection after each shift',note:'Use the feedback reflection below.'},
+{id:'w4',text:'Review your goals with your facilitator at the end of the week'},
+{id:'w5',text:'Look after yourself: sleep, food and someone to debrief with'}]}];
+var wk=O.checklist($('#wk-root'),'week1',WEEK,$('#wk-progress'));
+$('#wk-reset').addEventListener('click',function(){if(confirm('Untick everything on this checklist?'))wk.reset();});
+$('#wk-print').addEventListener('click',function(){O.printSection($('#week1'));});
+/* ---------- 4. Scope by year ---------- */
+var YEAR={1:'First placements often focus on fundamental care, communication, safety and basic assessment such as vital signs, with close supervision.',2:'Second-year placements often build on assessment and care planning. Many courses introduce more procedures and medication administration at this stage, under supervision.',3:'Final-year placements often focus on consolidating skills, caring for a small group of patients under supervision, and getting ready to practise as an RN.'};
+function renderYear(){var y=($('input[name=scyear]:checked')||{}).value||'2',box=$('#sc-focus');box.textContent='';
+  box.appendChild(el('p',{class:'st-when',text:'Year '+y+': a common focus'}));box.appendChild(el('p',{style:'margin:4px 0 8px;font-size:16px',text:YEAR[y]}));
+  box.appendChild(el('p',{class:'st-help',text:'This is a general pattern only, and courses differ. Your course outline, placement handbook, facilitator and the facility\u2019s policies decide what you can do. If you\u2019re unsure, ask before you act.'}));O.set('scope-year',y);}
+var sy=O.get('scope-year','2');$$('input[name=scyear]').forEach(function(r){r.checked=r.value===sy;r.addEventListener('change',renderYear);});renderYear();
+var SKILLS=['Vital signs','Blood glucose level','Neurovascular observations','Pain assessment','Fluid balance chart','Personal hygiene care','Pressure injury prevention','Moving and mobility aids','Falls risk assessment','Oral medicines','Subcutaneous injections','Intramuscular injections','Monitoring IV fluids','Simple wound care (aseptic technique)','Urinary catheter care','Enteral feeding care','12-lead ECG','Progress notes','Clinical handover','Admission or discharge'];
+var scope=O.get('scope',null)||{skills:SKILLS.map(function(s){return {n:s};})};
+function renderScope(){var tb=$('#sc-body');tb.textContent='';scope.skills.forEach(function(s,i){var tr=el('tr',null,[el('td',{text:s.n})]);['u','f','d'].forEach(function(k,j){var cb=el('input',{type:'checkbox','aria-label':s.n+': '+['taught and assessed at uni','facility allows','done with supervision'][j]});cb.checked=!!s[k];cb.addEventListener('change',function(){s[k]=cb.checked;O.set('scope',scope);});tr.appendChild(el('td',{class:'c'},[cb]));});tb.appendChild(tr);});}
+$('#sc-addbtn').addEventListener('click',function(){var v=$('#sc-new').value.trim();if(!v)return;scope.skills.push({n:v});O.set('scope',scope);$('#sc-new').value='';renderScope();});
+$('#sc-new').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();$('#sc-addbtn').click();}});
+$('#sc-reset').addEventListener('click',function(){if(confirm('Reset your scope tracker? This removes your ticks and any skills you added.')){scope={skills:SKILLS.map(function(s){return {n:s};})};O.set('scope',scope);renderScope();}});
+$('#sc-print').addEventListener('click',function(){O.printSection($('#scope'));});
+renderScope();
+/* ---------- 5. Reflection ---------- */
+var RATE=[['','Not rated'],['na','N/A: not assessed yet'],['1','1: expected behaviours not performed'],['2','2: below the satisfactory standard'],['3','3: satisfactory (pass) standard'],['4','4: proficient standard'],['5','5: excellent standard']];
+var HINT={1:'evidence, policy and the law; reflection; documentation; culture and ethics',2:'communication, boundaries, advocacy, teamwork',3:'feedback, self-care, health education, accountability',4:'systematic, holistic assessment; interpreting findings',5:'planning care with the person and team',6:'safe care within scope, supervision and delegation, raising concerns',7:'checking outcomes and changing the plan'};
+var rs=$('#rf-stds');Object.keys(STD).forEach(function(k){var sel=el('select',{name:'rate'+k});RATE.forEach(function(r){sel.appendChild(el('option',{value:r[0],text:r[1]}));});
+  rs.appendChild(el('details',{class:'st-acc rf-std'},[el('summary',null,['Standard '+k+': '+STD[k],el('small',{text:HINT[k]})]),el('div',{class:'st-form'},[el('label',{class:'st-field'},[el('span',{text:'My self-rating'}),sel]),el('label',{class:'st-field'},[el('span',{text:'Evidence: an example from this placement'}),el('textarea',{name:'ev'+k,rows:'2'})]),el('label',{class:'st-field'},[el('span',{text:'My next step'}),el('textarea',{name:'nx'+k,rows:'2'})])])]));});
+var rf=$('#rf-form'),rfDraft=O.persist(rf,'reflection-draft');
+function rfData(){var d={};$$('[name]',rf).forEach(function(f){d[f.name]=f.value;});return d;}
+function rfText(d){var L=['Placement feedback reflection'];[['area','Placement'],['week','Week'],['type','Type'],['from','Feedback from']].forEach(function(x){if(d[x[0]])L.push(x[1]+': '+d[x[0]]);});if(d.fb)L.push('\nFeedback: '+d.fb);
+  Object.keys(STD).forEach(function(k){var r=d['rate'+k],e=d['ev'+k],n=d['nx'+k];if(!r&&!e&&!n)return;var lab=(RATE.filter(function(x){return x[0]===r;})[0]||['',''])[1];L.push('\nStandard '+k+' ('+STD[k]+')'+(r?'\nSelf-rating: '+lab:'')+(e?'\nEvidence: '+e:'')+(n?'\nNext step: '+n:''));});
+  [['what','What happened?'],['sowhat','So what?'],['nowwhat','Now what?'],['well','What I\u2019ve done well'],['strat','Strategies to keep improving'],['qs','Questions for my facilitator']].forEach(function(x){if(d[x[0]])L.push('\n'+x[1]+'\n'+d[x[0]]);});return L.join('\n');}
+function rfSet(d){$$('[name]',rf).forEach(function(f){f.value=d[f.name]||'';});rfDraft.save();}
+function rfList(){return O.get('reflections',[])||[];}
+function renderRf(){var ul=$('#rf-list'),l=rfList();ul.textContent='';if(!l.length)ul.appendChild(el('li',{class:'st-empty',style:'border:0;padding:0;background:none',text:'Nothing saved yet.'}));
+  l.forEach(function(it){ul.appendChild(el('li',null,[el('p',{text:(it.d.type||'Reflection')+(it.d.area?' \u00b7 '+it.d.area:'')+(it.d.week?' \u00b7 '+it.d.week:'')}),el('span',{class:'st-count',text:'Saved '+new Date(it.at).toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'})}),el('div',{class:'st-actions'},[
+   el('button',{class:'st-btn small ghost',type:'button',text:'Open',onclick:function(){rfSet(it.d);rf.scrollIntoView({behavior:'smooth',block:'start'});O.status($('#rf-status'),'Opened a saved reflection. Save a copy again if you change it.');}}),
+   el('button',{class:'st-btn small ghost',type:'button',text:'Copy',onclick:function(){O.copy(rfText(it.d),$('#rf-status'));}}),
+   el('button',{class:'st-btn small danger',type:'button',text:'Delete',onclick:function(){if(confirm('Delete this saved reflection?')){O.set('reflections',rfList().filter(function(x){return x.id!==it.id;}));renderRf();}}})])]));});}
+$('#rf-save').addEventListener('click',function(){var d=rfData();if(!Object.keys(d).some(function(k){return d[k]&&k!=='type';})){O.status($('#rf-status'),'Write something first.');return;}var l=rfList();l.unshift({id:O.uid(),at:Date.now(),d:d});O.set('reflections',l);renderRf();O.status($('#rf-status'),'Saved a copy on this device.');});
+$('#rf-new').addEventListener('click',function(){if(confirm('Start a new reflection? Save a copy first if you want to keep this one.'))rfSet({});});
+$('#rf-copy').addEventListener('click',function(){O.copy(rfText(rfData()),$('#rf-status'));});
+$('#rf-print').addEventListener('click',function(){$$('details.rf-std',rf).forEach(function(d){var k=d.querySelector('select').name.slice(4),dd=rfData();if(dd['rate'+k]||dd['ev'+k]||dd['nx'+k])d.open=true;});O.printSection($('#reflect'));});
+renderRf();
+})();
+</script>
+</body></html>
