@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v20-quickwins';
+const CACHE = 'oznurse-v25-publish-oct';
 
 const CORE_FILES = [
   './',
@@ -16,6 +16,10 @@ const CORE_FILES = [
   './learning-data.js',
   './medication-of-the-day.html',
   './manifest-motd.json',
+  './student-to-rn.html',
+  './placement-prep.html',
+  './student-tools.css',
+  './student-tools.js',
   './hero-nursing-v2.webp',
   './quickref.html',
   './progressnote.html',
