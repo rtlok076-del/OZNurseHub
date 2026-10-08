@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <title>Ward Medications Quiz</title>
@@ -171,6 +171,7 @@
   }
   .name-input::placeholder { color: var(--cream-muted); }
   .name-input:focus { border-color: rgba(82,183,136,0.6); background: rgba(82,183,136,0.05); }
+  .name-note { font-size: 13px; line-height: 1.55; color: #4a5568; margin-top: 10px; }
 
   .start-btn {
     width: 100%;
@@ -502,7 +503,7 @@
 <div id="landing" class="screen active">
   <div class="inner">
     <div class="landing-top">
-    <a href="about.html" class="back-link">About OzNurse Hub</a><span class="dot-sep">·</span><a href="fables.html" class="back-link">Fables</a>
+    <a href="about.html" class="back-link">About OzNurseHub</a><span class="dot-sep">·</span><a href="fables.html" class="back-link">Fables</a>
       <a class="back-link" href="index.html">← Hub</a>
       <span class="dot-sep">·</span>
       <span class="back-link" style="cursor:default;">Medications Quiz</span>
@@ -521,12 +522,13 @@
     </div>
 
     <div class="name-section">
-      <label class="name-label" for="nameInput">Your name</label>
-      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" onkeydown="if(event.key==='Enter') beginQuiz()">
-      <div id="nameErr" style="color:#E87A7A;font-size:13px;font-weight:600;margin-top:8px;display:none;">⚠️ Please enter your name to continue.</div>
+      <label class="name-label" for="nameInput">Your name (optional)</label>
+      <input class="name-input" id="nameInput" type="text" placeholder="Enter your name…" aria-describedby="nameNote" onkeydown="if(event.key==='Enter') beginQuiz()">
+      <p class="name-note" id="nameNote">🔒 When you finish, your score, the date and time, and the name you enter (or “Anonymous” if you leave it blank) are sent to a Google Sheet kept by OzNurseHub. Leave it blank or use a nickname if you’d rather not share your name.</p>
     </div>
 
     <button class="start-btn" onclick="beginQuiz()">Start Quiz →</button>
+    <p class="last-reviewed" style="font-size:12px;color:#4a5568;text-align:center;margin-top:14px;">Last reviewed: October 2026</p>
   </div>
 </div>
 
@@ -567,12 +569,12 @@ let studentName = '', current = 0, score = 0, answered = [];
 let dragSrc = null, selectedDrug = null;
 
 const questions = [
-  { type:'tf', section:'💊 Analgesics', text:'The maximum recommended daily dose of paracetamol for a healthy adult in Australia is 4 g (8 × 500 mg tablets).', answer:true, explanation:'The standard maximum is 4 g/day for adults. Dose reduction is required in liver impairment, low body weight (<50 kg), and chronic alcohol use (AMH 2024).' },
+  { type:'tf', section:'💊 Analgesics', text:'Paracetamol has a maximum daily limit, and paracetamol from ALL sources (including combination cold-and-flu or pain products) counts towards it.', answer:true, explanation:'Paracetamol is in many combination products, so doubling up is a common cause of accidental overdose. Check the total daily amount from every source against the medication chart and current references (AMH, product information). Lower limits may apply in liver impairment, low body weight, malnutrition and regular alcohol use.' },
   { type:'tf', section:'💊 Analgesics', text:'NSAIDs such as ibuprofen are generally safe to administer to patients with known kidney disease.', answer:false, explanation:'NSAIDs reduce blood flow to the kidneys and can worsen kidney disease. Always check with the medical or pharmacy team before giving NSAIDs to patients with kidney problems, heart failure, or dehydration.' },
   { type:'tf', section:'🩸 Anticoagulants', text:'Patients taking warfarin require regular blood tests to monitor their INR (International Normalised Ratio).', answer:true, explanation:'Warfarin is a high-risk medication with a narrow therapeutic range. Regular INR monitoring is essential. Always check that INR results are reviewed before administering warfarin.' },
   { type:'tf', section:'❤️ Cardiac', text:"Before administering a beta-blocker such as metoprolol, a nurse should always check the patient's heart rate.", answer:true, explanation:"Beta-blockers slow the heart rate. Always check the patient's heart rate and blood pressure before giving them. If the heart rate is lower than the set parameter, hold the dose and notify the treating team." },
-  { type:'fill', section:'💊 Analgesics', text:'When using opioids for acute pain, the opioid reversal agent administered IV in an emergency is ________. (Hint: starts with N, 9 letters)', answer:'naloxone', altAnswer:null, explanation:'Naloxone (Narcan) is a competitive opioid antagonist. Standard adult dose is 200–400 mcg IV/IM, repeated every 2–3 min as needed. Duration is shorter than most opioids — monitor closely for re-narcotisation.' },
-  { type:'fill', section:'🩸 Anticoagulants', text:'The low-molecular-weight heparin most commonly used for VTE treatment in Australian hospitals is ________ (Clexane). (Hint: starts with E)', answer:'enoxaparin', altAnswer:null, explanation:'Enoxaparin (Clexane) is the standard LMWH in Australia. Treatment dose for VTE is 1.5 mg/kg SC daily (or 1 mg/kg BD). Dose adjust for renal impairment (eGFR < 30).' },
+  { type:'fill', section:'💊 Analgesics', text:'When using opioids for acute pain, the opioid reversal agent administered IV in an emergency is ________. (Hint: starts with N, 9 letters)', answer:'naloxone', altAnswer:null, explanation:'Naloxone (Narcan) is a competitive opioid antagonist, given and repeated according to your local protocol. It wears off sooner than most opioids, so monitor closely for returning sedation and respiratory depression (re-narcotisation).' },
+  { type:'fill', section:'🩸 Anticoagulants', text:'The low-molecular-weight heparin most commonly used for VTE treatment in Australian hospitals is ________ (Clexane). (Hint: starts with E)', answer:'enoxaparin', altAnswer:null, explanation:'Enoxaparin (Clexane) is the standard LMWH in Australia. Prevention and treatment doses differ and treatment doses are weight-based, so always check the chart, the patient\'s current weight and kidney function (eGFR) — dose adjustment is needed in significant renal impairment.' },
   { type:'fill', section:'🦠 Antibiotics', text:'Before administering any antibiotic, a nurse must always check for patient ________. (Hint: starts with A)', answer:'allergies', altAnswer:'allergy', explanation:"Checking for allergies before giving any antibiotic is a critical patient safety step. Always verify in the patient's chart and ask the patient directly. Document and escalate any known allergies immediately." },
   { type:'fill', section:'❤️ Cardiac', text:'The key difference between spironolactone and furosemide is that spironolactone retains ________, while furosemide causes its loss. (Hint: starts with P)', answer:'potassium', altAnswer:null, explanation:'Spironolactone is a potassium-sparing diuretic. Furosemide is a loop diuretic that flushes out potassium along with excess fluid. Patients on furosemide often need potassium monitoring or supplements.' },
   { type:'match', section:'🩸 Anticoagulants & 💊 Analgesics', text:'Match each drug to its primary ward indication:', pairs:[{drug:'Enoxaparin',indication:'DVT/PE treatment'},{drug:'Warfarin',indication:'Atrial fibrillation anticoagulation'},{drug:'Celecoxib',indication:'Inflammatory pain (COX-2 selective)'},{drug:'Tramadol',indication:'Moderate pain (opioid + SNRI)'}] },
@@ -586,10 +588,7 @@ function showScreen(id) {
 }
 
 function beginQuiz() {
-  const n = document.getElementById('nameInput').value.trim();
-  if (!n) { document.getElementById('nameErr').style.display='block'; return; }
-  studentName = n;
-  document.getElementById('nameErr').style.display = 'none';
+  studentName = document.getElementById('nameInput').value.trim();
   current = 0; score = 0; answered = new Array(questions.length).fill(null);
   showScreen('quiz');
   renderQ();

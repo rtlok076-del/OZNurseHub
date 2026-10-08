@@ -1,5 +1,5 @@
-// OzNurse Hub — Service Worker
-const CACHE = 'oznurse-v17-elegant';
+// OzNurseHub — Service Worker
+const CACHE = 'oznurse-v18-accuracy';
 
 const CORE_FILES = [
   './',
