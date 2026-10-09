@@ -19,6 +19,11 @@ body.renovated main.main > * {
   max-width: 100%;
 }
 body.renovated .sidebar {
+  /* Legacy pages set a viewport-height rail; horizontal navigation must size to its content. */
+  height: auto !important;
+  min-height: 0;
+  max-height: none;
+  align-items: center;
   position: relative !important;
   inset: auto !important;
   width: auto !important;
@@ -38,6 +43,8 @@ body.renovated .sidebar {
   z-index: 1;
 }
 body.renovated .sidebar-item {
+  height: auto;
+  align-self: center;
   width: auto;
   flex: 0 0 auto;
   padding: 11px 15px;
@@ -56,7 +63,9 @@ body.renovated .sidebar-item.active {
   border-color: var(--teal);
   color: var(--teal);
 }
-body.renovated .sidebar :is(.sb-divider, .sb-section-label, .sb-icon) {
+body.renovated
+  .sidebar
+  :is(.sb-divider, .sb-section-label, .sb-icon, .sb-brand-note) {
   display: none;
 }
 body.renovated .sidebar-overlay {
