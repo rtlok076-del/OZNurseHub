@@ -1,0 +1,22 @@
+/* Only decorative presentation changes; content always remains in document flow. */
+.motion-reveal {
+  opacity: var(--reveal-opacity, 1);
+  transform: translateY(var(--reveal-shift, 0px));
+}
+.motion-reveal:focus-within,
+.motion-reveal:target {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+@media print {
+  .motion-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
