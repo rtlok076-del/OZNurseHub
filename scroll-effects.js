@@ -3,7 +3,22 @@
   "use strict";
   if (!("IntersectionObserver" in window)) return;
   const preference = matchMedia("(prefers-reduced-motion: reduce)");
-  const selector = "h1,h2,h3,.path-card,.section-lead,.hero-art,.principles";
+  const selector = [
+    ".home-intro",
+    ".app-welcome",
+    ".page-header",
+    ".page-hero",
+    ".st-hero",
+    ".md-hero",
+    ".landing-hero",
+    "h1",
+    "h2",
+    "h3",
+    ".path-card",
+    ".section-lead",
+    ".hero-art",
+    ".principles",
+  ].join(",");
   const excluded =
     'header,nav,footer,form,dialog,[role="dialog"],[data-no-scroll-effects],.modal,canvas';
   const targets = new Set(),
@@ -11,6 +26,10 @@
   let frame = 0,
     scanPending = false;
   const clamp = (value) => Math.max(0, Math.min(1, value));
+  const ease = (value) => {
+    const t = clamp(value);
+    return t * t * (3 - 2 * t);
+  };
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(({ target, isIntersecting }) => {
@@ -28,17 +47,19 @@
     // Read layout before making style changes.
     const values = [...nearby].map((element) => {
       const rect = element.getBoundingClientRect();
+      // Use the actual rendered translation: hover and keyboard focus may override it.
+      const transform = getComputedStyle(element).transform;
       const shift =
-        parseFloat(element.style.getPropertyValue("--reveal-shift")) || 0;
-      const entrance = clamp(
-        (height - (rect.top - shift)) / Math.min(110, height * 0.15),
-      );
-      const exit = clamp((rect.bottom - shift) / Math.min(80, height * 0.1));
+        transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
+      const entrance = ease((height - (rect.top - shift)) / (height * 0.3));
+      // Start fading while a meaningful part of the item is still on screen.
+      const exitRange = Math.min(Math.max(rect.height, 160), height * 0.4);
+      const exit = ease((rect.bottom - shift) / exitRange);
       const visibility = Math.min(entrance, exit);
       return {
         element,
-        opacity: 0.25 + 0.75 * visibility,
-        shift: 12 * (1 - entrance) - 8 * (1 - exit),
+        opacity: visibility,
+        shift: 20 * (1 - entrance) - 12 * (1 - exit),
       };
     });
     values.forEach(({ element, opacity, shift }) => {

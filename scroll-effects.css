@@ -4,7 +4,8 @@
   transform: translateY(var(--reveal-shift, 0px));
 }
 .motion-reveal:focus-within,
-.motion-reveal:target {
+.motion-reveal:target,
+.motion-reveal:has(:target) {
   opacity: 1 !important;
   transform: none !important;
 }
