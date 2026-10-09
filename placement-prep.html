@@ -131,6 +131,9 @@
 }
 </style>
 <link rel="stylesheet" href="scroll-effects.css">
+<link rel="stylesheet" href="site-theme.css">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="app-icon-180.png">
 </head>
 <body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 <main class="renovation-main st-main" id="content">
@@ -238,7 +241,7 @@
 <ul class="st-list"><li>Medicines that need extra checks or are legally restricted, such as Schedule 8 medicines</li><li>Intravenous medicines, fluids and blood products</li><li>Acting as a second checker</li><li>Taking verbal or phone orders</li><li>Electronic records and logins</li><li>Invasive devices and higher-risk procedures</li></ul>
 </div>
 <div class="st-panel"><h3>My scope tracker</h3><p class="st-help">Tick as you confirm each one. Saved on this device. Add skills from your uni's list. To record each time you practise a skill, use the <a href="clinical-skills-logbook.html">clinical skills logbook</a>.</p>
-<div style="overflow-x:auto;margin-top:12px"><table class="sc-table"><thead><tr><th scope="col">Skill</th><th scope="col" class="c">Taught &amp; assessed at uni</th><th scope="col" class="c">Facility allows</th><th scope="col" class="c">Done with supervision</th></tr></thead><tbody id="sc-body"></tbody></table></div>
+<div style="overflow-x:auto;margin-top:12px"><div class="table-scroll" tabindex="0" role="region" aria-label="Scope checklist table"><table class="sc-table"><thead><tr><th scope="col">Skill</th><th scope="col" class="c">Taught &amp; assessed at uni</th><th scope="col" class="c">Facility allows</th><th scope="col" class="c">Done with supervision</th></tr></thead><tbody id="sc-body"></tbody></table></div></div>
 <div class="sc-add st-noprint"><input type="text" id="sc-new" placeholder="Add a skill" aria-label="Add a skill"><button class="st-btn small" type="button" id="sc-addbtn">Add</button></div>
 <div class="st-actions"><button class="st-btn ghost" type="button" id="sc-print">Print my tracker</button><button class="st-btn danger" type="button" id="sc-reset">Reset tracker</button></div>
 </div>
@@ -467,4 +470,5 @@ renderRf();
 })();
 </script>
 <script src="scroll-effects.js"></script>
+<script src="app-shell.js"></script>
 </body></html>
