@@ -79,8 +79,8 @@
         "Your logbook has been converted to structured skill records. Previous reflections, names, custom skills and other free text have been removed. " +
         ((raw.entries || []).length - records.length) +
         " unsupported or invalid entries were excluded.";
-      persist();
     }
+    if (raw && stored !== JSON.stringify({ v: 3, entries: records })) persist();
   } catch {
     loadFailed = true;
     $("#storage-status").textContent =
@@ -291,12 +291,24 @@
           .join("\r\n"),
     );
   });
-  $("#print").addEventListener("click", () => {
-    document.querySelectorAll("#progress details").forEach((details) => {
+  let printState = null;
+  window.addEventListener("beforeprint", () => {
+    if (printState) return;
+    printState = [...document.querySelectorAll("#progress details")].map(
+      (details) => ({ details, open: details.open }),
+    );
+    printState.forEach(({ details }) => {
       details.open = true;
     });
-    window.print();
   });
+  window.addEventListener("afterprint", () => {
+    if (!printState) return;
+    printState.forEach(({ details, open }) => {
+      details.open = open;
+    });
+    printState = null;
+  });
+  $("#print").addEventListener("click", () => window.print());
   $("#restore").addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (!file) return;

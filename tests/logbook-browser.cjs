@@ -72,24 +72,22 @@ const assert = require("node:assert/strict");
     ).includes("SECRET"),
     false,
   );
-  await page
-    .locator("#restore")
-    .setInputFiles({
-      name: "old.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(
-        JSON.stringify({
-          entries: [
-            {
-              skill: "as-vitals",
-              date: "2026-01-02",
-              level: "sup",
-              note: "SECRET",
-            },
-          ],
-        }),
-      ),
-    });
+  await page.locator("#restore").setInputFiles({
+    name: "old.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(
+      JSON.stringify({
+        entries: [
+          {
+            skill: "as-vitals",
+            date: "2026-01-02",
+            level: "sup",
+            note: "SECRET",
+          },
+        ],
+      }),
+    ),
+  });
   await page.waitForFunction(() =>
     document
       .querySelector("#backup-status")
@@ -104,6 +102,52 @@ const assert = require("node:assert/strict");
   for await (const chunk of stream) body += chunk;
   assert.equal(body.includes("SECRET"), false);
   assert.equal(JSON.parse(body).data.entries.length, 2);
+  // Even current-format records must not retain unsupported private fields.
+  await page.evaluate(() => {
+    const key = "ozn.skills-logbook.log";
+    const stored = JSON.parse(localStorage.getItem(key));
+    stored.entries[0].note = "PRIVATE_V3";
+    stored.profile = { name: "PRIVATE_V3" };
+    localStorage.setItem(key, JSON.stringify(stored));
+  });
+  await page.reload();
+  assert.equal(
+    await page.evaluate(() =>
+      localStorage.getItem("ozn.skills-logbook.log").includes("PRIVATE_V3"),
+    ),
+    false,
+  );
+  // PDF invokes native print lifecycle, without pressing the page's print button.
+  await page
+    .locator("#progress details")
+    .first()
+    .evaluate((element) => {
+      element.open = true;
+    });
+  const beforePrint = await page
+    .locator("#progress details")
+    .evaluateAll((elements) => elements.map((element) => element.open));
+  await page.evaluate(() =>
+    window.addEventListener("beforeprint", () => {
+      window.printExpanded = [
+        ...document.querySelectorAll("#progress details"),
+      ].every((element) => element.open);
+    }),
+  );
+  await page.pdf({
+    path: require("node:path").join(
+      require("node:os").tmpdir(),
+      "oznursehub-native-print-qa.pdf",
+    ),
+    format: "A4",
+  });
+  assert.equal(await page.evaluate(() => window.printExpanded), true);
+  assert.deepEqual(
+    await page
+      .locator("#progress details")
+      .evaluateAll((elements) => elements.map((element) => element.open)),
+    beforePrint,
+  );
   await page.evaluate(() => {
     Storage.prototype.setItem = () => {
       throw new Error("quota");
@@ -123,7 +167,7 @@ const assert = require("node:assert/strict");
   assert.deepEqual(errors, []);
   await browser.close();
   console.log(
-    "PASS: save/reload/edit, privacy schema, migration, import, export, storage failure, mobile overflow, reduced motion, browser errors",
+    "PASS: save/reload/edit, privacy schema, v3 disk sanitization, native print and state restoration, migration, import, export, storage failure, mobile overflow, reduced motion, browser errors",
   );
 })().catch((error) => {
   console.error(error);

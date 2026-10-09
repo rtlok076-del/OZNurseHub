@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v26-structured-skills';
+const CACHE = 'oznurse-v27-print-privacy';
 
 const CORE_FILES = [
   './',
