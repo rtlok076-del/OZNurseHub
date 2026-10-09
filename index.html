@@ -11,7 +11,7 @@
     />
     <link rel="icon" href="icon.svg" />
     <link rel="stylesheet" href="renovation.css" />
-    <link rel="stylesheet" href="scroll-story.css" />
+    <link rel="stylesheet" href="home-intro.css" />
     <link rel="canonical" href="https://oznursehub.com/" />
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -70,8 +70,9 @@
         "alternateName": "OzNurseHub"
       }
     </script>
+    <link rel="stylesheet" href="scroll-effects.css" />
   </head>
-  <body class="renovated" data-scroll-reveal>
+  <body class="renovated">
     <a class="elegant-skip" href="#content">Skip to content</a>
     <header class="elegant-header">
       <div class="elegant-nav">
@@ -99,90 +100,27 @@
       </div>
     </header>
     <main class="renovation-main" id="content">
-      <section
-        class="scroll-story"
-        aria-label="Learn, prepare and practise"
-        id="welcome"
-      >
-        <div class="story-stage">
-          <img
-            class="story-image"
-            src="hero-nursing-v2.webp"
-            width="1536"
-            height="1024"
-            alt="Four nursing students sharing notes"
-            fetchpriority="high"
-          />
-          <div class="story-shade" aria-hidden="true"></div>
-          <div class="story-copy">
-            <div class="story-panel" data-scene="0">
-              <p class="overline">01 / Learn with purpose</p>
-              <h1>
-                A little more knowledge.<br /><em>A lot more confidence.</em>
-              </h1>
-              <p>For the moments between the classroom and the ward.</p>
-              <a class="elegant-button" href="resources.html"
-                >Find your next step ↗</a
-              >
-            </div>
-            <div class="story-panel" data-scene="1">
-              <p class="overline">02 / Arrive prepared</p>
-              <h2>Your first day.<br /><em>A calmer start.</em></h2>
-              <p>
-                Make a plan. Know your scope. Take placement one step at a time.
-              </p>
-              <a class="elegant-button" href="placement-prep.html"
-                >Get placement-ready ↗</a
-              >
-            </div>
-            <div class="story-panel" data-scene="2">
-              <p class="overline">03 / Grow with practice</p>
-              <h2>Small steps.<br /><em>Real progress.</em></h2>
-              <p>
-                Practise what you know. Record your skills. See how far you have
-                come.
-              </p>
-              <a class="elegant-button" href="clinical-skills-logbook.html"
-                >Start your skills record ↗</a
-              >
-            </div>
-          </div>
-          <div class="story-controls" hidden>
-            <p class="story-hint">
-              Scroll to explore <span aria-hidden="true">↓</span>
-            </p>
-            <div
-              class="story-chapters"
-              role="group"
-              aria-label="Explore introduction"
-            >
-              <button
-                type="button"
-                data-chapter="0"
-                aria-label="Learn with purpose"
-                aria-pressed="true"
-              >
-                <span></span>01
-              </button>
-              <button
-                type="button"
-                data-chapter="1"
-                aria-label="Arrive prepared"
-                aria-pressed="false"
-              >
-                <span></span>02
-              </button>
-              <button
-                type="button"
-                data-chapter="2"
-                aria-label="Grow with practice"
-                aria-pressed="false"
-              >
-                <span></span>03
-              </button>
-            </div>
-            <a class="story-skip" href="#explore">Skip introduction ↓</a>
-          </div>
+      <section class="home-intro" aria-labelledby="welcome-title">
+        <img
+          class="home-intro-image"
+          src="hero-nursing-v2.webp"
+          width="1536"
+          height="1024"
+          alt="Four nursing students sharing notes"
+          fetchpriority="high"
+        />
+        <div class="home-intro-copy">
+          <p class="overline">
+            For Australian nursing students &amp; new graduates
+          </p>
+          <h1 id="welcome-title">
+            A little more knowledge.<br /><em>A lot more confidence.</em>
+          </h1>
+          <p>
+            Practical resources for the moments between the classroom and the
+            ward.
+          </p>
+          <a class="elegant-button" href="#explore">Explore the resources ↓</a>
         </div>
       </section>
       <div class="principles" id="explore">
@@ -351,6 +289,6 @@
       </div>
     </footer>
     <script src="renovation.js"></script>
-    <script src="scroll-story.js"></script>
+    <script src="scroll-effects.js"></script>
   </body>
 </html>

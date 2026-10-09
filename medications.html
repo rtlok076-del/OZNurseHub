@@ -25,7 +25,8 @@ main{max-width:1180px;margin:auto;padding:38px 26px 70px}.hero{position:relative
 .reference-links{margin-top:auto;padding-top:18px}.reference-links .permalink{display:block;padding:0;font-size:16px}.reference-help{display:block;font-size:13px;line-height:1.5;color:var(--muted);margin:6px 0 12px}.mims-link{font-size:14px}.reference-explainer{font-size:16px;background:#e4f4ed;border-radius:12px;padding:16px 20px;margin-bottom:24px}
 @media print{.reference-links{display:none}}
 </style>
-<link rel="stylesheet" href="renovation.css"></head><body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<link rel="stylesheet" href="renovation.css"><link rel="stylesheet" href="scroll-effects.css">
+</head><body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="nav-wrap"><a class="logo" href="index.html"><img src="icon.svg" alt="">Oz<span>Nurse</span>Hub</a><nav aria-label="Main navigation"><a href="index.html">Home</a><a href="quickref.html">Quick Ref</a><a href="tools.html">Tools</a><a href="medications.html" aria-current="page">Medications</a></nav></div></header>
 <span id="content" tabindex="-1"></span><main id="main">
@@ -57,4 +58,5 @@ document.getElementById('filters').hidden=false;search.addEventListener('input',
 function revealHash(){const target=document.getElementById(location.hash.slice(1));if(target?.tagName==='DETAILS')target.open=true;if(target?.classList.contains('medicine')&&(target.hidden||target.closest('.medicine-group').hidden)){search.value='';group.value='all';filter();target.scrollIntoView();}}
 window.addEventListener('hashchange',revealHash);
 filter();revealHash();})();
-</script><script src="renovation.js"></script></body></html>
+</script><script src="renovation.js"></script><script src="scroll-effects.js"></script>
+</body></html>
