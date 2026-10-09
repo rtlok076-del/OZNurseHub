@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v33-dark-theme';
+const CACHE = 'oznurse-v34-appearance-tip';
 
 const CORE_FILES = [
   './',

@@ -40,6 +40,73 @@
       : "system";
     apply();
   });
+  // Calendar date in the visitor's timezone, shared across pages in this browser.
+  function showAppearanceTip(select) {
+    const tipKey = "oznurse_appearance_tip_day";
+    const now = new Date();
+    const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+    let storage;
+    try {
+      storage = localStorage;
+      if (storage.getItem(tipKey) === today) return;
+      storage.setItem(tipKey, today);
+    } catch {
+      try {
+        storage = sessionStorage;
+        if (storage.getItem(tipKey) === today) return;
+        storage.setItem(tipKey, today);
+      } catch {
+        return; // Avoid repeating the tip on every page when storage is unavailable.
+      }
+    }
+    const header = document.querySelector(".elegant-header");
+    if (!header) return;
+    const tip = document.createElement("aside");
+    tip.className = "appearance-tip";
+    tip.setAttribute("aria-label", "Appearance tip");
+    const message = document.createElement("p");
+    message.textContent =
+      "Make yourself comfortable. Choose Light, Dark or System in Appearance. On mobile, open Menu to find it.";
+    const actions = document.createElement("div");
+    const show = document.createElement("button");
+    show.type = "button";
+    show.textContent = "Show me";
+    const dismiss = document.createElement("button");
+    dismiss.type = "button";
+    dismiss.textContent = "Got it";
+    function target() {
+      const toggle = document.querySelector(".elegant-toggle");
+      return toggle && getComputedStyle(toggle).display !== "none"
+        ? toggle
+        : select;
+    }
+    dismiss.addEventListener("click", () => {
+      tip.remove();
+      target().focus();
+    });
+    show.addEventListener("click", () => {
+      const toggle = document.querySelector(".elegant-toggle");
+      const menu = document.querySelector(".elegant-links");
+      if (
+        toggle &&
+        getComputedStyle(toggle).display !== "none" &&
+        !menu.classList.contains("open")
+      )
+        toggle.click();
+      tip.remove();
+      select.focus();
+    });
+    tip.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        tip.remove();
+        target().focus();
+      }
+    });
+    actions.append(show, dismiss);
+    tip.append(message, actions);
+    header.append(tip);
+  }
   document.addEventListener("DOMContentLoaded", () => {
     const menu = document.querySelector(".elegant-links");
     if (menu) {
@@ -66,6 +133,7 @@
       });
       label.append(select);
       menu.append(label);
+      showAppearanceTip(select);
     }
     apply();
   });
