@@ -1,0 +1,68 @@
+.st-section {
+  margin-top: 44px;
+}
+#progress details {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+#progress summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.skill-row span:last-child {
+  flex-shrink: 0;
+}
+.record {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+#storage-status {
+  color: #9c321f;
+}
+input,
+select {
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .skill-row {
+    display: block;
+  }
+  .skill-row span {
+    display: block;
+  }
+}
+@media print {
+  .elegant-header,
+  .elegant-footer,
+  .controls,
+  #skill-form,
+  button,
+  .elegant-skip {
+    display: none !important;
+  }
+  .renovation-main {
+    padding: 0;
+    max-width: none;
+  }
+  details > * {
+    display: block !important;
+  }
+  .st-section {
+    margin-top: 20px;
+  }
+  .record {
+    break-inside: avoid;
+  }
+}
