@@ -1,9 +1,18 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v29-natural-scroll';
+const CACHE = 'oznurse-v30-unified-app';
 
 const CORE_FILES = [
   './',
   './index.html',
+  './app.html',
+  './about.html',
+  './fables.html',
+  './app-home.css',
+  './app-shell.js',
+  './site-theme.css',
+  './app-icon-180.png',
+  './app-icon-192.png',
+  './app-icon-512.png',
   './resources.html',
   './learning-lab.html',
   './medications.html',

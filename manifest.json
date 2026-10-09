@@ -1,18 +1,41 @@
 {
   "name": "OzNurseHub",
   "short_name": "OzNurse",
-  "description": "Free resource hub for Australian nursing students",
-  "start_url": "./index.html",
+  "description": "Australian nursing resources, learning tools and your clinical skills record.",
+  "start_url": "/app.html",
   "display": "standalone",
-  "background_color": "#1a2332",
-  "theme_color": "#0a7c6e",
+  "background_color": "#f8f7f2",
+  "theme_color": "#155e53",
   "orientation": "any",
   "icons": [
     {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "id": "/index.html",
+  "scope": "/",
+  "lang": "en-AU",
+  "shortcuts": [
+    {
+      "name": "Skills logbook",
+      "url": "/clinical-skills-logbook.html"
+    },
+    {
+      "name": "Quick reference",
+      "url": "/quickref.html"
+    },
+    {
+      "name": "Learning lab",
+      "url": "/learning-lab.html"
     }
   ]
 }

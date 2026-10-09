@@ -1,0 +1,75 @@
+.app-welcome {
+  padding: 0 0 32px;
+  max-width: 720px;
+}
+.app-welcome h1 {
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px;
+}
+.app-welcome em {
+  color: var(--gold);
+  font-weight: 400;
+}
+.app-welcome > p:not(.overline) {
+  color: var(--muted);
+  max-width: 520px;
+}
+.app-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.app-grid .path-card {
+  min-height: 210px;
+}
+.app-browse {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  margin: 22px 0 44px;
+}
+.app-install {
+  padding: 30px;
+  background: var(--teal-pale);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.app-install h2 {
+  font-size: 30px;
+  margin: 0 0 14px;
+}
+.app-install h3 {
+  font-size: 20px;
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+.app-install-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  margin-top: 26px;
+}
+.app-install-grid p,
+.app-install-grid li {
+  font-size: 14px;
+}
+.app-install-grid ol {
+  padding-left: 20px;
+}
+.app-install-grid li {
+  margin-bottom: 8px;
+}
+@media (max-width: 700px) {
+  .app-grid,
+  .app-install-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-install {
+    padding: 24px 20px;
+  }
+  .app-grid .path-card {
+    min-height: 0;
+  }
+}
