@@ -1,0 +1,420 @@
+/* Deliberate surfaces and semantic colours; photos and illustrations keep their colours. */
+:root {
+  color-scheme: light;
+}
+.theme-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.theme-picker select {
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+}
+@media screen {
+  html[data-theme="dark"],
+  html[data-theme="dark"] body.renovated {
+    color-scheme: dark;
+    --paper: #111c19;
+    --light: #111c19;
+    --white: #1b2924;
+    --sand: #25352e;
+    --ink: #e8eee9;
+    --dark: #e8eee9;
+    --mid: #b4c4ba;
+    --muted: #b4c4ba;
+    --teal: #8cd6ba;
+    --teal-light: #a5e4cb;
+    --teal-pale: #243e33;
+    --border: #42584c;
+    --gold: #dfbe7f;
+    --pink: #8cd6ba;
+    --blue: #a9caff;
+    --blue-accent: #dfbe7f;
+    --blue-pale: #243445;
+    --tools: #8cd6ba;
+    --tools-light: #a5e4cb;
+    --tools-pale: #243e33;
+    --purple: #cbb7ed;
+    --purple-pale: #352d43;
+    --cream: #e8eee9;
+    --cream-soft: #b4c4ba;
+    --cream-muted: #b4c4ba;
+    --cream-faint: #243e33;
+    --navy: #111c19;
+    --navy-mid: #1b2924;
+    --green-accent: #8cd6ba;
+    --green-bright: #a5e4cb;
+    --green-pale: #243e33;
+    --warning-bg: #392f1d;
+    --warning-ink: #f1d59b;
+    --danger-bg: #402725;
+    --danger-ink: #ffb4aa;
+    --success-bg: #203c2e;
+    --success-ink: #a2dfb7;
+  }
+  html[data-theme="dark"] body.renovated {
+    background: var(--paper) !important;
+    color: var(--ink);
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.elegant-header, .elegant-toggle, .elegant-skip, .app-bottom-nav) {
+    background: var(--white) !important;
+    color: var(--ink) !important;
+  }
+  html[data-theme="dark"] body.renovated :is(input, select, textarea) {
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+    border-color: var(--border) !important;
+  }
+  html[data-theme="dark"] body.renovated ::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .resource,
+      .resource-card,
+      .tool-card,
+      .study-notes,
+      .progress-strip,
+      .lab-controls,
+      .choice,
+      .st-radios label,
+      .st-chipcheck label,
+      .qref-table,
+      .proc-table,
+      .med-table,
+      .lang-table,
+      .note-builder,
+      .note-field,
+      .flash-front,
+      .flash-btn,
+      .si-card,
+      .hero-art,
+      #save
+    ) {
+    background: var(--white) !important;
+    color: var(--ink);
+    border-color: var(--border) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.qref-table, .proc-table, .med-table, .lang-table)
+    td {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.qref-table, .proc-table, .med-table, .lang-table)
+    tr:nth-child(even)
+    td {
+    background: var(--paper);
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.qref-table, .proc-table, .med-table, .lang-table)
+    td.sub {
+    color: var(--muted);
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .hero-badge,
+      .tag,
+      .facts span,
+      .cover,
+      .note-builder-header,
+      .nf-example,
+      .st-jump a:hover,
+      .st-btn.ghost:hover,
+      .choice:hover:not(:disabled),
+      #quiz-feedback,
+      #save[aria-pressed="true"]
+    ) {
+    background: var(--teal-pale) !important;
+    color: var(--ink) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .overline,
+      .path-card .step,
+      .st-panel h4,
+      .st-when,
+      .practice-card dt,
+      .st-hero h1 em,
+      .renovation-hero h1 em
+    ) {
+    color: var(--gold);
+  }
+  html[data-theme="dark"] body.renovated .hero-art figcaption {
+    color: var(--muted);
+  }
+  /* Filled controls need dark lettering on the brighter mint accent. */
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .elegant-button,
+      .nav-feature,
+      .start-btn,
+      .primary-btn,
+      .calc-btn,
+      .st-btn,
+      .button,
+      .calc-tab.active,
+      .filter-btn.active,
+      .topic-chip.active
+    ) {
+    background: var(--teal) !important;
+    color: #10271e !important;
+    border-color: var(--teal) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.elegant-button.secondary, .st-btn.ghost, .button.secondary) {
+    background: transparent !important;
+    color: var(--teal) !important;
+    border-color: var(--border) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .st-safety,
+      .safety-notice,
+      .special-note,
+      .pending,
+      .blood-notice,
+      .app-offline,
+      .preview-notice,
+      .disclaimer,
+      .st-tag.gold,
+      #storage-warning,
+      #reset-panel
+    ) {
+    background: var(--warning-bg) !important;
+    color: var(--warning-ink) !important;
+    border-color: #9f8044 !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.blood-notice strong, .disclaimer-text) {
+    color: var(--warning-ink) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.alert-notice, .vad-notice, .choice.incorrect, .incorrect) {
+    background: var(--danger-bg) !important;
+    color: var(--danger-ink) !important;
+    border-color: #b26e63 !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.st-btn.danger, #storage-status, .incorrect .option-dot) {
+    color: var(--danger-ink) !important;
+  }
+  html[data-theme="dark"] body.renovated :is(.choice.correct, .correct) {
+    background: var(--success-bg) !important;
+    color: var(--success-ink) !important;
+    border-color: #6faa82 !important;
+  }
+  html[data-theme="dark"] body.renovated .correct .option-dot {
+    color: var(--success-ink) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(a, button, input, select, textarea, summary):focus-visible {
+    outline-color: var(--gold) !important;
+  }
+  html[data-theme="dark"] ::selection {
+    background: #8cd6ba;
+    color: #10271e;
+  }
+}
+@media (max-width: 700px) {
+  .theme-picker {
+    padding: 12px;
+    justify-content: space-between;
+  }
+}
+@media print {
+  .theme-picker {
+    display: none !important;
+  }
+}
+@media screen {
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .ce-checks label,
+      .ce-opt,
+      .bs-chip,
+      .bs-sheet,
+      .st-preview,
+      .filters,
+      .callout,
+      .skip
+    ) {
+    background: var(--white) !important;
+    color: var(--ink) !important;
+    border-color: var(--border) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .lab-safety,
+      .md-safety,
+      .safety,
+      .context,
+      .warn-notice,
+      .bs-warn,
+      .ce-z.y
+    ) {
+    background: var(--warning-bg) !important;
+    color: var(--warning-ink) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.ce-z.r, [style*="background:#fee2e2"]) {
+    background: var(--danger-bg) !important;
+    color: var(--danger-ink) !important;
+  }
+  html[data-theme="dark"] body.renovated .ce-z.p {
+    background: var(--purple-pale) !important;
+    color: var(--purple) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .ce-readback,
+      .reference-explainer,
+      .tip-notice,
+      [style*="background:#f8fafb"]
+    ) {
+    background: var(--teal-pale) !important;
+    color: var(--ink) !important;
+  }
+}
+@media screen {
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .ce-worry label,
+      .ce-chartwrap,
+      .ce-student,
+      .pills span,
+      [style*="background:white"]
+    ) {
+    background: var(--white) !important;
+    color: var(--ink) !important;
+  }
+  html[data-theme="dark"] body.renovated [style*="background:#f3e8ff"] {
+    background: var(--purple-pale) !important;
+    color: var(--purple) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .ce-sub,
+      .ce-case em,
+      .ce-when,
+      .bs-title small,
+      .bs-lab span,
+      .sc-table th,
+      .ozw-over,
+      .md-browser
+    ) {
+    color: var(--gold) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.name-note, .last-reviewed, .footer-note, .dot-sep) {
+    color: var(--muted) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .info-card-title,
+      .moment-num,
+      .dstat-num,
+      .s32-badge,
+      [style*="background:#f8fafb"] h2,
+      .seo-text-block h2,
+      [style*="background:#f8fafb"] a
+    ) {
+    color: var(--teal) !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(
+      .submit-btn,
+      .ozw-btn,
+      .filters button,
+      .topic-btn.active,
+      .abg-step-num,
+      .cycle-num,
+      .bs-grid th,
+      .st-star-grid b,
+      .gl-fields b,
+      .ce-letter > b,
+      .met-sheet th,
+      .ce-opt.best b,
+      .ce-step span
+    ) {
+    background: var(--teal) !important;
+    color: #10271e !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.st-btn.danger, .ce-result.r, .ce-tag.r) {
+    background: var(--danger-bg) !important;
+    color: var(--danger-ink) !important;
+    border-color: #b26e63 !important;
+  }
+  html[data-theme="dark"]
+    body.renovated
+    :is(.ce-result.y, .ce-tag.y, .isbar-letter) {
+    background: var(--warning-bg) !important;
+    color: var(--warning-ink) !important;
+  }
+  html[data-theme="dark"] body.renovated :is(.ce-result.p, .ce-tag.p) {
+    background: var(--purple-pale) !important;
+    color: var(--purple) !important;
+  }
+  html[data-theme="dark"] body.renovated .context strong {
+    color: var(--warning-ink);
+  }
+  html[data-theme="dark"] body.renovated [style*="color:#7f1d1d"] {
+    color: var(--danger-ink) !important;
+  }
+}
+@media screen {
+  html[data-theme="dark"] body.renovated :is(.md-hero em, .req) {
+    color: var(--gold) !important;
+  }
+  html[data-theme="dark"] body.renovated .ce-z b {
+    color: #fff;
+    background: #52665b;
+  }
+}
+@media screen {
+  html[data-theme="dark"] body.renovated .lang-table td.avoid {
+    background: var(--danger-bg) !important;
+    color: var(--danger-ink) !important;
+  }
+  html[data-theme="dark"] body.renovated .lang-table td.use {
+    background: var(--success-bg) !important;
+    color: var(--success-ink) !important;
+  }
+}
