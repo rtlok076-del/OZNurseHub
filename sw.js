@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v25-publish-oct';
+const CACHE = 'oznurse-v26-structured-skills';
 
 const CORE_FILES = [
   './',
@@ -24,6 +24,8 @@ const CORE_FILES = [
   './clinical-escalation.js',
   './clinical-skills-logbook.html',
   './clinical-skills-logbook.js',
+  './clinical-skills-logbook.css',
+  './skills-data.js',
   './hero-nursing-v2.webp',
   './quickref.html',
   './progressnote.html',
@@ -58,7 +60,7 @@ self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(
-        keys.filter(function (k) { return k !== CACHE; })
+        keys.filter(function (k) { return k.startsWith('oznurse-') && k !== CACHE; })
             .map(function (k) { return caches.delete(k); })
       );
     })
@@ -70,6 +72,8 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
   // Only handle GET requests
   if (e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) return;
   if (new URL(e.request.url).pathname.startsWith('/downloads/')) return;
   // The game's versioned bundles must not receive the site's HTML fallback.
   if (new URL(e.request.url).pathname.startsWith('/med-squad/')) return;
@@ -110,8 +114,8 @@ self.addEventListener('fetch', function (e) {
         }
         return res;
       }).catch(function () {
-        // Offline and not cached — return index as fallback
-        return caches.match('./index.html');
+        // Missing assets must not receive HTML as JavaScript or CSS.
+        return Response.error();
       });
     })
   );

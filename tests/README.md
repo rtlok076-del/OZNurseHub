@@ -1,0 +1,1 @@
+Run a local server from the repository root (`python -m http.server 8765 --bind 127.0.0.1`), then run `node tests/logbook-browser.cjs` with Playwright available. The test uses installed Microsoft Edge in headless mode. Screenshots are generated locally and ignored by Git.
