@@ -46,14 +46,20 @@ const fs = require("node:fs");
       .locator(".home-intro")
       .evaluate((e) => e.offsetHeight < innerHeight * 0.7),
   );
-  const before = await page
-    .locator(".home-intro")
-    .evaluate((e) => e.getBoundingClientRect().top);
+  const before = await page.locator(".home-intro").evaluate((e) => {
+    const transform = getComputedStyle(e).transform;
+    const shift =
+      transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
+    return e.getBoundingClientRect().top - shift;
+  });
   await page.evaluate(() => scrollTo({ top: 400, behavior: "instant" }));
   await page.waitForTimeout(80);
-  const after = await page
-    .locator(".home-intro")
-    .evaluate((e) => e.getBoundingClientRect().top);
+  const after = await page.locator(".home-intro").evaluate((e) => {
+    const transform = getComputedStyle(e).transform;
+    const shift =
+      transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
+    return e.getBoundingClientRect().top - shift;
+  });
   assert.ok(Math.abs(before - after - 400) < 2);
   assert.ok(
     await page
