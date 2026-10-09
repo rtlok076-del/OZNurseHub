@@ -418,3 +418,57 @@
     color: var(--success-ink) !important;
   }
 }
+
+/* A non-modal daily hint, anchored below the navigation without shifting content. */
+.appearance-tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: max(16px, calc((100vw - 1216px) / 2));
+  width: min(340px, calc(100vw - 32px));
+  padding: 18px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px #0003;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.appearance-tip::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 28px;
+  width: 10px;
+  height: 10px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  transform: rotate(45deg);
+}
+.appearance-tip p {
+  margin: 0 0 12px;
+}
+.appearance-tip > div {
+  display: flex;
+  gap: 10px;
+}
+.appearance-tip button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--teal-pale);
+  color: var(--teal);
+  cursor: pointer;
+  font-size: 14px;
+}
+.appearance-tip button:last-child {
+  background: transparent;
+  color: var(--muted);
+}
+@media print {
+  .appearance-tip {
+    display: none !important;
+  }
+}
