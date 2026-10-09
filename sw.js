@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v31-visible-fades';
+const CACHE = 'oznurse-v32-compact-navigation';
 
 const CORE_FILES = [
   './',

@@ -5,3 +5,4 @@ Run a local server from the repository root (`python -m http.server 8765 --bind 
 `node tests/theme-screens.cjs` checks overflow and browser errors on every content page and saves selected mobile/desktop screenshots.
 
 `node tests/visible-fades-browser.cjs` verifies that the whole homepage banner visibly fades while still on screen, reverses when scrolling back, and adds no page height.
+`node tests/navigation-layout-browser.cjs` checks section-menu and button heights across all pages at phone and desktop widths, plus keyboard access to off-screen menu links.
