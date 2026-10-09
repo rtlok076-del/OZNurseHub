@@ -66,3 +66,43 @@ select {
     break-inside: avoid;
   }
 }
+/* Comfortable, compact controls rather than full-width browser defaults. */
+#skill-form {
+  max-width: 860px;
+  margin-top: 24px;
+  display: grid;
+  gap: 20px;
+}
+#skill-form > .st-field,
+#skill-form > .st-two {
+  width: 100%;
+  max-width: 640px;
+}
+#skill-form .st-field {
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 500;
+}
+#skill-form :is(select, input[type="date"]) {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 2px 5px #00000008;
+}
+#skill-form select { padding-right: 32px; cursor: pointer; }
+#skill-form :is(select, input[type="date"]):hover { border-color: var(--teal); }
+#skill-form :is(select, input[type="date"]):focus-visible {
+  border-color: var(--teal);
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+#skill-form .st-actions { margin-top: 0; }
+#skill-form #status:empty { display: none; }
+@media print { #skill-form { display: none !important; } }
