@@ -6,3 +6,6 @@ Run a local server from the repository root (`python -m http.server 8765 --bind 
 
 `node tests/visible-fades-browser.cjs` verifies that the whole homepage banner visibly fades while still on screen, reverses when scrolling back, and adds no page height.
 `node tests/navigation-layout-browser.cjs` checks section-menu and button heights across all pages at phone and desktop widths, plus keyboard access to off-screen menu links.
+
+`node tests/dark-mode-browser.cjs` checks every page on mobile/desktop, saved and system appearance, cross-tab updates, storage restrictions, print restoration, and unchanged image colours.
+`node tests/dark-contrast-audit.cjs` checks text against solid ancestor backgrounds in dark mode (4.5:1); it does not replace visual checks of images, transparency, or gradients.

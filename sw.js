@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v32-compact-navigation';
+const CACHE = 'oznurse-v33-dark-theme';
 
 const CORE_FILES = [
   './',
@@ -10,6 +10,8 @@ const CORE_FILES = [
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
+  './theme.js',
+  './dark-theme.css',
   './app-icon-180.png',
   './app-icon-192.png',
   './app-icon-512.png',

@@ -2,6 +2,7 @@
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8">
+<script src="theme.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing Quick Reference — Vital Signs, Lung Pathologies, Medical Terms & PBS Drugs | OzNurseHub</title>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -231,6 +232,7 @@
 <link rel="stylesheet" href="renovation.css"><link rel="stylesheet" href="scroll-effects.css">
 <link rel="stylesheet" href="site-theme.css">
 <link rel="apple-touch-icon" href="app-icon-180.png">
+<link rel="stylesheet" href="dark-theme.css">
 </head>
 <body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 
@@ -243,7 +245,7 @@
       <div class="logo-text">Oz<span>Nurse</span>Hub</div>
     </a>
     <div style="display:flex;align-items:center;gap:1rem;">
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+
       <div class="header-breadcrumb">
         <a href="index.html">Home</a>
         <span>›</span>
@@ -591,21 +593,8 @@
 </footer>
 
 <script>
-  function toggleTheme() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    var newTheme = isDark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('oznurse_theme', newTheme);
-    document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
-  }
-  (function() {
-    var saved = localStorage.getItem('oznurse_theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      var btn = document.getElementById('themeToggle');
-      if (btn) btn.textContent = '☀️ Light';
-    }
-  })();
+
+
 
   function filterTerms(q) {
     var rows = document.querySelectorAll('#termsTable tbody tr');

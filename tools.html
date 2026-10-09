@@ -2,6 +2,7 @@
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8">
+<script src="theme.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools — Drug Calculator, Flashcards, ISBAR & Clinical Reasoning | OzNurseHub</title>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -364,6 +365,7 @@
 <link rel="stylesheet" href="renovation.css"><link rel="stylesheet" href="scroll-effects.css">
 <link rel="stylesheet" href="site-theme.css">
 <link rel="apple-touch-icon" href="app-icon-180.png">
+<link rel="stylesheet" href="dark-theme.css">
 </head>
 <body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 
@@ -386,7 +388,7 @@
       <a href="progressnote.html">Progress Note</a>
       <a href="about.html">About</a> · <a href="fables.html">Fables</a>
     </nav>
-    <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()">🌙 Dark</button>
+
   </div>
 </header>
 
@@ -745,29 +747,6 @@
 </footer>
 
 <script>
-// ── DARK MODE ──
-(function() {
-  if (localStorage.getItem('oznurse_theme') === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.getElementById('darkToggleBtn');
-      if (btn) btn.textContent = '☀️ Light';
-    });
-  }
-})();
-function toggleDark() {
-  var html = document.documentElement;
-  var btn = document.getElementById('darkToggleBtn');
-  if (html.getAttribute('data-theme') === 'dark') {
-    html.removeAttribute('data-theme');
-    localStorage.setItem('oznurse_theme', 'light');
-    btn.textContent = '🌙 Dark';
-  } else {
-    html.setAttribute('data-theme', 'dark');
-    localStorage.setItem('oznurse_theme', 'dark');
-    btn.textContent = '☀️ Light';
-  }
-}
 
 // ── CALCULATOR ──
 function setCalcMode(mode, btn) {
