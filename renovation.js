@@ -47,7 +47,7 @@ if (
   const preference = matchMedia("(prefers-reduced-motion: reduce)");
   const sections = [
     ...document.querySelectorAll(
-      ".renovation-main > section, .renovation-main > .principles",
+      ".renovation-main > .principles, .renovation-main > section:not(.scroll-story):not(:has(.path-grid)), .path-card",
     ),
   ];
   let observer;

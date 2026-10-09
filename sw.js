@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v27-print-privacy';
+const CACHE = 'oznurse-v28-scroll-story';
 
 const CORE_FILES = [
   './',
@@ -11,6 +11,8 @@ const CORE_FILES = [
   './downloads.css',
   './renovation.css',
   './renovation.js',
+  './scroll-story.js',
+  './scroll-story.css',
   './learning-lab.css',
   './learning-lab.js',
   './learning-data.js',
