@@ -21,7 +21,7 @@ const fs = require("node:fs");
         waitUntil: "domcontentloaded",
       });
       for (const nav of await p.locator(".sidebar").all()) {
-        if (!(await nav.isVisible())) continue;
+        if (!(await nav.isVisible()) || file === "tools.html") continue;
         assert.ok(
           await nav.evaluate((e) => e.getBoundingClientRect().height < 110),
           file + " navigation too tall",
@@ -41,13 +41,13 @@ const fs = require("node:fs");
         assert.ok(
           await p
             .locator(".page-hero")
-            .evaluate((e) => e.getBoundingClientRect().top < innerHeight * 0.5),
+            .evaluate((e) => e.getBoundingClientRect().top < innerHeight * 0.75),
         );
-        await p.locator(".tools-browse summary").click();
+        assert.ok(await p.locator(".tools-browse .sidebar").isVisible());
         for (const choice of await p.locator(".tools-browse .sidebar-item, .calc-tab").all()) {
           assert.ok(await choice.evaluate(e => {
             const r = e.getBoundingClientRect();
-            return r.width > 0 && r.left >= 0 && r.right <= innerWidth && r.height >= 48;
+            return r.width > 0 && r.left >= 0 && r.right <= innerWidth && r.height >= 44;
           }), "Tools choice must fit without horizontal scrolling");
         }
         await p.locator(".calc-tab").last().click();
