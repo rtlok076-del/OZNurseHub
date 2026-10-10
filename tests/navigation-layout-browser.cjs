@@ -41,10 +41,10 @@ const fs = require("node:fs");
         assert.ok(
           await p
             .locator(".page-hero")
-            .evaluate((e) => e.getBoundingClientRect().top < innerHeight * 0.75),
+            .evaluate((e) => e.getBoundingClientRect().top < innerHeight * 0.5),
         );
-        assert.ok(await p.locator(".tools-browse .sidebar").isVisible());
-        for (const choice of await p.locator(".tools-browse .sidebar-item, .calc-tab").all()) {
+        assert.equal(await p.locator(".tools-browse, .sidebar").count(), 0);
+        for (const choice of await p.locator(".calc-tab").all()) {
           assert.ok(await choice.evaluate(e => {
             const r = e.getBoundingClientRect();
             return r.width > 0 && r.left >= 0 && r.right <= innerWidth && r.height >= 44;
@@ -52,10 +52,10 @@ const fs = require("node:fs");
         }
         await p.locator(".calc-tab").last().click();
         assert.ok(await p.locator("#panel-convert").isVisible());
-        await p.locator(".sidebar-item").last().focus();
+        await p.locator(".calc-tab").last().focus();
         assert.ok(
           await p
-            .locator(".sidebar-item")
+            .locator(".calc-tab")
             .last()
             .evaluate((e) => {
               const r = e.getBoundingClientRect();
