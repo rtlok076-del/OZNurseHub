@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v39-tools-only';
+const CACHE = 'oznurse-v40-resources-tiles';
 
 const CORE_FILES = [
   './',
