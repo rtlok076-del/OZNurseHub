@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v37-visible-tools';
+const CACHE = 'oznurse-v38-centred-tools';
 
 const CORE_FILES = [
   './',
@@ -10,7 +10,7 @@ const CORE_FILES = [
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
-  './tools-choices.css',
+  './tools-choices.css?v=2',
   './theme.js',
   './dark-theme.css',
   './app-icon-180.png',
