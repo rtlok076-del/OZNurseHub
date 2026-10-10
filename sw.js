@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v41-resource-sidebar';
+const CACHE = 'oznurse-v42-sidebar-links';
 
 const CORE_FILES = [
   './',
