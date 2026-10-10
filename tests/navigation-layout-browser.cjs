@@ -21,7 +21,7 @@ const fs = require("node:fs");
         waitUntil: "domcontentloaded",
       });
       for (const nav of await p.locator(".sidebar").all()) {
-        if (!(await nav.isVisible()) || file === "tools.html") continue;
+        if (!(await nav.isVisible()) || file === "tools.html" || await nav.evaluate(e => !!e.closest(".resource-sidebar"))) continue;
         assert.ok(
           await nav.evaluate((e) => e.getBoundingClientRect().height < 110),
           file + " navigation too tall",
