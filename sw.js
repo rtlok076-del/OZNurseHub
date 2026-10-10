@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v35-logbook-controls';
+const CACHE = 'oznurse-v36-tools-grid';
 
 const CORE_FILES = [
   './',

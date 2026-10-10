@@ -43,6 +43,15 @@ const fs = require("node:fs");
             .locator(".page-hero")
             .evaluate((e) => e.getBoundingClientRect().top < innerHeight * 0.5),
         );
+        await p.locator(".tools-browse summary").click();
+        for (const choice of await p.locator(".tools-browse .sidebar-item, .calc-tab").all()) {
+          assert.ok(await choice.evaluate(e => {
+            const r = e.getBoundingClientRect();
+            return r.width > 0 && r.left >= 0 && r.right <= innerWidth && r.height >= 48;
+          }), "Tools choice must fit without horizontal scrolling");
+        }
+        await p.locator(".calc-tab").last().click();
+        assert.ok(await p.locator("#panel-convert").isVisible());
         await p.locator(".sidebar-item").last().focus();
         assert.ok(
           await p
