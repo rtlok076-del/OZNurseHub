@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v42-sidebar-links';
+const CACHE = 'oznurse-v43-persistent-navigation';
 
 const CORE_FILES = [
   './',
@@ -10,8 +10,10 @@ const CORE_FILES = [
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
+  './site-navigation.css',
+  './site-navigation.js',
   './resource-sidebar.css',
-  './resource-sidebar.js',
+  './resource-sidebar.js?v=2',
   './tools-choices.css?v=3',
   './theme.js',
   './dark-theme.css',

@@ -1,0 +1,10 @@
+html { scroll-padding-top:calc(var(--site-header-height, 84px) + 16px); }
+body.renovated .elegant-header { position:sticky!important; top:0; z-index:200; }
+.back-to-top { position:fixed; right:20px; bottom:calc(20px + env(safe-area-inset-bottom)); z-index:190; min-height:48px; padding:12px 18px; border:1px solid var(--border); border-radius:999px; background:var(--white); color:var(--teal); font-size:14px; font-weight:600; cursor:pointer; box-shadow:0 4px 18px #0002; }
+.back-to-top:hover { background:var(--teal-pale); }
+body.app-mode .back-to-top { bottom:calc(96px + env(safe-area-inset-bottom)); }
+@media(min-width:1001px) { .resource-sidebar { top:calc(var(--site-header-height, 84px) + 16px); max-height:calc(100dvh - var(--site-header-height, 84px) - 32px); } }
+@media(max-width:700px) { .back-to-top { right:14px; padding:10px 14px; } .elegant-header .elegant-links.open { max-height:calc(100dvh - 90px); overflow-y:auto; } }
+@media print { .back-to-top { display:none!important; } }
+/* Quiz content scrolls with the document so its header shares the sticky viewport. */
+body.renovated.quiz-page { overflow:visible!important; }

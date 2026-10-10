@@ -14,11 +14,9 @@
   panel.append(summary, nav);
   layout.append(panel, main);
   const desktop = matchMedia('(min-width: 1001px)');
-  const resize = () => { panel.open = desktop.matches; };
-  resize();
-  desktop.addEventListener('change', resize);
+  panel.open = false;
   panel.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !desktop.matches) {
+    if (event.key === 'Escape') {
       panel.open = false;
       summary.focus();
     }
