@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v44-fable-story';
+const CACHE = 'oznurse-v45-mira-fable';
 
 const CORE_FILES = [
   './',
@@ -9,6 +9,7 @@ const CORE_FILES = [
   './fables.html',
   './fable-story.css',
   './media/mara-two-lanterns.jpg',
+  './media/mira-marsh-map.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
