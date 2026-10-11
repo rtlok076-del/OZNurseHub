@@ -1,3 +1,26 @@
-const {chromium}=require('playwright');const assert=require('node:assert/strict');const fs=require('fs');
-(async()=>{const b=await chromium.launch({channel:'msedge',headless:true});const p=await b.newPage({serviceWorkers:'block',reducedMotion:'reduce'});const errors=[];p.on('pageerror',e=>errors.push(e.message));for(const width of [390,1440]){await p.setViewportSize({width,height:900});for(const colorScheme of ['light','dark']){await p.emulateMedia({colorScheme});await p.goto(`${process.env.BASE_URL || 'http://127.0.0.1:8765'}/fables.html`);const tip=p.getByRole('button',{name:'Got it',exact:true});if(await tip.isVisible())await tip.click();assert.equal(await p.locator('main').count(),1);assert(await p.locator('#mara .fable-text').innerText().then(t=>t.includes('she cultivated better uncertainty.')));assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert((await p.locator('#mira .fable-text').innerText()).includes('the best compass is prediction corrected by evidence.'));assert.equal(await p.locator('video').count(),2);for(const [id,videoWidth] of [['mira',720],['mara',540]]){const video=p.locator(`#${id} video`);await video.evaluate(async v=>{v.muted=true;await v.play()});await p.waitForFunction(id=>document.querySelector(`#${id} video`).currentTime>0.2,id);assert(await video.evaluate((v,w)=>v.duration>60&&v.duration<65&&v.videoWidth===w&&!v.error,videoWidth));await video.evaluate(v=>v.pause());}await p.screenshot({path:`tests/fable-${width}-${colorScheme}.png`});}}
-await p.goto(`${process.env.BASE_URL || 'http://127.0.0.1:8765'}/resources.html`);assert.equal(await p.locator('.si-card[href="fables.html"]').count(),1);assert.equal(await p.locator('a[href*="med-squad"],a[href*="med-survivor"]').count(),0);for(const d of ['med-squad','med-survivor'])assert(!fs.existsSync(d));assert.deepEqual(errors,[]);await b.close();console.log('PASS video playback, full story, mobile/desktop light/dark layout, Resources tile, and removed games.');})().catch(e=>{console.error(e);process.exit(1)});
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
+(async()=>{
+ const browser=await chromium.launch({channel:'msedge',headless:true});
+ try {
+  const page=await browser.newPage({serviceWorkers:'block',reducedMotion:'reduce'}),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  for(const width of [390,1440]) for(const colorScheme of ['light','dark']) {
+   await page.setViewportSize({width,height:900});await page.emulateMedia({colorScheme});
+   for(const [slug,lastLine,videoWidth] of [['mira-marsh-map','the best compass is prediction corrected by evidence.',720],['mara-two-lanterns','she cultivated better uncertainty.',540]]) {
+    await page.goto(`${base}/fable-${slug}.html`);
+    assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('video').count(),1);
+    assert((await page.locator('.fable-text').innerText()).includes(lastLine));
+    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    const video=page.locator('video');await video.evaluate(async v=>{v.muted=true;await v.play()});
+    await page.waitForFunction(()=>document.querySelector('video').currentTime>.2);
+    assert(await video.evaluate((v,w)=>v.duration>60&&v.duration<65&&v.videoWidth===w&&!v.error,videoWidth));await video.evaluate(v=>v.pause());
+    assert.equal(await page.getByRole('link',{name:'Next story:',exact:false}).count(),1);
+   }
+  }
+  await page.getByRole('link',{name:'← All fables',exact:true}).click();assert.equal(await page.locator('.book-card').count(),2);
+  await page.goto(`${base}/resources.html`);assert.equal(await page.locator('.si-card[href="fables.html"]').count(),1);
+  assert.deepEqual(errors,[]);console.log('PASS both standalone stories, full text, video playback, responsive themes, and library navigation.');
+ } finally {await browser.close()}
+})().catch(e=>{console.error(e);process.exit(1)});
