@@ -56,7 +56,11 @@
   });
   cards.forEach((card, i) => card.addEventListener('focus', () => { if (card.matches(':focus-visible')) go(i); }));
   track.addEventListener('scroll', requestPaint, {passive:true});
-  motion.addEventListener('change', requestPaint);
+  motion.addEventListener('change', () => {
+    // Cancel an in-flight smooth scroll when reduced motion is enabled.
+    if (motion.matches) track.scrollTo({left:track.scrollLeft, behavior:'instant'});
+    requestPaint();
+  });
   let lastWidth = track.clientWidth;
   window.addEventListener('resize', () => {
     if (lastWidth !== track.clientWidth) { lastWidth = track.clientWidth; go(active); requestPaint(); }

@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v46-fable-library';
+const CACHE = 'oznurse-v47-merchants-fox';
 
 const CORE_FILES = [
   './',
@@ -7,6 +7,10 @@ const CORE_FILES = [
   './app.html',
   './about.html',
   './fables.html',
+  './fable-merchants-crossroads.html',
+  './fable-fox-and-rook.html',
+  './media/merchants-crossroads.jpg',
+  './media/fox-and-rook.jpg',
   './fable-mira-marsh-map.html',
   './fable-mara-two-lanterns.html',
   './fable-library.css',

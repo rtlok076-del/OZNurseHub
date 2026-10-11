@@ -54,3 +54,7 @@
   .book-stage { overflow:visible; box-shadow:none; }
   .book-controls,.book-hint { display:none; }
 }
+
+.book-merchants .book-cover { background:#f0dfbf; color:#4b3927; }
+.book-fox .book-cover { background:#e4e3ef; color:#353550; }
+.book-merchants .cover-type h2 { font-size:26px; }
