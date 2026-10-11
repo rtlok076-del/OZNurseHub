@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v43-persistent-navigation';
+const CACHE = 'oznurse-v44-fable-story';
 
 const CORE_FILES = [
   './',
@@ -7,6 +7,8 @@ const CORE_FILES = [
   './app.html',
   './about.html',
   './fables.html',
+  './fable-story.css',
+  './media/mara-two-lanterns.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
@@ -92,11 +94,10 @@ self.addEventListener('fetch', function (e) {
   // Only handle GET requests
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
+  // Stream video (including range requests) from the network; do not cache partial responses.
+  if (url.pathname.endsWith('.mp4') || url.pathname.endsWith('.webm')) return;
   if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) return;
   if (new URL(e.request.url).pathname.startsWith('/downloads/')) return;
-  // The game's versioned bundles must not receive the site's HTML fallback.
-  if (new URL(e.request.url).pathname.startsWith('/med-squad/')) return;
-  if (new URL(e.request.url).pathname.startsWith('/med-survivor/')) return;
   // Prefer current navigation; retain cached pages only as an offline fallback.
   if (e.request.mode === 'navigate') {
     e.respondWith(fetch(e.request).then(function (response) {

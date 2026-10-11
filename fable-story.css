@@ -1,0 +1,18 @@
+.fable-main { max-width:1120px; }
+.fable-back { font-size:14px; text-decoration:none; }
+.fable-intro { text-align:center; max-width:760px; margin:34px auto 40px; }
+.fable-intro h1 { font-size:clamp(34px,5vw,58px); font-weight:400; line-height:1.12; letter-spacing:-.03em; color:var(--teal); margin:0 0 20px; }
+.fable-intro > p:not(.overline) { color:var(--muted); font-size:17px; max-width:620px; margin:0 auto; }
+.fable-meta { display:flex; flex-wrap:wrap; justify-content:center; gap:8px 20px; margin-top:22px; color:var(--muted); font-size:12px; }
+.fable-layout { display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:48px; align-items:start; }
+.fable-film { margin:0; min-width:0; }
+.fable-film video { display:block; width:100%; aspect-ratio:9/16; background:#122c26; border-radius:16px; border:1px solid var(--border); }
+.fable-film figcaption { color:var(--muted); font-size:12px; line-height:1.6; margin-top:14px; }
+.fable-text { min-width:0; }
+.fable-text h2 { font-size:30px; line-height:1.2; margin:0 0 24px; color:var(--teal); }
+.fable-text > p:not(.overline) { font-size:17px; line-height:1.85; margin:0 0 22px; }
+.fable-reflection { padding:22px; margin-top:30px; background:var(--teal-pale); border:1px solid var(--border); border-radius:14px; }
+.fable-reflection h3 { font-size:22px; font-weight:400; margin:0 0 12px; }
+.fable-reflection p { font-size:14px; color:var(--muted); margin:8px 0 0; }
+@media(max-width:760px) { .fable-layout { grid-template-columns:minmax(0,1fr); gap:32px; } .fable-film { width:100%; max-width:340px; margin:auto; } .fable-intro { margin-top:26px; } }
+@media print { .fable-film,.fable-back { display:none; } .fable-layout { display:block; } }
