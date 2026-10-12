@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v48-og-favicon';
+const CACHE = 'oznurse-v49-med-survivor';
 
 const CORE_FILES = [
   './',
@@ -108,6 +108,8 @@ self.addEventListener('fetch', function (e) {
   if (url.pathname.endsWith('.mp4') || url.pathname.endsWith('.webm')) return;
   if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) return;
   if (new URL(e.request.url).pathname.startsWith('/downloads/')) return;
+  // The game's versioned bundles must not receive the site's HTML fallback.
+  if (new URL(e.request.url).pathname.startsWith('/med-survivor/')) return;
   // Prefer current navigation; retain cached pages only as an offline fallback.
   if (e.request.mode === 'navigate') {
     e.respondWith(fetch(e.request).then(function (response) {
