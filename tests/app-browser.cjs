@@ -1,5 +1,6 @@
 const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
+const root = process.env.TEST_BASE_URL || "http://127.0.0.1:8765/";
 (async () => {
   const profile = require("node:fs").mkdtempSync(
     require("node:path").join(require("node:os").tmpdir(), "oznurse-app-qa-"),
@@ -12,7 +13,7 @@ const assert = require("node:assert/strict");
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://127.0.0.1:8765/app.html");
+  await page.goto(root + "app.html");
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload();
   const cdp = await context.newCDPSession(page);
@@ -33,7 +34,7 @@ const assert = require("node:assert/strict");
   await installed.addInitScript(() =>
     Object.defineProperty(navigator, "standalone", { value: true }),
   );
-  await installed.goto("http://127.0.0.1:8765/app.html");
+  await installed.goto(root + "app.html");
   assert.equal(
     await installed
       .locator(".app-bottom-nav")
@@ -64,7 +65,7 @@ const assert = require("node:assert/strict");
   await page.reload();
   assert.ok(await page.locator(".app-welcome h1").isVisible());
   assert.ok(await page.locator(".app-offline").isVisible());
-  await page.goto("http://127.0.0.1:8765/quickref.html");
+  await page.goto(root + "quickref.html");
   assert.ok(await page.locator("h1").isVisible());
   await context.setOffline(false);
   await cdp.send("Network.emulateNetworkConditions", {
@@ -73,10 +74,10 @@ const assert = require("node:assert/strict");
     downloadThroughput: -1,
     uploadThroughput: -1,
   });
-  await page.goto("http://127.0.0.1:8765/resources.html#study");
+  await page.goto(root + "resources.html#study");
   await page.waitForTimeout(100);
   assert.ok(await page.locator("#study").isVisible());
-  await page.goto("http://127.0.0.1:8765/clinical-quiz.html");
+  await page.goto(root + "clinical-quiz.html");
   await page.click(".start-btn");
   assert.ok(await page.locator("#quiz").isVisible());
   assert.equal(await page.locator("#landing").isVisible(), false);
@@ -84,7 +85,7 @@ const assert = require("node:assert/strict");
     await page.locator("#quiz").evaluate((e) => getComputedStyle(e).position),
     "relative",
   );
-  await page.goto("http://127.0.0.1:8765/meds-quiz.html");
+  await page.goto(root + "meds-quiz.html");
   await page.click(".start-btn");
   assert.ok(await page.locator("#quiz").isVisible());
   assert.deepEqual(errors, []);

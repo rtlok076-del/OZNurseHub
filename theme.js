@@ -108,7 +108,7 @@
     header.append(tip);
   }
   document.addEventListener("DOMContentLoaded", () => {
-    const menu = document.querySelector(".elegant-links");
+    const menu = document.querySelector(".elegant-links, [data-theme-controls]");
     if (menu) {
       const label = document.createElement("label");
       label.className = "theme-picker";

@@ -1,5 +1,18 @@
 /* One visual system for original reference pages and newer student tools. */
 body.renovated {
+  --on-accent: #fffefa;
+  --warning-bg: #fff1d8;
+  --warning-ink: #6e4912;
+  --danger-bg: #fcf0eb;
+  --danger-ink: #8b2020;
+  --success-bg: #eaf3e9;
+  --success-ink: #1d6a4a;
+  --navy-light: var(--teal-pale);
+  --forest: var(--paper);
+  --forest-mid: var(--white);
+  --forest-light: var(--teal-pale);
+  --correct-bg: var(--success-bg);
+  --incorrect-bg: var(--danger-bg);
   --blue: #155e53;
   --blue-accent: #92713b;
   --blue-pale: #eaf2ec;
@@ -9,6 +22,53 @@ body.renovated {
   --purple: #155e53;
   --purple-pale: #eaf2ec;
 }
+/* Legacy content must use the same foreground/surface pair in either theme. */
+body.renovated :is(.antt-card-sub, .selfcare-body, .dot-sep) {
+  color: var(--muted);
+}
+body.renovated :is(.selfcare-title, footer strong) {
+  color: var(--ink);
+}
+body.renovated :is(.selfcare-body a, footer a, .s32-badge.b) {
+  color: var(--teal);
+}
+body.renovated .selfcare-body span[style] {
+  color: var(--muted) !important;
+}
+body.renovated :is(.path-card .step, .score-pill, .q-type-badge) {
+  color: var(--teal);
+}
+body.renovated .req { color: var(--danger-ink); }
+body.renovated :is(.checklist-progress, .check-num) { color: #fff; }
+body.renovated #empty {
+  background: var(--white);
+  color: var(--ink);
+}
+body.renovated :is(.btn-primary, .check-btn) {
+  background: var(--teal);
+  color: var(--on-accent);
+}
+body.renovated .next-btn:hover {
+  background: var(--teal);
+  color: var(--on-accent);
+}
+body.renovated .calc-error { color: var(--danger-ink); }
+body.renovated .conv-table th {
+  background: var(--teal-pale);
+  color: var(--teal);
+}
+body.renovated .check-item.checked .check-box {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+body.renovated .check-tick { color: var(--on-accent); }
+/* The old intro gradient used --dark as a background, but that token becomes light text in dark mode. */
+body.renovated .intro-card {
+  background: var(--teal-pale);
+  color: var(--ink);
+}
+body.renovated .intro-card h2 { color: var(--ink); }
+body.renovated .intro-card p { color: var(--muted); }
 body.renovated :is(main.main, main.page-main, #mainContent.with-sidebar) {
   margin: 0 auto !important;
   max-width: 1280px !important;

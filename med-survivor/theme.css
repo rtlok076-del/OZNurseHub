@@ -1,0 +1,116 @@
+/* Menus and HUD follow the site's preference; the rendered arena keeps its artwork. */
+:root {
+  color-scheme: light;
+  --game-paper: #f8f7f2;
+  --game-surface: #fffefa;
+  --game-ink: #193c35;
+  --game-muted: #53635d;
+  --game-border: #bdc9bf;
+  --game-accent: #155e53;
+  --game-pale: #eaf2ec;
+  --game-on-accent: #fffefa;
+  --mint: #155e53;
+  --acid: #155e53;
+  --ink: #fffefa;
+  color: var(--game-ink);
+  background: var(--game-paper);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --game-paper: #111c19;
+  --game-surface: #1b2924;
+  --game-ink: #e8eee9;
+  --game-muted: #b4c4ba;
+  --game-border: #42584c;
+  --game-accent: #8cd6ba;
+  --game-pale: #243e33;
+  --game-on-accent: #10271e;
+  --mint: #8cd6ba;
+  --acid: #8cd6ba;
+  --ink: #10271e;
+}
+body { background: var(--game-paper); color: var(--game-ink); }
+body, button, .eyebrow, .character span, .topbar small, .health b {
+  font-family: 'DM Sans', Arial, sans-serif;
+}
+h1, h2, .topbar b { font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; }
+.game-settings {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 8px max(12px, env(safe-area-inset-left));
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--game-surface);
+  color: var(--game-ink);
+  border-bottom: 1px solid var(--game-border);
+  font-size: 12px;
+}
+.game-settings a { color: var(--game-accent); padding: 12px 0; }
+.theme-picker { display: flex; gap: 8px; align-items: center; }
+.theme-picker select {
+  min-height: 44px;
+  max-width: 100px;
+  background: var(--game-surface);
+  color: var(--game-ink);
+  border: 1px solid var(--game-border);
+  border-radius: 8px;
+  padding: 8px;
+  font: inherit;
+}
+.screen {
+  top: 61px;
+  overflow-y: auto;
+  justify-content: safe center;
+  background: var(--game-paper);
+  color: var(--game-ink);
+}
+h1 { text-shadow: none; }
+.lede, .hint, .character span, .choice p, .choice small, .result-card p, .topbar small {
+  color: var(--game-muted);
+}
+button, .modal, .perk {
+  background: var(--game-surface);
+  color: var(--game-ink);
+  border-color: var(--game-border);
+}
+.character b { color: var(--game-ink); }
+.choice:hover { background: var(--game-pale); }
+.result-card button { background: var(--game-accent); color: var(--game-on-accent); }
+#hud { top: 61px; }
+.topbar { background: var(--game-surface); padding: 10px; border-radius: 10px; }
+.health { top: 155px; }
+.xp { top: 181px; }
+.health b {
+  color: var(--game-ink);
+  background: var(--game-surface);
+  width: max-content;
+  margin: auto;
+  padding: 0 5px;
+}
+.fiction { background: var(--game-surface); color: var(--game-muted); padding: 5px; border-radius: 4px; }
+.screen { padding-bottom: 50px; }
+:is(a,button,select):focus-visible { outline: 3px solid var(--game-accent); outline-offset: 3px; }
+@media(max-width:720px) {
+  .screen { padding: 25px 18px 50px; }
+  h1 { font-size: clamp(30px, 10vw, 64px); line-height: .95; }
+  .roster { width: 100%; }
+  .character { padding: 16px; min-height: 105px; }
+  .character span { margin-bottom: 12px; }
+  .lede { font-size: 16px; }
+  .modal { padding: 22px; }
+  .modal h2 { font-size: 42px; line-height: 1; }
+  #hud { padding: 10px; }
+  .topbar b { font-size: 20px; }
+  .clinician > span { width: 32px; height: 32px; }
+  .topbar small { letter-spacing: 0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  button { transition: none; }
+  .alert { animation: none; }
+}

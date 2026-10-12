@@ -10,7 +10,7 @@ const assert = require("node:assert/strict");
   const p = await c.newPage();
   const errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
-  const root = "http://127.0.0.1:8765/";
+  const root = process.env.TEST_BASE_URL || "http://127.0.0.1:8765/";
   await p.goto(root + "tools.html");
   assert(await p.locator(".appearance-tip").isVisible());
   assert.equal(

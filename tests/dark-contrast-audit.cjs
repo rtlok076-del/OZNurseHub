@@ -11,7 +11,7 @@ const assert = require("node:assert/strict");
   for (const f of fs
     .readdirSync(".")
     .filter((f) => f.endsWith(".html") && !f.startsWith("google"))) {
-    await p.goto("http://127.0.0.1:8765/" + f);
+    await p.goto((process.env.TEST_BASE_URL || "http://127.0.0.1:8765/") + f);
     const out = await p.evaluate(() => {
       const seen = new Set(),
         out = [];

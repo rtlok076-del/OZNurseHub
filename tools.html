@@ -772,7 +772,7 @@ function calcMgKg() {
   if (!isNaN(mx) && mx > 0 && raw > mx) { total = mx; capped = true; }
   var html = '<div class="calc-result-main">' + fmt(total, 2) + ' mg</div>';
   html += '<div class="calc-result-sub">' + fmt(wt,1) + ' kg × ' + fmt(d,3) + ' mg/kg = ' + fmt(raw,2) + ' mg';
-  if (capped) html += ' <span style="color:#dc2626"> — capped at max ' + fmt(mx,0) + ' mg</span>';
+  if (capped) html += ' <span class="calc-error"> — capped at max ' + fmt(mx,0) + ' mg</span>';
   html += '</div>';
   if (!isNaN(c) && c > 0) {
     var vol = total / c;
