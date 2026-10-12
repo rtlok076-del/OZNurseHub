@@ -1,15 +1,10 @@
-:root {
-  color-scheme: dark;
-  --bg: #101315;
-  --panel: #182022;
-  --panel-2: #202a2c;
-  --ink: #eef5f2;
-  --muted: #9fb0aa;
-  --line: #354246;
-  --accent: #38b98f;
-  --accent-2: #f4b942;
-  --danger: #e15c56;
-  --blue: #70a5ff;
+/* Bind the game to the shared light/dark palette. */
+body.renovated {
+  --panel-2: var(--paper);
+  --line: var(--border);
+  --accent: var(--teal);
+  --accent-2: var(--warning-ink);
+  --danger: var(--danger-ink);
   --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
 }
 
@@ -51,7 +46,7 @@ button {
 .game-board {
   width: min(1180px, 100%);
   min-height: min(820px, calc(100vh - 48px));
-  background: rgba(24, 32, 34, 0.96);
+  background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   display: grid;
@@ -239,7 +234,7 @@ h3 {
 }
 
 #caseStem {
-  color: #dbe5e1;
+  color: var(--ink);
   line-height: 1.62;
   font-size: 1.05rem;
 }
@@ -253,10 +248,10 @@ h3 {
 
 .term-tag {
   border: 1px solid var(--line);
-  color: #d8e4df;
+  color: var(--ink);
   padding: 7px 9px;
   font-size: 0.84rem;
-  background: rgba(16, 19, 21, 0.42);
+  background: var(--teal-pale);
 }
 
 .mode-tabs {
@@ -282,7 +277,7 @@ h3 {
 
 .tab.active {
   color: var(--ink);
-  background: rgba(56, 185, 143, 0.16);
+  background: var(--teal-pale);
   box-shadow: inset 0 -3px var(--accent);
 }
 
@@ -294,7 +289,7 @@ h3 {
 .choice {
   width: 100%;
   border: 1px solid var(--line);
-  background: rgba(16, 19, 21, 0.52);
+  background: var(--white);
   color: var(--ink);
   text-align: left;
   padding: 13px;
@@ -310,12 +305,14 @@ h3 {
 
 .choice.correct {
   border-color: var(--accent);
-  background: rgba(56, 185, 143, 0.18);
+  background: var(--success-bg);
+  color: var(--success-ink);
 }
 
 .choice.wrong {
   border-color: var(--danger);
-  background: rgba(225, 92, 86, 0.16);
+  background: var(--danger-bg);
+  color: var(--danger-ink);
 }
 
 .choice:disabled {
@@ -325,15 +322,16 @@ h3 {
 .feedback {
   margin-top: 14px;
   border-left: 4px solid var(--accent);
-  background: rgba(56, 185, 143, 0.12);
+  background: var(--teal-pale);
   padding: 12px 14px;
-  color: #dceae5;
+  color: var(--ink);
   line-height: 1.45;
 }
 
 .feedback.warning {
   border-left-color: var(--accent-2);
-  background: rgba(244, 185, 66, 0.12);
+  background: var(--warning-bg);
+  color: var(--warning-ink);
 }
 
 .hidden {
@@ -358,7 +356,7 @@ h3 {
 
 .primary {
   background: var(--accent);
-  color: #07130f;
+  color: var(--on-accent);
   font-weight: 800;
   flex: 1;
 }
@@ -383,7 +381,7 @@ h3 {
 
 .round-log p:last-child {
   margin-bottom: 0;
-  color: #dbe5e1;
+  color: var(--ink);
 }
 
 @media (max-width: 860px) {

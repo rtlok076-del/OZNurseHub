@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v49-med-survivor';
+const CACHE = 'oznurse-v50-sitewide-themes';
 
 const CORE_FILES = [
   './',

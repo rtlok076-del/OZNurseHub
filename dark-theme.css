@@ -1,6 +1,7 @@
 /* Deliberate surfaces and semantic colours; photos and illustrations keep their colours. */
 :root {
   color-scheme: light;
+  background: var(--paper, #f8f7f2);
 }
 .theme-picker {
   display: flex;
@@ -23,6 +24,7 @@
   html[data-theme="dark"] body.renovated {
     color-scheme: dark;
     --paper: #111c19;
+    --on-accent: #10271e;
     --light: #111c19;
     --white: #1b2924;
     --sand: #25352e;
@@ -214,7 +216,7 @@
   }
   html[data-theme="dark"]
     body.renovated
-    :is(.alert-notice, .vad-notice, .choice.incorrect, .incorrect) {
+    :is(.alert-notice, .vad-notice, .choice.incorrect, .choice.wrong, .incorrect) {
     background: var(--danger-bg) !important;
     color: var(--danger-ink) !important;
     border-color: #b26e63 !important;
@@ -369,8 +371,7 @@
       .gl-fields b,
       .ce-letter > b,
       .met-sheet th,
-      .ce-opt.best b,
-      .ce-step span
+      .ce-opt.best b
     ) {
     background: var(--teal) !important;
     color: #10271e !important;
@@ -419,7 +420,69 @@
   }
 }
 
+/* Scenario content is generated after page load and needs explicit surface pairs. */
+@media screen {
+  html[data-theme="dark"] body.renovated :is(.ce-fb, .ce-result:not(.y):not(.r):not(.p), .ce-seen, .ce-z.w, .ce-obsline > span) {
+    background: var(--white) !important;
+    color: var(--ink) !important;
+    border-color: var(--border) !important;
+  }
+  html[data-theme="dark"] body.renovated :is(.ce-case:hover, .ce-case:focus-visible, .ce-opt:hover:not(:disabled), .ce-opt.best) {
+    background: var(--teal-pale) !important;
+    color: var(--ink) !important;
+  }
+  html[data-theme="dark"] body.renovated .ce-note,
+  html[data-theme="dark"] body.renovated .ce-script li::before {
+    background: var(--warning-bg) !important;
+    color: var(--warning-ink) !important;
+  }
+  html[data-theme="dark"] body.renovated .ce-mod {
+    background: var(--blue-pale) !important;
+    color: var(--ink) !important;
+    border-color: var(--blue);
+  }
+  html[data-theme="dark"] body.renovated .ce-err {
+    color: var(--danger-ink);
+  }
+}
+
 /* A non-modal daily hint, anchored below the navigation without shifting content. */
+@media screen {
+  html[data-theme="dark"] .ce-chartwrap {
+    --obs-white: #1b2924;
+    --obs-yellow: #392f1d;
+    --obs-red: #402725;
+    --obs-purple: #352d43;
+    --obs-hatch: #514363;
+    --obs-teal: #8cd6ba;
+    --obs-on-teal: #10271e;
+    --obs-heading: #243e33;
+    --obs-ink: #e8eee9;
+    --obs-label: #e8eee9;
+    --obs-yellow-ink: #f1d59b;
+    --obs-red-ink: #ffb4aa;
+    --obs-purple-ink: #cbb7ed;
+    --obs-grid: #42584c;
+    --obs-border: #789586;
+  }
+  html[data-theme="dark"] body.renovated :is(.accordion, .accordion-btn) {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  html[data-theme="dark"] body.renovated :is(.accordion-btn.open, .accordion-btn:hover) {
+    background: var(--teal-pale);
+  }
+  html[data-theme="dark"] body.renovated .accordion-content .note {
+    background: var(--warning-bg);
+    color: var(--warning-ink);
+    border-color: var(--gold);
+  }
+  html[data-theme="dark"] body.renovated .accordion-content .note strong {
+    color: inherit;
+  }
+}
+
 .appearance-tip {
   position: absolute;
   top: calc(100% + 10px);

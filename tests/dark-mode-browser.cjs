@@ -11,7 +11,7 @@ const assert = require("node:assert/strict");
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  const root = "http://127.0.0.1:8765/";
+  const root = (process.env.TEST_BASE_URL || "http://127.0.0.1:8765/");
   const theme = () => page.getAttribute("html", "data-theme");
   const pages = fs
     .readdirSync(".")
@@ -76,9 +76,9 @@ const assert = require("node:assert/strict");
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(root + "tools.html");
   await page.locator(".elegant-toggle").click();
-  await page.getByLabel("Appearance").selectOption("light");
+  await page.locator("[data-theme-picker]").selectOption("light");
   assert.equal(await theme(), "light", "mobile menu appearance works");
-  await page.getByLabel("Appearance").selectOption("dark");
+  await page.locator("[data-theme-picker]").selectOption("dark");
   await page.locator(".elegant-toggle").click();
   await page.screenshot({ path: "tests/dark-tools-mobile.png" });
   await page.setViewportSize({ width: 1440, height: 900 });
@@ -97,7 +97,7 @@ const assert = require("node:assert/strict");
   );
   const restrictedPage = await restricted.newPage();
   await restrictedPage.goto(root + "tools.html");
-  await restrictedPage.getByLabel("Appearance").selectOption("light");
+  await restrictedPage.locator("[data-theme-picker]").selectOption("light");
   assert.equal(
     await restrictedPage.getAttribute("html", "data-theme"),
     "light",
@@ -105,7 +105,7 @@ const assert = require("node:assert/strict");
   assert.deepEqual(errors, []);
   await browser.close();
   console.log(
-    "PASS: 24 pages, mobile/desktop, saved/system/cross-tab preferences, storage failure, print restore, no inversion or overflow.",
+    `PASS: ${pages.length} pages, mobile/desktop, saved/system/cross-tab preferences, storage failure, print restore, no inversion or overflow.`,
   );
 })().catch((e) => {
   console.error(e);
