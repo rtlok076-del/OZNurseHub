@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v47-merchants-fox';
+const CACHE = 'oznurse-v48-og-favicon';
 
 const CORE_FILES = [
   './',
@@ -72,6 +72,7 @@ const CORE_FILES = [
   './wardwise.js',
   './manifest.json',
   './icon.svg',
+  './favicon.ico',
   './banner.webp'
 ];
 
