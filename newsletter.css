@@ -1,0 +1,17 @@
+/* Newsletter signup: plain HTML form, works without JavaScript. */
+.newsletter-signup{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;margin:54px 0;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.newsletter-signup h2{font-size:30px;font-weight:400;line-height:1.2;margin:0 0 10px;color:var(--ink)}
+.newsletter-signup p{color:var(--muted);font-size:15px;margin:0 0 10px}
+.newsletter-signup .overline{color:var(--gold-ink,#76613c)}
+.newsletter-form label{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px}
+.newsletter-row{display:flex;gap:10px;flex-wrap:wrap}
+.newsletter-row input[type=email]{flex:1 1 220px;min-height:46px;padding:10px 12px;border:1px solid var(--muted);border-radius:7px;background:var(--paper);color:var(--ink);font:15px 'DM Sans',sans-serif}
+.newsletter-row button{min-height:46px;padding:12px 20px;border:1px solid var(--teal);border-radius:7px;background:var(--teal);color:var(--on-accent);font:600 14px 'DM Sans',sans-serif;cursor:pointer}
+.newsletter-row :is(input,button):focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.newsletter-consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0 8px;font-size:14px;color:var(--ink)}
+.newsletter-consent input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--teal)}
+.newsletter-consent label{font-weight:400;margin:0}
+.newsletter-fine{font-size:12.5px!important;color:var(--muted)}
+.newsletter-fine a{color:var(--teal)}
+.newsletter-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:760px){.newsletter-signup{grid-template-columns:1fr;padding:24px;gap:16px}.newsletter-signup h2{font-size:25px}}
