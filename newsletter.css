@@ -16,10 +16,11 @@
 .newsletter-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 @media (max-width:760px){.newsletter-signup{grid-template-columns:1fr;padding:24px;gap:16px}.newsletter-signup h2{font-size:25px}}
 /* Post-signup confirmation (shown after Kit redirects with ?subscribed=1) */
-.newsletter-confirm{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;background:var(--white);border:1px solid var(--teal);border-left-width:6px;border-radius:16px;padding:20px 24px;margin:54px 0 -30px;color:var(--ink)}
+.newsletter-confirm{position:relative;display:block;box-sizing:border-box;background:var(--white);border:1px solid var(--border);border-left:6px solid var(--teal);border-radius:16px;padding:22px 72px 22px 26px;margin:54px 0 -30px;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .newsletter-confirm:focus{outline:none}
 .newsletter-confirm p{margin:0;font-size:16px;line-height:1.5;color:var(--ink)}
-.newsletter-confirm strong{color:var(--teal)}
-.newsletter-confirm-close{flex:none;min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:7px;background:var(--paper);color:var(--ink);font:600 22px/1 'DM Sans',sans-serif;cursor:pointer}
+.newsletter-confirm strong{color:var(--teal);font-weight:700}
+.newsletter-confirm-close{position:absolute;top:14px;right:14px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid var(--border);border-radius:7px;background:var(--paper);color:var(--ink);font:600 22px/1 'DM Sans',sans-serif;cursor:pointer}
+.newsletter-confirm-close:hover{border-color:var(--teal);color:var(--teal)}
 .newsletter-confirm-close:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
-@media (max-width:760px){.newsletter-confirm{padding:16px 18px}}
+@media (max-width:760px){.newsletter-confirm{padding:18px 66px 18px 20px}.newsletter-confirm-close{top:10px;right:10px}}

@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v53-newsletter-confirm';
+const CACHE = 'oznurse-v54-newsletter-confirm-css';
 
 const CORE_FILES = [
   './',
@@ -22,8 +22,8 @@ const CORE_FILES = [
   './app-shell.js',
   './site-theme.css',
   './site-navigation.css',
-  './newsletter.css',
-  './newsletter-confirm.js',
+  './newsletter.css?v=2',
+  './newsletter-confirm.js?v=2',
   './site-navigation.js',
   './resource-sidebar.css',
   './resource-sidebar.js?v=2',
