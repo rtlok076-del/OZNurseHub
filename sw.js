@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v56-floating-resources';
+const CACHE = 'oznurse-v57-resource-menu-coverage';
 
 const CORE_FILES = [
   './',
