@@ -1,26 +1,53 @@
 /* Shared resource navigation, preserving each page's existing links and handlers. */
 (() => {
-  const nav = document.querySelector('nav.sidebar');
-  const main = document.querySelector('main.main, main.page-main');
+  const standalone = document.body.matches('.clinical-tips-page, .fable-page');
+  let nav = document.querySelector('nav.sidebar');
+  const main = document.querySelector('main');
+  if (standalone && !nav) {
+    nav = document.createElement('nav');
+    nav.className = 'sidebar';
+    const links = [
+      ['Clinical Tips', 'clinical-tips.html'], ['Fable Story', 'fables.html'],
+      ['Home', 'index.html'], ['All resources', 'resources.html'],
+      ['Med Squad Survivors', 'med-survivor/'],
+      ['Study Skills', 'resources.html#study'], ['Clinical', 'resources.html#clinical'],
+      ['Year Tips', 'resources.html#tips'], ['Wellbeing', 'resources.html#wellbeing'],
+      ['Quick Ref', 'quickref.html'], ['Bloods', 'bloods.html'],
+      ['Palliative', 'palliative.html'], ['Cognitive', 'cognitive.html'],
+      ['ANTT', 'antt.html'], ['Medications', 'medications.html'],
+      ['About', 'about.html'], ['Progress Note', 'progressnote.html'],
+      ['APA 7th', 'resources.html#apa'], ['Quizzes', 'resources.html#quizzes'],
+      ['AU Resources', 'resources.html#links'], ['Feedback', 'feedback.html'],
+    ];
+    links.forEach(([label, href]) => {
+      const link = document.createElement('a');
+      link.className = 'sidebar-item';
+      link.href = href;
+      link.textContent = label;
+      nav.append(link);
+    });
+  }
   if (!nav || !main) return;
-  const layout = document.createElement('div');
-  layout.className = 'resource-layout';
   const panel = document.createElement('details');
   panel.className = 'resource-sidebar';
   const summary = document.createElement('summary');
   summary.textContent = 'Browse resources';
   nav.setAttribute('aria-label', 'Resource navigation');
-  nav.before(layout);
+  if (!standalone) {
+    const layout = document.createElement('div');
+    layout.className = 'resource-layout';
+    nav.before(layout);
+    layout.append(panel, main);
+  }
   panel.append(summary, nav);
-  layout.append(panel, main);
   const desktop = matchMedia('(min-width: 1001px)');
   panel.open = false;
-  const floatingResources = document.body.classList.contains('resources-page');
+  const floatingResources = standalone || document.body.classList.contains('resources-page');
   if (floatingResources) {
     // Keep a stable marker in the document when the same disclosure becomes fixed.
     const slot = document.createElement('div');
     slot.className = 'resource-browse-slot';
-    document.querySelector('.hero-banner, .hero').before(slot);
+    (standalone ? main : document.querySelector('.hero-banner, .hero')).before(slot);
     slot.append(panel);
     panel.classList.add('resource-browse');
     summary.innerHTML = '<span class="resource-browse-label">Browse resources</span><span class="resource-browse-arrow" aria-hidden="true">▼</span>';
