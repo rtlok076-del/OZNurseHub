@@ -118,6 +118,7 @@ html.md-app .md-appnote{font-size:11px;color:#a9bfb2;margin:8px 0 0}
 <link rel="stylesheet" href="site-theme.css">
 <link rel="stylesheet" href="dark-theme.css">
 <link rel="stylesheet" href="site-navigation.css">
+<link rel="stylesheet" href="newsletter.css">
 <script src="site-navigation.js" defer></script>
 </head>
 <body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
@@ -275,6 +276,55 @@ if(window.OZ_MEDICINES){start();}else{var s=document.createElement('script');s.s
 </section>
 
 <p class="editorial-note" style="margin-top:40px">Learning support, not clinical direction. Always use current local policies, medicine information and supervision in practice.</p>
+
+      <section class="newsletter-signup" aria-labelledby="newsletter-title-motd">
+        <div>
+          <p class="overline">Like this card?</p>
+          <h2 id="newsletter-title-motd">One short email, every Monday.</h2>
+          <p>
+            The medicine of the week, a tip for one of the student tools and
+            any new pages. No doses, no spam, and you can unsubscribe at any
+            time.
+          </p>
+        </div>
+        <form
+          class="newsletter-form"
+          action="https://app.kit.com/forms/10038715/subscriptions"
+          method="post"
+          data-newsletter-source="motd"
+        >
+          <label for="newsletter-email-motd">Email address</label>
+          <div class="newsletter-row">
+            <input
+              id="newsletter-email-motd"
+              type="email"
+              name="email_address"
+              autocomplete="email"
+              inputmode="email"
+              required
+              aria-describedby="newsletter-fine-motd"
+            />
+            <button type="submit">Subscribe</button>
+          </div>
+          <div class="newsletter-hp" aria-hidden="true">
+            <label for="newsletter-website-motd">Leave this empty</label>
+            <input id="newsletter-website-motd" type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="newsletter-consent">
+            <input id="newsletter-consent-motd" type="checkbox" name="consent" value="yes" required />
+            <label for="newsletter-consent-motd"
+              >Yes, send me the OzNurseHub weekly email. I can unsubscribe
+              any time using the link in every email.</label
+            >
+          </div>
+          <p class="newsletter-fine" id="newsletter-fine-motd">
+            We'll email you once to confirm. Your address is only used for
+            this newsletter, is held by our email provider (Kit) and is never
+            sold or shared. Please use a personal email, not a work one.
+            <a href="about.html#newsletter-privacy">Newsletter privacy</a>.
+          </p>
+        </form>
+      </section>
 </main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
 <script>
 (function(){'use strict';
