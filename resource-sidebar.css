@@ -14,3 +14,20 @@ body.resources-page .hero-inner > p { margin:16px auto 24px; text-align:center; 
 @media(min-width:1001px) { .resource-sidebar { position:sticky; top:16px; max-height:calc(100vh - 32px); overflow-y:auto; } }
 @media(max-width:1000px) { .resource-layout { grid-template-columns:minmax(0,1fr); gap:24px; padding:20px; } }
 @media print { .resource-sidebar { display:none!important; } .resource-layout { display:block; padding:0; } }
+
+/* Resources keeps one browse menu available on the landing view and in categories. */
+body.resources-page .resource-layout { grid-template-columns:minmax(0,1fr); }
+.resource-browse-slot { position:relative; z-index:195; max-width:1280px; height:76px; margin:0 auto; padding:12px 20px; }
+.resource-sidebar.resource-browse { position:relative; top:auto; width:220px; max-height:none; overflow:visible; background:var(--white); }
+.resource-browse summary { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:50px; padding:12px 16px; list-style:none; }
+.resource-browse summary::-webkit-details-marker { display:none; }
+.resource-browse-arrow { font-size:14px; }
+.resource-browse[open] .resource-browse-arrow { transform:rotate(180deg); }
+body.renovated .resource-browse .sidebar { position:absolute!important; top:calc(100% + 8px); left:0; width:min(300px, calc(100vw - 40px))!important; max-height:calc(100dvh - var(--site-header-height, 84px) - 110px); overflow-y:auto!important; overscroll-behavior:contain; padding:10px!important; background:var(--white)!important; border:1px solid var(--border); border-radius:14px; box-shadow:0 8px 28px #0003; }
+.resource-sidebar.resource-browse.is-floating { position:fixed; top:calc(var(--site-header-height, 84px) + 12px); left:20px; width:52px; border-radius:50%; box-shadow:0 4px 18px #0002; }
+.resource-browse.is-floating summary { width:50px; height:50px; padding:0; justify-content:center; border-radius:50%; }
+.resource-browse.is-floating .resource-browse-label { display:none; }
+.resource-browse summary:hover { background:var(--teal-pale); }
+.resource-browse summary:focus-visible { outline:3px solid var(--teal); outline-offset:3px; }
+body.app-mode .resource-browse .sidebar { max-height:calc(100dvh - var(--site-header-height, 84px) - 190px - env(safe-area-inset-bottom)); }
+@media print { .resource-browse-slot { display:none!important; } }
