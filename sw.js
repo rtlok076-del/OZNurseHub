@@ -1,11 +1,14 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v54-newsletter-confirm-css';
+const CACHE = 'oznurse-v55-clinical-tips';
 
 const CORE_FILES = [
   './',
   './index.html',
   './app.html',
   './about.html',
+  './clinical-tips.html',
+  './clinical-tips.css',
+  './media/spot-the-deteriorating-patient.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
