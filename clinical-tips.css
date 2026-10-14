@@ -4,6 +4,22 @@
 .tips-intro h1 { font-size:clamp(36px,5vw,58px); font-weight:400; line-height:1.12; letter-spacing:-.03em; color:var(--teal); margin:0 0 16px; }
 .tips-intro > p:not(.overline) { color:var(--muted); font-size:17px; margin:0; }
 .tips-library { display:grid; gap:32px; }
+.tips-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+.tips-video-card { display:flex; flex-direction:column; min-width:0; border:1px solid var(--border); border-radius:20px; overflow:hidden; background:var(--white); color:var(--ink); text-decoration:none; transition:box-shadow .2s ease,border-color .2s ease; }
+.tips-video-card:hover { border-color:var(--teal); box-shadow:0 8px 24px #0001; }
+.tips-preview { position:relative; height:260px; background:var(--teal-pale); border-bottom:1px solid var(--border); }
+.tips-preview img { display:block; width:100%; height:100%; object-fit:contain; }
+.tips-play { position:absolute; left:18px; bottom:18px; display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:var(--white); color:var(--teal); box-shadow:0 2px 12px #0002; }
+.tips-duration { position:absolute; right:14px; bottom:16px; padding:5px 10px; border-radius:8px; background:var(--white); color:var(--ink); font-size:12px; font-weight:600; }
+.tips-card-copy { display:flex; flex-direction:column; flex:1; padding:24px; }
+.tips-card-copy .overline { font-size:11px; margin:0 0 12px; }
+.tips-card-copy h2 { color:var(--teal); font-size:28px; line-height:1.2; margin:0 0 12px; }
+.tips-card-copy > p:not(.overline) { font-size:15px; color:var(--muted); margin:0 0 22px; }
+.tips-watch { margin-top:auto; color:var(--teal); font-weight:600; font-size:14px; }
+.tips-next { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 24px; margin:28px 0; }
+.tips-next a { padding:12px 0; }
+@media(max-width:640px) { .tips-grid { grid-template-columns:minmax(0,1fr); gap:24px; } .tips-card-copy { padding:20px; } .tips-card-copy h2 { font-size:25px; } .tips-preview { height:240px; } }
+@media(prefers-reduced-motion:reduce) { .tips-video-card { transition:none; } }
 .tip-card { display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr); align-items:center; gap:40px; padding:28px; background:var(--white); border:1px solid var(--border); border-radius:24px; }
 .tip-film { margin:0; min-width:0; }
 .tip-video-box { aspect-ratio:9/16; max-width:360px; width:100%; overflow:hidden; border-radius:16px; background:var(--teal-pale); }
