@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-AU" data-tools="fluid-balance">
+<head>
+<meta charset="utf-8">
+<script>
+/* Theme without storage writes: this page reads the saved site theme (if any) but never
+   writes localStorage, sessionStorage, cookies or IndexedDB. The Appearance picker here
+   changes this page only, until you refresh. theme.js is deliberately not loaded. */
+(function(){var p="system";try{var s=localStorage.getItem("oznurse_theme");if(s==="light"||s==="dark")p=s}catch(e){}
+var m=matchMedia("(prefers-color-scheme: dark)"),printing=false;
+function a(){var d=!printing&&(p==="dark"||(p==="system"&&m.matches));document.documentElement.dataset.theme=d?"dark":"light";
+document.querySelectorAll("[data-theme-picker]").forEach(function(e){e.value=p});
+document.querySelectorAll('meta[name="theme-color"]').forEach(function(e){e.content=d?"#111c19":"#155e53"})}
+addEventListener("beforeprint",function(){printing=true;a()});addEventListener("afterprint",function(){printing=false;a()});
+m.addEventListener("change",a);a();
+document.addEventListener("DOMContentLoaded",function(){var menu=document.querySelector(".elegant-links");if(!menu)return;
+var l=document.createElement("label");l.className="theme-picker";l.textContent="Appearance";var s=document.createElement("select");s.dataset.themePicker="";
+[["system","System"],["light","Light"],["dark","Dark"]].forEach(function(o){s.add(new Option(o[1],o[0]))});
+s.addEventListener("change",function(){p=s.value;a()});l.append(s);menu.append(l);a()})})();
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Fluid Balance Chart Practice for Nursing Students (Australia) | OzNurseHub</title>
+<meta name="description" content="Practise filling in and totalling a 24-hour fluid balance chart with fictional ward patients. Work out intake, output and balance in mL, spot the problem, and learn the common charting pitfalls. Free, no account, nothing saved.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#193f35">
+<link rel="stylesheet" href="renovation.css">
+<link rel="stylesheet" href="student-tools.css">
+<link rel="canonical" href="https://oznursehub.com/fluid-balance.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OzNurseHub">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://oznursehub.com/fluid-balance.html">
+<meta property="og:title" content="Fluid balance chart simulator | OzNurseHub">
+<meta property="og:description" content="Total a 24-hour fluid balance chart, check your answers instantly and spot the problem in four fictional ward scenarios. Free, no account.">
+<meta property="og:image" content="https://oznursehub.com/oznursehub-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fluid-balance.css">
+<link rel="stylesheet" href="scroll-effects.css">
+<link rel="stylesheet" href="site-theme.css">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="app-icon-180.png">
+<link rel="stylesheet" href="dark-theme.css">
+<link rel="stylesheet" href="site-navigation.css">
+<script src="site-navigation.js" defer></script>
+</head>
+<body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<main class="renovation-main st-main" id="content">
+
+<section class="st-hero" aria-labelledby="page-title">
+<div><p class="overline">Fluid balance / Simulator</p><h1 id="page-title">Every millilitre.<br><em>Every hour.</em></h1>
+<p class="lede">Read a 24-hour fluid balance chart, total the intake and output yourself, and check your answers. Then spot what's going wrong for four fictional patients and decide what you'd do.</p>
+<div class="action-row"><a class="elegant-button" href="#scenarios">Choose a patient ↓</a><a class="elegant-button secondary" href="#notes">Teaching notes ↓</a></div></div>
+<aside class="st-safety"><strong>Fictional scenarios for learning only; always follow your facility's guidelines.</strong> Patients, volumes and events are made up. Nothing here is a fluid order, rate or limit to use in practice. If you're worried about a patient, report to the team leader or RN and follow your local policy.</aside>
+</section>
+
+<div class="st-privacy"><p><strong>Nothing you enter here is saved or sent anywhere.</strong> Your answers and any entries you add stay on this screen only and clear when you leave or refresh the page.</p></div>
+<ul class="st-jump" aria-label="On this page"><li><a href="#scenarios">1. Scenarios and chart</a></li><li><a href="#how">2. How to total</a></li><li><a href="#notes">3. Teaching notes</a></li></ul>
+
+<section class="st-section" id="scenarios" aria-labelledby="sc-title">
+<div class="section-lead"><div><p class="overline">Tool / Fluid balance chart</p><h2 id="sc-title">Pick a patient. Total the chart.</h2><p>Each patient has a full 24-hour chart, with hourly rows from 08:00. Practice mode hides the totals so you can work them out. Switch to "Show all totals" to see the running intake, output and balance for each hour.</p></div></div>
+<div class="ce-cases" id="fb-list"></div>
+<div class="ce-play" id="fb-play" hidden></div>
+</section>
+
+<section class="st-section" id="how" aria-labelledby="how-title">
+<div class="section-lead"><div><p class="overline">Method</p><h2 id="how-title">How to total a fluid balance chart.</h2></div></div>
+<div class="st-panel">
+<ol class="ce-script">
+<li>Add down each intake column (oral, IV, NG or enteral, other) for the 24 hours. Then add the column totals together to get <strong>total intake</strong>.</li>
+<li>Do the same for each output column (urine, vomit, drain, NG aspirate, stool or other) to get <strong>total output</strong>.</li>
+<li><strong>Balance = total intake − total output.</strong> More in than out is a positive balance (+). More out than in is a negative balance (−).</li>
+<li>Check your sums twice, or add across the rows as well as down the columns. The two methods should give the same answer.</li>
+<li>Look at the trend, not just the total. A balance can look fine at 07:00 while one column has been falling all afternoon.</li>
+</ol>
+</div>
+</section>
+
+<section class="st-section" id="notes" aria-labelledby="notes-title">
+<div class="section-lead"><div><p class="overline">Teaching notes</p><h2 id="notes-title">Common pitfalls.</h2></div></div>
+<div class="ce-ev fb-notes">
+<div><strong>Unmeasured losses</strong>Vomit on the floor, an incontinent episode or a leaking drain still count. Write "not measured" with a description (for example "large" or "pad soaked") and tell the RN. Never make up a number.</div>
+<div><strong>Insensible losses</strong>Breathing, sweating and fever all lose fluid that can't be measured. Note them (for example "febrile, sweaty overnight") but don't chart a guessed volume.</div>
+<div><strong>Totalling errors</strong>Most mistakes are simple maths: a missed row, a carried digit or a wrong sign on the balance. Total down and across, and get a second check when you're unsure.</div>
+<div><strong>Time and type of fluid</strong>Record the time and what it was (water, tea, soup, jelly, IV bag, flush). Jelly, ice chips, soup and IV flushes are intake too, which matters most on a fluid restriction.</div>
+<div><strong>Chart as you go</strong>Write each volume when it happens, not from memory at the end of the shift. Empty and measure drains and catheter bags at the times your ward uses.</div>
+<div><strong>Trends need action</strong>A sustained drop in urine output, or output below the threshold in your local policy, needs escalating. So does a balance heading the wrong way on a fluid restriction. Report to the team leader or RN and follow your local policy, using ISBAR.</div>
+</div>
+</section>
+
+<p class="editorial-note" style="margin-top:40px">Fictional scenarios for learning only; always follow your facility's guidelines. Learning support, not clinical direction. No fluid orders, rates or medicine doses are given. Not affiliated with any university, hospital, or health service. For educational use only.</p>
+</main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
+<script src="fluid-balance.js"></script>
+<script src="scroll-effects.js"></script>
+<script src="app-shell.js"></script>
+</body></html>
