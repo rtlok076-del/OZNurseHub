@@ -20,14 +20,18 @@
   function centres() {
     // Offset geometry is unaffected by the animated cover transforms.
     const centre = track.scrollLeft + track.clientWidth / 2;
-    return cards.map(card => card.offsetLeft + card.offsetWidth / 2 - centre);
+    return cards.map(card => {
+      const width = card.offsetWidth;
+      return { distance: card.offsetLeft + width / 2 - centre, width };
+    });
   }
   function paint() {
     frame = 0;
-    const distances = centres();
+    const geometry = centres();
+    const distances = geometry.map(({ distance }) => distance);
     active = distances.reduce((best, d, i) => Math.abs(d) < Math.abs(distances[best]) ? i : best, 0);
     cards.forEach((card, i) => {
-      const amount = Math.max(-1, Math.min(1, distances[i] / (card.offsetWidth + 48)));
+      const amount = Math.max(-1, Math.min(1, distances[i] / (geometry[i].width + 48)));
       card.style.setProperty('--book-opacity', motion.matches ? '1' : String(1 - Math.abs(amount) * .42));
       card.style.setProperty('--book-scale', motion.matches ? '1' : String(1 - Math.abs(amount) * .07));
       card.style.setProperty('--book-tilt', motion.matches ? '0deg' : `${amount * -10}deg`);

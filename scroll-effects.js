@@ -92,6 +92,7 @@
     requestFrame();
   }
   function configure() {
+    mutations.disconnect();
     observer.disconnect();
     nearby.clear();
     targets.forEach((element) => {
@@ -100,14 +101,20 @@
       element.style.removeProperty("--reveal-shift");
     });
     targets.clear();
+    if (!preference.matches)
+      mutations.observe(document.body, { childList: true, subtree: true });
     scan();
   }
-  new MutationObserver(() => {
-    if (!scanPending) {
+  const mutations = new MutationObserver((records) => {
+    // Text updates (timers, scores, form feedback) cannot add animation targets.
+    const changedElements = records.some((record) =>
+      [...record.addedNodes, ...record.removedNodes].some((node) => node.nodeType === 1),
+    );
+    if (changedElements && !scanPending) {
       scanPending = true;
       requestAnimationFrame(scan);
     }
-  }).observe(document.body, { childList: true, subtree: true });
+  });
   window.addEventListener("scroll", requestFrame, { passive: true });
   window.addEventListener("resize", requestFrame, { passive: true });
   preference.addEventListener("change", configure);
