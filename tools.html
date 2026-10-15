@@ -129,6 +129,12 @@
     background: linear-gradient(135deg, #064e3b 0%, #0a7c6e 100%);
     border-radius: 20px; padding: 2.5rem 2rem; margin-bottom: 2rem; color: white;
   }
+  .fb-tool-link { display: flex; flex-direction: column; gap: 4px; margin: 0 0 2rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: 12px; background: var(--white); color: var(--dark); text-decoration: none; }
+  .fb-tool-link:hover, .fb-tool-link:focus-visible { background: var(--teal-pale); }
+  .fb-tool-link strong { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.25rem; color: var(--teal); }
+  .fb-tool-link span { font-size: 0.92rem; color: var(--mid); }
+  .fb-tool-link .fb-tool-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .fb-tool-link .fb-tool-go { color: var(--teal); font-weight: 600; }
   .page-hero h1 { font-family: 'Fraunces', serif; font-size: 2rem; margin-bottom: 0.5rem; }
   .page-hero p { opacity: 0.88; font-size: 1rem; max-width: 580px; line-height: 1.6; }
   @media (max-width: 520px) { .page-hero { padding: 1.5rem 1.25rem; } .page-hero h1 { font-size: 1.5rem; } }
@@ -406,6 +412,7 @@
     <h1>🧪 Tools</h1>
     <p>Drug dose calculator, study flashcards, ISBAR handover guide, and clinical reasoning cycle reference — built for Australian nursing students.</p>
   </div>
+  <a class="fb-tool-link" href="fluid-balance.html"><span class="fb-tool-tag">New simulator</span><strong>Fluid balance chart practice</strong><span>Total a 24-hour fluid chart for fictional patients, check your answers and spot the problem. Nothing is saved.</span><span class="fb-tool-go">Open the simulator →</span></a>
 
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SECTION 1: DRUG DOSE CALCULATOR                    -->
