@@ -813,15 +813,6 @@
     document.body.style.overflow = document.querySelector('.sidebar').classList.contains('open') ? 'hidden' : '';
   }
 </script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('./sw.js')
-        .then(function (reg) { console.log('OzNurse SW registered', reg.scope); })
-        .catch(function (err) { console.log('SW registration failed:', err); });
-    });
-  }
-</script>
 <script src="renovation.js"></script><script src="scroll-effects.js"></script>
 <script src="app-shell.js"></script>
 </body>

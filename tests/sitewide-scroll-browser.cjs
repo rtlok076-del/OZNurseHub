@@ -24,7 +24,12 @@ const fs = require("node:fs");
       1,
       name,
     );
-    assert.ok((await page.locator(".motion-reveal").count()) > 0, name);
+    if (name === "fables.html") {
+      // The cover library intentionally opts out and uses its own animations.
+      assert.equal(await page.locator("[data-no-scroll-effects] .motion-reveal").count(), 0);
+    } else {
+      assert.ok((await page.locator(".motion-reveal").count()) > 0, name);
+    }
     await page.evaluate(() => scrollTo({ top: 500, behavior: "instant" }));
     await page.waitForTimeout(50);
     assert.equal(
@@ -110,6 +115,18 @@ const fs = require("node:fs");
   await page.waitForFunction(() =>
     document.querySelector("#qa-dynamic").classList.contains("motion-reveal"),
   );
+  // Repeated text-only updates must not trigger full-document animation scans.
+  await page.evaluate(() => {
+    window.animationScans = 0;
+    const query = document.querySelectorAll.bind(document);
+    document.querySelectorAll = (selector) => {
+      if (selector.includes('.home-intro')) window.animationScans++;
+      return query(selector);
+    };
+    document.querySelector('#qa-dynamic').textContent = 'Updated score';
+  });
+  await page.waitForTimeout(100);
+  assert.equal(await page.evaluate(() => window.animationScans), 0);
   await page.emulateMedia({ media: "print" });
   assert.equal(await target.evaluate((e) => getComputedStyle(e).opacity), "1");
   const nojs = await browser.newPage({ javaScriptEnabled: false });

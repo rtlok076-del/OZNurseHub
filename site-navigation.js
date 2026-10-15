@@ -11,7 +11,10 @@
   button.textContent = '↑ Back to top';
   button.hidden = true;
   document.body.append(button);
-  function update() { button.hidden = window.scrollY < 300; }
+  function update() {
+    const hidden = window.scrollY < 300;
+    if (button.hidden !== hidden) button.hidden = hidden;
+  }
   addEventListener('scroll', update, {passive:true});
   update();
   button.addEventListener('click', () => {

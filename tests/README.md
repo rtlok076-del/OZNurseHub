@@ -17,3 +17,5 @@ Run a local server from the repository root (`python -m http.server 8765 --bind 
 `node tests/dark-scenarios-browser.cjs` checks every escalation scenario step and its clinical zone colours. `node tests/survivor-theme.cjs` checks the restored Survivor menu, live HUD, result template, and saved/system/cross-tab appearance. It does not simulate a full five-minute game; canvas artwork is intentionally not recoloured.
 
 These theme tests accept `TEST_BASE_URL` (include the trailing slash) to test an alternate local server or deployed site. They use temporary browser contexts; they do not alter real users' records. JSON reports and screenshots are generated locally and ignored by Git.
+
+`node tests/service-worker-runtime.cjs` runs without a browser or extra dependencies. It verifies the asset revalidation window, failed-request retry, quota handling, network-first HTML, offline responses, and request bypasses. The sitewide scroll test also verifies that text-only updates do not trigger document-wide animation scans.
