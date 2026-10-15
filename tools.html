@@ -937,12 +937,6 @@ function shuffleCards() {
 deck = DECKS.meds.slice();
 render();
 
-// Service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
-  });
-}
 
 // ── MOBILE SIDEBAR TOGGLE ──
 

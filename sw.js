@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v65-notices-logbook';
+const CACHE = 'oznurse-v66-perf-combined';
 
 const CORE_FILES = [
   './',
@@ -92,8 +92,8 @@ const CORE_FILES = [
   './favicon.ico',
   './favicon-32.png',
   './logo-mark.png',
+  './og-image.jpg',
   './icon-maskable-512.png',
-  './favicon.ico',
   './banner.webp'
 ];
 
@@ -101,10 +101,10 @@ const CORE_FILES = [
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(CORE_FILES);
+      return cache.addAll(CORE_FILES).then(function () { return self.skipWaiting(); });
     })
   );
-  self.skipWaiting();
+  // Activate only after the complete offline set has been stored.
 });
 
 // ── Activate: remove old caches ──
@@ -115,61 +115,71 @@ self.addEventListener('activate', function (e) {
         keys.filter(function (k) { return k.startsWith('oznurse-') && k !== CACHE; })
             .map(function (k) { return caches.delete(k); })
       );
-    })
+    }).then(function () { return self.clients.claim(); })
   );
-  self.clients.claim();
 });
 
-// ── Fetch: serve from cache, fall back to network ──
+// Avoid revalidating the same asset on every page visit within a short session.
+// This in-memory window resets when the worker restarts; HTML stays network-first.
+const REVALIDATE_MS = 5 * 60 * 1000;
+const checkedAt = new Map();
+async function storeResponse(request, response) {
+  if (!response.ok || response.type === 'opaque' || response.status === 206) return;
+  try {
+    // Clone before yielding: the browser may start consuming the original body.
+    const copy = response.clone();
+    const cache = await caches.open(CACHE);
+    await cache.put(request, copy);
+  } catch {
+    // A full or unavailable cache must never prevent an online response.
+  }
+}
+
 self.addEventListener('fetch', function (e) {
-  // Only handle GET requests
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  // Stream video (including range requests) from the network; do not cache partial responses.
-  if (url.pathname.endsWith('.mp4') || url.pathname.endsWith('.webm')) return;
-  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) return;
-  if (new URL(e.request.url).pathname.startsWith('/downloads/')) return;
-  // The game's versioned bundles must not receive the site's HTML fallback.
-  if (new URL(e.request.url).pathname.startsWith('/med-survivor/')) return;
-  // Prefer current navigation; retain cached pages only as an offline fallback.
-  if (e.request.mode === 'navigate') {
-    e.respondWith(fetch(e.request).then(function (response) {
-      if (response.ok) {
-        var copy = response.clone();
-        e.waitUntil(caches.open(CACHE).then(function (cache) { return cache.put(e.request, copy); }));
-      }
-      return response;
-    }).catch(function () {
-      return caches.match(e.request).then(function (cached) {
-        return cached || caches.match('./index.html');
-      });
-    }));
-    return;
-  }
+  if (url.origin !== self.location.origin || e.request.headers.has('range')) return;
+  if (/\.(mp4|webm)$/i.test(url.pathname)) return;
+  if (['/api/', '/auth/', '/downloads/', '/med-survivor/'].some(function (path) {
+    return url.pathname.startsWith(path);
+  })) return;
 
-  e.respondWith(
-    caches.match(e.request).then(function (cached) {
-      if (cached) {
-        // Return cached version and update in background
-        fetch(e.request).then(function (fresh) {
-          if (fresh && fresh.status === 200) {
-            caches.open(CACHE).then(function (c) { c.put(e.request, fresh); });
-          }
-        }).catch(function () {});
-        return cached;
+  // Register lifetime work synchronously so cache writes survive page navigation.
+  let background = Promise.resolve();
+  const response = (async function () {
+    const cache = await caches.open(CACHE).catch(function () { return null; });
+    const cached = cache ? await cache.match(e.request).catch(function () { return null; }) : null;
+    if (e.request.mode === 'navigate') {
+      try {
+        const fresh = await fetch(e.request);
+        background = storeResponse(e.request, fresh);
+        return fresh;
+      } catch {
+        return cached || (cache && await cache.match('./index.html')) || Response.error();
       }
-
-      // Not in cache — try network, cache on success
-      return fetch(e.request).then(function (res) {
-        if (res && res.status === 200 && res.type !== 'opaque') {
-          var clone = res.clone();
-          caches.open(CACHE).then(function (c) { c.put(e.request, clone); });
-        }
-        return res;
-      }).catch(function () {
-        // Missing assets must not receive HTML as JavaScript or CSS.
-        return Response.error();
-      });
-    })
-  );
+    }
+    if (cached) {
+      const now = Date.now();
+      if (!checkedAt.has(url.href) || now - checkedAt.get(url.href) >= REVALIDATE_MS) {
+        // Bound bookkeeping even when URLs contain arbitrary query strings.
+        if (checkedAt.size >= 256) checkedAt.delete(checkedAt.keys().next().value);
+        checkedAt.set(url.href, now);
+        background = fetch(e.request).then(async function (fresh) {
+          if (!fresh.ok) checkedAt.delete(url.href);
+          await storeResponse(e.request, fresh);
+        }).catch(function () { checkedAt.delete(url.href); });
+      }
+      return cached;
+    }
+    try {
+      const fresh = await fetch(e.request);
+      background = storeResponse(e.request, fresh);
+      return fresh;
+    } catch {
+      // Missing assets must not receive HTML as JavaScript or CSS.
+      return Response.error();
+    }
+  })();
+  e.respondWith(response);
+  e.waitUntil(response.then(function () { return background; }).catch(function () {}));
 });
