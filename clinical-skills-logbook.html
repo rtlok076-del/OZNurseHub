@@ -167,6 +167,24 @@
       </section>
       <section class="st-section">
         <h2>My entries</h2>
+        <div class="log-filters st-noprint" role="search" aria-label="Filter entries">
+          <label class="st-field"
+            >Search skill name<input id="filter-search" type="search" autocomplete="off" placeholder="e.g. wound" /></label
+          ><label class="st-field"
+            >Category<select id="filter-area"></select></label>
+          <div class="st-two">
+            <label class="st-field"
+              >From<input id="filter-from" type="date" /></label
+            ><label class="st-field"
+              >To<input id="filter-to" type="date" /></label>
+          </div>
+          <div class="st-actions">
+            <button id="filter-clear" class="st-btn ghost small" type="button">Clear filters</button>
+          </div>
+          <p id="filter-count" class="st-help" role="status"></p>
+          <p class="st-help">Filters are not saved. CSV and Print / Save PDF include only the entries shown.</p>
+        </div>
+        <p id="print-filter" class="print-only"></p>
         <div id="entries"></div>
       </section>
       <section class="st-section controls" id="export">
@@ -180,7 +198,7 @@
           <button id="backup" class="st-btn" type="button">
             Download backup</button
           ><button id="csv" class="st-btn ghost" type="button">
-            Download CSV</button
+            Download CSV (shown entries)</button
           ><button id="print" class="st-btn ghost" type="button">
             Print / Save PDF
           </button>
