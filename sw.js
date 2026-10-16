@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v62-new-logo';
+const CACHE = 'oznurse-v63-logo-oh';
 
 const CORE_FILES = [
   './',
