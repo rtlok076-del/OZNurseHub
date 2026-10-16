@@ -142,7 +142,7 @@
   const $ = (s) => document.querySelector(s);
   const list = $("#fb-list"), play = $("#fb-play");
   if (!list || !play) return;
-  let current = null, practice = true, extra = {};
+  let current = null, mode = "practice", extra = {}, answers = {}, checked = new Set(), reveal = false, asYouGo = false, spotChoice = null;
 
   function el(tag, attrs, html) {
     const e = document.createElement(tag);
@@ -150,9 +150,10 @@
     if (html != null) e.innerHTML = html;
     return e;
   }
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   SCENARIOS.forEach((sc) => {
-    const b = el("button", { type: "button", class: "ce-case", "data-id": sc.id },
+    const b = el("button", { type: "button", class: "ce-case", "data-id": sc.id, "aria-pressed": "false" },
       `<em>${sc.tag}</em><strong>${sc.name}</strong><span>${sc.blurb}</span>`);
     b.addEventListener("click", () => open(sc.id, true));
     list.append(b);
@@ -165,52 +166,71 @@
     return Object.assign({}, sc, { data });
   }
 
+  // Expected value and a teaching hint for every fillable cell.
+  function expected() {
+    const sc = merged(current), t = totals(sc), exp = {};
+    let runIn = 0, runOut = 0, prevIn = 0, prevOut = 0;
+    HOURS.forEach((h) => {
+      const vin = IN.reduce((s, [k]) => s + (sc.data[k][h] || 0), 0);
+      const vout = OUT.reduce((s, [k]) => s + (sc.data[k][h] || 0), 0);
+      prevIn = runIn; prevOut = runOut; runIn += vin; runOut += vout;
+      exp[`r${h}-in`] = { v: runIn, label: `${hh(h)} running intake`, hint: `Previous running intake ${fmt(prevIn)} + this hour's intake ${fmt(vin)} = ${fmt(runIn)} mL.` };
+      exp[`r${h}-out`] = { v: runOut, label: `${hh(h)} running output`, hint: `Previous running output ${fmt(prevOut)} + this hour's output ${fmt(vout)} = ${fmt(runOut)} mL.` };
+      exp[`r${h}-bal`] = { v: runIn - runOut, label: `${hh(h)} balance`, hint: `Running intake ${fmt(runIn)} − running output ${fmt(runOut)} = ${signed(runIn - runOut)}.` };
+    });
+    [...IN, ...OUT].forEach(([k, n]) => {
+      const parts = HOURS.filter((h) => sc.data[k][h]).map((h) => fmt(sc.data[k][h]));
+      exp[`t-${k}`] = { v: t.col[k], label: `24-hour ${n} total`, hint: parts.length ? `${parts.join(" + ")} = ${fmt(t.col[k])} mL.` : "Nothing was charted in this column, so the total is 0." };
+    });
+    exp["t-in"] = { v: t.tin, label: "24-hour total intake", hint: IN.map(([k, n]) => `${n} ${fmt(t.col[k])}`).join(" + ") + ` = ${fmt(t.tin)} mL. It should match the last running intake.` };
+    exp["t-out"] = { v: t.tout, label: "24-hour total output", hint: OUT.map(([k, n]) => `${n} ${fmt(t.col[k])}`).join(" + ") + ` = ${fmt(t.tout)} mL. It should match the last running output.` };
+    exp["t-bal"] = { v: t.bal, label: "24-hour balance", hint: `${fmt(t.tin)} − ${fmt(t.tout)} = ${signed(t.bal)} (${word(t.bal)}).` };
+    return { sc, t, exp };
+  }
+
+  function parse(raw) {
+    const s = String(raw || "").replace(/[,\s]|mL/gi, "").replace(/[−–]/g, "-");
+    if (s === "" || s === "-" || s === "+") return null;
+    return /^[+-]?\d+$/.test(s) ? Number(s) : NaN;
+  }
+
   function open(id, focus) {
     current = SCENARIOS.find((s) => s.id === id);
-    extra = {};
+    extra = {}; answers = {}; checked = new Set(); reveal = false; spotChoice = null;
     list.querySelectorAll(".ce-case").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.id === id)));
     play.hidden = false;
-    render();
+    renderShell();
     if (focus) play.querySelector("h3").focus();
   }
 
-  function render() {
-    const sc = merged(current);
-    const t = totals(sc);
-    const hide = practice;
-    let runIn = 0, runOut = 0;
-    const rows = HOURS.map((h) => {
-      const vin = IN.reduce((s, [k]) => s + (sc.data[k][h] || 0), 0);
-      const vout = OUT.reduce((s, [k]) => s + (sc.data[k][h] || 0), 0);
-      runIn += vin; runOut += vout;
-      const b = runIn - runOut;
-      const cells = [...IN, ...OUT].map(([k], i) => `<td class="${i === IN.length ? "fb-gap" : ""}">${sc.data[k][h] ? fmt(sc.data[k][h]) : ""}</td>`).join("");
-      const note = (current.notes || {})[h] || "";
-      const flag = h === current.spotAt ? ' class="fb-spot"' : "";
-      return `<tr${flag}><th scope="row">${hh(h)}</th>${cells}` +
-        (hide ? `<td class="fb-run fb-gap">?</td><td class="fb-run">?</td><td class="fb-run">?</td>`
-              : `<td class="fb-run fb-gap">${fmt(runIn)}</td><td class="fb-run">${fmt(runOut)}</td><td class="fb-run fb-bal ${word(b)}">${signed(b)}</td>`) +
-        `<td class="fb-note">${note}</td></tr>`;
-    }).join("");
-    const foot = [...IN, ...OUT].map(([k], i) => `<td class="${i === IN.length ? "fb-gap" : ""}">${hide ? "?" : fmt(t.col[k])}</td>`).join("");
-    const head = `<tr><th scope="col" rowspan="2">Time</th><th scope="colgroup" colspan="${IN.length}" class="fb-in">Intake (mL)</th><th scope="colgroup" colspan="${OUT.length}" class="fb-out fb-gap">Output (mL)</th><th scope="colgroup" colspan="3" class="fb-gap">Running totals (mL)</th><th scope="col" rowspan="2">Notes</th></tr>` +
-      `<tr>${IN.map(([, n]) => `<th scope="col">${n}</th>`).join("")}${OUT.map(([, n], i) => `<th scope="col" class="${i ? "" : "fb-gap"}">${n}</th>`).join("")}<th scope="col" class="fb-gap">In</th><th scope="col">Out</th><th scope="col">Balance</th></tr>`;
-    const limit = current.limit ? `<p class="ce-note"><strong>Fictional limit for this scenario:</strong> ${fmt(current.limit)} mL in 24 hours. This is a made-up number for practice, not a recommendation.</p>` : "";
+  function cell(key, extraClass) {
+    const a = answers[key] == null ? "" : answers[key];
+    const isBal = /bal$/.test(key);
+    const sign = isBal ? `<button type="button" class="fb-sign" data-key="${key}" aria-label="Switch plus or minus">±</button>` : "";
+    return `<td class="fb-run fb-fill ${extraClass || ""}" data-key="${key}"><span class="fb-cellwrap">${sign}<input type="text" inputmode="numeric" autocomplete="off" enterkeyhint="next" data-key="${key}" value="${esc(a)}" aria-label="" size="6"></span><span class="fb-mark" aria-hidden="true"></span><span class="fb-ans"></span></td>`;
+  }
 
+  function renderShell() {
+    const limit = current.limit ? `<p class="ce-note"><strong>Fictional limit for this scenario:</strong> ${fmt(current.limit)} mL in 24 hours. This is a made-up number for practice, not a recommendation.</p>` : "";
     play.innerHTML = `
 <div class="st-panel">
 <p class="ce-when">${current.tag} · 24-hour chart, 08:00 to 07:59</p>
-<h3 tabindex="-1">${current.name}</h3>
+<h3 tabindex="-1" data-no-scroll-effects>${current.name}</h3>
 <p>${current.story}</p>${limit}
 <fieldset class="st-radios fb-mode"><legend>Mode</legend>
-<label><input type="radio" name="fbmode" value="practice"${practice ? " checked" : ""}> Practice: I'll do the totals</label>
-<label><input type="radio" name="fbmode" value="show"${practice ? "" : " checked"}> Show all totals</label>
+<label><input type="radio" name="fbmode" value="practice"${mode === "practice" ? " checked" : ""}> Practice: fill in the chart</label>
+<label><input type="radio" name="fbmode" value="show"${mode === "show" ? " checked" : ""}> Show all totals (worked)</label>
 </fieldset>
-<div class="fb-wrap" tabindex="0" role="region" aria-label="Fluid balance chart for ${current.name}. Scroll sideways for more columns.">
-<table class="fb-table"><caption class="ce-sr">24-hour fluid balance chart. Volumes in mL. Fictional.</caption><thead>${head}</thead><tbody>${rows}</tbody>
-<tfoot><tr><th scope="row">24 h total</th>${foot}<td class="fb-run fb-gap">${hide ? "?" : fmt(t.tin)}</td><td class="fb-run">${hide ? "?" : fmt(t.tout)}</td><td class="fb-run fb-bal ${hide ? "" : word(t.bal)}">${hide ? "?" : signed(t.bal) + " (" + word(t.bal) + ")"}</td><td></td></tr></tfoot></table>
+<p class="st-help fb-practice-only">For each hour, type the Total in (under Intake), the Total out (under Output) and the Running balance straight into the shaded cells. Each total adds this hour onto the one before. Then fill in the 24-hour totals row at the bottom. Use ± to make a balance negative. Don't count anything marked "not measured".</p>
+<label class="fb-asyougo fb-practice-only"><input type="checkbox" id="fb-asyougo"${asYouGo ? " checked" : ""}> Check each cell as I go</label>
+<div class="fb-wrap" tabindex="-1" role="region" aria-label="Fluid balance chart for ${current.name}. Scroll sideways for more columns." id="fb-wrap"></div>
+<div class="st-actions fb-practice-only">
+<button class="st-btn" type="button" id="fb-checkall">Check my chart</button>
+<button class="st-btn ghost" type="button" id="fb-showans">Show answers</button>
+<button class="st-btn ghost" type="button" id="fb-clearans">Clear my entries</button>
 </div>
-<p class="ce-chartcap">Blank cells mean nothing was recorded that hour. Entries marked "not measured" in Notes are not in the totals. The highlighted row is when the "spot the problem" question is asked. Scroll sideways on small screens.</p>
+<p class="fb-hint" id="fb-hint" role="status" aria-live="polite"></p>
+<p class="ce-chartcap">Blank cells in the fluid columns mean nothing was recorded that hour. Entries marked "not measured" in Notes are not in the totals. The highlighted row is when the "spot the problem" question is asked. On small screens, scroll the chart sideways; the time column stays put.</p>
 
 <details class="st-acc fb-add"><summary>Add your own entry to this chart</summary>
 <form id="fb-add" class="fb-addform" autocomplete="off" novalidate>
@@ -222,82 +242,138 @@
 </details>
 </div>
 
-<div class="ce-step" style="margin-top:22px">
-<div class="st-panel">
-<h4 class="fb-h">Practice: total the chart</h4>
-<p class="st-help">Add up every intake column, then every output column, for the full 24 hours. Balance is total intake minus total output. Don't count anything marked "not measured".</p>
-<form id="fb-check" autocomplete="off" novalidate>
-<div class="fb-answers">
-<label class="st-field"><span>Total intake <small>mL</small></span><input type="number" name="in" inputmode="numeric" step="1"></label>
-<label class="st-field"><span>Total output <small>mL</small></span><input type="number" name="out" inputmode="numeric" step="1"></label>
-<label class="st-field"><span>Balance <small>mL, use − for negative</small></span><input type="number" name="bal" inputmode="numeric" step="1"></label>
-</div>
-<div class="st-actions"><button class="st-btn" type="submit">Check my answers</button><button class="st-btn ghost" type="button" id="fb-reveal">Show the working</button></div>
-</form>
-<div id="fb-result" aria-live="polite"></div>
-</div>
-<div class="st-panel">
+<div class="st-panel" style="margin-top:22px">
 <h4 class="fb-h">Spot the problem</h4>
 <p>${current.problem}</p>
 <p><strong>What would you do?</strong></p>
 <div class="ce-opts" id="fb-opts">${current.options.map((o, i) => `<button type="button" class="ce-opt" data-i="${i}"><b aria-hidden="true">${"ABCD"[i]}</b><span>${o[0]}</span></button>`).join("")}</div>
 <div id="fb-spot" aria-live="polite"></div>
-</div>
 </div>`;
 
-    play.querySelectorAll('input[name="fbmode"]').forEach((r) => r.addEventListener("change", () => { practice = r.value === "practice"; render(); }));
-    $("#fb-check").addEventListener("submit", (e) => { e.preventDefault(); check(sc, t, false); });
-    $("#fb-reveal").addEventListener("click", () => check(sc, t, true));
+    play.querySelectorAll('input[name="fbmode"]').forEach((r) => r.addEventListener("change", () => { mode = r.value; renderTable(); }));
+    $("#fb-asyougo").addEventListener("change", (e) => { asYouGo = e.target.checked; if (asYouGo) Object.keys(answers).forEach((k) => { if (answers[k] !== "") checked.add(k); }); paintMarks(); });
+    $("#fb-checkall").addEventListener("click", checkAll);
+    $("#fb-showans").addEventListener("click", () => { reveal = true; Object.keys(expected().exp).forEach((k) => checked.add(k)); paintMarks(); summary(); });
+    $("#fb-clearans").addEventListener("click", () => { answers = {}; checked = new Set(); reveal = false; renderTable(); $("#fb-hint").textContent = "Your entries were cleared."; });
     $("#fb-add").addEventListener("submit", (e) => {
       e.preventDefault();
       const f = e.target, v = Math.round(Number(f.v.value)), st = $("#fb-add-status");
       if (!(v > 0 && v <= 5000)) { st.textContent = "Enter a volume between 1 and 5000 mL."; return; }
       extra[f.k.value] = extra[f.k.value] || {};
       extra[f.k.value][f.h.value] = (extra[f.k.value][f.h.value] || 0) + v;
-      const msg = `Added ${fmt(v)} mL at ${hh(Number(f.h.value))}. Totals updated.`;
-      render(); play.querySelector(".fb-add").open = true; $("#fb-add-status").textContent = msg;
+      checked = new Set(); reveal = false; renderTable();
+      st.textContent = `Added ${fmt(v)} mL at ${hh(Number(f.h.value))}. ` + (mode === "practice" ? "Your typed totals were kept but need checking again." : "Totals updated.");
+      f.v.value = "";
     });
-    $("#fb-undo").addEventListener("click", () => { extra = {}; render(); play.querySelector(".fb-add").open = true; $("#fb-add-status").textContent = "Your entries were removed."; });
+    $("#fb-undo").addEventListener("click", () => { extra = {}; checked = new Set(); reveal = false; renderTable(); $("#fb-add-status").textContent = "Your entries were removed."; });
     play.querySelectorAll("#fb-opts .ce-opt").forEach((b) => b.addEventListener("click", () => answer(Number(b.dataset.i))));
+    renderTable();
+    if (spotChoice != null) answer(spotChoice);
   }
 
-  function working(t) {
-    const inp = IN.map(([k, n]) => `${n} ${fmt(t.col[k])}`).join(" + ");
-    const outp = OUT.map(([k, n]) => `${n} ${fmt(t.col[k])}`).join(" + ");
-    return `<ul class="st-list"><li><strong>Intake:</strong> ${inp} = <strong>${fmt(t.tin)} mL</strong></li>` +
-      `<li><strong>Output:</strong> ${outp} = <strong>${fmt(t.tout)} mL</strong></li>` +
-      `<li><strong>Balance:</strong> ${fmt(t.tin)} − ${fmt(t.tout)} = <strong>${signed(t.bal)}</strong> (${word(t.bal)}). ${t.bal > 0 ? "Positive means more went in than came out." : t.bal < 0 ? "Negative means more came out than went in." : "Even means intake and output matched."}</li></ul>` +
-      (current.limit ? `<p>Intake against the fictional limit: ${fmt(t.tin)} mL of ${fmt(current.limit)} mL (${t.tin > current.limit ? fmt(t.tin - current.limit) + " mL over" : fmt(current.limit - t.tin) + " mL under"}).</p>` : "") +
-      `<p class="st-help">Remember: insensible losses (breathing, sweat) are real but aren't measured, so they're noted, not charted.</p>`;
+  function renderTable() {
+    const { sc, t, exp } = expected();
+    const practice = mode === "practice";
+    play.querySelector(".st-panel").classList.toggle("fb-is-practice", practice);
+    const inCells = (h) => IN.map(([k]) => `<td>${sc.data[k][h] ? fmt(sc.data[k][h]) : ""}</td>`).join("");
+    const outCells = (h) => OUT.map(([k], i) => `<td class="${i ? "" : "fb-gap"}">${sc.data[k][h] ? fmt(sc.data[k][h]) : ""}</td>`).join("");
+    const shown = (k, cls) => `<td class="fb-run ${cls || ""}">${/bal$/.test(k) ? signed(exp[k].v) : fmt(exp[k].v)}</td>`;
+    const rows = HOURS.map((h) => {
+      const note = (current.notes || {})[h] || "";
+      const flag = h === current.spotAt ? ' class="fb-spot"' : "";
+      const b = exp[`r${h}-bal`].v;
+      return `<tr${flag}><th scope="row">${hh(h)}</th>${inCells(h)}` +
+        (practice ? cell(`r${h}-in`, "fb-tot") : shown(`r${h}-in`, "fb-tot")) + outCells(h) +
+        (practice ? cell(`r${h}-out`, "fb-tot") : shown(`r${h}-out`, "fb-tot")) +
+        (practice ? cell(`r${h}-bal`, "fb-gap fb-balcol") : `<td class="fb-run fb-gap fb-balcol fb-bal ${word(b)}">${signed(b)}</td>`) +
+        `<td class="fb-note">${note}</td></tr>`;
+    }).join("");
+    const ft = (k, cls) => practice ? cell(k, cls) : `<td class="${cls}">${fmt(k === "t-in" ? t.tin : k === "t-out" ? t.tout : t.col[k.slice(2)])}</td>`;
+    const foot = IN.map(([k]) => ft(`t-${k}`, "")).join("") + ft("t-in", "fb-run fb-tot") +
+      OUT.map(([k], i) => ft(`t-${k}`, i ? "" : "fb-gap")).join("") + ft("t-out", "fb-run fb-tot") +
+      (practice ? cell("t-bal", "fb-gap fb-balcol") : `<td class="fb-run fb-gap fb-balcol fb-bal ${word(t.bal)}">${signed(t.bal)} (${word(t.bal)})</td>`);
+    const head = `<tr><th scope="col" rowspan="2" class="fb-timehead">Time</th><th scope="colgroup" colspan="${IN.length + 1}">Intake (mL)</th><th scope="colgroup" colspan="${OUT.length + 1}" class="fb-gap">Output (mL)</th><th scope="col" rowspan="2" class="fb-gap fb-balcol">Running balance<br><small>in − out</small></th><th scope="col" rowspan="2">Notes</th></tr>` +
+      `<tr>${IN.map(([, n]) => `<th scope="col">${n}</th>`).join("")}<th scope="col" class="fb-tot">Total in<br><small>running</small></th>${OUT.map(([, n], i) => `<th scope="col" class="${i ? "" : "fb-gap"}">${n}</th>`).join("")}<th scope="col" class="fb-tot">Total out<br><small>running</small></th></tr>`;
+    const wrap = $("#fb-wrap");
+    wrap.innerHTML = `<table class="fb-table${practice ? " fb-practice" : ""}"><caption class="ce-sr">24-hour fluid balance chart. Volumes in mL. Fictional.${practice ? " Running total cells are editable." : ""}</caption><thead>${head}</thead><tbody>${rows}</tbody><tfoot><tr><th scope="row">24-hour totals</th>${foot}<td></td></tr></tfoot></table>`;
+    // Second header row sticks directly under the first, whatever its height.
+    const r1 = wrap.querySelector("thead tr"), setTop = () => wrap.querySelectorAll("thead tr:nth-child(2) th").forEach((th) => { th.style.top = r1.getBoundingClientRect().height + "px"; });
+    setTop(); if (!window.__fbResize) { window.__fbResize = true; addEventListener("resize", () => { const r = document.querySelector("#fb-wrap thead tr"); if (r) document.querySelectorAll("#fb-wrap thead tr:nth-child(2) th").forEach((th) => { th.style.top = r.getBoundingClientRect().height + "px"; }); }); }
+    wrap.querySelectorAll("input[data-key]").forEach((inp) => {
+      const k = inp.dataset.key;
+      inp.setAttribute("aria-label", exp[k].label + " in mL");
+      inp.addEventListener("input", () => { answers[k] = inp.value; if (!asYouGo) { checked.delete(k); paintCell(k, exp); } });
+      inp.addEventListener("change", () => { if (asYouGo && inp.value.trim() !== "") { checked.add(k); paintCell(k, exp); summary(); } });
+      inp.addEventListener("focus", () => hintFor(k, exp));
+      inp.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); const all = [...wrap.querySelectorAll("input[data-key]")]; const n = all[all.indexOf(inp) + 1]; if (n) n.focus(); } });
+    });
+    wrap.querySelectorAll(".fb-sign").forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.key, inp = wrap.querySelector(`input[data-key="${k}"]`);
+      const v = inp.value.trim().replace(/^[−–]/, "-");
+      inp.value = v.startsWith("-") ? v.slice(1) : "-" + v.replace(/^\+/, "");
+      answers[k] = inp.value; if (asYouGo && parse(inp.value) != null) checked.add(k); else if (!asYouGo) checked.delete(k);
+      paintCell(k, exp); inp.focus();
+    }));
+    paintMarks();
   }
 
-  function check(sc, t, reveal) {
-    const f = $("#fb-check"), out = $("#fb-result");
-    if (reveal) { out.innerHTML = `<div class="ce-fb"><h4>The working</h4>${working(t)}</div>`; return; }
-    const get = (n) => (f[n].value.trim() === "" ? null : Number(f[n].value));
-    const a = { in: get("in"), out: get("out"), bal: get("bal") };
-    if (a.in === null || a.out === null || a.bal === null) { out.innerHTML = `<p class="ce-err" role="alert">Fill in all three boxes, then check.</p>`; return; }
-    const r = [
-      ["Total intake", a.in === t.tin, a.in, t.tin],
-      ["Total output", a.out === t.tout, a.out, t.tout],
-      ["Balance", a.bal === t.bal, a.bal, t.bal]
-    ];
-    let tip = "";
-    if (a.bal === -t.bal && t.bal !== 0) tip = "<p><strong>Check your sign.</strong> Balance is intake minus output, so it's " + word(t.bal) + " here.</p>";
-    else if (a.bal !== t.bal && a.bal === a.in - a.out) tip = "<p>Your balance follows from your own totals, so the method is right. Recheck the column sums.</p>";
-    const right = r.filter((x) => x[1]).length;
-    out.innerHTML = `<div class="ce-fb"><h4>${right === 3 ? "All correct. Nice work." : right + " of 3 correct"}</h4>` +
-      `<ul class="st-list">${r.map((x) => `<li>${x[1] ? "✓" : "✗"} ${x[0]}: you said ${x[0] === "Balance" ? signed(x[2]) : fmt(x[2]) + " mL"}${x[1] ? "" : `. Correct: ${x[0] === "Balance" ? signed(x[3]) : fmt(x[3]) + " mL"}`}</li>`).join("")}</ul>${tip}${working(t)}</div>`;
+  function paintCell(k, exp) {
+    const td = play.querySelector(`td[data-key="${k}"]`);
+    if (!td) return;
+    const mark = td.querySelector(".fb-mark"), ans = td.querySelector(".fb-ans");
+    td.classList.remove("ok", "bad", "empty");
+    mark.textContent = ""; ans.textContent = "";
+    if (!checked.has(k)) return;
+    const val = parse(answers[k]);
+    const isBal = /bal$/.test(k);
+    const right = exp[k].v === val || (isBal && val === 0 && exp[k].v === 0);
+    if (val === null) { if (reveal) { td.classList.add("empty"); ans.textContent = "= " + (isBal ? signed(exp[k].v) : fmt(exp[k].v)); } return; }
+    td.classList.add(right ? "ok" : "bad");
+    mark.textContent = right ? "✓" : "✗";
+    td.querySelector("input").setAttribute("aria-invalid", right ? "false" : "true");
+    if (!right && reveal) ans.textContent = "= " + (isBal ? signed(exp[k].v) : fmt(exp[k].v));
+  }
+  function paintMarks() { const { exp } = expected(); Object.keys(exp).forEach((k) => paintCell(k, exp)); }
+
+  function hintFor(k, exp) {
+    const h = $("#fb-hint"); if (!h) return;
+    const td = play.querySelector(`td[data-key="${k}"]`);
+    if (td && td.classList.contains("bad")) h.innerHTML = `<strong>✗ ${exp[k].label}:</strong> not quite. ${exp[k].hint}`;
+    else if (td && td.classList.contains("ok")) h.innerHTML = `<strong>✓ ${exp[k].label}:</strong> correct.`;
+    else if (reveal) h.innerHTML = `<strong>${exp[k].label}:</strong> ${exp[k].hint}`;
+    else h.textContent = "";
+  }
+
+  function checkAll() {
+    const { exp } = expected();
+    Object.keys(exp).forEach((k) => checked.add(k));
+    paintMarks();
+    summary(true);
+  }
+  function summary(focusFirst) {
+    const { exp, t } = expected();
+    const keys = Object.keys(exp);
+    let ok = 0, bad = 0, empty = 0;
+    keys.forEach((k) => { if (!checked.has(k)) return; const v = parse(answers[k]); if (v === null) empty++; else if (v === exp[k].v) ok++; else bad++; });
+    const h = $("#fb-hint");
+    let msg = `<strong>${ok} of ${keys.length} cells correct.</strong> ${bad ? bad + " to fix (marked ✗). Tap a ✗ cell for a hint." : ""} ${empty && !reveal ? empty + " still blank." : ""}`;
+    if (ok === keys.length) msg = `<strong>✓ All ${keys.length} cells correct.</strong> 24-hour balance ${signed(t.bal)} (${word(t.bal)}). Now look at the trend and try the spot-the-problem question.`;
+    if (reveal) msg += " Answers are shown in the cells.";
+    // Sign slip: the student's 24-hour balance is the right size but the wrong sign.
+    const tb = parse(answers["t-bal"]);
+    if (tb !== null && tb === -t.bal && t.bal !== 0) msg += ` <strong>Check your sign:</strong> balance is intake minus output, so it's ${word(t.bal)} here.`;
+    h.innerHTML = msg;
+    if (focusFirst) { const first = play.querySelector("td.bad"); if (first) first.scrollIntoView({ block: "nearest", inline: "nearest" }); }
   }
 
   function answer(i) {
+    spotChoice = i;
     const opts = play.querySelectorAll("#fb-opts .ce-opt");
     opts.forEach((b, j) => { b.disabled = true; b.classList.toggle("chosen", j === i); b.classList.toggle("best", j === current.best); });
     const o = current.options[i];
     $("#fb-spot").innerHTML = `<div class="ce-fb"><h4>${i === current.best ? "Best choice." : "Not the best choice."}</h4>` +
       (o[1] ? `<p>${o[1]}</p>` : "") + `<p>${current.explain}</p>` +
       `<button type="button" class="st-btn ghost small" id="fb-retry">Try this question again</button></div>`;
-    $("#fb-retry").addEventListener("click", () => { opts.forEach((b) => { b.disabled = false; b.classList.remove("chosen", "best"); }); $("#fb-spot").innerHTML = ""; opts[0].focus(); });
+    $("#fb-retry").addEventListener("click", () => { spotChoice = null; opts.forEach((b) => { b.disabled = false; b.classList.remove("chosen", "best"); }); $("#fb-spot").innerHTML = ""; opts[0].focus(); });
   }
-
 })();
