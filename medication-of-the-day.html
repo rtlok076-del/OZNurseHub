@@ -5,8 +5,8 @@
 <script src="theme.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<title>Medication of the Day | OzNurseHub</title>
-<meta name="description" content="A free daily medicine card for Australian nursing students. Explain one Australian-named medicine in your own words, then check its class, uses and key risks. No doses. Add it to your phone's home screen.">
+<title>Medication of the Day: Daily Drug Card | OzNurseHub</title>
+<meta name="description" content="One medication card a day for nursing students: class, how it works and key nursing considerations. Build your drug knowledge in two minutes.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-motd-180.png">
 <link rel="manifest" href="manifest-motd.json">
@@ -19,13 +19,16 @@
 /* Home-screen "card view": on when opened as an installed web app, or forced with ?view=app (preview). ?view=page always shows the full page. */
 (function(){var v=null;try{v=new URLSearchParams(location.search).get('view');}catch(e){}var mm=function(q){return !!(window.matchMedia&&window.matchMedia(q).matches);};var installed=mm('(display-mode: standalone)')||mm('(display-mode: fullscreen)')||window.navigator.standalone===true;var c=document.documentElement.classList;if(v==='page'){c.add('md-page');}else if(v==='app'||installed){c.add('md-app');}})();
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="renovation.css">
 <link rel="canonical" href="https://oznursehub.com/medication-of-the-day.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OzNurseHub">
 <meta property="og:locale" content="en_AU">
 <meta property="og:url" content="https://oznursehub.com/medication-of-the-day.html">
-<meta property="og:title" content="Medication of the Day | OzNurseHub">
+<meta property="og:title" content="Medication of the Day: Daily Drug Card | OzNurseHub">
 <meta property="og:description" content="One Australian-named medicine a day. Say what you know, then reveal the card. Free, no account, no doses.">
 <meta property="og:image" content="https://oznursehub.com/oznursehub-share.jpg">
 <style>
@@ -120,6 +123,27 @@ html.md-app .md-appnote{font-size:11px;color:#a9bfb2;margin:8px 0 0}
 <link rel="stylesheet" href="site-navigation.css">
 <link rel="stylesheet" href="newsletter.css?v=2">
 <script src="site-navigation.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Medication of the Day",
+  "description": "One medication card a day for nursing students: class, how it works and key nursing considerations. Build your drug knowledge in two minutes.",
+  "url": "https://oznursehub.com/medication-of-the-day.html",
+  "inLanguage": "en-AU",
+  "isAccessibleForFree": true,
+  "educationalLevel": "Undergraduate nursing",
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "student"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OzNurseHub",
+    "url": "https://oznursehub.com/"
+  }
+}
+</script>
 </head>
 <body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 <main class="renovation-main md-main" id="content">
@@ -256,7 +280,7 @@ if(window.OZ_MEDICINES){start();}else{var s=document.createElement('script');s.s
 </ol>
 <p class="md-src">Steps based on Google's guides, <a href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid" rel="noopener">Use web apps</a> and <a href="https://support.google.com/chrome/answer/15085120?co=GENIE.Platform%3DAndroid" rel="noopener">Create shortcuts for websites</a>.</p>
 </article>
-<figure class="md-figure"><img src="medication-of-the-day-phone.png" width="536" height="1118" alt="Preview of the card view on a phone: a dark green screen with Med of the Day at the top and today's medicine card, with Reveal the card and Next one buttons." loading="lazy"><figcaption>The card view you get when you open it from your home screen. This is a preview of our page, not a picture of your phone's home screen.</figcaption></figure>
+<figure class="md-figure"><img decoding="async" src="medication-of-the-day-phone.png" width="536" height="1118" alt="Preview of the card view on a phone: a dark green screen with Med of the Day at the top and today's medicine card, with Reveal the card and Next one buttons." loading="lazy"><figcaption>The card view you get when you open it from your home screen. This is a preview of our page, not a picture of your phone's home screen.</figcaption></figure>
 </div>
 <p class="md-remove">Menus vary a little between phones and versions. Using another browser? Look for <span class="md-ui">Add to Home screen</span> or <span class="md-ui">Install</span> in its menu. To remove the icon later, touch and hold it, then choose the option to remove or uninstall it.</p>
 </section>
@@ -325,6 +349,7 @@ if(window.OZ_MEDICINES){start();}else{var s=document.createElement('script');s.s
           </p>
         </form>
       </section>
+<nav class="related-links" aria-label="Related pages"><span>Related:</span> <a href="medications.html">Medication library</a> · <a href="meds-quiz.html">Medication quiz</a> · <a href="learning-lab.html">Medication learning lab</a></nav>
 </main><footer class="elegant-footer"><span>OzNurseHub / Learn with purpose.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><div><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="resources.html">All resources</a></div></footer><script src="renovation.js"></script>
 <script>
 (function(){'use strict';

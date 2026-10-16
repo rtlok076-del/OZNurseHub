@@ -8,3 +8,8 @@ body.app-mode .back-to-top { bottom:calc(96px + env(safe-area-inset-bottom)); }
 @media print { .back-to-top { display:none!important; } }
 /* Quiz content scrolls with the document so its header shares the sticky viewport. */
 body.renovated.quiz-page { overflow:visible!important; }
+
+/* Discreet related-page links (SEO pass) */
+.related-links{max-width:72rem;margin:2.5rem auto 1.5rem;padding:0 1.25rem;font-size:.9rem;line-height:1.7;color:inherit;opacity:.85}
+.related-links span{font-weight:600;margin-right:.25rem}
+.related-links a{color:inherit;text-underline-offset:3px}
