@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v59-fluid-balance';
+const CACHE = 'oznurse-v60-fluid-balance-chart';
 
 const CORE_FILES = [
   './',
@@ -61,8 +61,8 @@ const CORE_FILES = [
   './clinical-escalation.html',
   './clinical-escalation.js',
   './fluid-balance.html',
-  './fluid-balance.js',
-  './fluid-balance.css',
+  './fluid-balance.js?v=2',
+  './fluid-balance.css?v=2',
   './clinical-skills-logbook.html',
   './clinical-skills-logbook.js',
   './clinical-skills-logbook.css',
