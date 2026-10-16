@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v63-logo-oh';
+const CACHE = 'oznurse-v64-guides-quiz';
 
 const CORE_FILES = [
   './',
@@ -75,6 +75,11 @@ const CORE_FILES = [
   './feedback.html',
   './bloods.html',
   './palliative.html',
+  './palliative-care-phases.html',
+  './nsqhs-standards.html',
+  './study-guides.css',
+  './med-quiz-mode.css',
+  './med-quiz-mode.js',
   './cognitive.html',
   './antt.html',
   './tools.html',
