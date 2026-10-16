@@ -4,14 +4,17 @@
     <meta charset="utf-8" />
 <script src="theme.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>OzNurseHub | A calmer way to learn nursing</title>
+    <title>OzNurseHub: Free Nursing Student Study Hub (Australia)</title>
     <meta name="robots" content="index,follow" />
     <meta
       name="description"
-      content="Australian nursing study resources, practical clinical tools and interactive medication learning."
+      content="OzNurseHub is a free study hub for Australian nursing students and new grads: ISBAR, ANTT, progress notes, medications, placement prep and practice tools."
     />
     <link rel="icon" href="icon.svg" />
-    <link rel="stylesheet" href="renovation.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="renovation.css" />
     <link rel="stylesheet" href="home-intro.css" />
     <link rel="canonical" href="https://oznursehub.com/" />
     <!-- Open Graph -->
@@ -21,7 +24,7 @@
     <meta property="og:url" content="https://oznursehub.com/" />
     <meta
       property="og:title"
-      content="OzNurseHub | A calmer way to learn nursing"
+      content="OzNurseHub: Free Nursing Student Study Hub (Australia)"
     />
     <meta
       property="og:description"
@@ -42,7 +45,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="OzNurseHub | A calmer way to learn nursing"
+      content="OzNurseHub: Free Nursing Student Study Hub (Australia)"
     />
     <meta
       name="twitter:description"
@@ -57,19 +60,39 @@
       content="Four nursing students sharing notes and learning together in an Australian setting"
     />
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "OzNurseHub",
-        "url": "https://oznursehub.com/",
-        "description": "Free open-access tools for Australian nursing students and new graduate nurses.",
-        "inLanguage": "en-AU",
-        "audience": {
-          "@type": "Audience",
-          "audienceType": "Nursing students and new graduate nurses in Australia"
-        },
-        "alternateName": "OzNurseHub"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://oznursehub.com/#website",
+      "name": "OzNurseHub",
+      "alternateName": [
+        "Oz Nurse Hub",
+        "OzNurse Hub"
+      ],
+      "url": "https://oznursehub.com/",
+      "description": "Free open-access study resources and tools for Australian nursing students and new graduate nurses.",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://oznursehub.com/#organization"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Nursing students and new graduate nurses in Australia"
       }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://oznursehub.com/#organization",
+      "name": "OzNurseHub",
+      "alternateName": "Oz Nurse Hub",
+      "url": "https://oznursehub.com/",
+      "logo": "https://oznursehub.com/app-icon-512.png",
+      "areaServed": "AU"
+    }
+  ]
+}
     </script>
     <link rel="stylesheet" href="scroll-effects.css" />
   <link rel="stylesheet" href="site-theme.css">
@@ -112,6 +135,9 @@
         <img
           class="home-intro-image"
           src="hero-nursing-v2.webp"
+          srcset="hero-nursing-v2-768.webp 768w, hero-nursing-v2-1024.webp 1024w, hero-nursing-v2.webp 1536w"
+          sizes="(max-width: 700px) 100vw, 50vw"
+          decoding="async"
           width="1536"
           height="1024"
           alt="Four nursing students sharing notes"
@@ -125,8 +151,8 @@
             A little more knowledge.<br /><em>A lot more confidence.</em>
           </h1>
           <p>
-            Practical resources for the moments between the classroom and the
-            ward.
+            OzNurseHub is a free study hub with practical resources for the
+            moments between the classroom and the ward.
           </p>
           <a class="elegant-button" href="#explore">Explore the resources ↓</a>
         </div>

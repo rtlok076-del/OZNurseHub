@@ -1,11 +1,14 @@
 <!doctype html><html lang="en-AU"><head><meta charset="utf-8">
-<script src="theme.js"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>Medication Learning Lab | OzNurseHub</title><meta name="description" content="Practise medicines with flashcards and quick quizzes on drug classes, selected uses and key risks. Free for Australian nursing students, with no dosage recommendations."><link rel="icon" href="icon.svg"><link rel="stylesheet" href="renovation.css"><link rel="stylesheet" href="learning-lab.css"><link rel="canonical" href="https://oznursehub.com/learning-lab.html">
+<script src="theme.js"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>Medication Learning Lab: Interactive Practice | OzNurseHub</title><meta name="description" content="Interactive medication learning for nursing students: drug classes, actions and nursing considerations, with interactive practice and quick checks."><link rel="icon" href="icon.svg"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="renovation.css"><link rel="stylesheet" href="learning-lab.css"><link rel="canonical" href="https://oznursehub.com/learning-lab.html">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OzNurseHub">
 <meta property="og:locale" content="en_AU">
 <meta property="og:url" content="https://oznursehub.com/learning-lab.html">
-<meta property="og:title" content="Medication Learning Lab | OzNurseHub">
+<meta property="og:title" content="Medication Learning Lab: Interactive Practice | OzNurseHub">
 <meta property="og:description" content="Practise medicines with flashcards and quick quizzes on drug classes, selected uses and key risks. Free for Australian nursing students, with no dosage recommendations.">
 <meta property="og:image" content="https://oznursehub.com/oznursehub-share.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -14,7 +17,7 @@
 <meta property="og:image:alt" content="Four nursing students sharing notes and learning together in an Australian setting">
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Medication Learning Lab | OzNurseHub">
+<meta name="twitter:title" content="Medication Learning Lab: Interactive Practice | OzNurseHub">
 <meta name="twitter:description" content="Practise medicines with flashcards and quick quizzes on drug classes, selected uses and key risks. Free for Australian nursing students, with no dosage recommendations.">
 <meta name="twitter:image" content="https://oznursehub.com/oznursehub-share.jpg">
 <meta name="twitter:image:alt" content="Four nursing students sharing notes and learning together in an Australian setting"><link rel="stylesheet" href="scroll-effects.css">
@@ -24,6 +27,27 @@
 <link rel="stylesheet" href="dark-theme.css">
 <link rel="stylesheet" href="site-navigation.css">
 <script src="site-navigation.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Medication learning lab",
+  "description": "Interactive medication learning for nursing students: drug classes, actions and nursing considerations, with interactive practice and quick checks.",
+  "url": "https://oznursehub.com/learning-lab.html",
+  "inLanguage": "en-AU",
+  "isAccessibleForFree": true,
+  "educationalLevel": "Undergraduate nursing",
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "student"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OzNurseHub",
+    "url": "https://oznursehub.com/"
+  }
+}
+</script>
 </head><body class="renovated"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 <main id="content" class="renovation-main lab-main"><div class="lab-heading"><div><p class="overline">Practise / Reflect / Revisit</p><h1>Medication Learning Lab</h1><p>Small moments of practice. Knowledge that stays with you.</p></div><a href="medications.html">Open the reference library ↗</a></div>
 <aside class="lab-safety">For study only. Selected uses and risks are not complete medicine guidance. No dosage recommendations. Follow local policy and clinical supervision in practice. <a href="medications.html#references">Sources & review scope</a></aside>
@@ -31,6 +55,7 @@
 <section class="progress-strip" aria-label="Your learning progress"><div><strong id="reviewed">0</strong><span>cards reviewed</span></div><div><strong id="saved-count">0</strong><span>saved for revision</span></div><div><strong id="accuracy">—</strong><span>quiz accuracy</span></div><div><strong id="attempted">0</strong><span>questions answered</span></div></section>
 <div class="lab-layout"><aside class="lab-controls"><h2>Your session</h2><label for="topic">Choose a topic</label><select id="topic"><option value="all">All medicines</option><option value="pain">Pain & anaesthesia</option><option value="digestive">Nausea & digestive health</option><option value="infection">Infection treatment</option><option value="heart">Heart, circulation & clotting</option><option value="hormones">Diabetes & hormones</option><option value="airways">Airways & allergy</option><option value="emergency">Antidotes & emergency care</option><option value="neuro">Brain, mental health & seizures</option><option value="bone">Bone health & gout</option></select><label for="mode">How would you like to learn?</label><select id="mode"><option value="cards">Flashcards</option><option value="quiz">Quick quiz</option></select><label class="saved-filter"><input type="checkbox" id="saved-only"> Saved medicines only</label><button class="elegant-button secondary" id="shuffle" type="button">Shuffle this deck</button><p class="session-note">Progress is saved in this browser only. It does not sync across devices. Shared device? Clear your progress when finished.</p><button class="text-button" id="reset" type="button">Clear my progress</button><div id="reset-panel" hidden><p>Clear saved medicines, reviewed cards and quiz history on this device?</p><button id="confirm-reset" type="button" class="elegant-button">Clear progress</button><button id="cancel-reset" type="button" class="text-button">Keep my progress</button></div></aside>
 <section class="practice-area" aria-label="Medication practice"><div class="practice-top"><span id="position" role="status" aria-live="polite"></span><button id="save" type="button" aria-pressed="false">☆ Save for revision</button></div><article id="practice-card" class="practice-card"><div id="flash-mode"><p class="overline">Before you reveal / Think it through</p><h2 id="medicine-name"></h2><p class="prompt">What class is it? What is it used for?<br>Which risks would you want to remember?</p><button class="elegant-button" id="reveal" type="button" aria-expanded="false" aria-controls="flash-answer">Reveal the card</button><div id="flash-answer" hidden><dl><dt>Drug class</dt><dd id="drug-class"></dd><dt>Selected uses</dt><dd id="drug-uses"></dd><dt>Key risks</dt><dd id="drug-risks"></dd></dl><p class="recall-tip">Pause and explain one key point in your own words.</p></div></div><div id="quiz-mode" hidden><p class="overline">Quick quiz / Drug classes</p><h2 id="quiz-question"></h2><div id="choices" class="choices"></div><div id="quiz-feedback" role="status" aria-live="polite" hidden></div></div><p id="special-note" class="special-note" hidden></p><a id="reference-link" href="medications.html">See this medicine's reference card ↗</a></article><div id="empty-deck" class="practice-card" hidden><h2>Nothing in this collection yet.</h2><p>Save a medicine as you practise, or switch off “Saved medicines only” to explore the full deck.</p></div><div class="deck-navigation"><button class="elegant-button secondary" id="previous" type="button">← Previous</button><button class="elegant-button" id="next" type="button">Next medicine →</button></div><p class="session-note">Quiz accuracy records first answers only. Reviewing a card is not a clinical competency assessment.</p></section></div>
-<noscript><p>The learning lab needs JavaScript. You can still read all medicines in the <a href="medications.html">Medication Library</a>.</p></noscript></main><footer class="elegant-footer"><span>OzNurseHub / Keep learning, at your pace.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><a href="index.html">Back to home</a></footer><script src="renovation.js"></script><script src="learning-data.js"></script><script src="learning-lab.js"></script><script src="scroll-effects.js"></script>
+<noscript><p>The learning lab needs JavaScript. You can still read all medicines in the <a href="medications.html">Medication Library</a>.</p></noscript><nav class="related-links" aria-label="Related pages"><span>Related:</span> <a href="medications.html">Medication library</a> · <a href="meds-quiz.html">Medication quiz</a> · <a href="medication-of-the-day.html">Medication of the Day</a> · <a href="fables.html">Fable library</a></nav>
+</main><footer class="elegant-footer"><span>OzNurseHub / Keep learning, at your pace.<br><small class="last-reviewed">Last reviewed: October 2026</small></span><a href="index.html">Back to home</a></footer><script src="renovation.js"></script><script src="learning-data.js"></script><script src="learning-lab.js"></script><script src="scroll-effects.js"></script>
 <script src="app-shell.js"></script>
 </body></html>
