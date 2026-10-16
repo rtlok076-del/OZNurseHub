@@ -375,8 +375,9 @@
 <link rel="stylesheet" href="tools-choices.css?v=3">
 <link rel="stylesheet" href="site-navigation.css">
 <script src="site-navigation.js" defer></script>
+<link rel="stylesheet" href="med-quiz-mode.css">
 </head>
-<body class="renovated tools-page"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html"><img class="elegant-brand-mark" src="logo-mark.png" width="44" height="44" alt="">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
+<body class="renovated tools-page"><a class="elegant-skip" href="#content">Skip to content</a><header class="elegant-header"><div class="elegant-nav"><a class="elegant-brand" href="index.html"><img class="elegant-brand-mark" src="logo-mark.png" width="34" height="34" alt="">OzNurseHub<small>Learn with purpose.</small></a><button class="elegant-toggle" type="button" aria-expanded="false" aria-controls="elegant-links">Menu</button><nav class="elegant-links" id="elegant-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="tools.html">Tools</a><a href="medications.html">Medications</a><a href="downloads.html">Downloads</a><a class="nav-feature" href="learning-lab.html">Learning lab ↗</a></nav></div></header>
 
 <!-- HEADER -->
 <header>
@@ -549,6 +550,7 @@
     <div class="topic-toggle">
       <button class="topic-btn active" onclick="setTopic('meds', this)">💊 Medications</button>
       <button class="topic-btn" onclick="setTopic('clinical', this)">🩺 Clinical Assessment</button>
+      <button class="topic-btn" id="medQuizBtn" type="button" aria-pressed="false" aria-controls="medQuiz">✅ Medication quiz</button>
     </div>
 
     <div class="flash-counter" id="flashCounter">Card 1 of 14</div>
@@ -578,6 +580,8 @@
     <div class="progress-track">
       <div class="progress-fill" id="flashProgress" style="width:7%"></div>
     </div>
+
+    <div class="med-quiz" id="medQuiz" hidden></div>
   </div>
 
 
@@ -727,6 +731,7 @@
     <div class="ref-tip">📚 <strong>Exam tip:</strong> In clinical reasoning questions, examiners look for evidence that you collected all relevant cues, processed them systematically, and prioritised correctly. Avoid jumping straight to actions (step 6) without demonstrating the earlier thinking steps.</div>
   </div>
 
+<nav class="related-links" aria-label="Related pages"><span>Related:</span> <a href="nsqhs-standards.html">NSQHS Standards</a> · <a href="palliative-care-phases.html">Palliative care phases</a> · <a href="learning-lab.html">Learning lab</a> · <a href="medications.html">Medication library</a></nav>
 </main>
 
 <footer>
@@ -943,5 +948,6 @@ if ('serviceWorker' in navigator) {
 
 <script src="renovation.js"></script><script src="scroll-effects.js"></script>
 <script src="app-shell.js"></script>
+<script src="learning-data.js"></script><script src="med-quiz-mode.js"></script>
 </body>
 </html>
