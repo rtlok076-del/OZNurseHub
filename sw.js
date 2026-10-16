@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v61-seo-pass';
+const CACHE = 'oznurse-v62-new-logo';
 
 const CORE_FILES = [
   './',
@@ -36,9 +36,9 @@ const CORE_FILES = [
   './tools-choices.css?v=3',
   './theme.js',
   './dark-theme.css',
-  './app-icon-180.png',
-  './app-icon-192.png',
-  './app-icon-512.png',
+  './apple-touch-icon.png',
+  './icon-192.png',
+  './icon-512.png',
   './resources.html',
   './learning-lab.html',
   './medications.html',
@@ -84,7 +84,10 @@ const CORE_FILES = [
   './wardwise.css',
   './wardwise.js',
   './manifest.json',
-  './icon.svg',
+  './favicon.ico',
+  './favicon-32.png',
+  './logo-mark.png',
+  './icon-maskable-512.png',
   './favicon.ico',
   './banner.webp'
 ];
