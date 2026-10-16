@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v64-guides-quiz';
+const CACHE = 'oznurse-v65-notices-logbook';
 
 const CORE_FILES = [
   './',
