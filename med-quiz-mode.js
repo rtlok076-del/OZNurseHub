@@ -26,7 +26,8 @@
     'NMDA antagonist / anaesthetic': 'Anaesthetic (NMDA antagonist)',
     'Antidote; glutathione precursor': 'Antidote (glutathione precursor)',
     'Antiseizure medicine; mood stabiliser': 'Antiseizure medicine and mood stabiliser',
-    'NaSSA antidepressant': 'NaSSA antidepressant (noradrenergic and specific serotonergic)'
+    'Antithyroid; see Australian note': 'Antithyroid medicine',
+    'Reuptake inhibitor (NDRI)': 'Noradrenaline-dopamine reuptake inhibitor (NDRI)'
   };
   function label(cat) {
     if (LABELS[cat]) return LABELS[cat];
@@ -41,7 +42,7 @@
   function article(text) {
     var first = text.split(/[\s(]/)[0];
     if (/^(NSAID|SSRI|SNRI|SGLT2|NMDA|ACE|H2|5-HT3)$/.test(first)) return 'an';
-    if (/^(NaSSA|GLP-1|P2Y12)$/.test(first)) return 'a';
+    if (/^(GLP-1|P2Y12)$/.test(first)) return 'a';
     return /^[aeiou]/i.test(text) ? 'an' : 'a';
   }
   // e.g. 'is an ACE inhibitor', 'combines a dopamine precursor with an enzyme inhibitor', 'is both an antiplatelet and an NSAID'

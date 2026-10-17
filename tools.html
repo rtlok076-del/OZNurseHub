@@ -554,7 +554,7 @@
       <button class="topic-btn" id="medQuizBtn" type="button" aria-pressed="false" aria-controls="medQuiz">✅ Medication quiz</button>
     </div>
 
-    <div class="flash-counter" id="flashCounter">Card 1 of 100</div>
+    <div class="flash-counter" id="flashCounter">Card 1 of 14</div>
 
     <div class="flash-scene" onclick="flipCard()">
       <div class="flash-card-inner" id="flashCardInner">
@@ -741,7 +741,6 @@
   <span class="last-reviewed">Last reviewed: October 2026</span>
 </footer>
 
-<script src="learning-data.js"></script>
 <script>
 
 // ── CALCULATOR ──
@@ -862,17 +861,23 @@ function calcConvert() {
 }
 
 // ── FLASHCARDS ──
-// Medication flashcards share the 100-medicine list with the quiz, Learning Lab and Medication Library (learning-data.js).
-function buildMedDeck() {
-  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
-  return (window.OZ_MEDICINES || []).map(function (m) {
-    var a = 'Drug class: ' + m.category + '\n\nCommonly used for: ' + m.uses + '\n\nKey risks: ' + m.risks;
-    if (m.note) a += '\n\nAustralian note: ' + m.note;
-    return { q: esc(String(m.name).replace(/\*$/, '')), a: esc(a) };
-  });
-}
 var DECKS = {
-  meds: buildMedDeck(),
+  meds: [
+    { q: 'Morphine', a: 'Opioid analgesic\n\nMechanism: μ-opioid receptor agonist → ↓ pain perception, ↑ pain threshold\n\nSide effects: nausea, constipation, sedation, respiratory depression, urinary retention\n\nAntidote: Naloxone (Narcan)\n\nNote: Controlled drug — double-check and document' },
+    { q: 'Warfarin', a: 'Oral anticoagulant\n\nMechanism: Vitamin K antagonist → ↓ clotting factors II, VII, IX, X\n\nMonitoring: INR (target 2–3 most indications; 2.5–3.5 for mechanical valves)\n\nAntidote: Vitamin K; FFP for urgent reversal\n\nMany drug and food interactions — consistent vitamin K intake important' },
+    { q: 'Frusemide (Furosemide)', a: 'Loop diuretic\n\nMechanism: Inhibits Na-K-2Cl transporter in ascending loop of Henle → ↑ urine output\n\nUses: Fluid overload, heart failure, hypertension, oedema\n\nSide effects: Hypokalaemia, dehydration, ototoxicity (high IV dose), hyponatraemia\n\nMonitor: Electrolytes, fluid balance, renal function' },
+    { q: 'Metformin', a: 'Biguanide antidiabetic\n\nMechanism: ↓ hepatic glucose production, ↑ insulin sensitivity\n\nAdvantage: No hypoglycaemia as monotherapy; weight neutral\n\nContraindications: eGFR <30; hold 48hrs around IV contrast\n\nSide effects: GI upset — take with food\n\nSerious but rare: Lactic acidosis' },
+    { q: 'Metoprolol', a: 'Cardioselective β1-adrenergic blocker\n\nMechanism: Blocks β1 receptors → ↓ HR, ↓ contractility, ↓ BP\n\nUses: Hypertension, angina, heart failure, AF rate control, post-MI\n\nContraindications: Severe bradycardia, heart block, asthma (relative)\n\nDo NOT stop abruptly — taper to avoid rebound tachycardia' },
+    { q: 'Perindopril (ACE Inhibitor)', a: 'ACE inhibitor\n\nMechanism: Blocks ACE → ↓ Angiotensin II → vasodilation + ↓ aldosterone → ↓ BP\n\nUses: Hypertension, heart failure, post-MI, diabetic nephropathy\n\nSide effects: Dry persistent cough (very common), hyperkalaemia, first-dose hypotension, angioedema (rare — serious)\n\nContraindicated in pregnancy' },
+    { q: 'Midazolam', a: 'Short-acting benzodiazepine\n\nMechanism: Enhances GABA at GABA-A receptors → CNS depression\n\nUses: Procedural sedation, seizures, pre-medication, palliative care\n\nSide effects: Sedation, respiratory depression, anterograde amnesia, paradoxical agitation\n\nAntidote: Flumazenil (short-acting — re-sedation can occur)\n\nControlled drug' },
+    { q: 'Ondansetron', a: '5-HT3 receptor antagonist (antiemetic)\n\nMechanism: Blocks serotonin at 5-HT3 receptors in GI tract and CTZ → ↓ nausea/vomiting\n\nUses: Chemotherapy-induced N&V, post-op N&V, gastroenteritis\n\nSide effects: Headache, constipation, QT prolongation (monitor ECG if IV)\n\nAvailable: PO, IV, ODT wafer' },
+    { q: 'Paracetamol', a: 'Non-opioid analgesic & antipyretic\n\nMechanism: Central prostaglandin inhibition\n\nHas a maximum daily limit — count paracetamol from ALL sources (combination products)\nLower limits may apply in: liver disease, low body weight, malnutrition, alcohol excess, frail elderly\n\nAdvantage: Safe in most populations, no GI irritation, combine with opioids\n\nOverdose antidote: N-acetylcysteine (NAC) — time-sensitive' },
+    { q: 'Enoxaparin (Clexane)', a: 'Low Molecular Weight Heparin (LMWH)\n\nMechanism: Activates antithrombin III → inhibits Factor Xa\n\nRoute: Subcutaneous only\n\nUses: DVT/PE treatment & prophylaxis, ACS\n\nMonitoring: Usually not required; anti-Xa in renal impairment/obesity/pregnancy\n\nPartial antidote: Protamine sulfate\n\nAdjust dose if eGFR <30' },
+    { q: 'NovoRapid (Insulin Aspart) — Rapid-Acting', a: 'Rapid-acting insulin analogue\n\nOnset: 10–20 min | Peak: 1–3 hrs | Duration: 3–5 hrs\n\nGive with meals — ensure patient about to eat before administering\n\nKey risk: Hypoglycaemia\n\nRotate injection sites: abdomen, thigh, upper arm\n\nOther rapid-acting: Humalog (lispro), Apidra (glulisine)' },
+    { q: 'Amoxicillin', a: 'Aminopenicillin antibiotic\n\nMechanism: Inhibits bacterial cell wall synthesis → bactericidal\n\nCoverage: Gram-positive cocci, some Gram-negatives\n\nUses: Community-acquired pneumonia, UTI, otitis media, strep throat\n\nAlways check: Penicillin allergy (cross-reactivity with cephalosporins ~1–2%)\n\nSide effects: GI upset, rash, anaphylaxis (rare)' },
+    { q: 'Pantoprazole', a: 'Proton Pump Inhibitor (PPI)\n\nMechanism: Irreversibly inhibits H+/K+-ATPase → ↓↓ gastric acid\n\nUses: GORD, peptic ulcer, H. pylori eradication, stress ulcer prophylaxis\n\nLong-term side effects: ↓ Mg2+, ↓ Ca2+ (fracture risk), C. difficile risk, ↓ B12 absorption\n\nAvailable PO and IV' },
+    { q: 'Atorvastatin', a: 'HMG-CoA reductase inhibitor (Statin)\n\nMechanism: Inhibits HMG-CoA reductase → ↓ cholesterol synthesis → ↑ LDL-receptor expression → ↓ LDL\n\nUses: Hypercholesterolaemia, primary & secondary CVD prevention\n\nSide effects: Myopathy (check CK), ↑ LFTs\n\nSerious: Rhabdomyolysis (rare)\n\nCan be taken at any time of day (long half-life) — evening dosing matters for short-acting statins such as simvastatin' }
+  ],
   clinical: [
     { q: 'Normal adult heart rate', a: '60–100 bpm\n\nBradycardia: <60 bpm\nTachycardia: >100 bpm\n\nRate alone doesn\'t determine haemodynamic stability — assess BP, perfusion, symptoms\n\nCommon causes of tachycardia: pain, fever, anxiety, dehydration, bleeding, infection, AF' },
     { q: 'Normal adult blood pressure', a: 'Systolic: 90–120 mmHg\nDiastolic: 60–80 mmHg\n\nHypertension: ≥140/90 mmHg\nHypotension: Systolic <90 mmHg\n\nMAP = (SBP + 2×DBP) ÷ 3\nTarget MAP >65 mmHg for organ perfusion\n\nOrthostatic hypotension: ↓ SBP >20 or DBP >10 on standing' },
@@ -905,7 +910,7 @@ function setTopic(topic, btn) {
 
 function render() {
   var card = deck[idx];
-  document.getElementById('flashQuestion').innerHTML = card.q;
+  document.getElementById('flashQuestion').textContent = card.q;
   document.getElementById('flashAnswer').innerHTML = card.a.replace(/\n/g, '<br>');
   document.getElementById('flashCounter').textContent = 'Card ' + (idx+1) + ' of ' + deck.length;
   document.getElementById('flashProgress').style.width = (((idx+1)/deck.length)*100).toFixed(0) + '%';
@@ -939,6 +944,6 @@ render();
 
 <script src="renovation.js"></script><script src="scroll-effects.js"></script>
 <script src="app-shell.js"></script>
-<script src="med-quiz-mode.js"></script>
+<script src="learning-data.js"></script><script src="med-quiz-mode.js"></script>
 </body>
 </html>
