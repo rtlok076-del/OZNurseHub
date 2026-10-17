@@ -32,7 +32,7 @@ const CORE_FILES = [
   './newsletter-confirm.js?v=2',
   './site-navigation.js',
   './resource-sidebar.css',
-  './resource-sidebar.js?v=2',
+  './resource-sidebar.js?v=3',
   './tools-choices.css?v=3',
   './theme.js',
   './dark-theme.css',
