@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v66-perf-combined';
+const CACHE = 'oznurse-v67-quiz-polish';
 
 const CORE_FILES = [
   './',
