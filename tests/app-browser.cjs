@@ -24,7 +24,7 @@ const root = process.env.TEST_BASE_URL || "http://127.0.0.1:8765/";
   assert.equal(data.display, "standalone");
   assert.deepEqual(
     data.icons.map((i) => i.sizes),
-    ["192x192", "512x512"],
+    ["192x192", "512x512", "512x512"],
   );
   console.log(
     "Manifest valid; installability:",

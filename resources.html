@@ -1234,7 +1234,7 @@
 <link rel="stylesheet" href="site-theme.css">
 <link rel="stylesheet" href="dark-theme.css">
 <link rel="stylesheet" href="resource-sidebar.css">
-<script src="resource-sidebar.js?v=2" defer></script>
+<script src="resource-sidebar.js?v=3" defer></script>
 <link rel="stylesheet" href="site-navigation.css">
 <script src="site-navigation.js" defer></script>
 </head>
@@ -2770,14 +2770,6 @@ function showHome() {
   var valid = ['study','clinical','tips','wellbeing','quickref','progressnote','apa','quizzes','links'];
   if (hash && valid.indexOf(hash) !== -1) { showSection(hash); }
 })();
-</script><script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('./sw.js')
-        .then(function (reg) { console.log('OzNurse SW registered', reg.scope); })
-        .catch(function (err) { console.log('SW registration failed:', err); });
-    });
-  }
 </script><script src="renovation.js"></script><script src="scroll-effects.js"></script>
 <script src="app-shell.js"></script>
 </body>

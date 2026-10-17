@@ -13,3 +13,4 @@ body.renovated.quiz-page { overflow:visible!important; }
 .related-links{max-width:72rem;margin:2.5rem auto 1.5rem;padding:0 1.25rem;font-size:.9rem;line-height:1.7;color:inherit;opacity:.85}
 .related-links span{font-weight:600;margin-right:.25rem}
 .related-links a{color:inherit;text-underline-offset:3px}
+.save-notice{display:block;max-width:820px;margin:14px 0;padding:12px 16px;background:var(--teal-pale,#eaf2ec);border-left:4px solid var(--teal,#155e53);border-radius:10px;font-size:14px;line-height:1.5;color:var(--teal,#155e53);text-align:left}.save-notice strong{font-weight:600}[data-theme="dark"] .save-notice{background:#12302b;color:#d7ece6}@media print{.save-notice{display:none!important}}

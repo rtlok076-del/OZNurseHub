@@ -1,6 +1,6 @@
 /* Shared resource navigation, preserving each page's existing links and handlers. */
 (() => {
-  const standalone = document.body.matches('.clinical-tips-page, .fable-page');
+  const standalone = document.body.matches('.clinical-tips-page, .fable-page, .guide-page');
   let nav = document.querySelector('nav.sidebar');
   const main = document.querySelector('main');
   if (standalone && !nav) {
@@ -13,7 +13,7 @@
       ['Study Skills', 'resources.html#study'], ['Clinical', 'resources.html#clinical'],
       ['Year Tips', 'resources.html#tips'], ['Wellbeing', 'resources.html#wellbeing'],
       ['Quick Ref', 'quickref.html'], ['Bloods', 'bloods.html'],
-      ['Palliative', 'palliative.html'], ['Cognitive', 'cognitive.html'],
+      ['Palliative', 'palliative.html'], ['Palliative Phases', 'palliative-care-phases.html'], ['NSQHS Standards', 'nsqhs-standards.html'], ['Cognitive', 'cognitive.html'],
       ['ANTT', 'antt.html'], ['Medications', 'medications.html'],
       ['About', 'about.html'], ['Progress Note', 'progressnote.html'],
       ['APA 7th', 'resources.html#apa'], ['Quizzes', 'resources.html#quizzes'],

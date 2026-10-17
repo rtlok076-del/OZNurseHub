@@ -121,6 +121,54 @@
   });
   $("#date").value = today();
   $("#date").max = today();
+  const NOTE =
+    "Reference only: this is a self-reported learning record, not an educator sign-off or university assessment. Always follow local policies and supervision requirements.";
+  // Filters apply to the list, CSV and print. They are never saved.
+  const filterEls = {
+    q: $("#filter-search"),
+    area: $("#filter-area"),
+    from: $("#filter-from"),
+    to: $("#filter-to"),
+  };
+  if (filterEls.area)
+    options(
+      filterEls.area,
+      catalogue.areas.map((area) => [area.name, area.name]),
+      "All categories",
+    );
+  if (filterEls.to) filterEls.to.max = today();
+  if (filterEls.from) filterEls.from.max = today();
+  function filtersActive() {
+    return Boolean(
+      filterEls.q &&
+        (filterEls.q.value.trim() ||
+          filterEls.area.value ||
+          filterEls.from.value ||
+          filterEls.to.value),
+    );
+  }
+  function matchesFilter(record) {
+    if (!filterEls.q) return true;
+    const skill = skillMap.get(record.skill);
+    const q = filterEls.q.value.trim().toLowerCase();
+    if (q && !skill.name.toLowerCase().includes(q)) return false;
+    if (filterEls.area.value && skill.area !== filterEls.area.value)
+      return false;
+    if (filterEls.from.value && record.date < filterEls.from.value)
+      return false;
+    if (filterEls.to.value && record.date > filterEls.to.value) return false;
+    return true;
+  }
+  function filterSummary() {
+    if (!filtersActive()) return "All entries";
+    const parts = [];
+    if (filterEls.q.value.trim())
+      parts.push(`Skill contains "${filterEls.q.value.trim()}"`);
+    if (filterEls.area.value) parts.push(`Category: ${filterEls.area.value}`);
+    if (filterEls.from.value) parts.push(`From ${filterEls.from.value}`);
+    if (filterEls.to.value) parts.push(`To ${filterEls.to.value}`);
+    return "Filtered: " + parts.join(" · ");
+  }
   const levelName = (id) =>
     catalogue.levels.find((level) => level.id === id).name;
   function reset() {
@@ -159,10 +207,19 @@
       $("#progress").append(details);
     });
     $("#entries").replaceChildren();
+    const shown = records.filter(matchesFilter).length;
+    if ($("#filter-count"))
+      $("#filter-count").textContent = filtersActive()
+        ? `Showing ${shown} of ${records.length} records`
+        : `Showing all ${records.length} records`;
+    if ($("#print-filter")) $("#print-filter").textContent = filterSummary();
     if (!records.length)
       $("#entries").append(node("p", "No skills recorded yet."));
+    else if (!shown)
+      $("#entries").append(node("p", "No records match these filters."));
     records
       .map((record, index) => ({ record, index }))
+      .filter(({ record }) => matchesFilter(record))
       .sort((a, b) => b.record.date.localeCompare(a.record.date))
       .forEach(({ record, index }) => {
         const article = node("article", "");
@@ -242,6 +299,18 @@
       : "Skill kept temporarily. Download a backup now.";
   });
   $("#cancel-edit").addEventListener("click", reset);
+  if (filterEls.q) {
+    Object.values(filterEls).forEach((input) =>
+      input.addEventListener("input", render),
+    );
+    $("#filter-clear").addEventListener("click", () => {
+      Object.values(filterEls).forEach((input) => {
+        input.value = "";
+      });
+      render();
+      filterEls.q.focus();
+    });
+  }
   function download(type, extension, content) {
     const url = URL.createObjectURL(new Blob([content], { type }));
     const link = document.createElement("a");
@@ -270,13 +339,19 @@
   $("#csv").addEventListener("click", () => {
     const rows = [
       ["Date", "Skill", "Level", "Placement type", "NMBA standards"],
-      ...records.map((record) => [
+      ...records
+        .filter(matchesFilter)
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .map((record) => [
         record.date,
         skillMap.get(record.skill).name,
         levelName(record.level),
         record.setting,
         record.stds.join("; "),
       ]),
+      [],
+      [filterSummary()],
+      [NOTE],
     ];
     download(
       "text/csv;charset=utf-8",

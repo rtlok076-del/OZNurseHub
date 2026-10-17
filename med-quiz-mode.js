@@ -87,18 +87,19 @@
     panel.replaceChildren();
     var h = el('h3', 'mq-prompt', 'You scored ' + score + ' out of ' + round.length); h.tabIndex = -1; panel.appendChild(h);
     panel.appendChild(el('p', 'mq-explain', score >= 8 ? 'Strong work. Try another round to see different medicines.' : 'Keep going. Each round picks a new mix, and the explanations are a good place to revise.'));
-    panel.appendChild(el('p', 'mq-small', 'Your score is not saved anywhere. It resets when you leave the page.'));
+    panel.appendChild(el('p', 'mq-small', 'Nothing is saved: your entries clear when you refresh or leave this page.'));
     var again = el('button', 'flash-btn primary', 'Start a new round'); again.type = 'button';
     again.addEventListener('click', function () { startRound(); document.getElementById('mqPrompt').focus(); });
     panel.appendChild(again); h.focus();
   }
 
   function cardParts() {
-    return Array.prototype.filter.call(section.children, function (c) { return !c.classList.contains('topic-toggle') && c !== panel; });
+    return Array.prototype.filter.call(section.children, function (c) { return !c.classList.contains('topic-toggle') && c !== panel && c.id !== 'medQuizNotice'; });
   }
   function setQuiz(on) {
     cardParts().forEach(function (c) { c.hidden = on; });
     panel.hidden = !on;
+    var n = document.getElementById('medQuizNotice'); if (n) n.hidden = !on;
     quizBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
   quizBtn.addEventListener('click', function () {
