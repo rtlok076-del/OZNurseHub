@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v70-tip03';
+const CACHE = 'oznurse-v73-id-practice';
 
 const CORE_FILES = [
   './',
@@ -10,8 +10,10 @@ const CORE_FILES = [
   './clinical-tips.css',
   './clinical-tip-spot-the-deteriorating-patient.html',
   './clinical-tip-make-an-isbar-call.html',
+  './clinical-tip-check-the-patient-id.html',
   './media/make-an-isbar-call.jpg',
   './media/spot-the-deteriorating-patient.jpg',
+  './media/check-the-patient-id.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
