@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v68-quiz-original-list';
+const CACHE = 'oznurse-v69-fable-mina';
 
 const CORE_FILES = [
   './',
@@ -24,6 +24,8 @@ const CORE_FILES = [
   './fable-story.css',
   './media/mara-two-lanterns.jpg',
   './media/mira-marsh-map.jpg',
+  './fable-mina-two-seeds.html',
+  './media/mina-two-seeds.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
