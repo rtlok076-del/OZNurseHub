@@ -13,7 +13,13 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765';
    const tip=page.getByRole('button',{name:'Got it',exact:true});
    if(await tip.isVisible()) await tip.click();
    assert.equal(await page.locator('.tips-video-card').count(),2);
-   assert.equal(await page.locator('video').count(),0,'Library loads posters, not players');
+   assert.equal(await page.locator('video').count(),1,'Library embeds only tip 03 (no dedicated page yet)');
+   {const v=page.locator('#check-the-patient-id video');assert.equal(await v.getAttribute('preload'),'none');
+    const b=await page.locator('#check-the-patient-id .tip-video-box').boundingBox();assert(b.width<=360.1&&Math.abs(b.width/b.height-9/16)<.001);
+    assert(await page.evaluate(async()=>{const r=await fetch(document.querySelector('#check-the-patient-id video').poster);return r.ok}));
+    await page.waitForTimeout(300);assert.equal(media.length,0,'Tip 03 must not download before play');
+    await v.evaluate(async v=>{v.muted=true;await v.play()});await page.waitForFunction(()=>document.querySelector('#check-the-patient-id video').currentTime>.2);
+    assert(await v.evaluate(v=>v.videoWidth===720&&v.videoHeight===1280&&v.duration>53&&v.duration<54&&!v.error));await v.evaluate(v=>{v.pause();v.currentTime=0});media.length=0;}
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    assert(await page.locator('.tips-preview img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth>0)));
    await page.screenshot({path:`tests/tips-library-${width}-${colorScheme}.png`,fullPage:true});
