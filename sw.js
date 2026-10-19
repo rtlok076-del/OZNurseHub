@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v72-tip03-page-v2';
+const CACHE = 'oznurse-v73-id-practice';
 
 const CORE_FILES = [
   './',

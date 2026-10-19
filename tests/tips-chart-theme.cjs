@@ -18,7 +18,7 @@ const root=process.env.TEST_BASE_URL||'http://127.0.0.1:8879/';
    await p.goto(root+'clinical-escalation.html');
    const count=await p.locator('.ce-case').count();
    for(let i=0;i<count;i++) {
-    await p.locator('.ce-case').nth(i).click();
+    await p.locator('.ce-case').nth(i).click();await p.locator('.ce-idbtn').first().click();await p.locator('.ce-idfb button').click();
     while(await p.locator('.ce-opt[data-id]').count()) {
      for(const mode of ['light','dark']) {
       await setTheme(mode);

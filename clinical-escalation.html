@@ -150,6 +150,19 @@
   .ce-result.y,.ce-result.r,.ce-result.p,.ce-z{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .ce-chartwrap svg{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+/* Positive patient ID check */
+.ce-idcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.ce-idcard{border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:var(--white)}
+.ce-idcard.band{border-left:8px solid #a88a4d;background:#fbf8f1}
+.ce-idcard-h{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#76613c}
+.ce-idrow{display:flex;flex-direction:column;margin:0 0 6px;font-size:13px;color:var(--muted)}
+.ce-idrow b{font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.ce-idrow.ce-idbad b{color:#a32d24;text-decoration:underline wavy #a32d24;text-underline-offset:3px}
+.ce-idrow.ce-idbad b::after{content:" \2715  doesn\2019t match";font-size:12px;text-decoration:none;display:inline-block;margin-left:6px}
+.ce-idline{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;margin:4px 0 12px;font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+.ce-idtag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#76613c;background:#f5ecd9;border-radius:6px;padding:2px 8px}
+@media(max-width:520px){.ce-idcards{grid-template-columns:minmax(0,1fr)}}
+html[data-theme=dark] .ce-idcard.band{background-color:#26251f}html[data-theme=dark] .ce-idtag{background:#392f1d;color:#e5cf9f}html[data-theme=dark] .ce-idcard-h{color:#e5cf9f}html[data-theme=dark] .ce-idrow.ce-idbad b{color:#ff9c90;text-decoration-color:#ff9c90}
 </style>
 <link rel="stylesheet" href="scroll-effects.css">
 <link rel="stylesheet" href="site-theme.css">
@@ -291,7 +304,7 @@
 
 <!-- 2. SCENARIOS -->
 <section class="st-section" id="scenarios" aria-labelledby="sc-title">
-<div class="section-lead"><div><p class="overline">Tool 2 / Scenarios</p><h2 id="sc-title">What would you do now?</h2><p>Six fictional patients. Each set of obs is plotted as it comes in. Decide what happens next, then see the feedback. Trends matter as much as single numbers.</p></div></div>
+<div class="section-lead"><div><p class="overline">Tool 2 / Scenarios</p><h2 id="sc-title">What would you do now?</h2><p>Six fictional patients. First, check the wristband against the chart using three identifiers. Then each set of obs is plotted as it comes in. Decide what happens next, then see the feedback. Trends matter as much as single numbers.</p></div></div>
 <div class="ce-cases" id="sc-list"></div>
 <div class="ce-play" id="sc-play" hidden></div>
 </section>
@@ -309,7 +322,7 @@
 <label class="st-field"><span>Who you are <small>name and role</small></span><input type="text" name="me" placeholder="e.g. Alex, RN"></label>
 <label class="st-field"><span>Where <small>ward or unit</small></span><input type="text" name="ward" placeholder="e.g. medical ward, bed 8"></label>
 <label class="st-field"><span>Who you're calling</span><input type="text" name="who" placeholder="e.g. the medical registrar"></label>
-<label class="st-field"><span>The patient <small>practice details only</small></span><input type="text" name="pt" placeholder="e.g. Dorothy, 85"></label>
+<label class="st-field"><span>The patient <small>practice details only</small></span><input type="text" name="pt" placeholder="e.g. Dorothy EXAMPLE, 85, DOB 03/02/1941, URN 000-101"></label>
 </div></div></div>
 
 <div class="ce-letter"><b aria-hidden="true">S</b><div><h3>Situation</h3>
@@ -394,7 +407,7 @@
 <p class="st-help" style="margin:0"><strong id="met-title-print">Medical ward</strong> MET handover · ISBAR</p>
 </div>
 <table class="met-sheet" id="met-sheet">
-<tr><th scope="row"><span>I</span>Identify</th><td><p class="met-prompts">Your name and role. Patient's name and age.</p><textarea name="mi" autocomplete="off" aria-label="Identify"></textarea></td></tr>
+<tr><th scope="row"><span>I</span>Identify</th><td><p class="met-prompts">Your name and role. Patient's full name, age, date of birth and URN.</p><textarea name="mi" autocomplete="off" aria-label="Identify"></textarea></td></tr>
 <tr><th scope="row"><span>S</span>Situation</th><td><p class="met-prompts">Why you called the MET. Why they're in hospital and their day of stay.<span class="met-only surgical"> The operation, post-op day and any complications.</span><span class="met-only neuro"> What's changed neurologically, and when.</span></p><textarea name="ms" autocomplete="off" aria-label="Situation"></textarea></td></tr>
 <tr><th scope="row"><span>B</span>Background</th><td><p class="met-prompts">Relevant history, especially heart and lungs. Usual cognition. Allergies. Resuscitation plan or goals of care. Infection precautions.<span class="met-only surgical"> Lines, drains, catheters, wound, epidural or PCA.</span><span class="met-only neuro"> Usual neuro status (GCS, pupils, limb strength, speech). Seizure history.</span></p><textarea name="mb" autocomplete="off" aria-label="Background"></textarea></td></tr>
 <tr><th scope="row"><span>A</span>Assessment</th><td><p class="met-prompts">Obs now and their usual. ECG, BGL. IV access and whether it works.<span class="met-only surgical"> Fluid balance, urine output, drain and wound loss.</span><span class="met-only neuro"> GCS now vs before, pupils, limb strength, neurovascular obs.</span> What you've done: position, oxygen, medicines given and when.</p><textarea name="ma" autocomplete="off" aria-label="Assessment"></textarea></td></tr>
