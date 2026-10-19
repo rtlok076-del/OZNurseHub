@@ -8,7 +8,7 @@ const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
   page.on('pageerror',e=>errors.push(e.message));
   for(const width of [390,1440]) for(const colorScheme of ['light','dark']) {
    await page.setViewportSize({width,height:900});await page.emulateMedia({colorScheme});
-   for(const [slug,lastLine,videoWidth] of [['merchants-crossroads','The Nash Equilibrium had moved.',540],['fox-and-rook','yet truer in practice.',720],['mira-marsh-map','the best compass is prediction corrected by evidence.',720],['mara-two-lanterns','she cultivated better uncertainty.',540],['mina-two-seeds','the algebra of rational belief revision under uncertainty.',720]]) {
+   for(const [slug,lastLine,videoWidth] of [['merchants-crossroads','The Nash Equilibrium had moved.',540],['fox-and-rook','yet truer in practice.',720],['mira-marsh-map','the best compass is prediction corrected by evidence.',720],['mara-two-lanterns','she cultivated better uncertainty.',540],['fox-river-returns','how fast the chain forgets where it began.',720],['mina-two-seeds','the algebra of rational belief revision under uncertainty.',720]]) {
     await page.goto(`${base}/fable-${slug}.html`);
     assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('video').count(),1);
     assert((await page.locator('.fable-text').innerText()).includes(lastLine));
@@ -19,7 +19,7 @@ const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.getByRole('link',{name:'Next story:',exact:false}).count(),1);
    }
   }
-  await page.getByRole('link',{name:'← All fables',exact:true}).click();assert.equal(await page.locator('.book-card').count(),5);
+  await page.getByRole('link',{name:'← All fables',exact:true}).click();assert.equal(await page.locator('.book-card').count(),6);
   await page.goto(`${base}/resources.html`);assert.equal(await page.locator('.si-card[href="fables.html"]').count(),1);
   assert.deepEqual(errors,[]);console.log('PASS both standalone stories, full text, video playback, responsive themes, and library navigation.');
  } finally {await browser.close()}
