@@ -29,6 +29,10 @@
 .tip-details h2 { font-size:clamp(28px,3.5vw,40px); line-height:1.16; color:var(--teal); margin:0 0 20px; }
 .tip-details > p { color:var(--muted); }
 .tip-details .tip-lead { font-size:21px; color:var(--ink); }
+.tip-points { color:var(--muted); padding-left:20px; margin:0 0 4px; }
+.tip-points li { margin:0 0 8px; }
+.tip-points strong { color:var(--ink); }
+.tip-source { font-size:13px; }
 .tip-reflection { background:var(--teal-pale); border:1px solid var(--border); padding:20px; border-radius:14px; margin:26px 0; }
 .tip-reflection h3 { font-size:22px; font-weight:400; margin:0 0 10px; }
 .tip-reflection p { margin:0; font-size:15px; }
