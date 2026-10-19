@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v69-fables-fox-mina';
+const CACHE = 'oznurse-v70-tip03';
 
 const CORE_FILES = [
   './',
