@@ -1,7 +1,14 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v73-id-practice';
+const CACHE = 'oznurse-v74-ward-shift';
 
 const CORE_FILES = [
+  './shift-sim/',
+  './shift-sim/v0.3.0/style.css',
+  './shift-sim/v0.3.0/app.js',
+  './shift-sim/v0.3.0/engine.js',
+  './shift-sim/v0.3.0/shift-data.js',
+  './shift-sim/v0.3.0/ward-art.js',
+
   './',
   './index.html',
   './app.html',

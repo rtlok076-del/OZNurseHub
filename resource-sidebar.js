@@ -9,7 +9,7 @@
     const links = [
       ['Clinical Tips', 'clinical-tips.html'], ['Fable Story', 'fables.html'],
       ['Home', 'index.html'], ['All resources', 'resources.html'],
-      ['Med Squad Survivors', 'med-survivor/'],
+      ['Ward Shift', 'shift-sim/'],
       ['Study Skills', 'resources.html#study'], ['Clinical', 'resources.html#clinical'],
       ['Year Tips', 'resources.html#tips'], ['Wellbeing', 'resources.html#wellbeing'],
       ['Quick Ref', 'quickref.html'], ['Bloods', 'bloods.html'],
