@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v76-packing-list';
+const CACHE = 'oznurse-v77-tips-carousel';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -15,6 +15,7 @@ const CORE_FILES = [
   './about.html',
   './clinical-tips.html',
   './clinical-tips.css',
+  './tips-carousel.js',
   './clinical-tip-spot-the-deteriorating-patient.html',
   './clinical-tip-make-an-isbar-call.html',
   './clinical-tip-check-the-patient-id.html',
