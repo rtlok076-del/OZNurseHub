@@ -1,15 +1,17 @@
-# Ward Shift playtest 0.4
+# Ward Shift playtest 0.5
 
-Six draggable routine-round tiles replace the 28-item planner: observations, medication checks, pressure care, fluids and updates, notes, and a covered break. Pointer dragging supports mouse/pen/touch with keyboard arrows, Home and End as alternatives. Suggested order is available. Chosen windows control routine release times; prerequisites and clinical follow-up remain enforced.
+Routine tiles lift into a floating drag preview while neighbouring tiles animate into their new positions. Mouse, pen and touch dragging retain keyboard arrows, Home and End as alternatives; reduced motion is respected.
 
-Initial handover describes only known circumstances. Each completed observation assessment schedules that patient's scripted concern 15–20 simulated minutes later. A saved seed makes timing variable between shifts and stable on resume. Care and reassessment tasks stay hidden until they arise. Large time advances process newly scheduled events in sequence; new concerns interrupt routine work with remaining time retained and no duplicate energy charge. Delegated observations trigger the timer after RN review.
+Click the ward floor to walk, a patient to approach and interact, Jess for assistance, or the emergency trolley. The Equipment action also provides access on small screens. During Margaret's emergency, activate MER and confirm bedside cover before collecting the trolley and bringing it to her bedside. Delivery does not complete assessment, response or follow-up tasks.
 
-The ward is a fixed-height workspace with a separately scrollable care list and always-visible patient selection and action dock. Patient panels use a sticky return/help/pause strip; mobile dialogs open as bottom sheets. Small screens collapse the map. The supplied OzNurseHub JPG is used unchanged in the header, replacing the placeholder cross.
+Each fictional patient has an illustrated portrait and scripted speech. Observations appear on a bedside monitor. Players plot six measurements into adult RDR-style bands, with distinct systolic/diastolic marks and a previous-reading column. Incorrect placements cannot be signed. Exact measured readings and plotted bands are retained in the record. The compact source monitor stays visible while plotting.
 
-30 tasks and 72 energy points in the full reference shift, including two pressure-care tasks. Scripted dialogue only. Clinical review pending; no drug administration simulated. Pressure care follows the individual plan rather than prescribing a universal turning interval. Background reference: https://www.safetyandquality.gov.au/sites/default/files/2020-10/fact_sheet_-_preventing_pressure_injuries_and_wound_management_oct_2020.pdf
+This is an adapted six-measurement practice exercise, not the complete approved SA Health chart or a clinical scoring system. Oxygen delivery, pain and sedation are outside this plotting exercise. Clinical review remains pending. Reference: SA Health adult MR59A, November 2020, linked inside the chart. Asking for urgent help is always available and never depends on finishing documentation or retrieving equipment.
 
-Save schema 4: older playtest saves are retained until the player chooses a new shift, but cannot resume into the changed event structure. Runtime assets are versioned together; service-worker cache v78. Prior v0.3 assets remain for existing tabs.
+The supplied OzNurseHub JPG is unchanged. Scripted conversation only. Existing routine planning, delayed patient events, 30 tasks and documentation requirements remain. Save schema 5 requires a fresh shift for older playtest saves; old saves are retained until the player chooses to start anew. Versioned runtime v0.5.0 and service-worker cache v79; previous runtime files remain available for existing tabs.
 
-Validation: 13 engine tests, service-worker runtime and legacy redirect checks; browser drag and keyboard reorder; 390x844 and 320x568 layouts without page overflow, desktop 1280x800, light/dark appearance, identity and baseline observations, hidden future tasks, call bell at 13:24 after observations at 13:07, save/resume paused. Physical-device touch testing remains a learner playtest check.
+Validation: 18 automated engine, plotting and navigation checks; service-worker runtime and legacy redirect checks. Browser checks cover drag reorder, floor/bed walking, portrait and monitor, signing all six chart marks, timed call bell, MER/cover, trolley collection and bedside delivery. Responsive layouts checked at 390x844 and 320x568 with no page overflow. Physical-device touch testing and learner/clinical review remain outstanding.
 
-Rollback: revert this release and increment the service-worker cache identifier again. Previous release: 9a6ace8a9027da129e9fa4c5b538e33721c1734c.
+Scope: game runtime, game tests/documentation, and shared service-worker precache/version only. Other site pages are unchanged.
+
+Rollback: revert the release and increment the service-worker cache identifier. Previous release: f1cd05667f11ba3f3aabb108604aa006942c3f19.
