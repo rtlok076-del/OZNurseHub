@@ -1,13 +1,15 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v77-tips-carousel';
+const CACHE = 'oznurse-v78-ward-shift';
 
 const CORE_FILES = [
   './shift-sim/',
-  './shift-sim/v0.3.0/style.css',
-  './shift-sim/v0.3.0/app.js',
-  './shift-sim/v0.3.0/engine.js',
-  './shift-sim/v0.3.0/shift-data.js',
-  './shift-sim/v0.3.0/ward-art.js',
+  './shift-sim/v0.4.0/planner-drag.js',
+  './shift-sim/v0.4.0/oznursehub-logo.jpg',
+  './shift-sim/v0.4.0/style.css',
+  './shift-sim/v0.4.0/app.js',
+  './shift-sim/v0.4.0/engine.js',
+  './shift-sim/v0.4.0/shift-data.js',
+  './shift-sim/v0.4.0/ward-art.js',
 
   './',
   './index.html',
