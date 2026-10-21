@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v74-ward-shift';
+const CACHE = 'oznurse-v76-packing-list';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -18,9 +18,11 @@ const CORE_FILES = [
   './clinical-tip-spot-the-deteriorating-patient.html',
   './clinical-tip-make-an-isbar-call.html',
   './clinical-tip-check-the-patient-id.html',
+  './clinical-tip-first-day-placement-checklist.html',
   './media/make-an-isbar-call.jpg',
   './media/spot-the-deteriorating-patient.jpg',
   './media/check-the-patient-id.jpg',
+  './media/first-day-placement-checklist.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',

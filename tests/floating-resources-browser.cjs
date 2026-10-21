@@ -48,8 +48,8 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765';
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
       await page.goto(base + '/clinical-tips.html');
       assert.equal(await page.locator('a[href$=".mp4"]').count(), 0);
-      assert.equal(await page.locator('.tips-video-card').count(), 3);
-      for (const file of ['clinical-tips.html', 'clinical-tip-spot-the-deteriorating-patient.html', 'clinical-tip-make-an-isbar-call.html', 'clinical-tip-check-the-patient-id.html', 'fables.html', 'fable-mara-two-lanterns.html', 'fable-mira-marsh-map.html', 'fable-merchants-crossroads.html', 'fable-fox-and-rook.html']) {
+      assert.equal(await page.locator('.tips-video-card').count(), 4);
+      for (const file of ['clinical-tips.html', 'clinical-tip-spot-the-deteriorating-patient.html', 'clinical-tip-make-an-isbar-call.html', 'clinical-tip-check-the-patient-id.html', 'clinical-tip-first-day-placement-checklist.html', 'fables.html', 'fable-mara-two-lanterns.html', 'fable-mira-marsh-map.html', 'fable-merchants-crossroads.html', 'fable-fox-and-rook.html']) {
         await page.goto(base + '/' + file);
         assert(await toggle.isVisible(), file + ' has Browse resources on arrival');
         assert.equal(await page.locator('.resource-browse').count(), 1);
