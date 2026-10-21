@@ -104,7 +104,7 @@ test('Ward renders all four patients with the pause overlay',()=>{
  assert.ok(calls.some(c=>c[0]==='fillText'&&c[1]==='Margaret'));assert.ok(calls.some(c=>c[0]==='fillText'&&c[1]==='SHIFT PAUSED'));
 });
 
-test('Emergency trolley requires MER and confirmed bedside cover; delivery does not complete care',()=>{
+test('Emergency trolley requires an emergency response call and confirmed bedside cover; delivery does not complete care',()=>{
  const s=started();assert.equal(E.collectTrolley(s),false);assert.equal(E.arrangeEmergencyCover(s),false);
  reveal(s);assert.equal(E.arrangeEmergencyCover(s),true);assert.equal(s.trolley.merCalled,true);assert.equal(s.trolley.cover,true);
  assert.equal(E.collectTrolley(s),true);assert.equal(E.collectTrolley(s),false);assert.equal(E.deliverTrolley(s),true);assert.equal(E.deliverTrolley(s),false);

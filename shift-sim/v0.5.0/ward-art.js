@@ -2,7 +2,7 @@ export function createWardRenderer(ctx, state, active) {
 const roomX=[65,540,65,540],roomY=[55,55,402,402];
 // Original procedural artwork: all ward fixtures and characters are drawn locally.
 function rect(x,y,w,h,c,r=0){ctx.fillStyle=c;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
-function text(t,x,y,size=12,c='#526d63',weight=600){ctx.fillStyle=c;ctx.font=`${weight} ${size}px "DM Sans", sans-serif`;ctx.fillText(t,x,y);}
+function text(t,x,y,size=12,c='#526d63',weight=600){const shown=ctx.canvas.clientWidth||1000,scale=shown<700?Math.min(1.6,700/shown):1;ctx.fillStyle=c;ctx.font=`${weight} ${Math.round(size*scale)}px "DM Sans", sans-serif`;ctx.fillText(t,x,y);}
 function plant(x,y){rect(x-9,y+7,20,17,'#b89471',4);ctx.fillStyle='#70946d';for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(x+Math.cos(i*1.3)*9,y+Math.sin(i*1.3)*6,6,12,i*.8,0,7);ctx.fill();}}
 function person(x,y,skin='#bf9271',scrubs='#478e85',nurse=false){
  ctx.fillStyle='#526b6125';ctx.beginPath();ctx.ellipse(x,y+20,18,7,0,0,7);ctx.fill();
