@@ -41,3 +41,24 @@
 .tips-note { text-align:center; max-width:760px; margin:28px auto 0; color:var(--muted); font-size:13px; }
 @media(max-width:760px) { .tip-card { grid-template-columns:minmax(0,1fr); gap:28px; padding:18px; } .tip-film { width:100%; max-width:360px; margin:auto; } .tips-intro { margin:24px auto; } }
 @media print { .tip-film,.tips-back,.tip-download { display:none; } .tip-card { display:block; break-inside:avoid; } }
+/* Sideways tip library, matching the fables page */
+.tips-library-carousel { --tip-width:320px; max-width:960px; margin:auto; }
+.tips-stage { border:1px solid var(--border); border-radius:14px 14px 32px 32px; background:var(--white); box-shadow:0 5px 0 -1px var(--paper),0 6px 0 var(--border),0 11px 0 -1px var(--paper),0 12px 0 var(--border); overflow:hidden; }
+.tips-track.tips-grid { position:relative; display:flex; gap:40px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:28px max(20px,calc((100% - var(--tip-width))/2)) 22px; scroll-padding-inline:20px; perspective:1100px; }
+.tips-track:focus-visible { outline:2px solid var(--teal); outline-offset:-5px; }
+.tips-track .tips-video-card { flex:0 0 var(--tip-width); scroll-snap-align:center; transform-origin:center; }
+.tips-track .tips-video-card:focus-visible { outline:3px solid var(--teal); outline-offset:5px; }
+.tips-controls { display:flex; justify-content:center; align-items:center; gap:24px; margin:24px 0 6px; }
+.tips-controls[hidden] { display:none; }
+.tips-controls .book-arrow { width:48px; height:48px; border:1px solid var(--border); border-radius:50%; color:var(--teal); background:var(--white); font-size:23px; cursor:pointer; }
+.tips-controls .book-arrow:disabled { opacity:.35; cursor:default; }
+.tips-controls .book-arrow:not(:disabled):hover { background:var(--teal-pale); }
+.tips-controls .book-arrow:focus-visible { outline:2px solid var(--teal); outline-offset:3px; }
+.tips-controls .book-position { min-width:50px; margin:0; text-align:center; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+.tips-library-carousel .book-hint { text-align:center; color:var(--muted); font-size:12px; margin:14px 12px 0; }
+@media (prefers-reduced-motion:no-preference) {
+  .tips-track.is-ready .tips-video-card { opacity:var(--book-opacity,1); transform:rotateY(var(--book-tilt,0deg)) scale(var(--book-scale,1)); }
+  .tips-track.is-ready .tips-video-card:focus-visible { opacity:1; }
+}
+@media(max-width:640px) { .tips-library-carousel { --tip-width:min(270px,76vw); } .tips-track.tips-grid { gap:22px; padding-top:22px; } }
+@media print { .tips-track.tips-grid { flex-wrap:wrap; overflow:visible; perspective:none; } .tips-track .tips-video-card { opacity:1!important; transform:none!important; } .tips-stage { overflow:visible; box-shadow:none; } .tips-controls,.tips-library-carousel .book-hint { display:none; } }
