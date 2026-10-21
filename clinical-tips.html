@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="dark-theme.css">
 <link rel="stylesheet" href="site-navigation.css">
 <link rel="stylesheet" href="clinical-tips.css">
+<script src="tips-carousel.js" defer></script>
 <script src="site-navigation.js" defer></script>
 <link rel="stylesheet" href="resource-sidebar.css">
 <script src="resource-sidebar.js?v=3" defer></script>
@@ -73,7 +74,9 @@
 <h1>Clinical Tips</h1>
 <p>Short videos to make time for learning — on placement, between shifts, or whenever you need a refresher.</p>
 </div>
-<section class="tips-grid" aria-label="Browse clinical tip videos">
+<section class="tips-library-carousel" aria-label="Browse clinical tip videos">
+<div class="tips-stage">
+<div id="tips-track" class="tips-grid tips-track" tabindex="0" aria-label="Clinical tip videos. Scroll left or right, or use the arrow keys." aria-describedby="tips-hint">
 <a class="tips-video-card" href="clinical-tip-spot-the-deteriorating-patient.html" aria-labelledby="tip-01-title">
 <div class="tips-preview"><img loading="lazy" src="media/spot-the-deteriorating-patient.jpg" width="720" height="1280" alt="" decoding="async"><span class="tips-play" aria-hidden="true">▶</span><span class="tips-duration">47 seconds</span></div>
 <div class="tips-card-copy"><p class="overline">Tip 01 · Recognising deterioration</p><h2 id="tip-01-title">Spot the deteriorating patient</h2><p>A short video to prompt reflection on patient observations and recognising change.</p><span class="tips-watch">Watch tip <span aria-hidden="true">→</span></span></div>
@@ -86,6 +89,18 @@
 <div class="tips-preview"><img loading="lazy" src="media/check-the-patient-id.jpg" width="720" height="1280" alt="" decoding="async"><span class="tips-play" aria-hidden="true">▶</span><span class="tips-duration">53 seconds</span></div>
 <div class="tips-card-copy"><p class="overline">Tip 03 · Patient safety</p><h2 id="tip-03-title">Check the patient ID every time</h2><p>A short refresher on checking you have the right patient, every time, before you give care.</p><span class="tips-watch">Watch tip <span aria-hidden="true">→</span></span></div>
 </a>
+<a class="tips-video-card" href="clinical-tip-first-day-placement-checklist.html" aria-labelledby="tip-04-title">
+<div class="tips-preview"><img loading="lazy" src="media/first-day-placement-checklist.jpg" width="720" height="1280" alt="" decoding="async"><span class="tips-play" aria-hidden="true">▶</span><span class="tips-duration">45 seconds</span></div>
+<div class="tips-card-copy"><p class="overline">Tip 04 · Placement</p><h2 id="tip-04-title">Your first day on placement checklist</h2><p>A night-before checklist to help you walk into your first placement shift ready.</p><span class="tips-watch">Watch tip <span aria-hidden="true">→</span></span></div>
+</a>
+</div>
+</div>
+<div class="tips-controls" hidden>
+<button class="book-arrow" type="button" data-tips-prev aria-label="Previous tip" aria-controls="tips-track">←</button>
+<p class="book-position" role="status" aria-live="polite" aria-atomic="true">1 / 4</p>
+<button class="book-arrow" type="button" data-tips-next aria-label="Next tip" aria-controls="tips-track">→</button>
+</div>
+<p id="tips-hint" class="book-hint">Swipe or scroll sideways to browse. Select a card to watch the tip.</p>
 </section>
 <p class="tips-note">For education and reflection. Follow your local guidance and seek support from your supervising clinician. Videos need an internet connection.</p>
 <nav class="related-links" aria-label="Related pages"><span>Related:</span> <a href="clinical-escalation.html">Escalation simulator</a> · <a href="clinical-quiz.html">Clinical scenarios quiz</a> · <a href="placement-prep.html">Placement prep kit</a></nav>
