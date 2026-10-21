@@ -75,4 +75,3 @@ function draw(now){
 
 return draw;
 }
-
