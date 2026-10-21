@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import * as E from './v0.4.0/engine.js';
-import {people,decisions} from './v0.4.0/shift-data.js';
-import {createWardRenderer} from './v0.4.0/ward-art.js';
+import * as E from './v0.5.0/engine.js';
+import {people,decisions} from './v0.5.0/shift-data.js';
+import {createWardRenderer} from './v0.5.0/ward-art.js';
 function started(){const s=E.fresh(123);s.started=true;return s;}
 function doTask(s,t){
  if(t.status==='reported')return E.acceptReport(s,t.id);
@@ -102,4 +102,12 @@ test('Ward renders all four patients with the pause overlay',()=>{
  const view={patients:people,player:{x:500,y:340},started:true,paused:false};
  const render=createWardRenderer(ctx,view,()=>true);render(0);view.paused=true;render(500);
  assert.ok(calls.some(c=>c[0]==='fillText'&&c[1]==='Margaret'));assert.ok(calls.some(c=>c[0]==='fillText'&&c[1]==='SHIFT PAUSED'));
+});
+
+test('Emergency trolley requires MER and confirmed bedside cover; delivery does not complete care',()=>{
+ const s=started();assert.equal(E.collectTrolley(s),false);assert.equal(E.arrangeEmergencyCover(s),false);
+ reveal(s);assert.equal(E.arrangeEmergencyCover(s),true);assert.equal(s.trolley.merCalled,true);assert.equal(s.trolley.cover,true);
+ assert.equal(E.collectTrolley(s),true);assert.equal(E.collectTrolley(s),false);assert.equal(E.deliverTrolley(s),true);assert.equal(E.deliverTrolley(s),false);
+ assert.equal(E.task(s,'0-care').status,'pending');assert.equal(s.trolley.status,'bedside');
+ assert.equal(E.validateSave(JSON.parse(JSON.stringify(s))).trolley.status,'bedside');
 });
