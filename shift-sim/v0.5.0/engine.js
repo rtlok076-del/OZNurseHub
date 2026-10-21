@@ -152,7 +152,7 @@ export function saveFluid(s,id,type,volume){
 
 export function arrangeEmergencyCover(s){
  if(!s.started||s.finished||s.paused||!s.concerns[0]?.revealed)return false;
- requestHelp(s);s.trolley.cover=true;log(s,'MER activated for Margaret. Jess confirms she will remain with the patient while you collect the emergency trolley.');return true;
+ requestHelp(s);s.trolley.cover=true;log(s,'Emergency response called for Margaret. Jess confirms she will remain with the patient while you collect the emergency trolley.');return true;
 }
 export function collectTrolley(s){
  if(!s.trolley.merCalled||!s.trolley.cover||s.trolley.status!=='parked'||s.paused||s.finished)return false;

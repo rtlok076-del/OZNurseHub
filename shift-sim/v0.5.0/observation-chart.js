@@ -1,11 +1,11 @@
-// Numeric plotting bands adapted from SA Health adult RDR MR59A (Nov 2020).
+// Practice bands, simplified for learning. Use your facility's approved observation chart.
 // This six-measurement exercise is not a complete clinical chart or escalation system.
 const band=(label,min,max,zone='plain')=>({label,min,max,zone});
-const rr=[band('≥36',36,Infinity,'mer'),band('31–35',31,35,'mer'),band('26–30',26,30,'mdt'),band('21–25',21,25,'review'),band('16–20',16,20),band('11–15',11,15),band('8–10',8,10,'review'),band('≤7',0,7,'mer')];
-const spo=[band('≥98',98,100),band('95–97',95,97),band('92–94',92,94,'review'),band('89–91',89,91,'mdt'),band('≤88',0,88,'mer')];
-const bp=[band('≥200',200,Infinity,'mer'),...Array.from({length:15},(_,i)=>{const n=190-i*10;return band(`${n}s`,n,n+9,n>=180?'mdt':n===170?'review':n===90?'mdt':n<90?'mer':'plain');}),band('≤49',0,49,'mer')];
-const hr=[band('≥140',140,Infinity,'mer'),...Array.from({length:10},(_,i)=>{const n=130-i*10;return band(`${n}s`,n,n+9,n>=120?'mdt':n>=100||n===50?'review':n===40?'mdt':'plain');}),band('≤39',0,39,'mer')];
-const temp=[band('≥39.1',39.05,Infinity,'mdt'),...Array.from({length:8},(_,i)=>{const lo=38.6-i*.5,hi=39-i*.5;return band(`${lo.toFixed(1)}–${hi.toFixed(1)}`,lo-.049,hi+.049,i===0?'mdt':i===1||i===7?'review':'plain');}),band('≤35',0,35.049,'mdt')];
+const rr=[band('≥36',36,Infinity,'emergency'),band('31–35',31,35,'emergency'),band('26–30',26,30,'urgent'),band('21–25',21,25,'review'),band('16–20',16,20),band('11–15',11,15),band('8–10',8,10,'review'),band('≤7',0,7,'emergency')];
+const spo=[band('≥98',98,100),band('95–97',95,97),band('92–94',92,94,'review'),band('89–91',89,91,'urgent'),band('≤88',0,88,'emergency')];
+const bp=[band('≥200',200,Infinity,'emergency'),...Array.from({length:15},(_,i)=>{const n=190-i*10;return band(`${n}s`,n,n+9,n>=180?'urgent':n===170?'review':n===90?'urgent':n<90?'emergency':'plain');}),band('≤49',0,49,'emergency')];
+const hr=[band('≥140',140,Infinity,'emergency'),...Array.from({length:10},(_,i)=>{const n=130-i*10;return band(`${n}s`,n,n+9,n>=120?'urgent':n>=100||n===50?'review':n===40?'urgent':'plain');}),band('≤39',0,39,'emergency')];
+const temp=[band('≥39.1',39.05,Infinity,'urgent'),...Array.from({length:8},(_,i)=>{const lo=38.6-i*.5,hi=39-i*.5;return band(`${lo.toFixed(1)}–${hi.toFixed(1)}`,lo-.049,hi+.049,i===0?'urgent':i===1||i===7?'review':'plain');}),band('≤35',0,35.049,'urgent')];
 export const plotMeasures=[{name:'Respiratory rate',short:'RR',bands:rr},{name:'Oxygen saturation',short:'SpO₂',bands:spo},{name:'Heart rate',short:'HR',bands:hr},{name:'Systolic pressure',short:'SBP',bands:bp,mark:'∨'},{name:'Diastolic pressure',short:'DBP',bands:bp.map(b=>({...b,zone:'plain'})),mark:'∧'},{name:'Temperature',short:'Temp',bands:temp}];
 export const bandIndex=(i,value)=>plotMeasures[i].bands.findIndex(b=>value>=b.min&&value<=b.max);
 export const correctPlots=(values,rows)=>Array.isArray(rows)&&rows.length===6&&rows.every((row,i)=>Number.isInteger(row)&&row===bandIndex(i,values[i]));
