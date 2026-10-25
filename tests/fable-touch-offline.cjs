@@ -8,9 +8,9 @@ const assert=require('node:assert/strict');
  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:320,y}]});
  for(let x=300;x>=60;x-=20){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y}]});await new Promise(r=>setTimeout(r,20));}
  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
- await p.waitForFunction(()=>document.querySelector('.book-position').textContent==='2 / 6');
+ await p.waitForFunction(()=>document.querySelector('.book-position').textContent==='2 / 7');
  await c.setOffline(true);
- await p.goto('http://127.0.0.1:8765/fables.html');assert.equal(await p.locator('.book-card').count(),6);
- for(const slug of ['merchants-crossroads','fox-and-rook','mira-marsh-map','mara-two-lanterns','fox-river-returns','mina-two-seeds']){await p.goto('http://127.0.0.1:8765/fable-'+slug+'.html');assert((await p.locator('.fable-text').innerText()).length>500);assert(await p.evaluate(async()=>{const r=await fetch(document.querySelector('video').poster);return r.ok}));}
+ await p.goto('http://127.0.0.1:8765/fables.html');assert.equal(await p.locator('.book-card').count(),7);
+ for(const slug of ['merchants-crossroads','fox-and-rook','mira-marsh-map','mara-two-lanterns','fox-river-returns','mina-two-seeds','thea-pond-map']){await p.goto('http://127.0.0.1:8765/fable-'+slug+'.html');assert((await p.locator('.fable-text').innerText()).length>500);assert(await p.evaluate(async()=>{const r=await fetch(document.querySelector('video').poster);return r.ok}));}
  console.log('PASS simulated phone swipe and offline library, both stories and posters.');
 }finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});

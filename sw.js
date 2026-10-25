@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v81-site-check-fixes';
+const CACHE = 'oznurse-v82-fable-thea';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -45,6 +45,8 @@ const CORE_FILES = [
   './media/fox-river-returns.jpg',
   './fable-mina-two-seeds.html',
   './media/mina-two-seeds.jpg',
+  './fable-thea-pond-map.html',
+  './media/thea-pond-map.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
