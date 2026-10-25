@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v80-ward-shift-fixes';
+const CACHE = 'oznurse-v81-site-check-fixes';
 
 const CORE_FILES = [
   './shift-sim/',
