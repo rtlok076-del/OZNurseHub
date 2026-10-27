@@ -12,12 +12,14 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765';
    await page.goto(base+'/clinical-tips.html');
    const tip=page.getByRole('button',{name:'Got it',exact:true});
    if(await tip.isVisible()) await tip.click();
-   assert.equal(await page.locator('.tips-video-card').count(),4);
+   assert.equal(await page.locator('.tips-video-card').count(),5);
    assert.equal(await page.locator('video').count(),0,'Library loads posters, not players');
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+   for (const card of await page.locator('.tips-video-card').all()) await card.scrollIntoViewIfNeeded();
+   await page.waitForFunction(()=>[...document.querySelectorAll('.tips-preview img')].every(i=>i.complete&&i.naturalWidth>0));
    assert(await page.locator('.tips-preview img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth>0)));
    await page.screenshot({path:`tests/tips-library-${width}-${colorScheme}.png`,fullPage:true});
-   for(const [slug,duration] of [['spot-the-deteriorating-patient',47],['make-an-isbar-call',55],['check-the-patient-id',53],['first-day-placement-checklist',45]]) {
+   for(const [slug,duration] of [['spot-the-deteriorating-patient',47],['make-an-isbar-call',55],['check-the-patient-id',53],['first-day-placement-checklist',45],['track-your-clinical-skills',44]]) {
    media.length=0;
    await page.locator(`.tips-video-card[href="clinical-tip-${slug}.html"]`).click();
    await page.waitForURL(`**/clinical-tip-${slug}.html`);

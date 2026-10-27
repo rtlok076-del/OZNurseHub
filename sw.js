@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v82-fable-thea';
+const CACHE = 'oznurse-v83-tip-05';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -25,10 +25,12 @@ const CORE_FILES = [
   './clinical-tip-make-an-isbar-call.html',
   './clinical-tip-check-the-patient-id.html',
   './clinical-tip-first-day-placement-checklist.html',
+  './clinical-tip-track-your-clinical-skills.html',
   './media/make-an-isbar-call.jpg',
   './media/spot-the-deteriorating-patient.jpg',
   './media/check-the-patient-id.jpg',
   './media/first-day-placement-checklist.jpg',
+  './media/track-your-clinical-skills.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
