@@ -1,6 +1,68 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {fresh,restore,choose,route} from '../js/state.js';import {grid} from '../js/world.js';
-const quest=JSON.parse(await readFile(new URL('../data/quests/identity.json',import.meta.url)));const world=JSON.parse(await readFile(new URL('../data/world.json',import.meta.url)));
-test('all dialogue branches resolve and completion is reachable',()=>{for(const n of Object.values(quest.nodes))for(const c of n.choices)assert.ok(quest.nodes[c.next]);for(const start of Object.keys(quest.nodes)){const visited=new Set(),q=[start];let completed=false;while(q.length){const key=q.shift();if(visited.has(key))continue;visited.add(key);const n=quest.nodes[key];completed ||= !!n.complete;q.push(...n.choices.map(c=>c.next));}assert.ok(completed,start);}});
-test('unsafe route teaches recovery and awards experience only once',()=>{const s=fresh();s.node='start';for(const i of [1,0,1,0,1,0,1,0,0])assert.equal(choose(s,quest,i),true);assert.equal(s.completed,true);assert.equal(s.xp,100);assert.equal(s.mistakes,4);assert.equal(choose(s,quest,0),false);assert.equal(s.xp,100);});
-test('save restores progress while rejecting invalid data',()=>{assert.deepEqual(restore('bad'),fresh());assert.deepEqual(restore('{"version":2}'),fresh());const s=fresh();s.node='compare';s.metGuide=true;s.position={x:5,y:5};assert.deepEqual(restore(JSON.stringify(s)),s);assert.equal(restore('{"version":1,"xp":99999,"completed":false}').xp,0);});
-test('all destinations connect without crossing walls',()=>{for(const start of [fresh().position,...world.npcs.map(n=>n.stand)])for(const n of world.npcs){const path=route(grid,start,n.stand);assert.ok(path.length||start.x===n.stand.x&&start.y===n.stand.y);let previous=start;for(const p of path){assert.equal(grid[p.y][p.x],0);assert.equal(Math.abs(p.x-previous.x)+Math.abs(p.y-previous.y),1);previous=p;}}});
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { fresh, restore, choose, route } from "../js/state.js";
+import { grid } from "../js/world.js";
+const quest = JSON.parse(
+  await readFile(new URL("../data/quests/identity.json", import.meta.url)),
+);
+const world = JSON.parse(
+  await readFile(new URL("../data/world.json", import.meta.url)),
+);
+test("all dialogue branches resolve and completion is reachable", () => {
+  for (const n of Object.values(quest.nodes))
+    for (const c of n.choices) assert.ok(quest.nodes[c.next]);
+  for (const start of Object.keys(quest.nodes)) {
+    const visited = new Set(),
+      q = [start];
+    let completed = false;
+    while (q.length) {
+      const key = q.shift();
+      if (visited.has(key)) continue;
+      visited.add(key);
+      const n = quest.nodes[key];
+      completed ||= !!n.complete;
+      q.push(...n.choices.map((c) => c.next));
+    }
+    assert.ok(completed, start);
+  }
+});
+test("unsafe route teaches recovery and awards experience only once", () => {
+  const s = fresh();
+  s.node = "start";
+  for (const i of [1, 0, 1, 0, 1, 0, 1, 0, 0])
+    assert.equal(choose(s, quest, i), true);
+  assert.equal(s.completed, true);
+  assert.equal(s.xp, 100);
+  assert.equal(s.mistakes, 4);
+  assert.equal(choose(s, quest, 0), false);
+  assert.equal(s.xp, 100);
+});
+test("save restores progress while rejecting invalid data", () => {
+  assert.deepEqual(restore("bad"), fresh());
+  assert.deepEqual(restore('{"version":2}'), fresh());
+  const s = fresh();
+  s.node = "compare";
+  s.metGuide = true;
+  s.position = { x: 5, y: 5 };
+  assert.deepEqual(restore(JSON.stringify(s)), s);
+  assert.equal(restore('{"version":1,"xp":99999,"completed":false}').xp, 0);
+});
+test("all destinations connect without crossing walls", () => {
+  for (const start of [fresh().position, ...world.npcs.map((n) => n.stand)])
+    for (const n of world.npcs) {
+      const path = route(grid, start, n.stand);
+      assert.ok(
+        path.length || (start.x === n.stand.x && start.y === n.stand.y),
+      );
+      let previous = start;
+      for (const p of path) {
+        assert.equal(grid[p.y][p.x], 0);
+        assert.equal(
+          Math.abs(p.x - previous.x) + Math.abs(p.y - previous.y),
+          1,
+        );
+        previous = p;
+      }
+    }
+});
