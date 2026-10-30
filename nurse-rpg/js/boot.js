@@ -54,6 +54,7 @@ function modal(title, html, actions, label = "THE LANTERN CROSSING") {
   $("overlay-content").innerHTML = html;
   $("overlay-actions").replaceChildren(...actions);
   if (!$("overlay").open) $("overlay").showModal();
+  actions[0]?.focus({ preventScroll: true });
 }
 function close() {
   $("overlay").close();
@@ -118,6 +119,7 @@ function intro() {
   ];
   if (state.intro >= parts.length) {
     close();
+    $("world").focus({ preventScroll: true });
     story(
       "Your first steps",
       "Find Sage Rowan at the nurses’ station. Walk with arrow keys or WASD while the map is focused, or tap a destination below the map. Enter interacts with someone nearby.",
@@ -165,6 +167,7 @@ function revealDialogue() {
     const rect = panel.getBoundingClientRect();
     if (rect.top < 0 || rect.bottom > innerHeight)
       panel.scrollIntoView({ block: "start", behavior: "instant" });
+    $("choices").querySelector("button")?.focus({ preventScroll: true });
   });
 }
 function node() {

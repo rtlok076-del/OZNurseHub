@@ -6,6 +6,7 @@ Built against Project Ward Design Doc v0.2, read 30 October 2026. This is the fi
 
 - Automated Node checks: every quest branch can reach completion; corrective feedback route; one-time XP reward; save validation; reachable collision-free routes between all destinations.
 - Headless Edge browser: arrival sequence, walking to Rowan and Sam, accepting quest, unsafe-choice recovery, evidence cards, mid-quest reload, quest completion, real-world note, returning to Rowan, debrief, persistent XP, About dialog.
+- Keyboard-only continuation: Enter advances every arrival panel, focus moves to the map after arrival, destination buttons activate with Enter, and new quest choices receive focus. Also checked keyboard movement, pause, remembered sound setting and unavailable-storage fallback.
 - Desktop 1440px and phone-width 390px screenshots inspected. No horizontal overflow at 390px; sidebar panels collapse. No browser page errors during the tested route.
 - All runtime scripts, JSON, styles and engine are served locally. No CDN needed to play. Phaser licence included. No third-party artwork or music.
 

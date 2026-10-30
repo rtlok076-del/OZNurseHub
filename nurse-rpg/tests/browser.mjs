@@ -102,6 +102,51 @@ assert.match(
   /Saving unavailable/,
 );
 await privatePage.close();
+// Intro replacements must retain keyboard focus; a mouse must not be required.
+const keyboardPage = await browser.newPage();
+await keyboardPage.goto("http://127.0.0.1:5186/nurse-rpg/");
+await keyboardPage.getByRole("button", { name: "Begin the journey" }).waitFor();
+for (const expected of [
+  "A shift like any other",
+  "Somewhere beyond the familiar",
+  "The lanterns are going out",
+]) {
+  await keyboardPage.keyboard.press("Enter");
+  await keyboardPage.getByRole("heading", { name: expected }).waitFor();
+}
+await keyboardPage.keyboard.press("Enter");
+assert.equal(
+  await keyboardPage.evaluate(() => document.activeElement.id),
+  "world",
+);
+await keyboardPage.locator("#destinations button").first().focus();
+await keyboardPage.keyboard.press("Enter");
+await keyboardPage
+  .getByRole("button", { name: "Accept · The names we carry" })
+  .waitFor();
+await keyboardPage.waitForFunction(() =>
+  document.activeElement.textContent.includes("Accept ·"),
+);
+await keyboardPage.keyboard.press("Enter");
+await keyboardPage
+  .locator("#destinations")
+  .getByRole("button", { name: "Bed 1 · Sam", exact: true })
+  .focus();
+await keyboardPage.keyboard.press("Enter");
+await keyboardPage
+  .getByRole("button", { name: "Introduce yourself" })
+  .waitFor();
+await keyboardPage.waitForFunction(() =>
+  document.activeElement.textContent.includes("Introduce yourself"),
+);
+await keyboardPage.keyboard.press("Enter");
+await keyboardPage
+  .getByRole("button", { name: "Compare three identifiers" })
+  .waitFor();
+await keyboardPage.waitForFunction(() =>
+  document.activeElement.textContent.includes("Compare three identifiers"),
+);
+await keyboardPage.close();
 assert.deepEqual(errors, []);
 console.log(
   "PASS: intro, movement, unsafe branch, mid-quest reload, evidence cards, completion, debrief, saved XP, mobile width, About; no browser errors.",
