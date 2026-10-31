@@ -51,7 +51,7 @@ await page
   .getByRole("heading", { name: "Your first light" })
   .waitFor({ timeout: 15000 });
 await page.screenshot({ path: "test-results/debrief.png", fullPage: true });
-await page.getByRole("button", { name: "Keep exploring" }).click();
+await page.getByRole("button", { name: "Explore before continuing" }).click();
 await page.reload();
 assert.equal(await page.locator("#xp").innerText(), "100 XP earned");
 await page.setViewportSize({ width: 390, height: 844 });

@@ -12,7 +12,7 @@
   <body>
     <header class="masthead">
       <a href="../index.html" class="brand">OZ NURSE HUB <span>/ PLAY</span></a
-      ><span class="build">PROJECT WARD · FIRST PLAYTEST</span
+      ><span class="build">PROJECT WARD · THREE-CHAPTER PLAYTEST</span
       ><button id="about">About</button>
     </header>
     <main>
@@ -22,7 +22,9 @@
           <h1>The Lantern Crossing</h1>
           <p>You know how to care. This world needs you to remember.</p>
         </div>
-        <span class="chapter-chip">CHAPTER 01 <b>Lantern Ward</b></span>
+        <span id="chapter-chip" class="chapter-chip"
+          >CHAPTER 01 <b>Lantern Ward</b></span
+        >
       </div>
       <div class="game-grid">
         <details class="panel stats" open>
@@ -47,7 +49,7 @@
               </div>
               <div>
                 <dt>Chapter time</dt>
-                <dd>19:00</dd>
+                <dd id="chapter-time">19:00</dd>
               </div>
               <div>
                 <dt>Approach</dt>
@@ -105,7 +107,7 @@
               </div>
             </div>
             <p class="eyebrow inventory-label">IN YOUR SATCHEL</p>
-            <ul class="inventory">
+            <ul id="inventory" class="inventory">
               <li>Stethoscope <span>01</span></li>
               <li>Name badge <span>01</span></li>
               <li>ISBAR pocket card <span>01</span></li>
@@ -150,7 +152,8 @@
           <div class="panel-body">
             <p id="target" class="muted">Explore the ward to meet someone.</p>
             <button class="primary" id="interact">Look around</button
-            ><button id="journal">Read journal</button>
+            ><button id="journal">Read journal</button
+            ><button id="field-guide">Use an art</button>
             <p class="small muted">
               Tap a destination to walk there. Your choices are always yours.
             </p>

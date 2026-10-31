@@ -1,19 +1,31 @@
-# M1 review record
+# Three-chapter review record
 
-Built against Project Ward Design Doc v0.2, read 30 October 2026. This is the first playtest gate, not the completed three-quest MVP.
+Scope: draft v0.2 plus Ryan’s request for two additional chapters, richer skills/events, and independent sub-agent RPG playtesting to at least 6/10. The M1 playtest gate was explicitly overridden.
 
-## Verified
+## Engineering evidence
 
-- Automated Node checks: every quest branch can reach completion; corrective feedback route; one-time XP reward; save validation; reachable collision-free routes between all destinations.
-- Headless Edge browser: arrival sequence, walking to Rowan and Sam, accepting quest, unsafe-choice recovery, evidence cards, mid-quest reload, quest completion, real-world note, returning to Rowan, debrief, persistent XP, About dialog.
-- Keyboard-only continuation: Enter advances every arrival panel, focus moves to the map after arrival, destination buttons activate with Enter, and new quest choices receive focus. Also checked keyboard movement, pause, remembered sound setting and unavailable-storage fallback.
-- Desktop 1440px and phone-width 390px screenshots inspected. No horizontal overflow at 390px; sidebar panels collapse. No browser page errors during the tested route.
-- All runtime scripts, JSON, styles and engine are served locally. No CDN needed to play. Phaser licence included. No third-party artwork or music.
+- Six Node tests: branch reachability across all chapters, recovery, one-time rewards, chapter transitions, save restoration, M1 migration and collision-free routes.
+- Campaign browser: three optional encounters, three chapters, path selection, ending, 445 XP before bonds, no duplicate rewards, reload in each quest, final save, field guide and 390px layout. No page errors on this route.
+- Existing browser checks: unsafe-choice recovery, keyboard movement, pause, sound preference, unavailable storage, intro/dialogue focus and About.
+- Desktop 1440px and phone-width 390px screenshots inspected. No horizontal overflow; side panels collapse.
+- Original music uses gesture-gated audio and suspends while hidden. Reduced motion disables rain/motes/gliding. Runtime assets are local.
 
-Reproduce: `npm ci`, `npm start`, then in another terminal `npm test` and `node tests/browser.mjs`. Browser test uses installed Microsoft Edge through Playwright. Screenshots go into ignored `test-results/`.
+Reproduce: npm test and npm run test:browser while npm start runs. Screenshots are in ignored test-results/. These checks do not prove clinical validity or full screen-reader/real-device usability.
 
-## Needs Ryan’s playtest / clinical review
+## Clinical references
 
-Does the arrival feel like being transported into another world? Is the ward enjoyable to explore? Is the first quest understandable on a phone? Review the identity/allergy wording and supportive feedback. Confirm or change temporary world and character names.
+- https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/communicating-safety-standard/further-information/patient-identification-and-procedure-matching
+- https://www.agedcarequality.gov.au/quality-standards/isbar-identify-situation-background-assessment-and-recommendation
+- https://www.health.vic.gov.au/older-people-in-hospital/supporting-information-for-older-people-in-hospital/clinical-handover
+- https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/recognising-and-responding-acute-deterioration-standard
+- https://www.safetyandquality.gov.au/clinical-care-standards/sepsis
 
-M2 and M3 remain: two more quests, expanded progression, background music, further art polish, full assistive-technology and touch-device audit, site navigation and sitemap entry. Clinical review remains a publication gate. No merge or publication performed.
+Early emergency escalation is not penalised. The storm changes at a narrative step, not from reading speed. No invented numerical score is presented as clinically validated.
+
+## Independent RPG review
+
+In progress. Final score and evidence will be added after the sub-agent completes actual UI playtesting. This is an editorial judgement, not clinical validation.
+
+## Release status
+
+Draft PR only. Ryan’s combined gameplay and clinical review remain outstanding. No merge, public navigation update, sitemap entry or production publication.

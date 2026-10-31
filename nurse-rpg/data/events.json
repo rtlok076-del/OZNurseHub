@@ -1,0 +1,56 @@
+{
+  "listening": {
+    "title": "The bridge keeper’s promise",
+    "speaker": "Sam Okoro",
+    "text": "“I used to keep the bridge open for late travellers. Now the lanterns keep going out. My daughter is on the other side.” Sam turns a small brass compass in his hands. “Do you think anyone remembers we’re here?”",
+    "choices": [
+      {
+        "label": "Sit and listen to his story",
+        "result": "You stay long enough to hear his daughter’s name: Elin. Sam presses the compass into your hand. “Find the way for people who can’t walk it yet.” You learn the Listening art; it reveals patient perspectives in your field guide.",
+        "value": "listened"
+      },
+      {
+        "label": "Offer to carry a message to the bridge watch",
+        "result": "You write Elin’s name and Sam’s message in your journal. Rowan arranges a messenger. Sam lends you his compass: “Bring it back when the bridge is open.” You learn the Listening art through following up on what matters to him.",
+        "value": "message"
+      }
+    ],
+    "reward": "Listening art · brass compass · +25 XP"
+  },
+  "supplies": {
+    "title": "The apprentice’s scattered satchel",
+    "speaker": "Apprentice Pip",
+    "text": "A young ward runner pops up behind the cabinet. “The portal shook every shelf! Rowan needs the observation kit. I can read the labels, or carry the bag, but apparently not both while panicking.”",
+    "choices": [
+      {
+        "label": "Sort the kit together and check each item",
+        "result": "You and Pip check the observation equipment and return the labelled kit to its place. Pip laughs with relief. “A plan is a kind of magic, isn’t it?” You learn Teamwork; your field guide now includes delegation and report-back reminders.",
+        "value": "together"
+      },
+      {
+        "label": "Ask Pip to read labels while you organise the kit",
+        "result": "Pip calls out each label and you confirm it before packing. You ask Pip to report back to Rowan when it is ready. For the first time tonight, the apprentice stands a little taller. You learn Teamwork.",
+        "value": "delegate"
+      }
+    ],
+    "reward": "Teamwork art · observation kit · +25 XP"
+  },
+  "runes": {
+    "title": "A thread back home",
+    "speaker": "The crossing",
+    "text": "Your old hospital’s fluorescent hum flickers inside the portal. A loose copper thread runs from the arch to an unlit lantern. Beside it, someone has carved: A WAY HOME IS MADE OF WHAT YOU LEAVE BEHIND.",
+    "choices": [
+      {
+        "label": "Weave the copper thread into a guiding lantern",
+        "result": "You tie the thread to the lantern’s cold frame. It glows without heat. The crossing remembers your touch: now its light points towards the ward, not away from it. You learn Wayfinding and keep a copper thread as a reminder.",
+        "value": "lantern"
+      },
+      {
+        "label": "Trace the ward’s paths into your journal",
+        "result": "You sketch the doorways, the station and the way back to each patient. The copper thread curls into the shape of your map. You learn Wayfinding. Being lost does not mean you cannot help someone else find their way.",
+        "value": "map"
+      }
+    ],
+    "reward": "Wayfinding art · copper thread · +25 XP"
+  }
+}

@@ -1,4 +1,12 @@
-import { KEY, fresh, restore, choose } from "./state.js";
+import {
+  KEY,
+  fresh,
+  restore,
+  choose,
+  advanceChapter,
+  resolveEvent,
+} from "./state.js";
+import { createAudio } from "./audio.js";
 import { createWorld } from "./world.js";
 const $ = (id) => document.getElementById(id);
 let state;
@@ -7,12 +15,13 @@ try {
 } catch {
   state = fresh();
 }
-let quest,
+let quests,
+  events,
+  quest,
   world,
   scene,
   nearby,
-  busy = false,
-  audio;
+  busy = false;
 const disclaimer =
   "Educational game only. The world, patients and hospital are fictional. Not clinical advice. Always follow your local policies, procedures and escalation criteria, and seek senior advice. In an emergency, follow your workplace’s emergency response system.";
 function save() {
@@ -27,26 +36,165 @@ function save() {
 function button(label, fn, primary = false) {
   const b = document.createElement("button");
   b.textContent = label;
+  b.setAttribute("aria-label", label);
   b.classList.toggle("primary", primary);
   b.onclick = fn;
   return b;
 }
+const sound = createAudio();
+sound.setMuted(state.muted);
 function tone() {
-  if (state.muted) return;
-  try {
-    audio ||= new AudioContext();
-    audio.resume();
-    const o = audio.createOscillator(),
-      g = audio.createGain();
-    o.type = "sine";
-    o.frequency.setValueAtTime(523, audio.currentTime);
-    o.frequency.setValueAtTime(784, audio.currentTime + 0.12);
-    g.gain.setValueAtTime(0.025, audio.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 0.35);
-    o.connect(g).connect(audio.destination);
-    o.start();
-    o.stop(audio.currentTime + 0.36);
-  } catch {}
+  sound.setMuted(state.muted);
+  sound.chime();
+}
+const chapterInfo = [
+  {
+    title: "The names we carry",
+    target: "sam",
+    place: "Bed 1 · Sam",
+    hook: "Two names, one misplaced chart. Restore the first lantern by seeing the person behind the label.",
+    ending:
+      "Sam’s lantern is lit. A bell answers from the southern rooms. The bridge courier has a message that cannot wait.",
+  },
+  {
+    title: "Across the echo bridge",
+    target: "rest",
+    place: "Bed 3 · Mira",
+    hook: "The brass messenger bird cannot carry a muddled message. Mira, a courier from the bridge, needs a clear call for review. Let your words become a path through the static.",
+    ending:
+      "The messenger bird carries your message. The court clinician arrives, and Mira’s lantern joins Sam’s. Outside, a storm gathers around the last dark window.",
+  },
+  {
+    title: "When the lanterns falter",
+    target: "tavi",
+    place: "Bed 4 · Tavi",
+    hook: "A storm shakes the ward. Tavi, the lantern keeper, says something is wrong. Listen, recognise change, and summon help; no prophecy matters more than the person in front of you.",
+    ending:
+      "Help reaches Tavi. The three lanterns answer one another, and the bridge beyond the windows shines again. You did not save the ward alone. You helped it work together.",
+  },
+];
+const arts = [
+  [
+    "identity",
+    "Patient identification",
+    "Compare full name, date of birth and MRN against the correct records. Ask the patient to state details. An allergy check is separate.",
+  ],
+  [
+    "isbar",
+    "Clear communication",
+    "Identify yourself and the patient; explain the situation, relevant background and your assessment; state a clear recommendation. Confirm the response and what to do if things change.",
+  ],
+  [
+    "deterioration",
+    "Early recognition",
+    "Listen to concern, assess and recognise trends. Seek help early. Emergency escalation must not wait for a complete assessment or a score. Follow local response criteria.",
+  ],
+  [
+    "listening",
+    "Listening",
+    "Patient perspective: Sam wants to be remembered. Mira worries about the brass bird her sister gave her. Tavi fears letting the ward down. Ask what matters to them as well as what is wrong.",
+  ],
+  [
+    "supplies",
+    "Teamwork",
+    "Ask a colleague for a specific task within their role, confirm they understand, and agree when they will report back. Keep responsibility for checking the outcome.",
+  ],
+  [
+    "runes",
+    "Wayfinding",
+    "The station is north-east; Sam north-west; Mira south-west; Tavi south-middle. The crossing is between the southern rooms. Use destination buttons for a clear path.",
+  ],
+];
+function unlocked(id) {
+  return state.completedQuests.includes(id) || Boolean(state.events[id]);
+}
+function artBook(id) {
+  const art = arts.find((a) => a[0] === id),
+    actions = [];
+  const available =
+    unlocked(id) ||
+    (id === "listening" && state.affinity === "Listener") ||
+    (id === "runes" && state.affinity === "Pathfinder");
+  if (
+    id === "listening" &&
+    available &&
+    ["sam", "other", "rest", "tavi"].includes(nearby?.id)
+  )
+    actions.push(
+      button(
+        "Listen to " + nearby.name,
+        () => {
+          const memories = {
+            sam: "“When I get home, I’m going to leave a lantern in my window for late travellers. Someone did that for me tonight.” Sam smiles. You write down his promise.",
+            other:
+              "“Elin used to count the lights from our window. When the bridge opens, tell her I kept counting too.” You let the silence hold his words.",
+            rest: "“My sister made this bird because I always forgot to write home. I’m scared she’ll hear that I fell before she hears I’m safe.” You ask Rowan to help Mira contact her sister.",
+            tavi: "“I thought if I stopped working, the ward would go dark. It turns out other people know how to carry a lantern.” You remind Tavi that receiving care is not a failure.",
+          };
+          const first = !state.bonds.includes(nearby.id);
+          if (first) {
+            state.bonds.push(nearby.id);
+            state.xp += 10;
+            save();
+            refresh();
+          }
+          modal(
+            "A voice remembered",
+            `<p>${memories[nearby.id]}</p><p class="note">${first ? "A new bond · +10 XP" : "You remember this conversation."}</p>`,
+            [button("Return to your task", close, true)],
+            "LISTENING ART",
+          );
+        },
+        true,
+      ),
+    );
+  if (id === "runes" && available && !busy)
+    actions.push(
+      button(
+        "Follow the compass to your objective",
+        () => {
+          close();
+          const target =
+            !state.metGuide || state.completed
+              ? "rowan"
+              : chapterInfo[state.chapter - 1].target;
+          const npc = world.npcs.find((n) => n.id === target);
+          scene.walk(npc.stand, npc.id);
+        },
+        true,
+      ),
+    );
+  if (id === "supplies" && available)
+    actions.push(
+      button("Ask Pip for a team check", () =>
+        modal(
+          "Pip checks back",
+          `<p>${state.chapter === 1 ? "“The preparation chart is ready for comparison. I’ll wait for your check before anything proceeds.”" : state.chapter === 2 ? "“Rowan is staying with Mira. The ISBAR card is here. I’ll confirm the receiver heard your recommendation.”" : "“I’ll call for the response team and bring the observation equipment. You stay with Tavi. I’ll report back as soon as help is on the way.”"}</p><p class="small">A teamwork reminder. Continue the quest to make and confirm the actual escalation.</p>`,
+          [button("Return to your task", close, true)],
+          "TEAMWORK ART",
+        ),
+      ),
+    );
+  actions.push(button("Back to the ward", close, !actions.length));
+  modal(
+    art[1],
+    `<p>${art[2]}</p><p class="small">${available ? "This art is ready to use." : id === "listening" ? "Learn this art at Bed 2, or choose the Listener path." : id === "runes" ? "Learn this art at the portal, or choose the Pathfinder path." : id === "supplies" ? "Help Pip in the med room to learn this art." : "This practice reminder is always available."}</p>`,
+    actions,
+    "FIELD GUIDE · " + (unlocked(id) ? "MASTERED ART" : "PRACTICE ART"),
+  );
+}
+function fieldGuide() {
+  modal(
+    "The arts you carry",
+    "<p>Use a reminder whenever you need it. Care is never locked behind XP. Master arts through quests and optional ward encounters.</p>",
+    [
+      ...arts.map((a) =>
+        button((unlocked(a[0]) ? "✦ " : "◇ ") + a[1], () => artBook(a[0])),
+      ),
+      button("Back to the ward", close),
+    ],
+    "YOUR FIELD GUIDE",
+  );
 }
 function modal(title, html, actions, label = "THE LANTERN CROSSING") {
   $("overlay-title").textContent = title;
@@ -75,32 +223,61 @@ function story(speaker, text, choices = [], tag = "STORY") {
   );
 }
 function refresh() {
-  $("xp").textContent = state.completed ? "100 XP earned" : "0 / 100 XP";
-  $("xpbar").value = state.xp;
-  $("rank").textContent = state.completed
-    ? "Grad RN · Level 2"
-    : "Grad RN · Level 1";
+  const info = chapterInfo[state.chapter - 1];
+  $("xp").textContent = `${state.xp} XP earned`;
+  $("xpbar").max = 100;
+  $("xpbar").value = state.xp % 100;
+  $("rank").textContent =
+    `${state.affinity || "Wayfarer"} · Level ${1 + Math.floor(state.xp / 100)}`;
+  $("chapter-chip").innerHTML =
+    `CHAPTER 0${state.chapter} <b>${info.title}</b>`;
+  $("chapter-time").textContent = ["19:00", "21:00", "23:00"][
+    state.chapter - 1
+  ];
   $("mute").textContent = state.muted ? "Sound: off" : "Sound: on";
   $("mute").setAttribute("aria-pressed", String(state.muted));
   $("quest-state").textContent = state.completed
-    ? "QUEST COMPLETE"
+    ? "LANTERN RESTORED"
     : state.metGuide
       ? "ACTIVE QUEST"
-      : "THE CROSSING";
-  $("quest-title").textContent = state.metGuide
-    ? quest.title
-    : "A light in an unfamiliar place";
+      : "CHAPTER " + state.chapter;
+  $("quest-title").textContent = info.title;
   $("objective").textContent = state.completed
-    ? "Return to Rowan for your first chapter debrief."
+    ? "Return to Rowan at the station."
     : state.metGuide
-      ? "Meet Sam in Bed 1 and check the preparation chart."
-      : "Find the ward sage at the nurses’ station.";
-  if (state.completed) {
-    $("skill-list").firstElementChild.querySelector("small").textContent =
-      "Unlocked · three identifiers";
-    $("journal-note").innerHTML =
-      '<p class="note">✦ You caught a mismatch. The eastern lantern is lit.</p>';
-  }
+      ? "Visit " + info.place + " · " + info.hook
+      : "Meet Rowan at the station for your next chapter.";
+  $("skill-list").replaceChildren(
+    ...arts.map((a) => {
+      const b = button((unlocked(a[0]) ? "✦ " : "◇ ") + a[1], () =>
+        artBook(a[0]),
+      );
+      b.className = "art-button " + (unlocked(a[0]) ? "mastered" : "");
+      b.title = unlocked(a[0])
+        ? "Mastered — open field guide"
+        : "Open practice reminder";
+      return b;
+    }),
+  );
+  const items = [
+    "Stethoscope",
+    "Name badge",
+    "ISBAR pocket card",
+    ...(state.events.listening ? ["Brass compass"] : []),
+    ...(state.events.supplies ? ["Observation kit"] : []),
+    ...(state.events.runes ? ["Copper thread"] : []),
+    ...(state.completedQuests.includes("isbar") ? ["Brass feather"] : []),
+  ];
+  $("inventory").replaceChildren(
+    ...items.map((x) => {
+      const li = document.createElement("li");
+      li.textContent = x;
+      return li;
+    }),
+  );
+  $("journal-note").innerHTML =
+    `<p class="small">Lanterns restored: ${state.completedQuests.length} / 3<br>Ward encounters: ${Object.keys(state.events).length} / 3<br>Patient bonds: ${state.bonds.length} / 4</p>`;
+  document.body.dataset.chapter = state.chapter;
 }
 function intro() {
   const parts = [
@@ -146,7 +323,7 @@ function intro() {
 function launch() {
   modal(
     "Before you cross",
-    `<p>${disclaimer}</p><p class="small">First playtest: one ward, one quest, about 5–10 minutes. Your progress is saved in this browser. All characters are fictional. Clinical content is pending Ryan’s review.</p>`,
+    `<p>${disclaimer}</p><p class="small">Three chapters, three optional ward encounters, about 20–30 minutes. Your progress is saved in this browser. All characters are fictional. Clinical content is pending Ryan’s review.</p>`,
     [
       button(
         "Begin the journey",
@@ -191,7 +368,7 @@ function node() {
         node();
       },
     ]),
-    "THE NAMES WE CARRY",
+    quest.title.toUpperCase(),
   );
   if (n.evidence) {
     const box = document.createElement("div");
@@ -216,13 +393,13 @@ function node() {
     const note = document.createElement("p");
     note.className = "note";
     const b = document.createElement("b");
-    b.textContent = "REAL WORLD NOTE · +100 XP";
+    b.textContent = `REAL WORLD NOTE · +${quest.xp} XP`;
     note.append(b, document.createElement("br"), quest.note);
     const a = document.createElement("a");
     a.href = quest.tip;
     a.target = "_blank";
     a.rel = "noopener";
-    a.textContent = "Read the patient identification tip ↗";
+    a.textContent = "Read the real-world tip ↗";
     note.append(document.createElement("br"), a);
     $("story").append(note);
     $("choices").append(
@@ -232,7 +409,8 @@ function node() {
           busy = false;
           story(
             "A lantern rekindled",
-            "A warm light returns to the window above Sam’s bed. Rowan gives you a small nod. Return to the nurses’ station when you’re ready.",
+            chapterInfo[state.chapter - 1].ending +
+              " Return to Rowan when ready.",
           );
           refresh();
           position(nearby);
@@ -244,22 +422,101 @@ function node() {
   $("interact").disabled = true;
   $("target").textContent = "Finish the conversation below the map.";
 }
+function encounter(id) {
+  const event = events[id];
+  if (state.events[id]) {
+    story(
+      event.speaker,
+      event.choices.find((c) => c.value === state.events[id])?.result ||
+        event.text,
+      [],
+      "WARD MEMORY",
+    );
+    revealDialogue();
+    return;
+  }
+  busy = true;
+  story(
+    event.speaker,
+    event.text,
+    event.choices.map((c) => [
+      c.label,
+      () => {
+        resolveEvent(state, id, c.value);
+        save();
+        refresh();
+        tone();
+        story(
+          event.speaker,
+          c.result,
+          [
+            [
+              "Continue exploring",
+              () => {
+                busy = false;
+                story("A small act, remembered", event.reward);
+                position(nearby);
+                $("world").focus({ preventScroll: true });
+              },
+            ],
+          ],
+          event.reward,
+        );
+        revealDialogue();
+      },
+    ]),
+    "OPTIONAL ENCOUNTER · " + event.title,
+  );
+  revealDialogue();
+  $("interact").disabled = true;
+}
+function choosePath() {
+  modal(
+    "What will you carry forward?",
+    "<p>Rowan places two small emblems on the desk. “The crossing gives no one a title. Choose the promise you want to keep.” Your path changes your story reflections; every clinical action remains available.</p>",
+    [
+      button(
+        "Listener · no voice forgotten",
+        () => {
+          state.affinity = "Listener";
+          save();
+          refresh();
+          close();
+          interact("rowan");
+        },
+        true,
+      ),
+      button("Pathfinder · make a way together", () => {
+        state.affinity = "Pathfinder";
+        save();
+        refresh();
+        close();
+        interact("rowan");
+      }),
+    ],
+    "YOUR WAYFARER PATH",
+  );
+}
 function interact(id = nearby?.id) {
   if (busy || $("overlay").open) return;
+  const info = chapterInfo[state.chapter - 1];
   if (id === "rowan") {
     if (state.completed) {
       debrief();
       return;
     }
+    if (state.chapter > 1 && !state.affinity) {
+      choosePath();
+      return;
+    }
     if (!state.metGuide) {
       busy = true;
-      revealDialogue();
       story(
         "Sage Rowan",
-        "Welcome to Lumen, Wayfarer. The crossing brings us people when the lanterns begin to fade. I would explain the prophecy, but first: two patients have similar names, and a preparation chart may have gone to the wrong bedside. Will you help me check?",
+        info.hook,
         [
           [
-            "Accept · The names we carry",
+            "Accept · " + info.title,
             () => {
               state.metGuide = true;
               busy = false;
@@ -267,68 +524,118 @@ function interact(id = nearby?.id) {
               refresh();
               story(
                 "Sage Rowan",
-                "Bed 1, Sam Okafor. Introduce yourself, listen, and compare the identifiers. You don’t need a spell. You need to notice.",
+                "Find " +
+                  info.place +
+                  ". " +
+                  (state.chapter === 1
+                    ? "Introduce yourself, listen, and compare the identifiers."
+                    : state.chapter === 2
+                      ? "The messenger repeats only what we give it. Make the message clear."
+                      : "The storm is scenery. Tavi’s changing condition is the priority."),
               );
               position(nearby);
             },
           ],
         ],
-        "A NEW QUEST",
+        "CHAPTER " + state.chapter + " · A NEW QUEST",
       );
+      revealDialogue();
       $("interact").disabled = true;
-    } else
+    } else {
       story(
         "Sage Rowan",
-        "Sam is in Bed 1, by the north-west window. Ask the patient to state their details and compare them with the wristband and record. I’m here if you find a mismatch.",
+        info.hook + " Your next destination is " + info.place + ".",
       );
-  } else if (id === "sam") {
-    if (!state.metGuide)
+      revealDialogue();
+    }
+  } else if (id === info.target) {
+    if (!state.metGuide) {
+      story("Lantern Ward", "Rowan is waiting at the station to brief you.");
+      revealDialogue();
+    } else if (state.completed) {
       story(
-        "Sam Okafor",
-        "You look a little lost. Rowan at the nurses’ station will help. I’ll be here when you’re ready.",
+        "A lantern restored",
+        info.ending + " Rowan has your chapter debrief.",
       );
-    else if (state.completed)
-      story(
-        "Sam Okafor",
-        "The light is back. I think we both found our feet today. Rowan is waiting for you at the station.",
-      );
-    else {
+      revealDialogue();
+    } else {
       state.node ||= "start";
       save();
       node();
     }
-  } else if (id === "other")
+  } else if (id === "other") encounter("listening");
+  else if (id === "stores") encounter("supplies");
+  else if (id === "crossing") encounter("runes");
+  else if (id === "sam") {
     story(
-      "Sam Okoro",
-      "Yes, another Sam. We’ve already confused the meal trolley. I’m Sam Okoro; the other Sam is across the wall in Bed 1.",
+      "Sam Okafor",
+      state.completedQuests.includes("identity")
+        ? "“The lantern is holding. I heard you in the other rooms. You’re finding your place here.”"
+        : "“Rowan will explain. I’m glad someone came through the crossing tonight.”",
     );
-  else if (id === "stores")
+    revealDialogue();
+  } else if (id === "rest") {
     story(
-      "The med room",
-      "Glass jars catch the lantern light. Each shelf has careful labels. A card reads: “One patient at a time. Check before you prepare.” There are no medicines to collect in this first quest.",
+      "Mira",
+      state.completedQuests.includes("isbar")
+        ? "“The clinician heard us. My sister’s bird can rest while I recover. Thank you for not letting my voice disappear.”"
+        : "A courier rests with a folded letter in her hand. Rowan asks you to finish your current task before a new briefing.",
     );
-  else if (id === "rest")
+    revealDialogue();
+  } else if (id === "tavi") {
     story(
-      "The quiet rooms",
-      "You lower your voice. Two travellers are resting after a long journey. The ward has more stories, but tonight your first task waits upstairs.",
+      "Tavi",
+      "“I light every lantern before the night watch. Someone has to make sure people can see each other.” Tavi folds a worn map of the bridge.",
     );
-  else
+    revealDialogue();
+  } else
     story(
       "Lantern Ward",
-      "The corridor is quiet. Choose the nurses’ station or a bedside using the destination buttons, or walk closer and press Enter.",
+      "Choose a destination, or walk closer and press Enter. Optional encounters wait at Bed 2, the med room and the portal.",
     );
 }
 function debrief() {
+  const info = chapterInfo[state.chapter - 1],
+    final = state.chapter === 3;
+  const reflection =
+    state.affinity === "Listener"
+      ? "You promised no voice would be forgotten. Sam, Mira and Tavi each helped you keep that promise."
+      : "You made a way through confusion by asking for help and making the next step clear.";
   modal(
-    "Your first light",
-    `<p>Sam’s lantern glows again. Rowan unfolds a map of the kingdom. Beyond this ward lie the Gate of First Response, the Watchtower and the Garden of Quiet Hours.</p><p>“One ward at a time,” Rowan says. “You’ve already made a difference here.”</p><div class="note"><b>+100 XP · Patient identification unlocked</b><p>Safety: you resolved a mismatched record.<br>Communication: you listened to Sam and asked Rowan for help.<br>Timeliness: you paused before proceeding; there was no time penalty.</p></div><p>${state.mistakes ? "You explored " + state.mistakes + " unsafe choice(s) and worked through the feedback." : "You completed the quest without an unsafe choice."} This is learning feedback, not a competence assessment.</p><p class="small">End of the first playtest. ISBAR and deterioration quests come after your feedback on this chapter.</p>`,
+    final
+      ? "The bridge of three lights"
+      : state.chapter === 1
+        ? "Your first light"
+        : "A voice reaches the other side",
+    `<p>${info.ending}</p><div class="note"><b>Chapter ${state.chapter} complete · ${state.xp} total XP</b><p>${state.chapter === 1 ? "Safety: the mismatched record was resolved." : state.chapter === 2 ? "Communication: you made a structured call and confirmed the response." : "Recognition: you acted on concern and changing observations, called for help and reassessed."}</p></div><p>${state.chapterMistakes[quest.id] || 0} choices needed coaching in this chapter. This is learning feedback, not a competence assessment.</p>${final ? `<p>${reflection}</p><p>The portal opens onto your old corridor. Behind you, Rowan asks, “Will you come back?” You leave your badge facing the light. Some doors are worth keeping open.</p><p>Lanterns: 3 / 3 · Optional encounters: ${Object.keys(state.events).length} / 3. You can keep exploring to finish the ward stories.</p>` : "<p>Take a breath, explore the ward, or continue straight into the next chapter.</p>"}`,
     [
-      button("Keep exploring", close, true),
+      ...(final
+        ? []
+        : [
+            button(
+              "Begin chapter " + (state.chapter + 1),
+              () => {
+                advanceChapter(state);
+                quest = quests[state.chapter - 1];
+                save();
+                refresh();
+                close();
+                story("The ward changes", chapterInfo[state.chapter - 1].hook);
+                interact("rowan");
+              },
+              true,
+            ),
+          ]),
+      button(
+        final ? "Stay in Lumen" : "Explore before continuing",
+        close,
+        final,
+      ),
       button("Read the real-world tip", () =>
         window.open(quest.tip, "_blank", "noopener"),
       ),
     ],
-    "CHAPTER 01 · COMPLETE",
+    final ? "ACT I · COMPLETE" : "CHAPTER 0" + state.chapter + " · COMPLETE",
   );
 }
 function position(n) {
@@ -350,6 +657,7 @@ $("mute").onclick = () => {
   state.muted = !state.muted;
   save();
   refresh();
+  sound.setMuted(state.muted);
   tone();
 };
 $("pause").onclick = () =>
@@ -361,7 +669,7 @@ $("pause").onclick = () =>
 $("about").onclick = () =>
   modal(
     "About Project Ward",
-    `<p>A small nursing adventure by OzNurseHub. First playable chapter, v0.1.0.</p><p>${disclaimer}</p><p>Art: original procedural pixel tiles and characters created for this prototype. Sound: original synthesised interaction chime; background music is planned for the next milestone. Engine: Phaser 3.90.0, MIT licence.</p><p>Teaching foundation: NSQHS Communicating for Safety (Standard 6). The game uses full name, date of birth and medical record number as its three identifiers. Names and locations are fictional.</p><p><a href="https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/communicating-safety-standard/further-information/patient-identification-and-procedure-matching" target="_blank" rel="noopener">Patient identification and procedure matching ↗</a></p>`,
+    `<p>A small nursing adventure by OzNurseHub. Three-chapter adventure, v0.2.0.</p><p>${disclaimer}</p><p>Art: original procedural pixel tiles and characters created for this prototype. Sound: original synthesised ambient score and interaction chimes. Engine: Phaser 3.90.0, MIT licence.</p><p>Teaching foundations: NSQHS Communicating for Safety (Standard 6) and Recognising and Responding to Acute Deterioration (Standard 8). The game uses full name, date of birth and medical record number as its three identifiers. Names and locations are fictional.</p><p><a href="https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/communicating-safety-standard/further-information/patient-identification-and-procedure-matching" target="_blank" rel="noopener">Patient identification and procedure matching ↗</a></p>`,
     [
       button("Back to the ward", close, true),
       button("Restart journey", () =>
@@ -380,10 +688,11 @@ $("about").onclick = () =>
       ),
     ],
   );
+$("field-guide").onclick = fieldGuide;
 $("journal").onclick = () =>
   modal(
     "Your quest journal",
-    `<p>${$("objective").textContent}</p><p>${state.completed ? quest.note : "The crossing brought you to Lantern Ward. Meet Rowan, then help Sam in Bed 1 resolve the identity mismatch."}</p>`,
+    `<p>${$("objective").textContent}</p><ol>${chapterInfo.map((c, i) => `<li>${c.title} — ${state.completedQuests.includes(["identity", "isbar", "deterioration"][i]) ? "complete" : i + 1 === state.chapter ? "current" : "ahead"}</li>`).join("")}</ol><p>Optional: talk to Sam Okoro in Bed 2, help Pip in the med room, and investigate the portal. Each encounter unlocks an art and a keepsake.</p><p>${state.completed ? quest.note : "Your field guide is available whenever you need it."}</p>`,
     [button("Back to the ward", close, true)],
   );
 $("overlay").addEventListener("cancel", (e) => {
@@ -411,13 +720,22 @@ if (matchMedia("(max-width:999px)").matches)
   document.querySelectorAll("details").forEach((d) => (d.open = false));
 async function boot() {
   try {
-    [quest, world] = await Promise.all(
-      ["data/quests/identity.json", "data/world.json"].map(async (url) => {
+    [...quests] = await Promise.all(
+      [
+        "data/quests/identity.json",
+        "data/quests/isbar.json",
+        "data/quests/deterioration.json",
+        "data/world.json",
+        "data/events.json",
+      ].map(async (url) => {
         const r = await fetch(url);
         if (!r.ok) throw Error(`Unable to load ${url}`);
         return r.json();
       }),
     );
+    events = quests.pop();
+    world = quests.pop();
+    quest = quests[state.chapter - 1];
     if (!globalThis.Phaser)
       throw Error("The game engine could not load. Refresh to try again.");
     if (state.node && !quest.nodes[state.node]) state.node = null;
@@ -443,9 +761,9 @@ async function boot() {
       story(
         "Welcome back, Wayfarer",
         state.completed
-          ? "Your first lantern is lit. Visit Rowan for your chapter debrief."
+          ? "Your lantern is lit. Visit Rowan to continue your journey."
           : state.metGuide
-            ? "Sam is waiting in Bed 1. Your journal holds the next step."
+            ? chapterInfo[state.chapter - 1].hook
             : "Find Sage Rowan at the nurses’ station.",
       );
   } catch (error) {

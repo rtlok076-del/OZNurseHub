@@ -1,7 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { fresh, restore, choose, route } from "../js/state.js";
+import {
+  fresh,
+  restore,
+  choose,
+  route,
+  advanceChapter,
+  resolveEvent,
+} from "../js/state.js";
 import { grid } from "../js/world.js";
 const quest = JSON.parse(
   await readFile(new URL("../data/quests/identity.json", import.meta.url)),
@@ -9,6 +16,79 @@ const quest = JSON.parse(
 const world = JSON.parse(
   await readFile(new URL("../data/world.json", import.meta.url)),
 );
+const campaign = await Promise.all(
+  ["identity", "isbar", "deterioration"].map(async (id) =>
+    JSON.parse(
+      await readFile(
+        new URL("../data/quests/" + id + ".json", import.meta.url),
+      ),
+    ),
+  ),
+);
+test("all three chapters have recoverable branches and one-time persistent rewards", () => {
+  const s = fresh();
+  assert.equal(advanceChapter(s), false);
+  for (const q of campaign) {
+    for (const [key, n] of Object.entries(q.nodes)) {
+      const seen = new Set(),
+        queue = [key];
+      let reachesEnd = false;
+      while (queue.length) {
+        const id = queue.shift();
+        if (seen.has(id)) continue;
+        seen.add(id);
+        const next = q.nodes[id];
+        assert.ok(next);
+        reachesEnd ||= Boolean(next.complete);
+        queue.push(...next.choices.map((c) => c.next));
+      }
+      assert.ok(reachesEnd, q.id + ":" + key);
+    }
+    s.node = "start";
+    let steps = 0;
+    while (!s.completed) {
+      const choices = q.nodes[s.node].choices;
+      assert.equal(
+        choose(
+          s,
+          q,
+          choices.findIndex((c) => c.correct !== false),
+        ),
+        true,
+      );
+      assert.ok(++steps < 40);
+    }
+    const xp = s.xp;
+    assert.equal(choose(s, q, 0), false);
+    assert.equal(s.xp, xp);
+    assert.deepEqual(restore(JSON.stringify(s)), s);
+    if (s.chapter < 3) assert.equal(advanceChapter(s), true);
+  }
+  assert.equal(s.xp, 370);
+  assert.equal(advanceChapter(s), false);
+  for (const event of ["listening", "supplies", "runes"]) {
+    assert.equal(resolveEvent(s, event, "choice"), true);
+    assert.equal(resolveEvent(s, event, "again"), false);
+  }
+  assert.equal(s.xp, 445);
+  assert.equal(restore(JSON.stringify(s)).xp, 445);
+});
+test("M1 save migrates without losing first quest completion", () => {
+  const migrated = restore(
+    JSON.stringify({
+      version: 1,
+      completed: true,
+      xp: 100,
+      intro: 3,
+      accepted: true,
+    }),
+  );
+  assert.deepEqual(migrated.completedQuests, ["identity"]);
+  assert.equal(migrated.chapter, 1);
+  assert.equal(advanceChapter(migrated), true);
+  assert.equal(migrated.chapter, 2);
+  assert.equal(migrated.completed, false);
+});
 test("all dialogue branches resolve and completion is reachable", () => {
   for (const n of Object.values(quest.nodes))
     for (const c of n.choices) assert.ok(quest.nodes[c.next]);

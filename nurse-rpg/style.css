@@ -8,6 +8,27 @@
   --gold: #e8c47a;
   --teal: #92d4bf;
 }
+.art-button {
+  width: 100%;
+  margin: 5px 0;
+  font-size: 12px;
+  background: #182f3a;
+}
+.art-button.mastered {
+  border-color: #93b89e;
+  color: #b7e2bf;
+}
+body[data-chapter="2"] {
+  --gold: #b5c8ff;
+  --teal: #b9d5ed;
+}
+body[data-chapter="3"] {
+  --gold: #f0c17d;
+  --teal: #adcbb9;
+}
+#destinations button {
+  min-width: 75px;
+}
 * {
   box-sizing: border-box;
 }

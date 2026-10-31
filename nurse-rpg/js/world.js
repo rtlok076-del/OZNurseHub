@@ -51,6 +51,21 @@ export function createWorld(data, state, hooks) {
       });
       const tiles = map.addTilesetImage("tiles", "tiles", 32, 32, 0, 0);
       map.createLayer(0, tiles, 0, 0);
+      this.reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      // Woven ward rugs distinguish each room without changing walkable tiles.
+      for (const [x, y, tint] of [
+        [144, 167, 0x446e70],
+        [368, 167, 0x6f605d],
+        [144, 394, 0x575d7a],
+        [368, 394, 0x67724f],
+      ]) {
+        this.add
+          .rectangle(x, y, 157, 51, tint, 0.32)
+          .setStrokeStyle(1, 0xc2ad79, 0.35);
+        this.add.rectangle(x, y, 143, 39).setStrokeStyle(1, 0xc2ad79, 0.18);
+      }
       this.add.rectangle(384, 272, 704, 28, 0x71684f, 0.45);
       for (let x = 64; x < 730; x += 64)
         this.add.rectangle(x, 272, 4, 4, 0xd6bd77, 0.6);
@@ -97,12 +112,76 @@ export function createWorld(data, state, hooks) {
       a.fillStyle(0xd1c6a1);
       a.fillRect(631, 355, 8, 8);
       for (const x of [64, 288, 544, 672]) {
-        a.fillStyle(0x233b53);
+        a.fillStyle(0x152538);
         a.fillRect(x, 7, 48, 22);
-        a.fillStyle(0x9ccbc6);
-        a.fillRect(x + 4, 8, 18, 15);
-        a.fillRect(x + 26, 8, 18, 15);
+        a.fillStyle(0x929fc0);
+        a.fillCircle(x + 12, 14, 6);
+        a.fillStyle(0x152538);
+        a.fillCircle(x + 15, 12, 5);
+        a.fillStyle(0xc3d8c7);
+        a.fillCircle(x + 34, 17, 3);
+        a.fillStyle(0x8498aa);
+        a.fillRect(x + 22, 10, 1, 1);
+        a.fillRect(x + 41, 9, 1, 1);
+        a.fillStyle(0x7b7463);
+        a.fillRect(x, 27, 48, 3);
       }
+      // Books, herb pots and personal keepsakes keep the ward a lived-in place.
+      for (const [x, y] of [
+        [205, 73],
+        [429, 73],
+        [205, 330],
+        [688, 339],
+      ]) {
+        a.fillStyle(0x8d6c54);
+        a.fillRect(x, y + 11, 14, 12);
+        a.fillStyle(0x4a7d6e);
+        a.fillRect(x + 5, y, 4, 16);
+        a.fillRect(x - 3, y + 4, 11, 4);
+        a.fillRect(x + 8, y + 1, 10, 5);
+        a.fillStyle(0x91ad85);
+        a.fillRect(x, y + 4, 6, 2);
+      }
+      for (const [x, y] of [
+        [547, 158],
+        [547, 177],
+        [650, 397],
+      ]) {
+        a.fillStyle(0x9b7754);
+        a.fillRect(x - 3, y + 13, 66, 4);
+        [0x8e717e, 0x587d88, 0xb49b6c, 0x779276, 0x7d7195].forEach(
+          (colour, i) => {
+            a.fillStyle(colour);
+            a.fillRect(x + i * 12, y + (i % 2) * 3, 9, 13 - (i % 2) * 3);
+            a.fillStyle(0xddc997);
+            a.fillRect(x + i * 12 + 2, y + 5, 5, 1);
+          },
+        );
+      }
+      a.lineStyle(2, 0x9c875e, 0.7);
+      a.strokeCircle(368, 453, 24);
+      a.strokeCircle(368, 453, 31);
+      for (let i = 0; i < 8; i++) {
+        const angle = (i * Math.PI) / 4;
+        a.lineBetween(
+          368 + Math.cos(angle) * 27,
+          453 + Math.sin(angle) * 27,
+          368 + Math.cos(angle) * 34,
+          453 + Math.sin(angle) * 34,
+        );
+      }
+      a.fillStyle(0xb49a68);
+      a.fillRect(186, 111, 17, 5);
+      a.fillStyle(0xe6bd6f);
+      a.fillRect(190, 96, 9, 14);
+      a.fillStyle(0x8f818e);
+      a.fillRect(187, 365, 22, 15);
+      a.lineStyle(1, 0xd6bf87);
+      a.strokeRect(187, 365, 22, 15);
+      a.fillStyle(0x738b9e);
+      a.fillRect(409, 353, 14, 28);
+      a.fillStyle(0xbfd1c5);
+      a.fillRect(412, 357, 8, 6);
       for (const [x, y] of [
         [48, 208],
         [240, 208],
@@ -128,19 +207,27 @@ export function createWorld(data, state, hooks) {
       label(144, 53, "01 · SAM");
       label(368, 53, "02 · SAM");
       label(607, 53, "NURSES’ STATION");
-      label(144, 437, "03 · REST");
-      label(368, 437, "04 · REST");
+      label(144, 437, "03 · MIRA");
+      label(368, 420, "04 · TAVI");
       label(621, 437, "MED ROOM");
-      this.questLight = this.add.circle(
-        144,
-        45,
-        38,
-        0xf7d58b,
-        state.completed ? 0.18 : 0,
+      this.chapterLabel = label(384, 272, "THE CROSSING · FOLLOW THE LANTERNS");
+      this.questLights = [
+        [144, 45],
+        [144, 319],
+        [368, 319],
+      ].map(([x, y]) => ({
+        glow: this.add.circle(x, y, 38, 0xf7d58b, 0),
+        flame: this.add.rectangle(x, y, 5, 9, 0x677476),
+      }));
+      this.weather = this.add.graphics().setDepth(18);
+      this.motes = Array.from({ length: 9 }, (_, i) =>
+        this.add
+          .circle(52 + i * 80, 255 + (i % 3) * 12, 1, 0xe6ce92, 0.3)
+          .setDepth(18),
       );
       this.portal = this.add.ellipse(368, 444, 38, 16, 0x9ac4fb, 0.3);
       this.add.ellipse(368, 444, 28, 10, 0xc8e1ff, 0.6);
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches)
+      if (!this.reducedMotion)
         this.tweens.add({
           targets: this.portal,
           alpha: 0.15,
@@ -182,11 +269,13 @@ export function createWorld(data, state, hooks) {
           npc.y * 32 + 16,
           npc.color === "sage" ? "sage" : "patient",
         );
-        if (npc.id === "rowan" || npc.id === "sam")
+        if (["rowan", "sam", "rest", "tavi"].includes(npc.id))
           label(
             npc.x * 32 + 16,
             npc.y * 32 - 8,
-            npc.id === "rowan" ? "ROWAN ✦" : "SAM",
+            { rowan: "ROWAN ✦", sam: "SAM", rest: "MIRA", tavi: "TAVI" }[
+              npc.id
+            ],
           );
       }
       if (grid[state.position.y]?.[state.position.x] !== 0)
@@ -264,17 +353,44 @@ export function createWorld(data, state, hooks) {
       }
     }
     report() {
-      const nearby = data.npcs.find(
-        (n) =>
-          Math.abs(n.stand.x - state.position.x) +
-            Math.abs(n.stand.y - state.position.y) <=
-          1,
-      );
+      const distance = (n) =>
+        Math.abs(n.stand.x - state.position.x) +
+        Math.abs(n.stand.y - state.position.y);
+      const nearby = data.npcs
+        .filter((n) => distance(n) <= 1)
+        .sort((a, b) => distance(a) - distance(b))[0];
       hooks.position(nearby);
     }
     update(t) {
       if (!this.ready) return;
-      this.questLight.setAlpha(state.completed ? 0.18 : 0);
+      const completed =
+        state.completedQuests || (state.completed ? ["identity"] : []);
+      ["identity", "isbar", "deterioration"].forEach((id, i) => {
+        const lit = completed.includes(id);
+        this.questLights[i].glow.setAlpha(lit ? 0.22 : 0);
+        this.questLights[i].flame.setFillStyle(lit ? 0xffd583 : 0x677476);
+      });
+      const chapter = state.chapter || 1;
+      this.chapterLabel.setText(
+        chapter === 3
+          ? "THE STORM WATCH · STAY TOGETHER"
+          : chapter === 2
+            ? "THE ECHO BRIDGE · EVERY VOICE MATTERS"
+            : "THE CROSSING · FOLLOW THE LANTERNS",
+      );
+      this.weather.clear();
+      if (chapter === 3 && !completed.includes("deterioration")) {
+        this.weather.lineStyle(1, 0x9db8ca, 0.4);
+        for (const x of [64, 288, 544, 672])
+          for (let i = 0; i < 4; i++) {
+            const y = 8 + (this.reducedMotion ? i * 4 : (t / 70 + i * 5) % 15);
+            this.weather.lineBetween(x + 5 + i * 10, y, x + 3 + i * 10, y + 4);
+          }
+      }
+      // Lantern motes stop drifting while a dialogue is open or motion is reduced.
+      if (!hooks.blocked() && !this.reducedMotion)
+        this.motes.forEach((m, i) => m.setY(264 + Math.sin(t / 1700 + i) * 8));
+      if (state.events?.runes) this.portal.setFillStyle(0xe4cf91, 0.4);
       if (hooks.blocked() || t - this.lastMove < 125) return;
       let next;
       const focused =
@@ -299,9 +415,30 @@ export function createWorld(data, state, hooks) {
       if (!next) return;
       this.lastMove = t;
       if (grid[next.y]?.[next.x] !== 0) return;
+      if (next.x !== state.position.x)
+        this.player.setFlipX(next.x < state.position.x);
       state.position = next;
-      this.player.setPosition(next.x * 32 + 16, next.y * 32 + 16);
-      this.ring.setPosition(this.player.x, this.player.y + 13);
+      const x = next.x * 32 + 16,
+        y = next.y * 32 + 16;
+      if (this.reducedMotion) {
+        this.player.setPosition(x, y);
+        this.ring.setPosition(x, y + 13);
+      } else {
+        this.tweens.add({
+          targets: this.player,
+          x,
+          y,
+          duration: 105,
+          ease: "Linear",
+        });
+        this.tweens.add({
+          targets: this.ring,
+          x,
+          y: y + 13,
+          duration: 105,
+          ease: "Linear",
+        });
+      }
       this.report();
       if (!this.path.length && this.arrival) {
         const id = this.arrival;

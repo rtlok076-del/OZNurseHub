@@ -1,0 +1,309 @@
+{
+  "id": "isbar",
+  "chapter": 2,
+  "title": "Across the echo bridge",
+  "target": "rest",
+  "xp": 120,
+  "skill": "ISBAR Call",
+  "tip": "../clinical-tip-make-an-isbar-call.html",
+  "note": "ISBAR helps you identify yourself and the patient, explain the situation, give relevant background and assessment, and make a clear recommendation. Confirm the receiver’s response, responsibilities and review plan. Use accurate observations and the patient’s own concerns. Follow local escalation processes; never delay urgent help to finish a script.",
+  "sources": [
+    "https://www.agedcarequality.gov.au/quality-standards/isbar-identify-situation-background-assessment-and-recommendation",
+    "https://www.health.vic.gov.au/older-people-in-hospital/supporting-information-for-older-people-in-hospital/clinical-handover"
+  ],
+  "nodes": {
+    "start": {
+      "speaker": "Mira Vale · bridge courier",
+      "text": "A brass messenger bird waits on Mira’s blanket. “I carry words across kingdoms,” she says, “but I can’t seem to make anyone hear mine. I feel dizzy when I sit up. I’m worried I’ll fall.” Rowan asks you to prepare a call to the ward clinician, who is across the echo bridge.",
+      "choices": [
+        {
+          "label": "Listen to Mira and help her stay safely seated",
+          "next": "listen",
+          "correct": true
+        },
+        {
+          "label": "Ask her to walk to the bridge so the clinician can see her",
+          "next": "walking",
+          "correct": false
+        }
+      ]
+    },
+    "walking": {
+      "speaker": "Sage Rowan",
+      "text": "Mira has told us she feels dizzy. Don’t ask her to walk unsupported to prove it. Stay with her, make the immediate situation safe and arrange assessment and help.",
+      "choices": [{ "label": "Stay with Mira and listen", "next": "listen" }]
+    },
+    "listen": {
+      "speaker": "Mira Vale",
+      "text": "“It started this afternoon. I nearly toppled when I tried to reach my bag. The bag isn’t important. The little bird is—it belonged to my sister.” You place her call bell within reach and explain that you will seek a review. Rowan stays beside her while you prepare the call.",
+      "choices": [
+        {
+          "label": "Check her identity and gather the current assessment",
+          "next": "prepare",
+          "correct": true
+        },
+        {
+          "label": "Tell her it is probably nothing before assessing",
+          "next": "reassure",
+          "correct": false
+        }
+      ]
+    },
+    "reassure": {
+      "speaker": "Your reflection",
+      "text": "Reassurance should not dismiss a new symptom or concern. You can be calm without making a promise: “I’m listening. We’ll check what’s happening and get help.”",
+      "choices": [
+        {
+          "label": "Acknowledge the concern and gather the facts",
+          "next": "prepare"
+        }
+      ]
+    },
+    "prepare": {
+      "speaker": "Your bedside notes",
+      "text": "Mira states her name and date of birth. You match these and the medical record number against her wristband and record. Your assessment finds that she is alert and speaking clearly, with dizziness on sitting. These fictional observations support this conversation exercise; they are not a universal escalation chart.",
+      "evidence": [
+        {
+          "title": "IDENTITY & CONTEXT",
+          "lines": [
+            "Mira Vale · DOB 08 June 1994 · MRN LW-2013",
+            "Admitted yesterday with a wrist injury after a bridge fall",
+            "New dizziness this afternoon; almost fell reaching for her bag"
+          ]
+        },
+        {
+          "title": "CURRENT ASSESSMENT · 21:20",
+          "lines": [
+            "Alert; speaking clearly; dizzy on sitting",
+            "HR 96/min · BP 108/68 mmHg · RR 18/min",
+            "SpO₂ 98% on room air · temperature 36.8°C",
+            "Rowan is staying with her; clinician review needed"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Use the pocket card to organise an ISBAR call",
+          "next": "identify",
+          "correct": true
+        },
+        {
+          "label": "Send only “the patient is unwell” through the bird",
+          "next": "vague",
+          "correct": false
+        }
+      ]
+    },
+    "vague": {
+      "speaker": "The echo bridge",
+      "text": "The brass bird repeats your message exactly. Across the bridge comes the reply: “Which patient, where, and what has changed?” Magic can carry a message; it cannot supply missing information.",
+      "choices": [
+        { "label": "Organise the call with ISBAR", "next": "identify" }
+      ]
+    },
+    "identify": {
+      "speaker": "The receiving clinician · I / Identify",
+      "text": "The voice on the other end asks you to begin. Choose an opening that makes clear who is speaking, where you are and which patient needs review.",
+      "choices": [
+        {
+          "label": "“Wayfarer, RN in Lantern Ward, calling about Mira Vale, DOB 08 June 1994, MRN LW-2013.”",
+          "next": "situation",
+          "correct": true
+        },
+        {
+          "label": "“It’s me, about the courier in the third bed.”",
+          "next": "identify_retry",
+          "correct": false
+        }
+      ]
+    },
+    "identify_retry": {
+      "speaker": "ISBAR pocket card",
+      "text": "A role, location and patient identifiers help the receiver connect the message with the correct person. A bed number alone is not a patient identifier.",
+      "choices": [
+        {
+          "label": "Identify yourself, the ward and Mira using her identifiers",
+          "next": "situation"
+        }
+      ]
+    },
+    "situation": {
+      "speaker": "The receiving clinician · S / Situation",
+      "text": "“Thank you. What is the immediate concern?” The bridge crackles with a distant storm. Keep your opening concern clear.",
+      "choices": [
+        {
+          "label": "“Mira has new dizziness when sitting and nearly fell. I’m concerned and requesting review.”",
+          "next": "background",
+          "correct": true
+        },
+        {
+          "label": "“The bird’s wings are squeaking and the ward has been quite busy.”",
+          "next": "situation_retry",
+          "correct": false
+        }
+      ]
+    },
+    "situation_retry": {
+      "speaker": "Sage Rowan",
+      "text": "Start with the patient’s current problem and your concern. The receiver needs to know why this call matters before hearing the ward’s other stories.",
+      "choices": [
+        {
+          "label": "Explain the new dizziness and near-fall",
+          "next": "background"
+        }
+      ]
+    },
+    "background": {
+      "speaker": "The receiving clinician · B / Background",
+      "text": "“What is the relevant background?” You glance at your notes rather than relying on the ward’s rumours.",
+      "choices": [
+        {
+          "label": "“Admitted yesterday after a bridge fall with a wrist injury; this dizziness is new this afternoon.”",
+          "next": "assessment",
+          "correct": true
+        },
+        {
+          "label": "“She must be dehydrated; I haven’t checked the history.”",
+          "next": "background_retry",
+          "correct": false
+        }
+      ]
+    },
+    "background_retry": {
+      "speaker": "Your reflection",
+      "text": "Separate known facts from possible explanations. You can say what you are concerned about without presenting an unconfirmed cause as a diagnosis.",
+      "choices": [
+        {
+          "label": "Give the verified admission history and symptom onset",
+          "next": "assessment"
+        }
+      ]
+    },
+    "assessment": {
+      "speaker": "The receiving clinician · A / Assessment",
+      "text": "“What have you found?” You have the current observations in front of you.",
+      "evidence": [
+        {
+          "title": "READ BACK YOUR FINDINGS",
+          "lines": [
+            "21:20 · alert and speaking clearly; dizziness on sitting",
+            "HR 96/min · BP 108/68 mmHg · RR 18/min",
+            "SpO₂ 98% on room air · temperature 36.8°C",
+            "No cause has been established; worried about safe mobility"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Report the actual findings, time and concern about safe mobility",
+          "next": "recommendation",
+          "correct": true
+        },
+        {
+          "label": "Say the observations are “normal” and leave out the dizziness",
+          "next": "assessment_retry",
+          "correct": false
+        }
+      ]
+    },
+    "assessment_retry": {
+      "speaker": "ISBAR pocket card",
+      "text": "A summary like “normal” hides useful information. Share the actual findings and the patient’s symptom. A reassuring individual number does not erase a concern.",
+      "choices": [
+        {
+          "label": "Give the observations and describe the dizziness",
+          "next": "recommendation"
+        }
+      ]
+    },
+    "recommendation": {
+      "speaker": "The receiving clinician · R / Recommendation",
+      "text": "“What do you need from me?” Mira watches the bird and waits for a plan she can understand.",
+      "choices": [
+        {
+          "label": "Request a prompt bedside review and agree what to monitor and when to escalate",
+          "next": "readback",
+          "correct": true
+        },
+        {
+          "label": "“Just letting you know.” End the call without an agreed plan",
+          "next": "recommendation_retry",
+          "correct": false
+        }
+      ]
+    },
+    "recommendation_retry": {
+      "speaker": "Sage Rowan",
+      "text": "A clear request helps turn information into action. Ask for the review Mira needs and confirm what should happen while you wait. If the response does not meet the concern, use the escalation pathway.",
+      "choices": [
+        {
+          "label": "Ask for a prompt review and an agreed interim plan",
+          "next": "readback"
+        }
+      ]
+    },
+    "readback": {
+      "speaker": "The receiving clinician",
+      "text": "“I’ll come to Lantern Ward now. Please keep her supported, continue monitoring under the local plan and call again through the escalation pathway if there is any worsening.” Thunder swallows the final words. What do you do?",
+      "choices": [
+        {
+          "label": "Ask them to repeat the unclear part, then confirm the plan and responsibility",
+          "next": "patient_plan",
+          "correct": true
+        },
+        {
+          "label": "Guess what was said so the call can end quickly",
+          "next": "readback_retry",
+          "correct": false
+        }
+      ]
+    },
+    "readback_retry": {
+      "speaker": "The echo bridge",
+      "text": "An uncertain message is a reason to clarify, not a test of confidence. You reconnect, ask for the missed words and read back the agreed actions.",
+      "choices": [
+        {
+          "label": "Confirm who is coming and the monitoring/escalation plan",
+          "next": "patient_plan"
+        }
+      ]
+    },
+    "patient_plan": {
+      "speaker": "Mira Vale",
+      "text": "“So someone is coming? And Rowan will stay?” You explain the plan in plain language, confirm her understanding and document the call, response and agreed actions. A clinician arrives and takes over the review. The bird folds its wings.",
+      "choices": [
+        {
+          "label": "Ask Mira about the message she was carrying",
+          "next": "letter"
+        },
+        {
+          "label": "Give Mira space to rest after explaining the plan",
+          "next": "rest_end"
+        }
+      ]
+    },
+    "letter": {
+      "speaker": "Mira Vale",
+      "text": "“A letter to my sister. I wrote that I was fine. Couriers are meant to be brave.” She turns it over. “Perhaps I’ll write that I asked for help.” She offers you a tiny brass feather from the bird’s spare-parts pouch.",
+      "choices": [
+        {
+          "label": "Accept the feather as a reminder to make room for someone’s voice",
+          "next": "complete"
+        }
+      ]
+    },
+    "rest_end": {
+      "speaker": "Mira Vale",
+      "text": "“Thank you for not making me tell the whole story twice.” She settles back while the clinician speaks with her. Rowan leaves a brass feather beside your pocket card: a small token for a message that reached the right person.",
+      "choices": [
+        { "label": "Keep the feather with your ISBAR card", "next": "complete" }
+      ]
+    },
+    "complete": {
+      "speaker": "The echo bridge",
+      "text": "A line of lights stretches across the bridge. You did not make the storm quieter. You made one person’s needs clear enough to cross it. Beyond the windows, the thunder is getting closer.",
+      "complete": true,
+      "choices": []
+    }
+  }
+}
