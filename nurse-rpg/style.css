@@ -291,8 +291,7 @@ dd {
 }
 #world canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  max-width: 100%;
   image-rendering: pixelated;
 }
 .world-footer {
@@ -513,6 +512,48 @@ dialog::backdrop {
   color: #ffd6ac;
 }
 @media (min-width: 1000px) {
+  .game-grid {
+    grid-template-rows: 480px auto;
+  }
+  .stats,
+  .skills {
+    height: 480px;
+  }
+  .stats .panel-body,
+  .skills .panel-body {
+    height: calc(100% - 48px);
+    overflow-y: auto;
+  }
+  .stats .panel-body {
+    padding: 14px;
+  }
+  .stats .avatar {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 12px 8px 0;
+    font-size: 25px;
+  }
+  .stats .rank {
+    clear: both;
+  }
+  .stats dl {
+    margin: 12px 0;
+  }
+  .world {
+    display: flex;
+    flex-direction: column;
+  }
+  .world .panel-title,
+  .world-footer,
+  #destinations {
+    flex-shrink: 0;
+  }
+  #world {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
   .stats {
     grid-column: 1;
     grid-row: 1;
