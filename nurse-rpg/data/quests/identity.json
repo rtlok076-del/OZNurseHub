@@ -1,0 +1,141 @@
+{
+  "id": "identity",
+  "title": "The names we carry",
+  "xp": 100,
+  "tip": "../clinical-tip-check-the-patient-id.html",
+  "note": "Use at least three approved patient identifiers, following local policy. Here they are full name, date of birth and medical record number. A wristband and chart carry identifiers; they are not additional identifiers. Check allergies separately before medicines are given.",
+  "nodes": {
+    "start": {
+      "speaker": "Sam Okafor",
+      "text": "You must be the one who came through the light. I’m still waiting for my medicine. Rowan left a preparation chart on the trolley, but something about it feels wrong.",
+      "choices": [
+        {
+          "label": "Introduce yourself and ask for full name and date of birth",
+          "next": "stated",
+          "correct": true
+        },
+        {
+          "label": "Use the bed number to choose the chart",
+          "next": "bed",
+          "correct": false
+        }
+      ]
+    },
+    "bed": {
+      "speaker": "Sage Rowan · a quiet reminder",
+      "text": "A bed is a place, not a person. People move, and names can be similar. Let’s begin again by asking the patient to state their details.",
+      "choices": [
+        { "label": "Return to Sam and ask their details", "next": "stated" }
+      ]
+    },
+    "stated": {
+      "speaker": "Sam Okafor",
+      "text": "I’m Sam Okafor. My date of birth is 12 March 1987. Thank you for asking instead of assuming. There is another Sam across the corridor.",
+      "choices": [
+        {
+          "label": "Compare three identifiers on the wristband and preparation chart",
+          "next": "compare",
+          "correct": true
+        },
+        {
+          "label": "The first name matches. Proceed with preparation",
+          "next": "shortcut",
+          "correct": false
+        }
+      ]
+    },
+    "shortcut": {
+      "speaker": "Sage Rowan",
+      "text": "A matching first name is not enough. Stop before preparing or giving anything. Check the full name, date of birth and medical record number against the correct record.",
+      "choices": [
+        {
+          "label": "Inspect the wristband and chart together",
+          "next": "compare"
+        }
+      ]
+    },
+    "compare": {
+      "speaker": "Your assessment",
+      "text": "Sam’s stated details match the wristband. The preparation chart belongs to someone else. What will you do?",
+      "evidence": [
+        {
+          "title": "WRISTBAND · PATIENT",
+          "lines": ["Sam Okafor", "DOB: 12 March 1987", "MRN: LW-1042"]
+        },
+        {
+          "title": "PREPARATION CHART · TROLLEY",
+          "lines": ["Sam Okoro", "DOB: 24 November 1979", "MRN: LW-1086"]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Stop and ask Rowan to resolve the mismatch",
+          "next": "resolved",
+          "correct": true
+        },
+        {
+          "label": "Change the name on the chart to match the wristband",
+          "next": "alter",
+          "correct": false
+        }
+      ]
+    },
+    "alter": {
+      "speaker": "Sage Rowan",
+      "text": "Don’t relabel another person’s record. Keep the mismatched preparation from being used and ask for help to locate and verify the correct record.",
+      "choices": [
+        { "label": "Ask Rowan to resolve the mismatch", "next": "resolved" }
+      ]
+    },
+    "resolved": {
+      "speaker": "Sage Rowan",
+      "text": "Well spotted. I’ve removed the other patient’s preparation chart and brought Sam’s correct record. Check it yourself before continuing.",
+      "evidence": [
+        {
+          "title": "WRISTBAND",
+          "lines": ["Sam Okafor", "DOB: 12 March 1987", "MRN: LW-1042"]
+        },
+        {
+          "title": "CORRECT RECORD",
+          "lines": ["Sam Okafor", "DOB: 12 March 1987", "MRN: LW-1042"]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Confirm all three identifiers match, then check allergies",
+          "next": "allergy",
+          "correct": true
+        },
+        {
+          "label": "Rowan checked it, so skip my own check",
+          "next": "recheck",
+          "correct": false
+        }
+      ]
+    },
+    "recheck": {
+      "speaker": "Sage Rowan",
+      "text": "Help from a colleague supports your check; it doesn’t replace it. Compare Sam’s full name, date of birth and medical record number yourself.",
+      "choices": [
+        { "label": "Verify all three, then check allergies", "next": "allergy" }
+      ]
+    },
+    "allergy": {
+      "speaker": "Sam Okafor",
+      "text": "I’ve had a reaction to penicillin before. It should be on my record. You check Sam’s account against the recorded allergy alert and flag it to Rowan. No medicine is administered in this tutorial.",
+      "choices": [
+        {
+          "label": "Record the resolved mismatch and hand back to Rowan",
+          "next": "complete",
+          "correct": true
+        }
+      ]
+    },
+    "complete": {
+      "speaker": "Sam Okafor",
+      "text": "Back home, I repair the lanterns along the eastern bridge. Everyone remembers the lights. You remembered the person. Thank you.",
+      "complete": true,
+      "choices": []
+    }
+  }
+}

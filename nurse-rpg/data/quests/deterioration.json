@@ -1,0 +1,295 @@
+{
+  "id": "deterioration",
+  "chapter": 3,
+  "title": "When the lanterns falter",
+  "target": "tavi",
+  "xp": 150,
+  "skill": "Early Recognition & Escalation",
+  "tip": "../clinical-tip-spot-the-deteriorating-patient.html",
+  "note": "Recognise changes and trends, listen to patient and family concerns, and escalate through your local response system. Obtain help while assessing; do not delay an emergency call to finish observations or calculate a score. Reassess, communicate clearly and document the response. This story uses fictional urgency cues, not a validated early-warning score or treatment protocol.",
+  "sources": [
+    "https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/recognising-and-responding-acute-deterioration-standard",
+    "https://www.safetyandquality.gov.au/clinical-care-standards/sepsis"
+  ],
+  "nodes": {
+    "start": {
+      "speaker": "Tavi Reed · keeper of the night lanterns",
+      "text": "The storm rattles the windows. Tavi lies beneath a patchwork blanket after an operation earlier today. “I know this room is cold,” they whisper, “but this feels different.” Their sister Noor catches your sleeve: “They were joking an hour ago. Please look at them.”",
+      "choices": [
+        {
+          "label": "Take the concern seriously, stay and call Rowan for help",
+          "next": "help",
+          "correct": true
+        },
+        {
+          "label": "Assume it is only the storm and check later",
+          "next": "dismissed",
+          "correct": false
+        }
+      ]
+    },
+    "dismissed": {
+      "speaker": "Noor Reed",
+      "text": "“I know how they usually sound. This isn’t it.” A patient’s or family member’s concern matters. You return immediately, acknowledge Noor’s concern and call Rowan. The story pauses while you decide; there is no penalty for taking time to read.",
+      "choices": [
+        { "label": "Stay with Tavi and call for help", "next": "help" }
+      ]
+    },
+    "help": {
+      "speaker": "Sage Rowan",
+      "text": "Rowan comes to the bedside. “I’m with you. Tell me what has changed.” You check Tavi’s identity without delaying care. Rowan starts arranging an urgent clinician review while you examine the observation trend and begin a structured assessment.",
+      "choices": [
+        {
+          "label": "Compare current findings with the earlier observations",
+          "next": "trend",
+          "correct": true
+        },
+        {
+          "label": "Wait until a score can be calculated before seeking help",
+          "next": "score_wait",
+          "correct": false
+        },
+        {
+          "label": "Activate the emergency response now because of serious clinical concern",
+          "next": "early_emergency",
+          "correct": true
+        }
+      ]
+    },
+    "score_wait": {
+      "speaker": "Sage Rowan",
+      "text": "A score supports clinical judgement; it must not become a barrier to help. Worry or a concerning change can require escalation even when a score is low or unavailable. Rowan continues the urgent call while you assess.",
+      "choices": [
+        { "label": "Assess and escalate in parallel", "next": "trend" }
+      ]
+    },
+    "early_emergency": {
+      "speaker": "The ward response team",
+      "text": "You activate the emergency response through the ward system and state your concern. Rowan stays at the bedside. Seeking emergency help for serious concern is supported. While the team comes, you work with Rowan to gather and communicate useful findings without delaying the response.",
+      "choices": [
+        {
+          "label": "Review the trend with Rowan while help is coming",
+          "next": "trend"
+        }
+      ]
+    },
+    "trend": {
+      "speaker": "The observation record",
+      "text": "The latest record is more concerning than the earlier one. These numbers are fictional case observations, not thresholds for a real escalation chart. In your workplace, use the approved chart, clinical judgement and local response criteria.",
+      "evidence": [
+        {
+          "title": "EARLIER · 19:00",
+          "lines": [
+            "Alert; comfortable conversation",
+            "HR 88/min · RR 18/min · BP 118/74 mmHg",
+            "Temperature 37.2°C",
+            "Urine output previously greater than the latest hour"
+          ]
+        },
+        {
+          "title": "NOW · 23:00",
+          "lines": [
+            "Feels much worse; pale and shivering",
+            "HR 112/min · RR 24/min · BP 100/62 mmHg",
+            "Temperature 38.5°C",
+            "Only 15 mL urine recorded in the last hour"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Recognise the worsening pattern and communicate it urgently",
+          "next": "concern",
+          "correct": true
+        },
+        {
+          "label": "Focus on one number and ignore the other changes",
+          "next": "single_number",
+          "correct": false
+        }
+      ]
+    },
+    "single_number": {
+      "speaker": "Your assessment",
+      "text": "One number cannot tell the whole story. The change in breathing, pulse, blood pressure, temperature, urine output and how Tavi feels needs attention. No single reassuring finding cancels the rest.",
+      "choices": [
+        {
+          "label": "Bring the pattern and patient concern together",
+          "next": "concern"
+        }
+      ]
+    },
+    "concern": {
+      "speaker": "Sage Rowan",
+      "text": "“The urgent review is requested. Keep telling me what you find.” You state that Tavi is deteriorating after surgery and needs prompt assessment. You do not claim a confirmed diagnosis. Noor is frightened by the fading lantern overhead.",
+      "choices": [
+        {
+          "label": "Explain that help is coming and continue assessment with Rowan",
+          "next": "assessment",
+          "correct": true
+        },
+        {
+          "label": "Promise Noor that Tavi will definitely be fine",
+          "next": "promise",
+          "correct": false
+        }
+      ]
+    },
+    "promise": {
+      "speaker": "Noor Reed",
+      "text": "Noor needs honest reassurance, not a guarantee. You tell her: “We are worried about these changes. We’ve called for help and we are staying with Tavi.” You invite her to tell you about any further change she notices.",
+      "choices": [
+        { "label": "Continue the assessment with Rowan", "next": "assessment" }
+      ]
+    },
+    "assessment": {
+      "speaker": "Your bedside assessment",
+      "text": "You and Rowan use a structured airway, breathing, circulation, disability and exposure assessment within your roles. You report findings as you go, preserve Tavi’s dignity, and check the care plan. You do not leave Tavi alone to collect every possible item.",
+      "choices": [
+        {
+          "label": "Ask a colleague to bring the response equipment while you stay",
+          "next": "storm",
+          "correct": true
+        },
+        {
+          "label": "Leave alone to search the med room and finish the paperwork first",
+          "next": "leave",
+          "correct": false
+        }
+      ]
+    },
+    "leave": {
+      "speaker": "Sage Rowan",
+      "text": "The patient needs support and reassessment now. Call a colleague for supplies. Documentation matters, but it must not delay response to deterioration or leave the patient without appropriate support.",
+      "choices": [
+        {
+          "label": "Stay, ask for equipment and continue reassessment",
+          "next": "storm"
+        }
+      ]
+    },
+    "storm": {
+      "speaker": "The storm breaks",
+      "text": "A shutter slams. The ward’s backup lanterns come on, but Tavi’s condition has changed too: they are newly confused, more breathless and struggling to stay awake. This is a scripted story event, not a consequence of how slowly you read. Rowan says, “We need the emergency response now.”",
+      "choices": [
+        {
+          "label": "Activate or update the emergency response immediately; stay with Tavi",
+          "next": "emergency",
+          "correct": true
+        },
+        {
+          "label": "Wait for the previously requested routine callback",
+          "next": "delay",
+          "correct": false
+        }
+      ]
+    },
+    "delay": {
+      "speaker": "Sage Rowan",
+      "text": "The situation has worsened. Escalate again now using the emergency response system, even if another review has already been requested. Do not wait for a callback or a completed score when emergency help is needed.",
+      "choices": [
+        {
+          "label": "Activate the emergency response immediately",
+          "next": "emergency"
+        }
+      ]
+    },
+    "emergency": {
+      "speaker": "The emergency call",
+      "text": "You give the exact ward and bedside, explain the new confusion and breathing concern, and confirm that help is responding. If you called earlier, you update the responding team with the new deterioration. Rowan remains with Tavi and coordinates care within the team’s roles.",
+      "choices": [
+        {
+          "label": "Prepare a concise ISBAR update with the trend and new changes",
+          "next": "handover",
+          "correct": true
+        },
+        {
+          "label": "Only report that the lanterns have failed",
+          "next": "handover_retry",
+          "correct": false
+        }
+      ]
+    },
+    "handover_retry": {
+      "speaker": "Your ISBAR card",
+      "text": "The environment matters, but the urgent message is Tavi’s condition. State the patient, location, postoperative context, worsening trend, new confusion and breathing concern, and the emergency help required.",
+      "choices": [
+        { "label": "Give the patient-focused ISBAR update", "next": "handover" }
+      ]
+    },
+    "handover": {
+      "speaker": "The response team arrives",
+      "text": "“Wayfarer, RN in Lantern Ward, calling about Tavi Reed, DOB 16 February 1982, MRN LW-3014. Tavi is deteriorating after surgery today, with rising pulse and breathing rate, falling blood pressure and reduced urine output; now newly confused and more breathless. We need emergency assessment.” The team confirms receipt and takes the lead.",
+      "choices": [
+        {
+          "label": "Confirm your assigned role, continue reassessment and report changes",
+          "next": "response",
+          "correct": true
+        },
+        {
+          "label": "Assume arrival means the problem is solved and stop observing",
+          "next": "arrival_retry",
+          "correct": false
+        }
+      ]
+    },
+    "arrival_retry": {
+      "speaker": "The team leader",
+      "text": "Help arriving starts the next phase; it does not end observation. Confirm what the team needs you to do, continue monitoring as directed and speak up about further changes.",
+      "choices": [
+        {
+          "label": "Confirm your role and keep communicating changes",
+          "next": "response"
+        }
+      ]
+    },
+    "response": {
+      "speaker": "Noor Reed",
+      "text": "Time passes under the response team’s care. Tavi is receiving assessment and treatment; the exact diagnosis and treatment are outside this game. Noor asks, “Can I stay close?” You check with the team, explain what you can, and support her involvement while care continues.",
+      "choices": [
+        {
+          "label": "Stay beside Noor while a colleague covers your agreed tasks",
+          "next": "family"
+        },
+        {
+          "label": "Ask Rowan to support Noor while you document the response",
+          "next": "record"
+        }
+      ]
+    },
+    "family": {
+      "speaker": "Noor Reed",
+      "text": "“Tavi always lights the last lamp before coming home. I thought I was making a fuss.” You thank her for speaking up. Rowan confirms that your colleague is covering your agreed role, then gives you time to record the event.",
+      "choices": [
+        {
+          "label": "Document observations, escalation times, response and ongoing plan",
+          "next": "record"
+        }
+      ]
+    },
+    "record": {
+      "speaker": "Your record of care",
+      "text": "You record the changes observed, Noor’s and Tavi’s concerns, whom you contacted, the response and the continuing plan. You hand over responsibility clearly. Tavi remains under the team’s care; the game does not turn an emergency into an instant magical cure.",
+      "choices": [
+        {
+          "label": "Join Rowan for a brief team debrief",
+          "next": "debrief",
+          "correct": true
+        }
+      ]
+    },
+    "debrief": {
+      "speaker": "Sage Rowan",
+      "text": "“You noticed. You listened. You called for help, and called again when things changed. Those are arts this kingdom can teach its legends to remember.” Rowan offers a quiet pause, water and a chance to discuss what felt difficult. You accept the support.",
+      "choices": [
+        { "label": "Carry the lesson back to the ward", "next": "complete" }
+      ]
+    },
+    "complete": {
+      "speaker": "The ward at dawn",
+      "text": "The storm moves beyond the bridge. Lantern Ward is held together by people watching, listening and responding—not by you alone. Three lights now mark your path. Somewhere beyond the eastern gate, another chapter is waiting.",
+      "complete": true,
+      "choices": []
+    }
+  }
+}

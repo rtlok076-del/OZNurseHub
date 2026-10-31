@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101d28" />
+    <title>Project Ward · The Lantern Crossing</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="assets/phaser.min.js" defer></script>
+    <script type="module" src="js/boot.js"></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <a href="../index.html" class="brand">OZ NURSE HUB <span>/ PLAY</span></a
+      ><span class="build">PROJECT WARD · THREE-CHAPTER PLAYTEST</span
+      ><button id="about">About</button>
+    </header>
+    <main>
+      <div class="chapter-heading">
+        <div>
+          <p class="eyebrow">A NURSING ADVENTURE IN ANOTHER WORLD</p>
+          <h1>The Lantern Crossing</h1>
+          <p>You know how to care. This world needs you to remember.</p>
+        </div>
+        <span id="chapter-chip" class="chapter-chip"
+          >CHAPTER 01 <b>Lantern Ward</b></span
+        >
+      </div>
+      <div class="game-grid">
+        <details class="panel stats" open>
+          <summary>Your journey</summary>
+          <div class="panel-body">
+            <div class="avatar" aria-hidden="true">✦</div>
+            <h2>The Wayfarer</h2>
+            <p class="muted">A nurse, very far from home.</p>
+            <div class="rank">
+              <span id="rank">Grad RN · Level 1</span><b id="xp">0 / 100 XP</b>
+            </div>
+            <progress
+              id="xpbar"
+              max="100"
+              value="0"
+              aria-label="Experience"
+            ></progress>
+            <dl>
+              <div>
+                <dt>Wellbeing</dt>
+                <dd>Rested</dd>
+              </div>
+              <div>
+                <dt>Chapter time</dt>
+                <dd id="chapter-time">19:00</dd>
+              </div>
+              <div>
+                <dt>Approach</dt>
+                <dd>Unhurried</dd>
+              </div>
+            </dl>
+            <p class="small muted">
+              Take your time. Reading never costs you a turn.
+            </p>
+            <button id="pause">Pause journey</button
+            ><button id="mute" aria-pressed="true">Sound: off</button>
+            <p id="save-status" class="small muted">
+              Progress stays on this device.
+            </p>
+          </div>
+        </details>
+        <section class="panel world">
+          <div class="panel-title">
+            <h2>Lantern Ward</h2>
+            <span><i class="live-dot"></i> KINGDOM OF LUMEN</span>
+          </div>
+          <div
+            id="world"
+            tabindex="0"
+            role="group"
+            aria-label="Ward map. Use arrow keys or WASD to walk, Enter to interact. Alternatively use the destination buttons below."
+          ></div>
+          <div class="world-footer">
+            <span id="location">The crossing · southern corridor</span
+            ><span>WASD / arrows · Enter</span>
+          </div>
+          <div id="destinations" aria-label="Walk to a destination"></div>
+        </section>
+        <details class="panel skills" open>
+          <summary>Arts & belongings</summary>
+          <div class="panel-body">
+            <p class="eyebrow">THE ARTS YOU BRING</p>
+            <div id="skill-list">
+              <div class="skill">
+                <span>◇</span>
+                <div>
+                  <b>Patient identification</b
+                  ><small>Learn in your first quest</small>
+                </div>
+              </div>
+              <div class="skill locked">
+                <span>♧</span>
+                <div>
+                  <b>Clear communication</b><small>Future chapter</small>
+                </div>
+              </div>
+              <div class="skill locked">
+                <span>✧</span>
+                <div><b>Early recognition</b><small>Future chapter</small></div>
+              </div>
+            </div>
+            <p class="eyebrow inventory-label">IN YOUR SATCHEL</p>
+            <ul id="inventory" class="inventory">
+              <li>Stethoscope <span>01</span></li>
+              <li>Name badge <span>01</span></li>
+              <li>ISBAR pocket card <span>01</span></li>
+            </ul>
+            <blockquote>
+              “No spell replaces listening.”<cite>— Sage Rowan</cite>
+            </blockquote>
+          </div>
+        </details>
+        <details class="panel quests" open>
+          <summary>Quest journal</summary>
+          <div class="panel-body">
+            <p class="eyebrow" id="quest-state">THE CROSSING</p>
+            <h2 id="quest-title">A light in an unfamiliar place</h2>
+            <p id="objective">Find the ward sage at the nurses’ station.</p>
+            <div class="mini-map" aria-label="Ward mini-map">
+              <span>1</span><span>2</span><span>Station</span><span>3</span
+              ><span>4</span><span>Stores</span
+              ><i id="map-marker" aria-hidden="true"></i>
+            </div>
+            <p class="small muted">Gold marker: your position</p>
+            <div id="journal-note"></div>
+          </div>
+        </details>
+        <section class="panel dialogue" aria-label="Story and dialogue">
+          <div class="panel-title">
+            <h2 id="speaker">The crossing</h2>
+            <span id="dialogue-tag">STORY</span>
+          </div>
+          <div class="panel-body">
+            <div id="story" aria-live="polite">
+              <p>
+                The last thing you remember is the hum of a fluorescent light.
+                Now a second moon hangs beyond the ward windows.
+              </p>
+            </div>
+            <div id="choices"></div>
+          </div>
+        </section>
+        <section class="panel actions">
+          <div class="panel-title"><h2>Your next move</h2></div>
+          <div class="panel-body">
+            <p id="target" class="muted">Explore the ward to meet someone.</p>
+            <button class="primary" id="interact">Look around</button
+            ><button id="journal">Read journal</button
+            ><button id="field-guide">Use an art</button>
+            <p class="small muted">
+              Tap a destination to walk there. Your choices are always yours.
+            </p>
+          </div>
+        </section>
+      </div>
+      <footer class="page-footer">
+        <span>✦ A small act of care can change a whole world.</span
+        ><span
+          >Educational prototype · fictional patients · clinical review
+          pending</span
+        >
+      </footer>
+    </main>
+    <dialog id="overlay" aria-labelledby="overlay-title">
+      <div class="modal-inner">
+        <p class="eyebrow" id="overlay-label">PROJECT WARD</p>
+        <h2 id="overlay-title">Beyond the night shift</h2>
+        <div id="overlay-content"></div>
+        <div id="overlay-actions"></div>
+      </div>
+    </dialog>
+    <noscript>This game needs JavaScript enabled.</noscript>
+  </body>
+</html>
