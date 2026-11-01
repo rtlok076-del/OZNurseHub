@@ -76,8 +76,9 @@ const position = () =>
 const before = await position();
 await page.locator("#world").focus();
 await page.keyboard.down("ArrowLeft");
-await page.waitForTimeout(180);
+await page.waitForTimeout(240);
 await page.keyboard.up("ArrowLeft");
+await page.waitForTimeout(220);
 assert.notDeepEqual(await position(), before);
 await page.getByRole("button", { name: "Pause journey" }).click();
 const paused = await position();
