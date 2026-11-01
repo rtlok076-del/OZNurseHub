@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v82-fable-thea';
+const CACHE = 'oznurse-v83-project-ward-alpha';
 
 const CORE_FILES = [
   './shift-sim/',
