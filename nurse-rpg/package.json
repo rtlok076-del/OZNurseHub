@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs && node tests/campaign.mjs"
+    "test:browser": "node tests/browser.mjs && node tests/campaign.mjs",
+    "test:movement": "node tests/movement.mjs"
   },
   "devDependencies": {
     "playwright": "1.63.0"

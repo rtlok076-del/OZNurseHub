@@ -391,7 +391,7 @@ export function createWorld(data, state, hooks) {
       if (!hooks.blocked() && !this.reducedMotion)
         this.motes.forEach((m, i) => m.setY(264 + Math.sin(t / 1700 + i) * 8));
       if (state.events?.runes) this.portal.setFillStyle(0xe4cf91, 0.4);
-      if (hooks.blocked() || t - this.lastMove < 125) return;
+      if (hooks.blocked() || this.moving || t - this.lastMove < 200) return;
       let next;
       const focused =
         document.activeElement === document.querySelector("#world");
@@ -420,30 +420,43 @@ export function createWorld(data, state, hooks) {
       state.position = next;
       const x = next.x * 32 + 16,
         y = next.y * 32 + 16;
+      const finishStep = () => {
+        this.moving = false;
+        this.player.setOrigin(0.5, 0.5);
+        this.report();
+        if (!this.path.length && this.arrival) {
+          const id = this.arrival;
+          this.arrival = null;
+          hooks.interact(id);
+        }
+      };
       if (this.reducedMotion) {
         this.player.setPosition(x, y);
         this.ring.setPosition(x, y + 13);
+        finishStep();
       } else {
+        this.moving = true;
         this.tweens.add({
           targets: this.player,
           x,
           y,
-          duration: 105,
-          ease: "Linear",
+          duration: 200,
+          ease: "Sine.InOut",
+          // Lift the sprite by up to two pixels without moving its ground ring.
+          onUpdate: (tween) =>
+            this.player.setOrigin(
+              0.5,
+              0.5 + Math.sin(tween.progress * Math.PI) / 16,
+            ),
+          onComplete: finishStep,
         });
         this.tweens.add({
           targets: this.ring,
           x,
           y: y + 13,
-          duration: 105,
-          ease: "Linear",
+          duration: 200,
+          ease: "Sine.InOut",
         });
-      }
-      this.report();
-      if (!this.path.length && this.arrival) {
-        const id = this.arrival;
-        this.arrival = null;
-        hooks.interact(id);
       }
     }
   }
@@ -453,6 +466,7 @@ export function createWorld(data, state, hooks) {
     width: 768,
     height: 512,
     pixelArt: true,
+    roundPixels: true,
     backgroundColor: "#152330",
     scene: Ward,
     scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
