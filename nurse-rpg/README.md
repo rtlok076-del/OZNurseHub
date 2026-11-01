@@ -1,6 +1,6 @@
 # Project Ward — The Lantern Crossing v0.2
 
-Three connected chapters under `/nurse-rpg/`, built from Project Ward Design Doc v0.2. Ryan requested two more chapters before his combined playtest, overriding the original M1 gate. Existing Ward Shift files are unchanged. Draft PR #65; no merge or publication.
+Three connected chapters under `/nurse-rpg/`, built from Project Ward Design Doc v0.2. Ryan requested two more chapters before his combined playtest, overriding the original M1 gate. Existing Ward Shift files are unchanged. Alpha publication authorised by Ryan on 1 November 2026 through PR #65.
 
 ## Play
 
@@ -30,4 +30,4 @@ Run `npm ci`, `npm start`, then separately `npm test` and `npm run test:browser`
 
 Original procedural art, map, music and sound; no third-party art/audio packs. Phaser © Phaser Studio Inc., MIT (assets/PHASER-LICENSE.txt). System fonts only. Clinical sources are in quest JSON and REVIEW.md. Deterioration uses narrative urgency, not a validated scoring chart; emergency escalation never waits for a score.
 
-Before publication: Ryan’s combined gameplay/clinical review, real-device and assistive-technology checks, and site navigation/sitemap placement. Do not auto-merge or publish.
+Before a stable release: Ryan’s combined gameplay/clinical review and real-device/assistive-technology checks. This build is explicitly published for alpha testing.

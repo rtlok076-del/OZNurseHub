@@ -323,7 +323,7 @@ function intro() {
 function launch() {
   modal(
     "Before you cross",
-    `<p>${disclaimer}</p><p class="small">Three chapters, three optional ward encounters, about 20–30 minutes. Your progress is saved in this browser. All characters are fictional. Clinical content is pending Ryan’s review.</p>`,
+    `<p>${disclaimer}</p><p class="small">Alpha test build: three chapters and three optional ward encounters, about 20–30 minutes. Features and saves may change. Your progress is saved in this browser. All characters are fictional. Clinical content is pending Ryan’s review.</p>`,
     [
       button(
         "Begin the journey",
@@ -669,7 +669,7 @@ $("pause").onclick = () =>
 $("about").onclick = () =>
   modal(
     "About Project Ward",
-    `<p>A small nursing adventure by OzNurseHub. Three-chapter adventure, v0.2.0.</p><p>${disclaimer}</p><p>Art: original procedural pixel tiles and characters created for this prototype. Sound: original synthesised ambient score and interaction chimes. Engine: Phaser 3.90.0, MIT licence.</p><p>Teaching foundations: NSQHS Communicating for Safety (Standard 6) and Recognising and Responding to Acute Deterioration (Standard 8). The game uses full name, date of birth and medical record number as its three identifiers. Names and locations are fictional.</p><p><a href="https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/communicating-safety-standard/further-information/patient-identification-and-procedure-matching" target="_blank" rel="noopener">Patient identification and procedure matching ↗</a></p>`,
+    `<p>A small nursing adventure by OzNurseHub. Three-chapter alpha adventure, v0.2.0.</p><p>${disclaimer}</p><p>Art: original procedural pixel tiles and characters created for this prototype. Sound: original synthesised ambient score and interaction chimes. Engine: Phaser 3.90.0, MIT licence.</p><p>Teaching foundations: NSQHS Communicating for Safety (Standard 6) and Recognising and Responding to Acute Deterioration (Standard 8). The game uses full name, date of birth and medical record number as its three identifiers. Names and locations are fictional.</p><p><a href="https://www.safetyandquality.gov.au/national-standards/nsqhs-standards/communicating-safety-standard/further-information/patient-identification-and-procedure-matching" target="_blank" rel="noopener">Patient identification and procedure matching ↗</a></p>`,
     [
       button("Back to the ward", close, true),
       button("Restart journey", () =>

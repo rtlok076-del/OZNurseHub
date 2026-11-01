@@ -24,8 +24,10 @@ Early emergency escalation is not penalised. The storm changes at a narrative st
 
 ## Independent RPG review
 
-In progress. Final score and evidence will be added after the sub-agent completes actual UI playtesting. This is an editorial judgement, not clinical validation.
+The independent sub-agent completed all three chapters, a wrong-choice recovery, the Pathfinder path, and an early-emergency alternative. It reported no blocking errors and a provisional RPG rating around 6.5/10. Strengths: coherent story, paced escalation and human NPC details. Weaknesses: obvious good-versus-careless choices, reconverging branches and simple milestone progression. Its session hit a usage limit before the final mobile/art review report; this is a provisional editorial rating, not a completed quality certification. Root browser checks cover mobile, bonds and compass use.
+
+The reviewer identified dialogue below a tall desktop map; the top row was reduced to 480px and the keyboard regression suite passed afterward.
 
 ## Release status
 
-Draft PR only. Ryan’s combined gameplay and clinical review remain outstanding. No merge, public navigation update, sitemap entry or production publication.
+Ryan explicitly authorised publication of the current build as an alpha on 1 November 2026. Alpha labels, Resources entry, sitemap and cache revision prepared. Clinical review remains pending; the alpha is an educational fictional prototype.
