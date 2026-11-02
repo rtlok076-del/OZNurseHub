@@ -11,6 +11,6 @@ const assert=require('node:assert/strict');
  await p.waitForFunction(()=>document.querySelector('.book-position').textContent==='2 / 8');
  await c.setOffline(true);
  await p.goto('http://127.0.0.1:8765/fables.html');assert.equal(await p.locator('.book-card').count(),8);
- for(const slug of ['merchants-crossroads','fox-and-rook','mira-marsh-map','mara-two-lanterns','fox-river-returns','mina-two-seeds','thea-pond-map']){await p.goto('http://127.0.0.1:8765/fable-'+slug+'.html');assert((await p.locator('.fable-text').innerText()).length>500);assert(await p.evaluate(async()=>{const r=await fetch(document.querySelector('video').poster);return r.ok}));}
+ for(const slug of ['merchants-crossroads','fox-and-rook','mira-marsh-map','mara-two-lanterns','fox-river-returns','mina-two-seeds','thea-pond-map','pip-storm-jar']){await p.goto('http://127.0.0.1:8765/fable-'+slug+'.html');assert((await p.locator('.fable-text').innerText()).length>500);assert(await p.evaluate(async()=>{const r=await fetch(document.querySelector('video').poster);return r.ok}));}
  console.log('PASS simulated phone swipe and offline library, both stories and posters.');
 }finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});

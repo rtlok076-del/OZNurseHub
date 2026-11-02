@@ -8,7 +8,7 @@ const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
   page.on('pageerror',e=>errors.push(e.message));
   for(const width of [390,1440]) for(const colorScheme of ['light','dark']) {
    await page.setViewportSize({width,height:900});await page.emulateMedia({colorScheme});
-   for(const [slug,lastLine,videoWidth] of [['merchants-crossroads','The Nash Equilibrium had moved.',540],['fox-and-rook','yet truer in practice.',720],['mira-marsh-map','the best compass is prediction corrected by evidence.',720],['mara-two-lanterns','she cultivated better uncertainty.',540],['fox-river-returns','how fast the chain forgets where it began.',720],['mina-two-seeds','the algebra of rational belief revision under uncertainty.',720],['thea-pond-map','converges on what is really there.',720]]) {
+   for(const [slug,lastLine,videoWidth] of [['merchants-crossroads','The Nash Equilibrium had moved.',540],['fox-and-rook','yet truer in practice.',720],['mira-marsh-map','the best compass is prediction corrected by evidence.',720],['mara-two-lanterns','she cultivated better uncertainty.',540],['fox-river-returns','how fast the chain forgets where it began.',720],['mina-two-seeds','the algebra of rational belief revision under uncertainty.',720],['thea-pond-map','converges on what is really there.',720],['pip-storm-jar','and knowing how close it is.',1080]]) {
     await page.goto(`${base}/fable-${slug}.html`);
     assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('video').count(),1);
     assert((await page.locator('.fable-text').innerText()).includes(lastLine));

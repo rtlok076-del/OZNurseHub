@@ -32,7 +32,7 @@ const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
   assert.deepEqual(videos,[],'Library must not load videos.');
   await page.locator('.book-card').first().click();await page.waitForURL('**/fable-merchants-crossroads.html');
   for(const [hash,slug] of [['mira','mira-marsh-map'],['mara','mara-two-lanterns']]) {await page.goto(`${base}/fables.html#${hash}`);await page.waitForURL(`**/fable-${slug}.html`)}
-  const plain=await browser.newPage({javaScriptEnabled:false});await plain.goto(`${base}/fables.html`);await plain.locator('.book-card').last().click();await plain.waitForURL('**/media/pip-storm-jar.mp4');
+  const plain=await browser.newPage({javaScriptEnabled:false});await plain.goto(`${base}/fables.html`);await plain.locator('.book-card').last().click();await plain.waitForURL('**/fable-pip-storm-jar.html');
   assert.deepEqual(errors,[]);console.log('PASS cover browsing, reversible fades, keyboard, reduced motion, legacy links, no-JS, no video downloads, and responsive themes.');
  } finally {await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});
