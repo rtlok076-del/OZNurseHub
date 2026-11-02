@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v88-pip-media';
+const CACHE = 'oznurse-v89-pip-page';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -49,6 +49,8 @@ const CORE_FILES = [
   './media/mina-two-seeds.jpg',
   './fable-thea-pond-map.html',
   './media/thea-pond-map.jpg',
+  './fable-pip-storm-jar.html',
+  './media/pip-storm-jar.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
