@@ -12,7 +12,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765';
    await page.goto(base+'/clinical-tips.html');
    const tip=page.getByRole('button',{name:'Got it',exact:true});
    if(await tip.isVisible()) await tip.click();
-   assert.equal(await page.locator('.tips-video-card').count(),5);
+   assert.equal(await page.locator('.tips-video-card').count(),6);
    assert.equal(await page.locator('video').count(),0,'Library loads posters, not players');
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    for (const card of await page.locator('.tips-video-card').all()) await card.scrollIntoViewIfNeeded();
