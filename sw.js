@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v90-tip-06-media';
+const CACHE = 'oznurse-v91-tip-06';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -26,6 +26,7 @@ const CORE_FILES = [
   './clinical-tip-check-the-patient-id.html',
   './clinical-tip-first-day-placement-checklist.html',
   './clinical-tip-track-your-clinical-skills.html',
+  './clinical-tip-total-a-fluid-balance-chart.html',
   './media/make-an-isbar-call.jpg',
   './media/spot-the-deteriorating-patient.jpg',
   './media/check-the-patient-id.jpg',
