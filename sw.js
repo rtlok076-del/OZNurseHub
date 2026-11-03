@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v89-pip-page';
+const CACHE = 'oznurse-v90-tip-06-media';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -31,6 +31,7 @@ const CORE_FILES = [
   './media/check-the-patient-id.jpg',
   './media/first-day-placement-checklist.jpg',
   './media/track-your-clinical-skills.jpg',
+  './media/total-a-fluid-balance-chart.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
