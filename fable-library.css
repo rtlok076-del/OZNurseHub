@@ -66,4 +66,7 @@
 .book-thea .cover-art img { object-position:50% 62%; }
 .book-pip .book-cover { background:#ebe4d4; color:#4a3824; }
 .book-pip .cover-art img { object-position:50% 55%; }
+.book-weaver .book-cover { background:#efe6d6; color:#4a3424; }
+.book-weaver .cover-art img { object-position:50% 45%; }
+.book-weaver .cover-type h2 { font-size:26px; }
 .book-merchants .cover-type h2 { font-size:26px; }
