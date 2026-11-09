@@ -19,7 +19,7 @@ const base=process.env.BASE_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.getByRole('link',{name:'Next story:',exact:false}).count(),1);
    }
   }
-  await page.getByRole('link',{name:'← All fables',exact:true}).click();assert.equal(await page.locator('.book-card').count(),8);
+  await page.getByRole('link',{name:'← All fables',exact:true}).click();assert.equal(await page.locator('.book-card').count(),9);
   await page.goto(`${base}/resources.html`);assert.equal(await page.locator('.si-card[href="fables.html"]').count(),1);
   assert.deepEqual(errors,[]);console.log('PASS both standalone stories, full text, video playback, responsive themes, and library navigation.');
  } finally {await browser.close()}
