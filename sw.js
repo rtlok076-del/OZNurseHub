@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v91-weaver-media';
+const CACHE = 'oznurse-v92-weaver-slim';
 
 const CORE_FILES = [
   './shift-sim/',
