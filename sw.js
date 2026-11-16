@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v93-fox-tonic-tip-07';
+const CACHE = 'oznurse-v94-links';
 
 const CORE_FILES = [
   './shift-sim/',
