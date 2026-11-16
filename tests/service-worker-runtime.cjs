@@ -57,7 +57,7 @@ async function request(path, options = {}) {
   assert.equal(await (await request('/index.html', { mode: 'navigate' })).text(), 'fresh');
   assert.equal((await request('/missing.js')).type, 'error');
   const before = requests;
-  for (const path of ['/media/test.mp4', '/downloads/file.pdf', '/med-survivor/index.html', '/api/data', '/auth/login']) {
+  for (const path of ['/media/test.mp4', '/downloads/file.pdf', '/med-survivor/index.html', '/med-squad/index.html', '/api/data', '/auth/login']) {
     assert.equal(await request(path), undefined);
   }
   assert.equal(await request('/audio.bin', { headers: new Headers({ Range: 'bytes=0-10' }) }), undefined);
