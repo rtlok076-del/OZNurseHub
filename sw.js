@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v93-fox-tonic-tip-07';
+const CACHE = 'oznurse-v95-med-squad-redirect';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -169,7 +169,7 @@ self.addEventListener('fetch', function (e) {
   const url = new URL(e.request.url);
   if (url.origin !== self.location.origin || e.request.headers.has('range')) return;
   if (/\.(mp4|webm)$/i.test(url.pathname)) return;
-  if (['/api/', '/auth/', '/downloads/', '/med-survivor/'].some(function (path) {
+  if (['/api/', '/auth/', '/downloads/', '/med-survivor/', '/med-squad/'].some(function (path) {
     return url.pathname.startsWith(path);
   })) return;
 
