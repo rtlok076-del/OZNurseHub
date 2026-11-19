@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v95-med-squad-redirect';
+const CACHE = 'oznurse-v96-tip-08-antt';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -33,6 +33,7 @@ const CORE_FILES = [
   './media/track-your-clinical-skills.jpg',
   './media/total-a-fluid-balance-chart.jpg',
   './media/write-a-clear-progress-note.jpg',
+  './media/what-is-antt.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
