@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v99-orchard';
+const CACHE = 'oznurse-v100-fable-pages';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -55,6 +55,12 @@ const CORE_FILES = [
   './media/thea-pond-map.jpg',
   './fable-pip-storm-jar.html',
   './media/pip-storm-jar.jpg',
+  './fable-weaver-four-screens.html',
+  './media/weaver-four-screens.jpg',
+  './fable-fox-half-risk-tonic.html',
+  './media/fox-half-risk-tonic.jpg',
+  './fable-orchards-best-year.html',
+  './media/orchards-best-year.jpg',
   './app-home.css',
   './app-shell.js',
   './site-theme.css',
