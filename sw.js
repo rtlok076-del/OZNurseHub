@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v98-tip-06';
+const CACHE = 'oznurse-v99-orchard';
 
 const CORE_FILES = [
   './shift-sim/',
