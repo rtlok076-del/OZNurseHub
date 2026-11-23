@@ -19,7 +19,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765';
    await page.waitForFunction(()=>[...document.querySelectorAll('.tips-preview img')].every(i=>i.complete&&i.naturalWidth>0));
    assert(await page.locator('.tips-preview img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth>0)));
    await page.screenshot({path:`tests/tips-library-${width}-${colorScheme}.png`,fullPage:true});
-   for(const [slug,duration] of [['spot-the-deteriorating-patient',47],['make-an-isbar-call',55],['check-the-patient-id',53],['first-day-placement-checklist',45],['track-your-clinical-skills',44]]) {
+   for(const [slug,duration] of [['spot-the-deteriorating-patient',47],['make-an-isbar-call',55],['check-the-patient-id',53],['first-day-placement-checklist',45],['track-your-clinical-skills',44],['total-a-fluid-balance-chart',55]]) {
    media.length=0;
    await page.locator(`.tips-video-card[href="clinical-tip-${slug}.html"]`).click();
    await page.waitForURL(`**/clinical-tip-${slug}.html`);
