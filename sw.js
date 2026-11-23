@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v94-links';
+const CACHE = 'oznurse-v97-links';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -33,6 +33,7 @@ const CORE_FILES = [
   './media/track-your-clinical-skills.jpg',
   './media/total-a-fluid-balance-chart.jpg',
   './media/write-a-clear-progress-note.jpg',
+  './media/what-is-antt.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
@@ -169,7 +170,7 @@ self.addEventListener('fetch', function (e) {
   const url = new URL(e.request.url);
   if (url.origin !== self.location.origin || e.request.headers.has('range')) return;
   if (/\.(mp4|webm)$/i.test(url.pathname)) return;
-  if (['/api/', '/auth/', '/downloads/', '/med-survivor/'].some(function (path) {
+  if (['/api/', '/auth/', '/downloads/', '/med-survivor/', '/med-squad/'].some(function (path) {
     return url.pathname.startsWith(path);
   })) return;
 
