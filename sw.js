@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v100-fable-pages';
+const CACHE = 'oznurse-v101-tip-09-trend';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -35,6 +35,7 @@ const CORE_FILES = [
   './media/total-a-fluid-balance-chart.jpg',
   './media/write-a-clear-progress-note.jpg',
   './media/what-is-antt.jpg',
+  './media/check-the-trend.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
