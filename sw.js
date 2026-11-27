@@ -1,5 +1,5 @@
 // OzNurseHub — Service Worker
-const CACHE = 'oznurse-v101-tip-09-trend';
+const CACHE = 'oznurse-v102-tip-10-delirium';
 
 const CORE_FILES = [
   './shift-sim/',
@@ -36,6 +36,7 @@ const CORE_FILES = [
   './media/write-a-clear-progress-note.jpg',
   './media/what-is-antt.jpg',
   './media/check-the-trend.jpg',
+  './media/delirium-isnt-always-loud.jpg',
   './fables.html',
   './fable-merchants-crossroads.html',
   './fable-fox-and-rook.html',
